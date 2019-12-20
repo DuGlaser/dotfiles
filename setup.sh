@@ -7,8 +7,15 @@ for rcfile in "${ZDOTDIR:-$HOME}"/Dotfiles/.zprezto/runcoms/^README.md(.N); do
   ln -sfnv "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 
-ln -sfnv ~/Dotfiles/.zprezto ~/.zprezto 
-ln -sfnv ~/Dotfiles/.zshrc ~/.zshrc
-ln -sfnv ~/Dotfiles/.config ~/.config
+for f in .??*
+do
+    [[ "$f" == ".git" ]] && continue
+    [[ "$f" == ".DS_Store" ]] && continue
+    [[ "$f" == ".gitmodules" ]] && continue
+    [[ "$f" == ".gitignore" ]] && continue
+
+    ln -sfnv ~/Dotfiles/$f ~/$f 
+    echo $f
+  done
 
 echo "linked dotfiles complete!"

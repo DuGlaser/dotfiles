@@ -1,13 +1,8 @@
 # dotfiles
 
+ファイルに実行権限を付与し、実行
 ```
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/Dotfiles/.zprezto/runcoms/^README.md(.N); do
-  ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
+$ chmod +x ~/dotfiles/setup.sh
+$ ./setup.sh
 ```
 
-```
-ln -sf ~/Dotfiles/.zprezto ~/.zprezto 
-ln -sf ~/Dotfiles/.zshrc ~/.zshrc
-```

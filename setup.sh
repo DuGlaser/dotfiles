@@ -1,14 +1,14 @@
 set -u
-DOT_DIRECTORY="${HOME}/Dotfiles"
-DOT_CONFIG_DIRECTORY=".config"
 
 echo "link home directory dotfiles"
-cd ${DOT_DIRECTORY}
 
-for f in .??*
-do
-    [ "$f" = ".git" ] && continue
-    ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/Dotfiles/.zprezto/runcoms/^README.md(.N); do
+  ln -sfnv "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
+
+ln -sfnv ~/Dotfiles/.zprezto ~/.zprezto 
+ln -sfnv ~/Dotfiles/.zshrc ~/.zshrc
+ln -sfnv ~/Dotfiles/.config ~/.config
 
 echo "linked dotfiles complete!"

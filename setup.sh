@@ -2,10 +2,10 @@ set -u
 
 echo "link home directory dotfiles"
 
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/Dotfiles/.zprezto/runcoms/^README.md(.N); do
-  ln -sfnv "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
+# setopt EXTENDED_GLOB
+# for rcfile in "${ZDOTDIR:-$HOME}"/Dotfiles/.zprezto/runcoms/^README.md(.N); do
+#   ln -sfnv "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+# done
 
 for f in .??*
 do

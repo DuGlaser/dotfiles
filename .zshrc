@@ -17,6 +17,7 @@ export PATH=$PATH:$(go env GOPATH)/bin
 
 # alias
 alias v="nvim"
+alias cls="clear"
 
 # fzf
 fb() {
@@ -25,4 +26,11 @@ fb() {
   branch=$(echo "$branches" |
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
 }

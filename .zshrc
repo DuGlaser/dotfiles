@@ -19,6 +19,16 @@ export PATH=$PATH:$(go env GOPATH)/bin
 alias v="nvim"
 alias cls="clear"
 
+# zsh setting
+autoload -Uz compinit
+compinit
+
+bindkey -v
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
 # fzf
 fb() {
   local branches branch

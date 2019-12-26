@@ -1,16 +1,42 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+source "$HOME/.zplugin/bin/zplugin.zsh"
+
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin's installer chunk
+
+# Two regular plugins loaded without tracking.
+zplugin light zsh-users/zsh-autosuggestions
+zplugin light zdharma/fast-syntax-highlighting
+
+# Load Git plugin from OMZ
+zplugin snippet OMZ::plugins/git/git.plugin.zsh
+zplugin cdclear -q
+
+# # Plugin history-search-multi-word loaded with tracking.
+# ice wait'!0' zplugin load zdharma/history-search-multi-word
+
+zplugin load momo-lab/zsh-abbrev-alias 
+zplugin load zsh-users/zsh-syntax-highlighting 
+zplugin load zsh-users/zsh-completions 
+
+# zplugin light sorin-ionescu/prezto
+
+zplugin light zsh-users/zsh-autosuggestions
+zplugin light zsh-users/zsh-completions
+zplugin light b4b4r07/enhancd
 
 # Source Prezto.
+autoload -Uz compinit
+compinit
+
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+clear
+
 # Customize to your needs...
+source ~/.zplugin/plugins/b4b4r07---enhancd/init.sh
 export PATH="$PATH:$HOME/Development/flutter/bin"
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
@@ -18,10 +44,6 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # alias
 alias v="nvim"
 alias cls="clear"
-
-# zsh setting
-autoload -Uz compinit
-compinit
 
 bindkey -v
 

@@ -9,13 +9,14 @@ echo "link home directory dotfiles"
 
 for f in .??*
 do
-    [[ "$f" == ".git" ]] && continue
-    [[ "$f" == ".DS_Store" ]] && continue
-    [[ "$f" == ".gitmodules" ]] && continue
-    [[ "$f" == ".gitignore" ]] && continue
+  [[ "$f" == ".git" ]] && continue
+  [[ "$f" == ".DS_Store" ]] && continue
+  [[ "$f" == ".gitmodules" ]] && continue
+  [[ "$f" == ".gitignore" ]] && continue
 
-    ln -sfnv ~/Dotfiles/$f ~/$f 
-    echo $f
-  done
+  ln -sfnv ~/Dotfiles/$f ~/$f 
+  echo $f
+done
 
+ln -sfnv ~/Dotfiles/zpreztorc ~/.zpreztorc 
 echo "linked dotfiles complete!"

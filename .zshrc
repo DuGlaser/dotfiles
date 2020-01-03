@@ -25,9 +25,9 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin light zsh-users/zsh-completions
 zplugin light b4b4r07/enhancd
 
-# Source Prezto.
-autoload -Uz compinit
-compinit
+# # Source Prezto.
+# autoload -Uz compinit
+# compinit
 
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -40,6 +40,7 @@ source ~/.zplugin/plugins/b4b4r07---enhancd/init.sh
 export PATH="$PATH:$HOME/Development/flutter/bin"
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin
 
 # alias
 alias v="nvim"

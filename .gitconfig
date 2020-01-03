@@ -1,4 +1,0 @@
-[ghq]
-  root= ~/src
-[commit]
-	template = /Users/damegane/Development/config/.gitmessage.txt

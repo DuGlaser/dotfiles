@@ -1,33 +1,39 @@
-source "$HOME/.zplugin/bin/zplugin.zsh"
-
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+source ~/.zinit/bin/zinit.zsh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zplugin's installer chunk
 
 # Two regular plugins loaded without tracking.
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
+
+# Plugin history-search-multi-word loaded with tracking.
+zinit load zdharma/history-search-multi-word
+
+# Load OMZ Git library
+zinit snippet OMZ::lib/git.zsh
 
 # Load Git plugin from OMZ
-zplugin snippet OMZ::plugins/git/git.plugin.zsh
-zplugin cdclear -q
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit cdclear -q # <- forget completions provided up to this moment
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-# # Plugin history-search-multi-word loaded with tracking.
-# ice wait'!0' zplugin load zdharma/history-search-multi-word
-
-zplugin load momo-lab/zsh-abbrev-alias 
-zplugin load zsh-users/zsh-syntax-highlighting 
-zplugin load zsh-users/zsh-completions 
-
-# zplugin light sorin-ionescu/prezto
-
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light zsh-users/zsh-completions
-zplugin light b4b4r07/enhancd
+# # # Plugin history-search-multi-word loaded with tracking.
+# # ice wait'!0' zinit load zdharma/history-search-multi-word
+#
+# zinit load momo-lab/zsh-abbrev-alias 
+# zinit load zsh-users/zsh-completions 
+#
+# # zinit light sorin-ionescu/prezto
+#
+# zinit light zsh-users/zsh-autosuggestions
+zinit light b4b4r07/enhancd
 
 # # Source Prezto.
-# autoload -Uz compinit
-# compinit
+autoload -Uz compinit
+compinit
+
+
 
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -36,7 +42,8 @@ fi
 clear
 
 # Customize to your needs...
-source ~/.zplugin/plugins/b4b4r07---enhancd/init.sh
+source ~/.zinit/plugins/b4b4r07---enhancd/init.sh
+source ~/.zinit/bin/zinit.zsh
 export PATH="$PATH:$HOME/Development/flutter/bin"
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
@@ -133,4 +140,24 @@ function peco-src () {
 zle -N peco-src
 bindkey '^]' peco-src
 
+# anyenv
 eval "$(anyenv init -)"
+
+functon ninoSudo(){
+  imgcat ~/Documents/nino.png
+  sudo $@
+}
+
+alias sudo='ninoSudo'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f"
+fi

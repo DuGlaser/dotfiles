@@ -1,0 +1,13 @@
+[ghq]
+  root= ~/src
+[commit]
+	template = ~/.gitmessage.txt
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+[user]
+	email = duglaser0618@gmail.com
+	name = DuGlaser
+[core]
+	excludesfile = ~/.gitignore_global

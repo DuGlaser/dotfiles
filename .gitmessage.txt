@@ -1,0 +1,32 @@
+
+# ==================== Emojis ====================
+# 🎉  :tada: 初めてのコミット（Initial Commit）
+# 🔖  :bookmark: バージョンタグ（Version Tag）
+# ➕  :heavy_plus_sign: 依存関係を追加します
+# ➖  :heavy_minus_sign:依存関係を削除します
+# ✅  :white_check_mark:テストの追加、更新
+# ⬇️   :arrow_down:依存関係のダウングレード
+# ⬆️   :arrow_up:依存関係のアップグレード
+# ✨  :sparkles: 新機能（New Feature）
+# ♻️   :recycle:コードのリファクタリング(Refactoring code)
+# 🆕  :new:ファイルの追加(New File)
+# 🚑  :ambulance:バグ修正（Bugfix） :bug:はキモいのでNG
+# 📚  :books: ドキュメント（Documentation）
+# 🎨  :art: デザインUI/UX(Accessibility)
+# 🐎  :horse: パフォーマンス（Performance）
+# 🔧  :wrench: ツール（Tooling）
+# 🚨  :rotating_light: テスト（Tests）
+# 💩  :hankey: 非推奨追加（Deprecation）
+# 🐈  :cat2: とりあえず動くからヨシ！！(Must Fix!!)
+# 🚚  :truck: ファイルの移動または名前変更
+# 🔥  :fire: コードやファイルの削除（Removal）
+# 🔧  :wrench:設定ファイルの変更
+# 🚧  :construction: WIP(Work In Progress)👉進行中の作業
+
+
+# ==================== Format ====================
+# :emoji: Subject
+# https://gist.github.com/mono0926/e6ffd032c384ee4c1cef5a2aa4f778d7
+# ☝️例文いっぱい載ってるよ😎
+# Commit body...
+~

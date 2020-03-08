@@ -30,8 +30,8 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit light b4b4r07/enhancd
 
 # # Source Prezto.
-autoload -Uz compinit
-compinit
+# autoload -Uz compinit
+# compinit
 
 
 
@@ -52,6 +52,7 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin
 # alias
 alias v="nvim"
 alias cls="clear"
+alias el="exa -a --icons -1 --group-directories-first"
 
 bindkey -v
 
@@ -161,3 +162,4 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
         print -P "%F{160}▓▒░ The clone has failed.%f"
 fi
+

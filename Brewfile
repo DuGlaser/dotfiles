@@ -45,6 +45,7 @@ brew "heroku/brew/heroku"
 brew "jesseduffield/lazygit/lazygit"
 brew "sanemat/font/ricty", args: ["with-powerline"]
 cask "advancedrestclient"
+cask "alacritty"
 cask "appcleaner"
 cask "arduino"
 cask "bettertouchtool"

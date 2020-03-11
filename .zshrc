@@ -49,12 +49,17 @@ export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin
 
+export LANG=ja_JP.UTF-8
+export KCODE=u 
+
 # alias
 alias v="nvim"
 alias cls="clear"
 alias el="exa -a --icons -1 --group-directories-first"
 
 bindkey -v
+
+setopt print_eight_bit
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000

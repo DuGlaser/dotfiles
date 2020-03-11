@@ -47,7 +47,6 @@ brew "sanemat/font/ricty", args: ["with-powerline"]
 cask "advancedrestclient"
 cask "alacritty"
 cask "appcleaner"
-cask "arduino"
 cask "bettertouchtool"
 cask "clipy"
 cask "discord"

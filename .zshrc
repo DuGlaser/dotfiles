@@ -52,6 +52,9 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin
 export LANG=ja_JP.UTF-8
 export KCODE=u 
 
+# defaults write -g InitialKeyRepeat -int 12 
+# defaults write -g KeyRepeat -int 1 
+
 # alias
 alias v="nvim"
 alias cls="clear"

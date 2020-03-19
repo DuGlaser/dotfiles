@@ -61,7 +61,12 @@ alias cls="clear"
 alias ls="exa"
 alias l="exa -a -1"
 alias ll="exa -a -1 --icons"
-# alias el="exa -a --icons -1 --group-directories-first"
+
+cdls() {
+  \cd "$@" && l
+}
+alias cl="cdls"
+
 
 bindkey -v
 

@@ -489,6 +489,7 @@ key_bindings:
 
   - { key: C,        mods: Alt,     chars: "\x1bc"                 }
   - { key: V,        mods: Alt,     chars: "\x1bv"                 }
+  - { key: S,        mods: Alt,     chars: "\x1bs"                 }
 
   - { key: J,        mods: Alt,     chars: "\x1bj"                 }
   - { key: K,        mods: Alt,     chars: "\x1bk"                 }

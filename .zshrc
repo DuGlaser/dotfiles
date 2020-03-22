@@ -62,6 +62,11 @@ alias ls="exa"
 alias l="exa -a -1"
 alias ll="exa -a -1 --icons"
 
+cdmkdir(){
+  \mkdir "$@" && cd "$@"
+}
+alias mmkdir="cdmkdir"
+
 cdls() {
   \cd "$@" && l
 }

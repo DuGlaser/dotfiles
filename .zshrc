@@ -49,8 +49,8 @@ export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin
 
-export LANG=ja_JP.UTF-8
-export KCODE=u 
+# export LANG=ja_JP.UTF-8
+# export KCODE=u 
 
 defaults write -g InitialKeyRepeat -int 12 
 defaults write -g KeyRepeat -int 2 
@@ -61,6 +61,8 @@ alias cls="clear"
 alias ls="exa"
 alias l="exa -a -1"
 alias ll="exa -a -1 --icons"
+alias rg="rg --colors 'match:bg:yellow' --colors 'match:fg:black' --colors 'match:style:nobold' --colors 'path:fg:green' --colors 'path:style:bold' --colors 'line:fg:yellow' --colors 'line:style:bold'"
+alias grep="rg"
 
 cdmkdir(){
   \mkdir "$@" && cd "$@"
@@ -184,3 +186,5 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
         print -P "%F{160}▓▒░ The clone has failed.%f"
 fi
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

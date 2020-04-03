@@ -27,6 +27,7 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 # # zinit light sorin-ionescu/prezto
 #
 # zinit light zsh-users/zsh-autosuggestions
+zinit ice proto'git' pick'init.sh'
 zinit light b4b4r07/enhancd
 
 # # Source Prezto.

@@ -11,3 +11,6 @@
 	name = DuGlaser
 [core]
 	excludesfile = ~/.gitignore_global
+[url "github:"]
+    InsteadOf = https://github.com/
+    InsteadOf = git@github.com:

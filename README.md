@@ -33,4 +33,8 @@ $ mv .config/nvim_setting .config/nvim
 # https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k
 # 👆フォントをインストール
 $ source $HOME/.p10k.zsh
+
+# tmux tmp settings
+$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# <Prifix>+I 
 ```

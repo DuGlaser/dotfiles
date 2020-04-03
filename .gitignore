@@ -3,6 +3,5 @@
 /.config/configstore
 /.config/hub
 /.config/yarn
-/.config/karabiner
 /.config/.server
 /.config/anyenv

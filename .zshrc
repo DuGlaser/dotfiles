@@ -49,6 +49,10 @@ export PATH="$PATH:$HOME/Development/flutter/bin"
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export JAVA_HOME=`/usr/libexec/java_home -v 14.0.1`
+export PATH=${JAVA_HOME}/bin:${PATH}
 
 # export LANG=ja_JP.UTF-8
 # export KCODE=u 

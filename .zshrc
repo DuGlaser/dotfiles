@@ -48,11 +48,14 @@ source ~/.zinit/bin/zinit.zsh
 export PATH="$PATH:$HOME/Development/flutter/bin"
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
+export GO111MODULE=on
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export JAVA_HOME=`/usr/libexec/java_home -v 14.0.1`
 export PATH=${JAVA_HOME}/bin:${PATH}
+export ANDROID_SDK=/Users/damegane/Library/Android/sdk
+export PATH=/Users/damegane/Library/Android/sdk/platform-tools:$PATH
 
 # export LANG=ja_JP.UTF-8
 # export KCODE=u 

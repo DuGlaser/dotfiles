@@ -31,9 +31,6 @@ zinit ice proto'git' pick'init.sh'
 zinit light b4b4r07/enhancd
 
 # # Source Prezto.
-# autoload -Uz compinit
-# compinit
-
 
 
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -52,16 +49,19 @@ export GO111MODULE=on
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export JAVA_HOME=`/usr/libexec/java_home -v 14.0.1`
+export JAVA_HOME=`/usr/libexec/java_home -v 14.0.2`
 export PATH=${JAVA_HOME}/bin:${PATH}
 export ANDROID_SDK=/Users/damegane/Library/Android/sdk
 export PATH=/Users/damegane/Library/Android/sdk/platform-tools:$PATH
+export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono
 
 # export LANG=ja_JP.UTF-8
 # export KCODE=u 
 
-defaults write -g InitialKeyRepeat -int 12 
-defaults write -g KeyRepeat -int 2 
+defaults write -g InitialKeyRepeat -int 12
+defaults write -g KeyRepeat -int 1.2 
+
+KEYTIMEOUT=1
 
 # alias
 alias v="nvim"
@@ -71,6 +71,9 @@ alias l="exa -a -1"
 alias ll="exa -a -1 --icons"
 alias rg="rg --colors 'match:bg:yellow' --colors 'match:fg:black' --colors 'match:style:nobold' --colors 'path:fg:green' --colors 'path:style:bold' --colors 'line:fg:yellow' --colors 'line:style:bold'"
 alias grep="rg"
+
+# atcoder
+alias atc='(){cargo atcoder $1 $2}'
 
 cdmkdir(){
   \mkdir "$@" && cd "$@"
@@ -216,3 +219,7 @@ if [ "$TERM_PROGRAM" = "alacritty" ]; then
     fi
   fi
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/damegane/.sdkman"
+[[ -s "/Users/damegane/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/damegane/.sdkman/bin/sdkman-init.sh"

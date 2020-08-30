@@ -23,10 +23,6 @@ truncation_symbol = ""
 disabled = false
 commit_hash_length = 4
 
-[git_state]
-progress_divider = " of "
-cherry_pick = "🍒 PICKING"
-
 [git_status]
 style = "green bold"
 ahead = " "

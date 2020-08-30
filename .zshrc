@@ -1,37 +1,20 @@
 source ~/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zplugin's installer chunk
 
-# Two regular plugins loaded without tracking.
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
 
-# Plugin history-search-multi-word loaded with tracking.
 zinit load zdharma/history-search-multi-word
 
-# Load OMZ Git library
 zinit snippet OMZ::lib/git.zsh
 
-# Load Git plugin from OMZ
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit cdclear -q # <- forget completions provided up to this moment
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-# # # Plugin history-search-multi-word loaded with tracking.
-# # ice wait'!0' zinit load zdharma/history-search-multi-word
-#
-# zinit load momo-lab/zsh-abbrev-alias 
-# zinit load zsh-users/zsh-completions 
-#
-# # zinit light sorin-ionescu/prezto
-#
-# zinit light zsh-users/zsh-autosuggestions
 zinit ice proto'git' pick'init.sh'
 zinit light b4b4r07/enhancd
-
-# # Source Prezto.
-
 
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -54,9 +37,6 @@ export PATH=${JAVA_HOME}/bin:${PATH}
 export ANDROID_SDK=/Users/damegane/Library/Android/sdk
 export PATH=/Users/damegane/Library/Android/sdk/platform-tools:$PATH
 export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono
-
-# export LANG=ja_JP.UTF-8
-# export KCODE=u 
 
 defaults write -g InitialKeyRepeat -int 12
 defaults write -g KeyRepeat -int 1.2 

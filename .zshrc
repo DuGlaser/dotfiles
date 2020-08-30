@@ -46,6 +46,7 @@ KEYTIMEOUT=1
 # auto complete
 autoload -U compinit; compinit -C
 
+### 参考: https://qiita.com/scalper/items/ed83c24f568cbf7f132b
 ### 補完方法毎にグループ化する。
 zstyle ':completion:*' format '%B%F{blue}%d%f%b'
 zstyle ':completion:*' group-name ''

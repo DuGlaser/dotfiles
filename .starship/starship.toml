@@ -1,0 +1,53 @@
+scan_timeout = 10
+
+[character]
+error_symbol = "✗"
+use_symbol_for_status = true
+
+[directory]
+truncation_length = 0 
+truncate_to_repo = false
+
+[dotnet]
+style = "green"
+heuristic = false
+
+[env_var]
+disabled = false
+
+[git_branch]
+truncation_length = 14
+truncation_symbol = ""
+
+[git_commit]
+disabled = false
+commit_hash_length = 4
+
+[git_state]
+progress_divider = " of "
+cherry_pick = "🍒 PICKING"
+
+[git_status]
+style = "green bold"
+ahead = " "
+behind = " "
+prefix = ""
+suffix = ""
+
+untracked.value = " ?"
+untracked.style = "#3ec1d3"
+untracked_count.enabled = true
+untracked_count.style = "#3ec1d3"
+
+modified.value = " ?"
+modified.style = "#3ec1d3"
+modified_count.enabled = true
+modified_count.style = "#3ec1d3"
+
+staged.value = " !"
+staged.style = "#fddb3a"
+staged_count.enabled = true
+staged_count.style = "#fddb3a"
+
+[cmd_duration]
+disabled = true

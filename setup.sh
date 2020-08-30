@@ -18,6 +18,4 @@ do
   echo $f
 done
 
-ln -sfnv ~/Dotfiles/zpreztorc ~/.zpreztorc 
-ln -sfnv ~/Dotfiles/zprofile ~/.zprofile 
 echo "linked dotfiles complete!"

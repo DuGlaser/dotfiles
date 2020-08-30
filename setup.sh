@@ -13,11 +13,10 @@ do
   [[ "$f" == ".DS_Store" ]] && continue
   [[ "$f" == ".gitmodules" ]] && continue
   [[ "$f" == ".gitignore" ]] && continue
+  [[ "$f" == ".p10k.zsh" ]] && continue
 
   ln -sfnv ~/Dotfiles/$f ~/$f 
   echo $f
 done
 
-ln -sfnv ~/Dotfiles/zpreztorc ~/.zpreztorc 
-ln -sfnv ~/Dotfiles/zprofile ~/.zprofile 
 echo "linked dotfiles complete!"

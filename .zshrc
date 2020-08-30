@@ -23,7 +23,7 @@ clear
 
 source ~/.zinit/bin/zinit.zsh
 export EDITOR=nvim
-export STARSHIP_CONFIG=~/.config/starship
+export STARSHIP_CONFIG=~/.starship/starship.toml
 
 export PATH="$PATH:$HOME/Development/flutter/bin"
 export GOPATH=$(go env GOPATH)

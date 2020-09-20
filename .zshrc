@@ -1,3 +1,4 @@
+### zinit setting
 source ~/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
@@ -11,16 +12,16 @@ zinit snippet OMZ::lib/git.zsh
 
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit cdclear -q # <- forget completions provided up to this moment
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 zinit ice proto'git' pick'init.sh'
 zinit light b4b4r07/enhancd
 
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
 clear
 
+
+
+### PATH setting
 source ~/.zinit/bin/zinit.zsh
 export EDITOR=nvim
 export STARSHIP_CONFIG=~/.starship/starship.toml
@@ -38,12 +39,28 @@ export ANDROID_SDK=/Users/damegane/Library/Android/sdk
 export PATH=/Users/damegane/Library/Android/sdk/platform-tools:$PATH
 export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono
 
+
+
+### zsh setting
+bindkey -v
+bindkey "^?" backward-delete-char
+
+setopt print_eight_bit
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+
+
+### key repeat setting
 defaults write -g InitialKeyRepeat -int 12
 defaults write -g KeyRepeat -int 1.2 
-
 KEYTIMEOUT=1
 
-# auto complete
+
+
+### auto complete setting
 autoload -U compinit; compinit -C
 
 ### 参考: https://qiita.com/scalper/items/ed83c24f568cbf7f132b
@@ -122,7 +139,9 @@ setopt numeric_glob_sort  # 辞書順ではなく数字順に並べる。
 setopt magic_equal_subst  # コマンドライン引数の --prefix=/usr とか=以降でも補完
 setopt always_last_prompt  # 無駄なスクロールを避ける
 
-# alias
+
+
+### alias setting
 alias v="nvim"
 alias cls="clear"
 alias ls="exa"
@@ -139,15 +158,8 @@ cdmkdir(){
 }
 alias mmkdir="cdmkdir"
 
-bindkey -v
-
-setopt print_eight_bit
-
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-
 # fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fb() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
@@ -163,7 +175,9 @@ fd() {
   cd "$dir"
 }
 
-# tmux setting
+
+
+### tmux setting
 function _left-pane() {
   tmux select-pane -L
 }
@@ -216,7 +230,9 @@ bindkey '^l' right-pane
 bindkey '^h' backspace-or-left-pane
 bindkey '^j' accept-line-or-down-pane
 
-# ghq
+
+
+### ghq setting
 function peco-src () {
   local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
@@ -228,16 +244,20 @@ function peco-src () {
 zle -N peco-src
 bindkey '^]' peco-src
 
-# anyenv
+
+
+### anyenv setting
 eval "$(anyenv init -)"
 
 functon ninoSudo(){
   imgcat ~/Documents/nino.png
   sudo $@
 }
-
 alias nsudo='ninoSudo'
 
+
+
+### powerlevel10k setting
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -251,9 +271,8 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
 fi
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Init set up tmux
+### alacritty setting
 if [ "$TERM_PROGRAM" = "alacritty" ]; then
   if [[ ! -n $TMUX && $- == *l* ]]; then
     # get the IDs
@@ -274,10 +293,9 @@ if [ "$TERM_PROGRAM" = "alacritty" ]; then
   fi
 fi
 
+
+
+### sdkman setting
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/damegane/.sdkman"
 [[ -s "/Users/damegane/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/damegane/.sdkman/bin/sdkman-init.sh"
-
-# prompt
-eval "$(starship init zsh)"
-

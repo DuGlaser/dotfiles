@@ -14,6 +14,9 @@ zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit cdclear -q # <- forget completions provided up to this moment
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
+zinit ice lucid wait"0" depth"1" blockf
+zinit light yuki-ycino/fzf-preview.zsh
+
 zinit ice proto'git' pick'init.sh'
 zinit light b4b4r07/enhancd
 
@@ -28,6 +31,7 @@ source "$HOME/.zsh_custom/.zsh_complete"
 ### zsh setting
 bindkey -v
 bindkey "^?" backward-delete-char
+bindkey '^i' fzf-or-normal-completion
 
 setopt print_eight_bit
 

@@ -17,6 +17,8 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit ice lucid wait"0" depth"1" blockf
 zinit light yuki-ycino/fzf-preview.zsh
 
+# if you get "shift:505 occured" error, you can run the following command
+# zinit cclear
 zinit ice proto'git' pick'init.sh'
 zinit light b4b4r07/enhancd
 

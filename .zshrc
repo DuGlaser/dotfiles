@@ -3,19 +3,16 @@ source ~/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit light zsh-users/zsh-autosuggestions
+zinit wait lucid light-mode for \
+  atload"_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions
+
 zinit light zdharma/fast-syntax-highlighting
 
-zinit load zdharma/history-search-multi-word
-
-zinit snippet OMZ::lib/git.zsh
-
-zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit cdclear -q # <- forget completions provided up to this moment
 zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-zinit ice lucid wait"0" depth"1" blockf
-zinit light yuki-ycino/fzf-preview.zsh
 
 # if you get "shift:505 occured" error, you can run the following command
 # zinit cclear
@@ -33,7 +30,6 @@ source "$HOME/.zsh_custom/.zsh_complete"
 ### zsh setting
 bindkey -v
 bindkey "^?" backward-delete-char
-bindkey '^i' fzf-or-normal-completion
 
 setopt print_eight_bit
 
@@ -110,10 +106,3 @@ if [ "$TERM_PROGRAM" = "alacritty" ]; then
     fi
   fi
 fi
-
-
-
-### sdkman setting
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/damegane/.sdkman"
-[[ -s "/Users/damegane/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/damegane/.sdkman/bin/sdkman-init.sh"

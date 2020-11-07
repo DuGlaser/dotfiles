@@ -123,6 +123,10 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+
+### compile setting
+# init cmd: zcompile ./.zshrc && mv ./.zshrc.zwc $HOME/.zshrc.zwc
 if [ $HOME/dotfiles/.zshrc -nt ~/.zshrc.zwc ]; then
   zcompile ~/.zshrc
 fi

@@ -122,3 +122,7 @@ if [ "$TERM_PROGRAM" = "alacritty" ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [ $HOME/dotfiles/.zshrc -nt ~/.zshrc.zwc ]; then
+  zcompile ~/.zshrc
+fi

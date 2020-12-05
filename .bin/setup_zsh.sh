@@ -8,6 +8,8 @@ ln -sfnv "$dotfiles/.p10k.zsh" "$HOME/.p10k.zsh"
 ln -sfnv "$dotfiles/.tmux.conf" "$HOME/.tmux.conf"
 ln -sfnv "$dotfiles/.zshenv" "$HOME/.zshenv"
 ln -sfnv "$dotfiles/.zshrc" "$HOME/.zshrc"
+
+rm -rf "$HOME/.zsh_custom"
 ln -sfnv "$dotfiles/.zsh_custom" "$HOME/.zsh_custom"
 
 echo "finish!"

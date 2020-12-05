@@ -1,15 +1,15 @@
 [ghq]
   root= $HOME/src
 [commit]
-	template = $HOME/.gitmessage.txt
+  template = $HOME/.gitmessage.txt
 [color]
-	status = auto
-	diff = auto
-	branch = auto
+  status = auto
+  diff = auto
+  branch = auto
 [user]
-	email = duglaser0618@gmail.com
-	name = DuGlaser
+  email = duglaser0618@gmail.com
+  name = DuGlaser
 [core]
-	excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
 [url "git@github.com:"]
-	pushinsteadof = https://github.com/
+  pushinsteadof = https://github.com/

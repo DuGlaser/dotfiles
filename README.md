@@ -1,43 +1,89 @@
 # dotfiles
 
+## MacOS
+
+1. brewの設定
 ```
-# brewのためにインストール
 $ xcode-select --install
-
-# 実家のような安心感
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-# デフォルトターミナルがzshであることを確認する
-
-# dotfilesをクローン
+```
+2. デフォルトターミナルがzshであることを確認する 
+3. インストール
+```
 $ git clone --recursive https://github.com/DuGlaser/dotfiles.git
 $ cd $HOME/Dotfiles
 
-# setup.shに実行権限を付与
-$ chmod +x ~/dotfiles/setup.sh
+$ chmod +x $HOME/dotfiles/.bin/init_setup.sh
 
-# 初期設定
-$ ./setup.sh
+$ $HOME/dotfiles/.bin/init_setup.sh
+$ $HOME/dotfiles/.bin/setup_zsh.sh
+```
+4. ターミナル再起動
 
-# zinitの設定
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-
-# 一度ターミナルを再起動する
-# starshipをまだインストールしていないためエラーが出るが
-# 気にせずに作業する
-
+5. プラグインインストール
+```
 $ zinit self-update
 
-# brweでいろいろインストール
 $ brew bundle install
+```
 
-# nvimのディレクトリ名を変える
-$ mv .config/nvim_setting .config/nvim
-
+6. フォントの設定
+```
 # powerline10kの設定
 # https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k
 # 👆フォントをインストール
+```
 
+7. tmuxの設定
+```
+# tmux tmp settings
+$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# <Prifix>+I 
+```
+
+## Linux(Ubuntu)
+
+1. インストール
+```
+$ git clone --recursive https://github.com/DuGlaser/dotfiles.git
+$ cd $HOME/Dotfiles
+
+$ chmod +x $HOME/dotfiles/.bin/init_setup.sh
+
+$ bash $HOME/dotfiles/.bin/init_setup.sh
+$ bash $HOME/dotfiles/.bin/setup_fish.sh
+```
+
+2. fishの設定
+```zsh
+$ sudo apt-add-repository ppa:fish-shell/release-3
+$ sudo apt-get update
+$ sudo apt-get install fish
+
+$ echo /usr/bin/fish | sudo tee -a /etc/shells
+
+# or
+# echo /usr/local/bin/fish | sudo tee -a /etc/shells
+
+$ chsh -s /usr/bin/fish
+
+# or
+# chsh -s /usr/local/bin/fish
+
+$ curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+```
+
+3. ターミナル再起動
+4. brewの設定
+```
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ cd $HOME/dotfiles
+$ brew bundle
+```
+
+5. tmuxの設定
+```
+$ sudo apt-get install xsel
 # tmux tmp settings
 $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # <Prifix>+I 

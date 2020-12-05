@@ -1,7 +1,7 @@
 [ghq]
-  root= $HOME/src
+  root= ~/src
 [commit]
-  template = $HOME/.gitmessage.txt
+  template = ~/.gitmessage.txt
 [color]
   status = auto
   diff = auto

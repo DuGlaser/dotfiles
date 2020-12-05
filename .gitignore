@@ -1,11 +1,5 @@
-!/.config
-/.config/coc/
-/.config/keys/
-/.config/wireshark/
-/.config/configstore/
-/.config/hub/
-/.config/yarn/
-/.config/.server/
-/.config/anyenv/
-/.config/karabiner/
-/.config/gh/               
+!/.config/nvim
+!/.config/alacritty
+!/.config/karabiner
+!/.config/htop
+!/.config/fish

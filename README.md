@@ -14,6 +14,7 @@ $ git clone --recursive https://github.com/DuGlaser/dotfiles.git
 $ cd $HOME/Dotfiles
 
 $ chmod +x $HOME/dotfiles/.bin/init_setup.sh
+$ chmod +x $HOME/dotfiles/.bin/setup_zsh.sh
 
 $ $HOME/dotfiles/.bin/init_setup.sh
 $ $HOME/dotfiles/.bin/setup_zsh.sh
@@ -49,6 +50,7 @@ $ git clone --recursive https://github.com/DuGlaser/dotfiles.git
 $ cd $HOME/Dotfiles
 
 $ chmod +x $HOME/dotfiles/.bin/init_setup.sh
+$ chmod +x $HOME/dotfiles/.bin/setup_fish.sh
 
 $ bash $HOME/dotfiles/.bin/init_setup.sh
 $ bash $HOME/dotfiles/.bin/setup_fish.sh

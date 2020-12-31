@@ -1,5 +1,0 @@
-alias v="nvim"
-alias l="exa -a -1"
-alias cls="clear"
-alias rg="rg --colors 'match:bg:yellow' --colors 'match:fg:black' --colors 'match:style:nobold' --colors 'path:fg:green' --colors 'path:style:bold' --colors 'line:fg:yellow' --colors 'line:style:bold'"
-alias grep="rg"

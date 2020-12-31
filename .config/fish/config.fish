@@ -30,3 +30,12 @@ set -U fish_pager_color_completion normal
 set -U fish_pager_color_description B3A06D yellow
 set -U fish_pager_color_prefix white --bold --underline
 set -U fish_pager_color_progress brwhite --background=cyan
+
+set PATH $HOME/.cargo/bin $PATH
+set -Ux EDITOR nvim
+
+# pure prompt setting
+_pure_set_default pure_show_system_time false
+
+# asdf setting
+source ~/.asdf/asdf.fish

@@ -39,6 +39,3 @@ _pure_set_default pure_show_system_time false
 
 # asdf setting
 source ~/.asdf/asdf.fish
-
-# vi mode
-fish_vi_key_bindings

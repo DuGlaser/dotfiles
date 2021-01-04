@@ -39,3 +39,10 @@ _pure_set_default pure_show_system_time false
 
 # asdf setting
 source ~/.asdf/asdf.fish
+
+# lang
+# set -xg LANG es_US.UTF-8
+
+if test -z $TMUX
+    attach_tmux_session_if_needed
+end

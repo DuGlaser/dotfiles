@@ -11,7 +11,7 @@ ln -sfnv "$dotfiles/.gitmessage.txt" "$HOME/.gitmessage.txt"
 rm -rf "$HOME/.peco"
 ln -sfnv "$dotfiles/.peco" "$HOME/.peco"
 
-rm -rf "$HOME/.config"
-ln -sfnv "$dotfiles/.config" "$HOME/.config"
+chmod +x $HOME/dotfiles/.config/setup_config.sh
+$HOME/dotfiles/.config/setup_config.sh
 
 echo "linked dotfiles complete!"

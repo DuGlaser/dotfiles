@@ -3,7 +3,6 @@ cd ~
 rm -rf alacritty
 git clone https://github.com/alacritty/alacritty.git
 cd alacritty
-sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev python3
 cargo build --release
 
 sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH

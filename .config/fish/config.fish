@@ -32,7 +32,6 @@ set -U fish_pager_color_prefix white --bold --underline
 set -U fish_pager_color_progress brwhite --background=cyan
 
 set PATH $HOME/.cargo/bin $PATH
-set -Ux EDITOR nvim
 
 # pure prompt setting
 _pure_set_default pure_show_system_time false
@@ -46,3 +45,16 @@ source ~/.asdf/asdf.fish
 if test -z $TMUX
     attach_tmux_session_if_needed
 end
+
+# load profile
+# bass source /etc/profile
+
+# alias
+alias v="nvim"
+alias l="exa -a -1"
+alias cls="clear"
+alias rg="rg --colors 'match:bg:yellow' --colors 'match:fg:black' --colors 'match:style:nobold' --colors 'path:fg:green' --colors 'path:style:bold' --colors 'line:fg:yellow' --colors 'line:style:bold'"
+alias grep="rg"
+
+# default EDITOR
+set -gx EDITOR nvim

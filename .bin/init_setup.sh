@@ -12,6 +12,5 @@ rm -rf "$HOME/.peco"
 ln -sfnv "$dotfiles/.peco" "$HOME/.peco"
 
 chmod +x $HOME/dotfiles/.config/setup_config.sh
-$HOME/dotfiles/.config/setup_config.sh
 
 echo "linked dotfiles complete!"

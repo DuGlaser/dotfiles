@@ -1,0 +1,26 @@
+snippet stful "class name extends statefulWidget ..."
+class ${1:ClassName} extends StatefulWidget {
+  $1({Key key}) : super(key: key);
+
+  @override
+  _$1State createState() => _$1State();
+}
+
+class _$1State extends State<$1> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+endsnippet
+
+snippet stless "class name extends statelessWidget ..."
+class ${1:ClassName} extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+endsnippet

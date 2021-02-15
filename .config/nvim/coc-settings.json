@@ -1,0 +1,70 @@
+{
+  "languageserver": {
+    "dart": {
+      "command": "dart",
+      "args": [
+        "/usr/local/opt/dart/libexec/bin/snapshots/analysis_server.dart.snapshot",
+        "--lsp",
+        "--client-id",
+        "vim",
+        "--client-version",
+        "coc.nvim"
+      ],
+      "filetypes": ["dart"],
+      "trace.server": "verbose"
+    }
+  },
+  "suggest.noselect": false,
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.acceptSuggestionOnCommitCharacter": true,
+  "suggest.minTriggerInputLength": 1,
+  "suggest.preferCompleteThanJumpPlaceholder": true,
+  "suggest.timeout": 5000,
+  "rust-analyzer.diagnostics.enableExperimental": false,
+  "typescript.preferences.importModuleSpecifier": "auto",
+  "typescript.preferences.importModuleSpecifierEnding": "auto",
+  "tsserver.enableJavascript": true,
+  "go.goplsOptions": {
+    "completeUnimported": true,
+    "experimentalWorkspaceModule": true
+  },
+  "go.checkForUpdates": "ask",
+  "tabnine.priority": 97,
+  "eslint.run": "onSave",
+  "eslint.autoFixOnSave": true,
+  "eslint.format.enable": true,
+  "solargraph.autoformat": true,
+  "vetur.validation.template": false,
+  "vetur.format.options.tabSize": 4,
+  "vetur.format.scriptInitialIndent": true,
+  "vetur.format.styleInitialIndent": true,
+  "vetur.completion.autoImport": true,
+  "vetur.useWorkspaceDependencies": true,
+  "prettier.singleQuote": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascript.jsx",
+    "javascriptreact",
+    "vue",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx"
+  ],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "scss",
+    "java",
+    "json",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "dart",
+    "graphql",
+    "go",
+    "cs",
+    "python",
+    "lua"
+  ]
+}

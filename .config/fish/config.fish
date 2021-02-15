@@ -47,7 +47,7 @@ if test -z $TMUX
 end
 
 # load profile
-# bass source /etc/profile
+bass source /etc/profile
 
 # alias
 alias v="nvim"

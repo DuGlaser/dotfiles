@@ -5,6 +5,9 @@ set -g fish_user_paths "/home/linuxbrew/.linuxbrew/sbin" $fish_user_paths
 # fish-ghq setting
 set GHQ_SELECTOR peco
 
+# browser setting
+set -g BROWSER /usr/bin/google-chrome-stable
+
 set -U fish_color_normal normal
 set -U fish_color_command 99cc99
 set -U fish_color_quote ffcc66

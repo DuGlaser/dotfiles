@@ -31,7 +31,20 @@ return require('packer').startup(function()
   use 'mattn/emmet-vim'
   use 'tpope/vim-fugitive'
   use 'liuchengxu/vim-clap'
+  use 'AndrewRadev/tagalong.vim'
+  
 
+  use {
+    'tyru/columnskip.vim',
+    config = function()
+      vim.cmd("nmap sj <Plug>(columnskip:nonblank:next)")
+      vim.cmd("omap sj <Plug>(columnskip:nonblank:next)")
+      vim.cmd("xmap sj <Plug>(columnskip:nonblank:next)")
+      vim.cmd("nmap sk <Plug>(columnskip:nonblank:prev)")
+      vim.cmd("omap sk <Plug>(columnskip:nonblank:prev)")
+      vim.cmd("xmap sk <Plug>(columnskip:nonblank:prev)")
+    end
+  }
   use {
     'neoclide/coc.nvim', 
     run = 'yarn install --frozen-lockfile'

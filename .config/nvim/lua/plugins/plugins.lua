@@ -32,7 +32,8 @@ return require('packer').startup(function()
   use 'tpope/vim-fugitive'
   use 'liuchengxu/vim-clap'
   use 'AndrewRadev/tagalong.vim'
-  
+  use 'previm/previm'
+  use 'tyru/open-browser.vim'
 
   use {
     'tyru/columnskip.vim',

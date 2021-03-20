@@ -138,11 +138,6 @@ gls.left[11] = {
   }
 }
 gls.left[12] = {
-  Space = {
-    provider = function () return ' ' end
-  }
-}
-gls.left[13] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = '  ',

@@ -26,6 +26,7 @@ return require('packer').startup(function()
   use 'tpope/vim-repeat'
   use 'tpope/vim-commentary'
   use 'SirVer/ultisnips'
+  use 'iberianpig/tig-explorer.vim'
   use 'kevinhwang91/nvim-hlslens'
   use 'mattn/emmet-vim'
   use 'tpope/vim-fugitive'

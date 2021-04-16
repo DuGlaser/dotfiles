@@ -66,3 +66,6 @@ alias atc="cargo atcoder"
 
 # default EDITOR
 set -gx EDITOR nvim
+
+# key bind setting
+fish_vi_key_bindings 

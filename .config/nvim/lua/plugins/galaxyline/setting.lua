@@ -1,4 +1,5 @@
 local gl = require('galaxyline')
+local fileinfo = require('galaxyline.provider_fileinfo')
 local gls = gl.section
 gl.short_line_list = {'LuaTree','vista','dbui'}
 
@@ -59,6 +60,10 @@ gls.left[4] = {
     provider = function()
       local path = vim.fn.expand('%:p')
       local _, git_path = pcall(vim.api.nvim_buf_get_var,0,'git_dir')
+
+      if git_path ~= nil then
+        return fileinfo.get_current_file_name()
+      end
 
       if string.find(git_path, ".git/modules") ~= nil then
         -- git_path -> ~~~/.git/modules

@@ -141,6 +141,10 @@ return require('packer').startup(function()
     'rhysd/vim-go-impl',
     ft = {'go'}
   }
+
+
+  -- graphql
+  use {'jparise/vim-graphql'}
 end)
 
 -- vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')

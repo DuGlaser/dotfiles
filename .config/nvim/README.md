@@ -21,4 +21,5 @@ $ pip install pynvim
 $ npm install -g neovim
 ```
 5. Neovimを再起動し、`:PackageInstall` を実行します
-6. Neovimを再起動し、`:TSInstall all` を実行します
+6. 手順1でコメントアウトした行をもとに戻します
+7. Neovimを再起動し、`:TSInstall all` を実行します

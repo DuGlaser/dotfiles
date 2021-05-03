@@ -35,13 +35,8 @@ return require('packer').startup(function()
   use 'previm/previm'
   use 'tyru/open-browser.vim'
   use "tversteeg/registers.nvim"
+  use 'phaazon/hop.nvim'
 
-  use {
-    'phaazon/hop.nvim',
-    config = function()
-      vim.api.nvim_set_keymap('n', '$', "<cmd>lua require'hop'.hint_words()<cr>", {})
-    end
-  }
   use {
     'tyru/columnskip.vim',
     config = function()

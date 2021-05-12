@@ -1,6 +1,5 @@
 require 'plugins.plugins'
 require 'plugins.fern'
-require 'plugins.clap'
 require 'plugins.treesitter'
 require 'plugins.bufferline'
 require 'plugins.ultisnips'

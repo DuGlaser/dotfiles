@@ -35,7 +35,15 @@ return require('packer').startup(function()
   use 'tyru/open-browser.vim'
   use "tversteeg/registers.nvim"
   use 'phaazon/hop.nvim'
+  use 'kevinhwang91/nvim-bqf'
+  use 'mhinz/vim-grepper'
 
+  use {
+    'junegunn/fzf.vim', 
+    requires = {
+      {'junegunn/fzf', run = './install --bin'}
+    }
+  }
   use {
     'tyru/columnskip.vim',
     config = function()

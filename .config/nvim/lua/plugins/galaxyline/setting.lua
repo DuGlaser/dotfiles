@@ -61,7 +61,7 @@ gls.left[4] = {
       local path = vim.fn.expand('%:p')
       local _, git_path = pcall(vim.api.nvim_buf_get_var,0,'git_dir')
 
-      if git_path ~= nil then
+      if git_path == "" then
         return fileinfo.get_current_file_name()
       end
 

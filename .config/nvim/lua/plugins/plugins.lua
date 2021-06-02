@@ -42,7 +42,10 @@ return require('packer').startup(function()
     'junegunn/fzf.vim', 
     requires = {
       {'junegunn/fzf', run = './install --bin'}
-    }
+    },
+    config = function()
+      vim.cmd("nmap gf :GFiles<CR>")
+    end
   }
   use {
     'tyru/columnskip.vim',

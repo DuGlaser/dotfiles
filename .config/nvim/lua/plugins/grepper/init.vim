@@ -2,13 +2,13 @@ nmap gs  <plug>(GrepperOperator)
 xmap gs  <plug>(GrepperOperator)
 nnoremap <Space>g :Grepper -dir repo -tool rg<cr>
 
-let g:grepper = { 
-      \ 'next_tool': '<Space>g' ,
-      \ 'open': 0,
-      \ 'quickfix': 1,
-      \ 'searchreg': 1,
-      \ 'highlight': 0,
-      \}
+let g:grepper = {
+            \ 'open': 0,
+            \ 'quickfix': 1,
+            \ 'searchreg': 1,
+            \ 'highlight': 0,
+            \ }
+
 let g:grepper.dir = 'repo'
 let g:grepper.tools = ['rg']
 

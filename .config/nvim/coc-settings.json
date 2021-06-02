@@ -41,7 +41,8 @@
   "tsserver.enableJavascript": true,
   "go.goplsOptions": {
     "completeUnimported": true,
-    "experimentalWorkspaceModule": true
+    "experimentalWorkspaceModule": true,
+    "gofumpt": true
   },
   "go.checkForUpdates": "ask",
   "tabnine.priority": 97,

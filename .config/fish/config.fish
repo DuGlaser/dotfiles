@@ -71,3 +71,6 @@ set -gx EDITOR nvim
 fish_vi_key_bindings 
 bind -M insert \ce forward-char
 
+# direnv
+direnv hook fish | source
+set -x DIRENV_LOG_FORMAT ""

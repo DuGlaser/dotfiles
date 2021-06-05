@@ -29,6 +29,15 @@
         - tmux
         - yay
 
+  - name: Install lang using pacman
+    become: yes
+    community.general.pacman:
+      state: present
+      name:
+        - nodejs
+        - go
+        - python
+
   - name: Install alacritty dependencies
     become: yes
     community.general.pacman:

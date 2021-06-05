@@ -31,6 +31,14 @@
         - tig
         - tmux
 
+  - name: Install lang using pacman
+    become: yes
+    community.general.homebrew:
+      state: present
+      name:
+        - node
+        - go
+
   - name: install neovim head
     community.general.homebrew:
       state: latest

@@ -1,8 +1,9 @@
 - name: Create symbolic links
   file:
     src: "{{ playbook_dir }}/{{ item.name }}"
-    dest: "{{ item.dest }}"
+    path: "{{ item.dest }}"
     state: link
+    force: true
   loop:
     - {name: .gitconfig, dest: $HOME/.config/git/config}
     - {name: .gitignore_global, dest: $HOME/.config/git/ignore}

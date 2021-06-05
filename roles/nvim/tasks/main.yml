@@ -1,0 +1,8 @@
+- name: Install pynvim using pip
+  pip:
+    name: pynvim
+
+- name: Install neovim using npm
+  community.general.npm:
+    name: neovim
+    global: yes

@@ -1,0 +1,7 @@
+- name: Clone tmux-plugins/tpm
+  become: yes
+  command: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+- name: Install tmux plugins
+  become: yes
+  command: ~/.tmux/plugins/tpm/bin/install_plugins

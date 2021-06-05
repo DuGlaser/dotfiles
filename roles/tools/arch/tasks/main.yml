@@ -1,0 +1,74 @@
+- block:
+  - name: Run the equivalent of "pacman -Syu" as a separate step
+    become: yes
+    pacman:
+      update_cache: yes
+      upgrade: yes
+
+  - name: Install tools using pacman
+    become: yes
+    community.general.pacman:
+      state: present
+      name:
+        - bat
+        - exa
+        - fcitx-mozc
+        - fcitx-im
+        - fcitx-configtool
+        - fish
+        - fzf
+        - github-cli
+        - gufw
+        - htop 
+        - hub
+        - docker
+        - docker-compose
+        - ripgrep
+        - tig
+        - tmux
+
+  - name: Install lang using pacman
+    become: yes
+    community.general.pacman:
+      state: present
+      name:
+        - nodejs
+        - npm
+        - go
+        - python
+        - python-pip
+
+  - name: Install alacritty dependencies
+    become: yes
+    community.general.pacman:
+      state: present
+      name:
+        - cmake
+        - freetype2
+        - fontconfig
+        - pkg-config
+        - make
+        - libxcb
+
+  - name: Build alacritty
+    become: yes
+    command: chmod +x ./.bin/setup_alacritty.sh
+    command: bash ./.bin/setup_alacritty.sh
+
+  - name: Install neovim dependencies
+    become: yes
+    community.general.pacman:
+      state: present
+      name:
+        - base-devel
+        - cmake
+        - unzip
+        - ninja
+        - tree-sitter
+
+  - name: Build neovim
+    become: yes
+    command: chmod +x ./.bin/setup_nvim.sh
+    command: bash ./.bin/setup_nvim.sh
+
+  when: ansible_os_family == "Archlinux"

@@ -33,8 +33,10 @@
       state: present
       name:
         - nodejs
+        - npm
         - go
         - python
+        - python-pip
 
   - name: Install alacritty dependencies
     become: yes

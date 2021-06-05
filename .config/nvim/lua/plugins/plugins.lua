@@ -37,6 +37,7 @@ return require('packer').startup(function()
   use 'phaazon/hop.nvim'
   use 'kevinhwang91/nvim-bqf'
   use 'mhinz/vim-grepper'
+  use 'brooth/far.vim'
 
   use {
     'junegunn/fzf.vim', 

@@ -24,6 +24,4 @@ ln -sfnv "$dotfiles_config/fish" "$config/fish"
 ln -sfnv "$dotfiles_config/karabiner" "$config/karabiner"
 ln -sfnv "$dotfiles_config/nvim" "$config/nvim"
 
-chmod +x $HOME/dotfiles/.config/setup_config.sh
-
 echo "linked dotfiles complete!"

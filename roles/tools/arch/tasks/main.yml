@@ -24,10 +24,8 @@
         - docker
         - docker-compose
         - ripgrep
-        - snapd
         - tig
         - tmux
-        - yay
 
   - name: Install lang using pacman
     become: yes

@@ -18,7 +18,9 @@ $ sudo pacman -S ansible
 
 3. Create symbolic link.
 ```
-$ sudo ansible-playbook -i inventory/localhost init.yml
+$ cd $HOME/dotfiles
+$ chmod +x init.sh
+$ ./init.sh
 ```
 
 4. Install tools.

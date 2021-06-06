@@ -113,8 +113,13 @@ return require('packer').startup(function()
   }
 
   -- treesitter
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'nvim-treesitter/nvim-treesitter-refactor'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    requires = {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      'nvim-treesitter/nvim-treesitter-refactor',
+    }
+  }
 
   -- fern
   use 'lambdalisue/fern.vim'
@@ -126,13 +131,6 @@ return require('packer').startup(function()
       'lambdalisue/nerdfont.vim',
       'lambdalisue/glyph-palette.vim'
     }
-  }
-
-  -- js
-  use {
-    'MaxMEllon/vim-jsx-pretty',
-    ft = {'typescriptreact', 'javascriptreact', 'typescript.tsx', 'javascript.jsx'},
-    config = function() vim.g.vim_jsx_pretty_enable_jsx_highlight = 0 end
   }
 
   -- rust
@@ -147,7 +145,6 @@ return require('packer').startup(function()
     'rhysd/vim-go-impl',
     ft = {'go'}
   }
-
 
   -- graphql
   use {'jparise/vim-graphql'}

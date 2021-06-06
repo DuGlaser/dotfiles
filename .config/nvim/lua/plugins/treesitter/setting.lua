@@ -16,6 +16,9 @@ require'nvim-treesitter.configs'.setup {
   textobjects = {
     enable = true,
   },
+  context_commentstring = {
+    enable = true,
+  },
   -- ensure_installed = 'all',
   -- nvim-treesitter-refactor
   refactor = {

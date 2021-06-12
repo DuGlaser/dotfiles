@@ -104,7 +104,8 @@ return require('packer').startup(function()
   }
   use {
     'glepnir/galaxyline.nvim',
-    requires = {'kyazdani42/nvim-web-devicons'}
+    branch = 'main',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
 
   -- treesitter

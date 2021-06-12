@@ -26,7 +26,6 @@ return require('packer').startup(function()
   use 'tpope/vim-repeat'
   use 'tpope/vim-commentary'
   use 'SirVer/ultisnips'
-  use 'iberianpig/tig-explorer.vim'
   use 'kevinhwang91/nvim-hlslens'
   use 'mattn/emmet-vim'
   use 'tpope/vim-fugitive'
@@ -86,10 +85,6 @@ return require('packer').startup(function()
       {'kana/vim-operator-user'}
     },
     config = function() vim.cmd('map <Space>s <Plug>(operator-replace)') end
-  }
-  use {
-    't9md/vim-choosewin',
-    config = function() vim.cmd('nmap  -  <Plug>(choosewin)') end
   }
   use {
     'itchyny/vim-parenmatch',

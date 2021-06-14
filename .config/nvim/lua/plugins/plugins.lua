@@ -117,16 +117,32 @@ return require('packer').startup(function()
     }
   }
 
+  ----------------------------------------
   -- fern
-  use 'lambdalisue/fern.vim'
-  use 'lambdalisue/fern-hijack.vim'
-  use 'hrsh7th/fern-mapping-collapse-or-leave.vim'
+  ----------------------------------------
+  use {
+    'lambdalisue/fern.vim',
+    requires = {
+      'lambdalisue/fern-hijack.vim',
+      'hrsh7th/fern-mapping-collapse-or-leave.vim',
+    }
+  }
   use {
     'lambdalisue/fern-renderer-nerdfont.vim',
     requires = {
       'lambdalisue/nerdfont.vim',
       'lambdalisue/glyph-palette.vim'
-    }
+    },
+    config = function()
+      vim.cmd([[
+        let g:fern#renderer = "nerdfont"
+        augroup glyph-palette
+          autocmd! *
+          autocmd FileType fern call glyph_palette#apply()
+          autocmd FileType nerdtree,startify call glyph_palette#apply()
+        augroup END
+      ]])
+    end
   }
 
   -- rust

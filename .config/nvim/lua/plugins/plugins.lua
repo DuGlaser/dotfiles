@@ -30,23 +30,10 @@ return require('packer').startup(function()
   use 'mattn/emmet-vim'
   use 'tpope/vim-fugitive'
   use 'AndrewRadev/tagalong.vim'
-  use 'previm/previm'
-  use 'tyru/open-browser.vim'
   use "tversteeg/registers.nvim"
   use 'phaazon/hop.nvim'
-  use 'kevinhwang91/nvim-bqf'
-  use 'mhinz/vim-grepper'
   use 'brooth/far.vim'
 
-  use {
-    'junegunn/fzf.vim', 
-    requires = {
-      {'junegunn/fzf', run = './install --bin'}
-    },
-    config = function()
-      vim.cmd("nmap gf :GFiles<CR>")
-    end
-  }
   use {
     'tyru/columnskip.vim',
     config = function()
@@ -108,7 +95,25 @@ return require('packer').startup(function()
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
 
+
+  ----------------------------------------
+  -- grep
+  ----------------------------------------
+  use 'mhinz/vim-grepper'
+  use 'kevinhwang91/nvim-bqf'
+  use {
+    'junegunn/fzf.vim', 
+    requires = {
+      {'junegunn/fzf', run = './install --bin'}
+    },
+    config = function()
+      vim.cmd("nmap gf :GFiles<CR>")
+    end
+  }
+
+  ----------------------------------------
   -- treesitter
+  ----------------------------------------
   use {
     'nvim-treesitter/nvim-treesitter',
     requires = {
@@ -145,21 +150,40 @@ return require('packer').startup(function()
     end
   }
 
+  ----------------------------------------
   -- rust
+  ----------------------------------------
   use {
     'rust-lang/rust.vim',
     ft = {'rust'},
     config = function() vim.g.rustfmt_autosave = 1 end
   }
 
+  ----------------------------------------
   -- go
+  ----------------------------------------
   use {
     'rhysd/vim-go-impl',
     ft = {'go'}
   }
 
+  ----------------------------------------
   -- graphql
+  ----------------------------------------
   use {'jparise/vim-graphql'}
+
+  ----------------------------------------
+  -- markdown
+  ----------------------------------------
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = ":call mkdp#util#install()",
+    ft = {"markdown"},
+    config = function()
+      vim.g.mkdp_auto_start = 0
+      vim.g.mkdp_auto_close = 1
+    end
+  }
 end)
 
 -- vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')

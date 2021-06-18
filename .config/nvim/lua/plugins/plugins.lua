@@ -21,18 +21,17 @@ return require('packer').startup(function()
 
   use 'machakann/vim-sandwich'
   use 'christoomey/vim-tmux-navigator'
-  use 'romgrk/equal.operator'
   use 'rhysd/clever-f.vim'
   use 'tpope/vim-repeat'
   use 'tpope/vim-commentary'
   use 'SirVer/ultisnips'
   use 'kevinhwang91/nvim-hlslens'
-  use 'mattn/emmet-vim'
   use 'tpope/vim-fugitive'
   use 'AndrewRadev/tagalong.vim'
   use "tversteeg/registers.nvim"
   use 'phaazon/hop.nvim'
   use 'brooth/far.vim'
+  use 'tweekmonster/startuptime.vim'
 
   use {
     'tyru/columnskip.vim',
@@ -96,9 +95,6 @@ return require('packer').startup(function()
   }
 
 
-  ----------------------------------------
-  -- grep
-  ----------------------------------------
   use 'mhinz/vim-grepper'
   use 'kevinhwang91/nvim-bqf'
   use {
@@ -110,6 +106,12 @@ return require('packer').startup(function()
       vim.cmd("nmap gf :GFiles<CR>")
     end
   }
+
+  ----------------------------------------
+  -- textobject
+  ----------------------------------------
+  use 'romgrk/equal.operator'
+  use 'wellle/targets.vim'
 
   ----------------------------------------
   -- treesitter
@@ -130,7 +132,12 @@ return require('packer').startup(function()
     requires = {
       'lambdalisue/fern-hijack.vim',
       'hrsh7th/fern-mapping-collapse-or-leave.vim',
-    }
+    },
+    config = function()
+      vim.cmd([[
+        let g:fern#default_exclude = '^\%(\.git\|node_modules\)$'
+      ]])
+    end
   }
   use {
     'lambdalisue/fern-renderer-nerdfont.vim',
@@ -148,6 +155,15 @@ return require('packer').startup(function()
         augroup END
       ]])
     end
+  }
+
+
+  ----------------------------------------
+  -- frontend
+  ----------------------------------------
+  use {
+    'mattn/emmet-vim',
+    ft = {'html', 'javascriptreact', 'typescriptreact', 'vue'}
   }
 
   ----------------------------------------

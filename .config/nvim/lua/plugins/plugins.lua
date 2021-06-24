@@ -16,8 +16,10 @@ if not packer_exists then
 end
 
 return require('packer').startup(function()
+  -- use 'tweekmonster/startuptime.vim'
+
   use {'wbthomason/packer.nvim', opt = true}
-  use {'gruvbox-community/gruvbox', opt = true}
+  use {'lifepillar/vim-gruvbox8', opt = true}
 
   use 'machakann/vim-sandwich'
   use 'christoomey/vim-tmux-navigator'
@@ -28,10 +30,9 @@ return require('packer').startup(function()
   use 'kevinhwang91/nvim-hlslens'
   use 'tpope/vim-fugitive'
   use 'AndrewRadev/tagalong.vim'
-  use "tversteeg/registers.nvim"
+  use 'tversteeg/registers.nvim'
   use 'phaazon/hop.nvim'
   use 'brooth/far.vim'
-  use 'tweekmonster/startuptime.vim'
 
   use {
     'tyru/columnskip.vim',
@@ -186,7 +187,10 @@ return require('packer').startup(function()
   ----------------------------------------
   -- graphql
   ----------------------------------------
-  use {'jparise/vim-graphql'}
+  use {
+    'jparise/vim-graphql',
+    ft = {'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'graphql'}
+  }
 
   ----------------------------------------
   -- markdown

@@ -29,7 +29,6 @@ return require('packer').startup(function()
   use 'SirVer/ultisnips'
   use 'kevinhwang91/nvim-hlslens'
   use 'tpope/vim-fugitive'
-  use 'AndrewRadev/tagalong.vim'
   use 'tversteeg/registers.nvim'
   use 'phaazon/hop.nvim'
   use 'brooth/far.vim'

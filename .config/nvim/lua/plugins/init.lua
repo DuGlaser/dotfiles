@@ -3,7 +3,7 @@ local function runtime(file)
 end
 
 require 'plugins.plugins'
-require 'plugins.fern'
+require 'plugins.defx'
 require 'plugins.treesitter'
 require 'plugins.bufferline'
 require 'plugins.ultisnips'

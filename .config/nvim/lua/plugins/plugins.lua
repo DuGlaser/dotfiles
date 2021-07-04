@@ -111,7 +111,6 @@ return require('packer').startup(function()
   -- textobject
   ----------------------------------------
   use 'romgrk/equal.operator'
-  use 'wellle/targets.vim'
 
   ----------------------------------------
   -- treesitter
@@ -125,14 +124,11 @@ return require('packer').startup(function()
   }
 
   ----------------------------------------
-  -- fern
+  -- filer
   ----------------------------------------
   use {
-    'lambdalisue/fern.vim',
-    requires = {
-      'lambdalisue/fern-hijack.vim',
-      'hrsh7th/fern-mapping-collapse-or-leave.vim',
-    }
+    'Shougo/defx.nvim',
+    run = ":UpdateRemotePlugins"
   }
 
 

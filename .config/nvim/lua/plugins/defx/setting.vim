@@ -17,7 +17,8 @@ function! s:defx_my_settings() abort
 		nnoremap <buffer><silent><expr> l
 			\ defx#is_directory()
 				\ ? defx#do_action('open_or_close_tree')
-				\ : defx#do_action('drop')
+				\ : defx#do_action('open')
+	  nnoremap <silent><buffer><expr> E defx#do_action('open', 'vsplit')
 		nnoremap <buffer><silent><expr> h defx#do_action('close_tree')
 		nnoremap <buffer><silent><expr> L defx#do_action('cd', defx#get_candidate().action__path)
 		nnoremap <buffer><silent><expr> H defx#do_action('cd', ['..'])

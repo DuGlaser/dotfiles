@@ -49,3 +49,18 @@ cmd('autocmd!')
 cmd('autocmd BufEnter * setlocal formatoptions-=r')
 cmd('autocmd BufEnter * setlocal formatoptions-=o')
 cmd('augroup END')
+
+vim.cmd([[
+  function! MyFoldText()
+    let indent_level = indent(v:foldstart)
+    let indent = repeat(' ',indent_level)
+    let line = getline(v:foldstart)
+    let foldedlinecount = v:foldend - v:foldstart + 1
+    return indent. '  '. foldedlinecount . line
+  endfunction
+  
+
+  set foldtext=MyFoldText()
+  set foldmethod=indent
+  set fillchars=fold:\ 
+]])

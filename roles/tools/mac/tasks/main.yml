@@ -1,10 +1,10 @@
 - block:
   - name: homebrew update
-    community.general.homebrew:
+    homebrew:
       update_homebrew: yes
 
   - name: homebrew tap
-    community.general.homebrew_tap:
+    homebrew_tap:
       state: present
       name:
         - github/gh
@@ -14,7 +14,7 @@
         - homebrew/core
 
   - name: install package using homebrew
-    community.general.homebrew:
+    homebrew:
       state: present
       name:
         - bat
@@ -33,20 +33,20 @@
 
   - name: Install lang using pacman
     become: yes
-    community.general.homebrew:
+    homebrew:
       state: present
       name:
         - node
         - go
 
   - name: install neovim head
-    community.general.homebrew:
+    homebrew:
       state: latest
       name:
         - neovim
 
   - name: install cask package using homebrew
-    community.general.homebrew_cask:
+    homebrew_cask:
       state: present
       name:
         - alacritty

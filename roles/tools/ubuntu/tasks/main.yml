@@ -7,36 +7,32 @@
   - name: Install tools using apt
     become: yes
     apt:
-      name:
+      pkg:
         - bat
-        - exa
         - fish
         - fzf
-        - github-cli
         - gufw
-        - htop 
+        - htop
         - hub
-        - ripgrep
         - tig
         - tmux
-        - neovim
       state: present
+      update_cache: yes
 
   - name: Install lang using apt
     become: yes
     apt:
-      name:
+      pkg:
         - nodejs
         - npm
-        - go
         - python
-        - python-pip
       state: present
+      update_cache: yes
 
   - name: Install alacritty dependencies
     become: yes
     apt:
-      name:
+      pkg:
         - cmake
         - pkg-config
         - libfreetype6-dev
@@ -45,6 +41,7 @@
         - libxkbcommon-dev
         - python3
       state: present
+      update_cache: yes
 
   - name: Build alacritty
     become: yes
@@ -54,19 +51,20 @@
   - name: Install neovim dependencies
     become: yes
     apt:
-      name:
-        - ninja-build 
-        - gettext 
-        - libtool 
-        - libtool-bin 
-        - autoconf 
-        - automake 
-        - cmake 
-        - g++ 
-        - pkg-config 
-        - unzip 
+      pkg:
+        - ninja-build
+        - gettext
+        - libtool
+        - libtool-bin
+        - autoconf
+        - automake
+        - cmake
+        - g++
+        - pkg-config
+        - unzip
         - curl
       state: present
+      update_cache: yes
 
   - name: Build neovim
     become: yes

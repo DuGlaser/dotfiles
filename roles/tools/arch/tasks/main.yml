@@ -7,7 +7,7 @@
 
   - name: Install tools using pacman
     become: yes
-    community.general.pacman:
+    pacman:
       state: present
       name:
         - bat
@@ -29,7 +29,7 @@
 
   - name: Install lang using pacman
     become: yes
-    community.general.pacman:
+    pacman:
       state: present
       name:
         - nodejs
@@ -40,7 +40,7 @@
 
   - name: Install alacritty dependencies
     become: yes
-    community.general.pacman:
+    pacman:
       state: present
       name:
         - cmake
@@ -57,7 +57,7 @@
 
   - name: Install neovim dependencies
     become: yes
-    community.general.pacman:
+    pacman:
       state: present
       name:
         - base-devel

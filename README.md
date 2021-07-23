@@ -19,8 +19,8 @@ $ sudo pacman -S ansible
 3. Create symbolic link.
 ```
 $ cd $HOME/dotfiles
-$ chmod +x init.sh
-$ ./init.sh
+$ chmod +x ./.bin/init_setup.sh
+$ ./.bin/init_setup.sh
 ```
 
 4. Install tools.

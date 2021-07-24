@@ -124,7 +124,8 @@ return require('packer').startup(function()
   ----------------------------------------
   use {
     'Shougo/defx.nvim',
-    run = ":UpdateRemotePlugins"
+    run = ":UpdateRemotePlugins",
+    commit = "b3a0d8f5c85567ddfdefc7736336c211cb5ea899"
   }
 
 
@@ -174,5 +175,3 @@ return require('packer').startup(function()
     end
   }
 end)
-
--- vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')

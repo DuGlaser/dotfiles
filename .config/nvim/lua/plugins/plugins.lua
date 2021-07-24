@@ -85,10 +85,6 @@ return require('packer').startup(function()
     config = function() vim.cmd("let g:zenspace#default_mode = 'on'") end
   }
   use {
-    'machakann/vim-highlightedyank',
-    config = function() vim.g.highlightedyank_highlight_duration = 200 end
-  }
-  use {
     'glepnir/galaxyline.nvim',
     branch = 'main',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}

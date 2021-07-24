@@ -44,13 +44,20 @@ local options = {
 cmd('set clipboard+=unnamedplus')
 apply_options(options)
 
-cmd('augroup auto_comment_off')
-cmd('autocmd!')
-cmd('autocmd BufEnter * setlocal formatoptions-=r')
-cmd('autocmd BufEnter * setlocal formatoptions-=o')
-cmd('augroup END')
 
-vim.cmd([[
+vim.api.nvim_exec([[
+augroup auto_comment_off
+  autocmd!
+  autocmd BufEnter * setlocal formatoptions-=r
+  autocmd BufEnter * setlocal formatoptions-=o
+augroup END
+]], true)
+
+-- Highlight on yank(nvim >= 0.5)
+cmd('au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=200, on_visual=true}')
+
+-- fold text setting
+cmd([[
   function! MyFoldText()
     let indent_level = indent(v:foldstart)
     let indent = repeat(' ',indent_level)

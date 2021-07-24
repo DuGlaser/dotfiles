@@ -7,10 +7,11 @@ let g:grepper = {
             \ 'quickfix': 1,
             \ 'searchreg': 1,
             \ 'highlight': 0,
-            \ }
-
-let g:grepper.dir = 'repo'
-let g:grepper.tools = ['rg']
+            \ 'tools': ['rg'],
+            \ 'dir': 'repo',
+            \ 'rg': {
+            \   'grepprg': 'rg -H --no-heading --vimgrep --sort-files $* .'
+            \ }}
 
 augroup vimrcQfClose
   autocmd!

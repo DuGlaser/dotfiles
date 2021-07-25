@@ -6,7 +6,7 @@ echo "link home directory dotfiles"
 
 dotfiles="$HOME/dotfiles"
 
-mkdir -p $HOME/.config
+mkdir -p $HOME/.config/git
 
 ln -sfnv "$dotfiles/.gitconfig" "$HOME/.config/git/config"
 ln -sfnv "$dotfiles/.gitignore_global" "$HOME/.config/git/ignore"

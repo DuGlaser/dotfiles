@@ -9,7 +9,5 @@
 [user]
   email = duglaser0618@gmail.com
   name = DuGlaser
-[core]
-  excludesfile = ~/.gitignore_global
 [url "git@github.com:"]
   pushinsteadof = https://github.com/

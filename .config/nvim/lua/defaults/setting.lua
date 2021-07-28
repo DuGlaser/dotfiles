@@ -59,15 +59,15 @@ cmd('au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=2
 -- fold text setting
 cmd([[
   function! MyFoldText()
-    let indent_level = indent(v:foldstart)
-    let indent = repeat(' ',indent_level)
     let line = getline(v:foldstart)
     let foldedlinecount = v:foldend - v:foldstart + 1
-    return indent. '  '. foldedlinecount . line
+    return  line . '   ' . foldedlinecount 
   endfunction
   
 
   set foldtext=MyFoldText()
   set foldmethod=indent
   set fillchars=fold:\ 
+
+  autocmd FileType json,packer setlocal foldmethod=manual
 ]])

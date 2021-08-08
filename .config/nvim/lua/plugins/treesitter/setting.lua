@@ -19,6 +19,10 @@ require'nvim-treesitter.configs'.setup {
   context_commentstring = {
     enable = true,
   },
+  -- nvim-ts-autotag
+  autotag = {
+    enable = true,
+  },
   -- ensure_installed = 'all',
   -- nvim-treesitter-refactor
   refactor = {

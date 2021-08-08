@@ -16,7 +16,7 @@ if not packer_exists then
 end
 
 return require('packer').startup(function()
-  -- use 'tweekmonster/startuptime.vim'
+  use 'tweekmonster/startuptime.vim'
 
   use {'wbthomason/packer.nvim', opt = true}
   use {'lifepillar/vim-gruvbox8', opt = true}
@@ -28,11 +28,16 @@ return require('packer').startup(function()
   use 'tpope/vim-commentary'
   use 'SirVer/ultisnips'
   use 'kevinhwang91/nvim-hlslens'
-  use 'tpope/vim-fugitive'
   use 'tversteeg/registers.nvim'
   use 'phaazon/hop.nvim'
   use 'brooth/far.vim'
-
+  
+  use {
+    'mbbill/undotree',
+    config = function()
+      vim.cmd('nmap <Space>u :UndotreeToggle<cr>')
+    end
+  }
   use {
     'tyru/columnskip.vim',
     config = function()
@@ -46,6 +51,7 @@ return require('packer').startup(function()
   }
   use {
     'neoclide/coc.nvim', 
+    branch = 'master',
     run = 'yarn install --frozen-lockfile'
   }
   use {
@@ -60,10 +66,6 @@ return require('packer').startup(function()
       {'nvim-lua/popup.nvim'},
       {'nvim-lua/plenary.nvim'},
     }
-  }
-  use {
-    'windwp/nvim-autopairs',
-    config = function() require('nvim-autopairs').setup() end
   }
   use {
     'kana/vim-operator-replace',
@@ -87,7 +89,10 @@ return require('packer').startup(function()
   use {
     'glepnir/galaxyline.nvim',
     branch = 'main',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    requires = {
+      {'kyazdani42/nvim-web-devicons', opt = true},
+      {'tpope/vim-fugitive'}
+    }
   }
 
 
@@ -116,6 +121,7 @@ return require('packer').startup(function()
     requires = {
       'JoosepAlviste/nvim-ts-context-commentstring',
       'nvim-treesitter/nvim-treesitter-refactor',
+      'windwp/nvim-ts-autotag',
     }
   }
 

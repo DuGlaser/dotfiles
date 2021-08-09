@@ -63,8 +63,7 @@ return require('packer').startup(function()
   use {
     'lewis6991/gitsigns.nvim',
     requires = {
-      {'nvim-lua/popup.nvim'},
-      {'nvim-lua/plenary.nvim'},
+      'nvim-lua/plenary.nvim'
     }
   }
   use {
@@ -91,7 +90,6 @@ return require('packer').startup(function()
     branch = 'main',
     requires = {
       {'kyazdani42/nvim-web-devicons', opt = true},
-      {'tpope/vim-fugitive'}
     }
   }
 

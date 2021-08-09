@@ -43,20 +43,14 @@ gls.left[2] ={
 gls.left[3] = {
   FileName = {
     provider = function()
-      local path = vim.fn.expand('%:p')
-      local _, git_path = pcall(vim.api.nvim_buf_get_var,0,'git_dir')
+      local path = vim.fn.expand('%:p:h')
+      local git_path = vim.fn.finddir('.git/..', vim.fn.expand('%:p:h') .. ';')
 
       if git_path == "" then
         return fileinfo.get_current_file_name()
       end
 
-      if string.find(git_path, ".git/modules") ~= nil then
-        -- git_path -> ~~~/.git/modules
-        return string.sub(path, string.len(git_path)-11)
-      end
-
-      -- git_path -> ~~~/.git
-      return string.sub(path, string.len(git_path)-3)
+      return string.sub(path, string.len(git_path) + 2)
     end,
     condition = buffer_not_empty,
     highlight = {colors.fg,colors.line_bg,'bold'}

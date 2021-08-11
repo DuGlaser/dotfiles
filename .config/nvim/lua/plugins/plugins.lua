@@ -33,6 +33,12 @@ return require('packer').startup(function()
   use 'brooth/far.vim'
   
   use {
+    't9md/vim-choosewin',
+    config = function()
+      vim.cmd('nmap - <Plug>(choosewin)')
+    end
+  }
+  use {
     'mbbill/undotree',
     config = function()
       vim.cmd('nmap <Space>u :UndotreeToggle<cr>')
@@ -106,6 +112,14 @@ return require('packer').startup(function()
     end
   }
 
+  use {
+    'mfussenegger/nvim-dap',
+    requires = {
+      {'rcarriga/nvim-dap-ui'},
+      {'Pocco81/DAPInstall.nvim'}
+    }
+  }
+
   ----------------------------------------
   -- textobject
   ----------------------------------------
@@ -117,9 +131,12 @@ return require('packer').startup(function()
   use {
     'nvim-treesitter/nvim-treesitter',
     requires = {
-      'JoosepAlviste/nvim-ts-context-commentstring',
-      'nvim-treesitter/nvim-treesitter-refactor',
-      'windwp/nvim-ts-autotag',
+      {'JoosepAlviste/nvim-ts-context-commentstring'},
+      {'nvim-treesitter/nvim-treesitter-refactor'},
+      { 
+        'windwp/nvim-ts-autotag',
+        ft = {'html', 'javascriptreact', 'typescriptreact', 'vue'},
+      },
     }
   }
 

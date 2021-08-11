@@ -3,3 +3,4 @@ dein.rc.vim
 plugin/
 .nvimlog
 /lua/defaults/path.lua
+dapinstall/

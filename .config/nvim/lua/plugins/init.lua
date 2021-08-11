@@ -3,6 +3,7 @@ local function runtime(file)
 end
 
 require 'plugins.plugins'
+require 'plugins.dap'
 require 'plugins.defx'
 require 'plugins.treesitter'
 require 'plugins.bufferline'

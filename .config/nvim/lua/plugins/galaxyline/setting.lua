@@ -162,7 +162,6 @@ gls.short_line_left[1] = {
   }
 }
 
-
 gls.short_line_right[1] = {
   BufferIcon = {
     provider= 'BufferIcon',

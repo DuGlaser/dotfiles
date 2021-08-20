@@ -31,7 +31,8 @@ return require('packer').startup(function()
   use 'tversteeg/registers.nvim'
   use 'phaazon/hop.nvim'
   use 'brooth/far.vim'
-  
+  use 'moll/vim-bbye'
+
   use {
     'mbbill/undotree',
     config = function()

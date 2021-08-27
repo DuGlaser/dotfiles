@@ -43,7 +43,7 @@ gls.left[2] ={
 gls.left[3] = {
   FileName = {
     provider = function()
-      local path = vim.fn.expand('%:p:h')
+      local path = vim.fn.expand('%:p')
       local git_path = vim.fn.finddir('.git/..', vim.fn.expand('%:p:h') .. ';')
 
       if git_path == "" then

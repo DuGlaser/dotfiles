@@ -12,3 +12,4 @@ require 'plugins.hlslens'
 require 'plugins.hop'
 
 runtime 'grepper/init.vim'
+runtime 'sandwich/init.vim'

@@ -1,8 +1,6 @@
 require('bufferline').setup {
   options = {
     numbers = "none",
-    number_style = "superscript",
-    mappings = true,
     close_command = "bdelete! %d",       
     right_mouse_command = "bdelete! %d",
     left_mouse_command = "buffer %d",
@@ -22,6 +20,6 @@ require('bufferline').setup {
     separator_style = "slant",
     enforce_regular_tabs = true,
     always_show_bufferline = true,
-    sort_by = 'extension',
+    sort_by = 'id',
   }
 }

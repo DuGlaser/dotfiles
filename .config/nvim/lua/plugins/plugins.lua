@@ -32,7 +32,18 @@ return require('packer').startup(function()
   use 'phaazon/hop.nvim'
   use 'brooth/far.vim'
   use 'moll/vim-bbye'
+  use 'airblade/vim-gitgutter'
 
+  use {
+    't9md/vim-choosewin',
+    config = function()
+      vim.cmd([[
+      nmap  -  <Plug>(choosewin)
+      let g:choosewin_overlay_enable = 1
+      let g:choosewin_overlay_clear_multibyte = 1
+      ]])
+    end
+  }
   use {
     'mbbill/undotree',
     config = function()
@@ -59,12 +70,6 @@ return require('packer').startup(function()
     'akinsho/nvim-bufferline.lua',
     requires = {
       {'kyazdani42/nvim-web-devicons'},
-    }
-  }
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
     }
   }
   use {

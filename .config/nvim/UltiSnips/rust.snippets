@@ -10,7 +10,7 @@ snippet prl "println snippet"
 println!("{}", ${1});
 endsnippet
 
-snippet permutation "next permutation"
+snippet PERMUTATION "順列"
 pub trait LexicalPermutation {
     /// Return  if the slice was permuted,  if it is already
     /// at the last ordered permutation.
@@ -143,7 +143,7 @@ fn gdg(a: i32, b: i32) -> i32 {
 }
 endsnippet
 
-snippet UnionFind "UnionFind"
+snippet UNION_FIND "UnionFind"
 struct UnionFind {
     size: usize,
     pos: Vec<isize>,
@@ -199,7 +199,7 @@ impl UnionFind {
 }
 endsnippet
 
-snippet padding "padding"
+snippet PADDING "padding"
 let mut c: Vec<Vec<char>> = c;
 
 for i in 0..n {
@@ -219,7 +219,7 @@ c.push(top_bottom_padding.clone());
 c.reverse();
 endsnippet
 
-snippet BinarySearch "BinarySearch"
+snippet BINARY_SEARCH "BinarySearch"
 use std::cmp::Ordering;
 
 pub trait BinarySearch<T> {
@@ -266,7 +266,7 @@ impl<T: Ord> BinarySearch<T> for [T] {
 }
 endsnippet
 
-snippet format_radix "format_radix"
+snippet FORMAT_RADIX "基数変換"
 fn format_radix(mut x: u32, radix: u32) -> String {
     let mut result = vec![];
 
@@ -280,50 +280,5 @@ fn format_radix(mut x: u32, radix: u32) -> String {
         }
     }
     result.into_iter().rev().collect()
-}
-endsnippet
-
-snippet binary_search "binary_search"
-pub trait BinarySearch<T> {
-    fn lower_bound(&self, x: &T) -> usize;
-    fn upper_bound(&self, x: &T) -> usize;
-}
-
-impl<T: Ord> BinarySearch<T> for [T] {
-    fn lower_bound(&self, x: &T) -> usize {
-        let mut low = 0;
-        let mut high = self.len();
-
-        while low != high {
-            let mid = (low + high) / 2;
-            match self[mid].cmp(x) {
-                Ordering::Less => {
-                    low = mid + 1;
-                }
-                Ordering::Equal | Ordering::Greater => {
-                    high = mid;
-                }
-            }
-        }
-        low
-    }
-
-    fn upper_bound(&self, x: &T) -> usize {
-        let mut low = 0;
-        let mut high = self.len();
-
-        while low != high {
-            let mid = (low + high) / 2;
-            match self[mid].cmp(x) {
-                Ordering::Less | Ordering::Equal => {
-                    low = mid + 1;
-                }
-                Ordering::Greater => {
-                    high = mid;
-                }
-            }
-        }
-        low
-    }
 }
 endsnippet

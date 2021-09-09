@@ -35,6 +35,10 @@ return require('packer').startup(function()
   use 'airblade/vim-gitgutter'
 
   use {
+    'lewis6991/impatient.nvim',
+    rocks = 'mpack'
+  }
+  use {
     't9md/vim-choosewin',
     config = function()
       vim.cmd([[
@@ -63,7 +67,7 @@ return require('packer').startup(function()
   }
   use {
     'neoclide/coc.nvim', 
-    branch = 'master',
+    branch = 'release',
     run = 'yarn install --frozen-lockfile'
   }
   use {

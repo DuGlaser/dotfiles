@@ -3,6 +3,8 @@ local function runtime(file)
 end
 
 require 'plugins.plugins'
+require 'impatient'
+
 require 'plugins.defx'
 require 'plugins.treesitter'
 require 'plugins.bufferline'

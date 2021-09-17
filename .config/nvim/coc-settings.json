@@ -45,7 +45,7 @@
     "gofumpt": true
   },
   "go.checkForUpdates": "ask",
-  "tabnine.priority": 99,
+  "tabnine.priority": 90,
   "eslint.autoFixOnSave": true,
   "eslint.format.enable": true,
   "solargraph.autoformat": true,

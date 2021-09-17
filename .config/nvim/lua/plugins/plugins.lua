@@ -16,7 +16,7 @@ if not packer_exists then
 end
 
 return require('packer').startup(function()
-  use 'tweekmonster/startuptime.vim'
+  -- use 'tweekmonster/startuptime.vim'
 
   use {'wbthomason/packer.nvim', opt = true}
   use {'lifepillar/vim-gruvbox8', opt = true}
@@ -28,7 +28,6 @@ return require('packer').startup(function()
   use 'tpope/vim-commentary'
   use 'SirVer/ultisnips'
   use 'kevinhwang91/nvim-hlslens'
-  use 'tversteeg/registers.nvim'
   use 'phaazon/hop.nvim'
   use 'brooth/far.vim'
   use 'moll/vim-bbye'

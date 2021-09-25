@@ -29,10 +29,15 @@ return require('packer').startup(function()
   use 'SirVer/ultisnips'
   use 'kevinhwang91/nvim-hlslens'
   use 'phaazon/hop.nvim'
-  use 'brooth/far.vim'
   use 'moll/vim-bbye'
   use 'airblade/vim-gitgutter'
 
+  use {
+    'brooth/far.vim',
+    config = function (vi)
+      vim.cmd('let g:far#source="rg"')
+    end
+  }
   use {
     'lewis6991/impatient.nvim',
     rocks = 'mpack'
@@ -138,7 +143,6 @@ return require('packer').startup(function()
   use {
     'Shougo/defx.nvim',
     run = ":UpdateRemotePlugins",
-    commit = "b3a0d8f5c85567ddfdefc7736336c211cb5ea899"
   }
 
 

@@ -6,12 +6,13 @@ call defx#custom#option('_', {
       \ })
 
 call defx#custom#column('icon', {
-      \ 'directory_icon': '',
-      \ 'opened_icon': '',
+      \ 'directory_icon': ' ',
+      \ 'opened_icon': ' ',
+	    \ 'file_icon': '  ',
       \ 'root_icon': ' ',
       \ })
 
-nnoremap <silent> <Space>f :Defx<CR>
+nnoremap <silent> <Space>f <cmd>Defx -search=`expand('%:p')` `getcwd()`<CR>
 
 function! s:defx_my_settings() abort
   nnoremap <buffer><silent><expr> l

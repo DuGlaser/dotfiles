@@ -70,11 +70,6 @@ return require('packer').startup(function()
     end
   }
   use {
-    'neoclide/coc.nvim', 
-    branch = 'release',
-    run = 'yarn install --frozen-lockfile'
-  }
-  use {
     'akinsho/nvim-bufferline.lua',
     requires = {
       {'kyazdani42/nvim-web-devicons'},

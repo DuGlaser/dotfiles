@@ -1,2 +1,2 @@
-vim.g.UltiSnipsEditSplit="vertical"
-vim.g.UltiSnipsExpandTrigger="<C-/>"
+vim.g.UltiSnipsEditSplit = "vertical"
+vim.g.UltiSnipsExpandTrigger = "<C-/>"

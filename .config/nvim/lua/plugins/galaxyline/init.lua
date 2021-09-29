@@ -1,1 +1,1 @@
-require 'plugins.galaxyline.setting'
+require("plugins.galaxyline.setting")

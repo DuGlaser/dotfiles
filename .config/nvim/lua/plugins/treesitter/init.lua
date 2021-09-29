@@ -1,1 +1,1 @@
-require 'plugins.treesitter.setting'
+require("plugins.treesitter.setting")

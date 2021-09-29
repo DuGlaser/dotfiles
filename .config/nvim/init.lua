@@ -1,5 +1,5 @@
-require 'defaults'
-require 'plugins'
+require("defaults")
+require("plugins")
 
-vim.cmd('runtime coc-options.vim')
-vim.cmd('autocmd BufWritePost lua.plugins PackerCompile')
+vim.cmd("runtime coc-options.vim")
+vim.cmd("autocmd BufWritePost lua.plugins PackerCompile")

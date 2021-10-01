@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 
 if not packer_exists then
@@ -16,7 +17,7 @@ if not packer_exists then
 end
 
 return require("packer").startup(function()
-	-- use 'tweekmonster/startuptime.vim'
+	-- use("tweekmonster/startuptime.vim")
 
 	use({ "wbthomason/packer.nvim", opt = true })
 	use({ "lifepillar/vim-gruvbox8", opt = true })
@@ -45,7 +46,7 @@ return require("packer").startup(function()
 	})
 	use({
 		"brooth/far.vim",
-		config = function(vi)
+		config = function()
 			vim.cmd('let g:far#source="rg"')
 		end,
 	})
@@ -129,7 +130,7 @@ return require("packer").startup(function()
 			{ "junegunn/fzf", run = "./install --bin" },
 		},
 		config = function()
-			vim.cmd("nmap gf :GFiles<CR>")
+			vim.cmd([[let $FZF_DEFAULT_COMMAND = 'rg --files --hidden']])
 		end,
 	})
 
@@ -207,15 +208,6 @@ return require("packer").startup(function()
 	})
 
 	----------------------------------------
-	-- formatter (previous lsp)
-	----------------------------------------
-	use({
-		"jose-elias-alvarez/null-ls.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
-	})
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
-
-	----------------------------------------
 	-- lsp utils
 	----------------------------------------
 	use({
@@ -223,6 +215,9 @@ return require("packer").startup(function()
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 	use("ray-x/lsp_signature.nvim")
+	use("glepnir/lspsaga.nvim")
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use("folke/lua-dev.nvim")
 
 	----------------------------------------
 	-- lsp
@@ -232,8 +227,11 @@ return require("packer").startup(function()
 	use({
 		"hrsh7th/nvim-cmp",
 		branch = "custom-menu",
+		requires = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"quangnguyen30192/cmp-nvim-ultisnips",
+		},
 	})
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-buffer")
-	use("quangnguyen30192/cmp-nvim-ultisnips")
 end)

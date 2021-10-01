@@ -32,6 +32,18 @@ return require("packer").startup(function()
 	use("moll/vim-bbye")
 
 	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
+	use({
+		"lewis6991/gitsigns.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+	})
+	use({
 		"brooth/far.vim",
 		config = function(vi)
 			vim.cmd('let g:far#source="rg"')

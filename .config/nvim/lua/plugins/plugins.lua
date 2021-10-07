@@ -31,6 +31,7 @@ return require("packer").startup(function()
 	use("kevinhwang91/nvim-hlslens")
 	use("phaazon/hop.nvim")
 	use("moll/vim-bbye")
+	use("kamykn/spelunker.vim")
 
 	use({
 		"windwp/nvim-autopairs",

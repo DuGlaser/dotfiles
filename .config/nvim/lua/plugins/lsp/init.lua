@@ -5,11 +5,12 @@ local utils = require("plugins.lsp.utils")
 local border = utils.border
 
 local saga = require("lspsaga")
+local diagnosticsGroup = utils.diagnosticsGroup
 saga.init_lsp_saga({
-	error_sign = "🔥",
-	warn_sign = "👀",
-	hint_sign = "💡",
-	infor_sign = "ℹ️",
+	error_sign = diagnosticsGroup.err_group.sign,
+	warn_sign = diagnosticsGroup.warn_group.sign,
+	hint_sign = diagnosticsGroup.hint_group.sign,
+	infor_sign = diagnosticsGroup.info_group.sign,
 	code_action_prompt = {
 		enable = true,
 		sign = false,
@@ -17,6 +18,16 @@ saga.init_lsp_saga({
 		virtual_text = false,
 	},
 })
+
+-- NOTE: same lspsaga.nvim
+-- for _, g in pairs(diagnosticsGroup) do
+-- 	vim.fn.sign_define(g.highlight, {
+-- 		text = g.sign,
+-- 		texthl = g.highlight,
+-- 		linehl = "",
+-- 		numhl = "",
+-- 	})
+-- end
 
 require("lspinstall").setup()
 require("lspinstall").post_install_hook = function()

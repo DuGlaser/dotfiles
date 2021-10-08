@@ -1,17 +1,19 @@
 local function runtime(file)
-  vim.cmd('runtime lua/plugins/'..file)
+	vim.cmd("runtime lua/plugins/" .. file)
 end
 
-require 'plugins.plugins'
-require 'impatient'
+require("plugins.plugins")
+require("impatient")
 
-require 'plugins.defx'
-require 'plugins.treesitter'
-require 'plugins.bufferline'
-require 'plugins.ultisnips'
-require 'plugins.galaxyline'
-require 'plugins.hlslens'
-require 'plugins.hop'
+require("plugins.bufferline")
+require("plugins.defx")
+require("plugins.galaxyline")
+require("plugins.gitsign")
+require("plugins.hlslens")
+require("plugins.hop")
+require("plugins.lsp")
+require("plugins.treesitter")
+require("plugins.ultisnips")
 
-runtime 'grepper/init.vim'
-runtime 'sandwich/init.vim'
+runtime("grepper/init.vim")
+runtime("sandwich/init.vim")

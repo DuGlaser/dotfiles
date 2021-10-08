@@ -1,2 +1,2 @@
-require 'plugins.hlslens.keymap'
-require 'plugins.hlslens.setting'
+require("plugins.hlslens.keymap")
+require("plugins.hlslens.setting")

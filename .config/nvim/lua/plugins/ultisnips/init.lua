@@ -1,1 +1,1 @@
-require 'plugins.ultisnips.setting'
+require("plugins.ultisnips.setting")

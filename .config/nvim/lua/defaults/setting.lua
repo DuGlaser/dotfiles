@@ -2,7 +2,7 @@
 -- Base on https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/_settings.lua
 
 local cmd = vim.api.nvim_command
-local opt = vim.opt;
+local opt = vim.opt
 
 opt.fileformat = "unix"
 opt.fileformats = "unix,dos,mac"
@@ -15,7 +15,7 @@ opt.expandtab = true
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.hls = true
-opt.completeopt = "menuone,noinsert"
+opt.completeopt = "menu,menuone,noselect"
 opt.ignorecase = true
 opt.incsearch = true
 opt.inccommand = "split"
@@ -25,20 +25,22 @@ opt.cursorline = true
 opt.splitright = true
 opt.showtabline = 2
 
-
 cmd([[
   set clipboard+=unnamedplus
   set t_Co=256
   set nocompatible
 ]])
 
-vim.api.nvim_exec([[
+vim.api.nvim_exec(
+	[[
   augroup auto_comment_off
     autocmd!
     autocmd BufEnter * setlocal formatoptions-=r
     autocmd BufEnter * setlocal formatoptions-=o
   augroup END
-]], true)
+]],
+	true
+)
 
 -- Highlight on yank(nvim >= 0.5)
 cmd('au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=200, on_visual=true}')

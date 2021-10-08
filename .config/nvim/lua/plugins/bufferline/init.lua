@@ -1,2 +1,2 @@
-require 'plugins.bufferline.setting'
-require 'plugins.bufferline.keymap'
+require("plugins.bufferline.setting")
+require("plugins.bufferline.keymap")

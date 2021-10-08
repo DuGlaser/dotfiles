@@ -6,10 +6,10 @@ local border = utils.border
 local saga = require("lspsaga")
 local diagnosticsGroup = utils.diagnosticsGroup
 saga.init_lsp_saga({
-	error_sign = diagnosticsGroup.err_group.sign,
-	warn_sign = diagnosticsGroup.warn_group.sign,
-	hint_sign = diagnosticsGroup.hint_group.sign,
-	infor_sign = diagnosticsGroup.info_group.sign,
+	-- error_sign = diagnosticsGroup.err_group.sign,
+	-- warn_sign = diagnosticsGroup.warn_group.sign,
+	-- hint_sign = diagnosticsGroup.hint_group.sign,
+	-- infor_sign = diagnosticsGroup.info_group.sign,
 	code_action_prompt = {
 		enable = true,
 		sign = false,
@@ -19,27 +19,18 @@ saga.init_lsp_saga({
 })
 
 -- NOTE: same lspsaga.nvim
--- for _, g in pairs(diagnosticsGroup) do
--- 	vim.fn.sign_define(g.highlight, {
--- 		text = g.sign,
--- 		texthl = g.highlight,
--- 		linehl = "",
--- 		numhl = "",
--- 	})
--- end
+for _, g in pairs(diagnosticsGroup) do
+	vim.fn.sign_define(g.highlight, {
+		text = g.sign,
+		texthl = g.highlight,
+		linehl = string.format("%sLine", g.highlight),
+	})
+end
 
 require("lspinstall").setup()
 require("lspinstall").post_install_hook = function()
 	vim.cmd("bufdo e")
 end
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = border,
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = border,
-})
 
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
@@ -91,6 +82,22 @@ local on_attach = function(client, bufnr)
 			false
 		)
 	end
+
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+		border = border,
+	})
+
+	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+		border = border,
+	})
+
+	-- NOTE: same textDocument/publishDiagnostics
+	vim.diagnostic.config({
+		underline = true,
+		update_in_insert = false,
+		virtual_text = { spacing = 4, prefix = "●" },
+		severity_sort = true,
+	})
 end
 
 require("plugins.lsp.server.efm").setup(on_attach)

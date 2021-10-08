@@ -20,6 +20,11 @@ return require("packer").startup(function()
 	-- use("tweekmonster/startuptime.vim")
 
 	use({ "wbthomason/packer.nvim", opt = true })
+	use({
+		"lewis6991/impatient.nvim",
+		rocks = "mpack",
+	})
+
 	use({ "lifepillar/vim-gruvbox8", opt = true })
 
 	use("machakann/vim-sandwich")
@@ -62,10 +67,6 @@ return require("packer").startup(function()
 		config = function()
 			vim.cmd('let g:far#source="rg"')
 		end,
-	})
-	use({
-		"lewis6991/impatient.nvim",
-		rocks = "mpack",
 	})
 	use({
 		"t9md/vim-choosewin",
@@ -170,6 +171,7 @@ return require("packer").startup(function()
 	use({
 		"Shougo/defx.nvim",
 		run = ":UpdateRemotePlugins",
+		rtp = ".",
 	})
 
 	----------------------------------------
@@ -228,7 +230,7 @@ return require("packer").startup(function()
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 	use("ray-x/lsp_signature.nvim")
-	use("glepnir/lspsaga.nvim")
+	use("tami5/lspsaga.nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("folke/lua-dev.nvim")
 

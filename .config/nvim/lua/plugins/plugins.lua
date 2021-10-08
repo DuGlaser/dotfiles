@@ -227,7 +227,6 @@ return require("packer").startup(function()
 	use("kabouzeid/nvim-lspinstall")
 	use({
 		"hrsh7th/nvim-cmp",
-		branch = "custom-menu",
 		requires = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",

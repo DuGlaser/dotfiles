@@ -3,7 +3,6 @@ local function runtime(file)
 end
 
 require("plugins.plugins")
-require("impatient")
 
 require("plugins.bufferline")
 require("plugins.defx")

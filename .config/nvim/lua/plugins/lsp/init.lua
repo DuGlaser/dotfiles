@@ -1,5 +1,4 @@
 require("plugins.lsp.trouble")
-require("plugins.lsp.completion")
 
 local utils = require("plugins.lsp.utils")
 local border = utils.border

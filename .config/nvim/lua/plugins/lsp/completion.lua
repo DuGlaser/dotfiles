@@ -74,16 +74,6 @@ cmp.setup({
 		{ name = "ultisnips" },
 		{ name = "buffer" },
 		{ name = "path" },
-	},
-})
-
-require("nvim-autopairs.completion.cmp").setup({
-	map_cr = true,
-	map_complete = true,
-	auto_select = true,
-	insert = false,
-	map_char = {
-		all = "(",
-		tex = "{",
+		{ name = "nvim_lua" },
 	},
 })

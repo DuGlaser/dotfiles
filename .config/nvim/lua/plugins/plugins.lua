@@ -37,7 +37,19 @@ return require("packer").startup(function()
 		"windwp/nvim-autopairs",
 		config = function()
 			require("nvim-autopairs").setup({})
+			require("nvim-autopairs.completion.cmp").setup({
+				map_cr = true,
+				map_complete = true,
+				auto_select = true,
+				insert = false,
+				map_char = {
+					all = "(",
+					tex = "{",
+				},
+			})
 		end,
+		opt = true,
+		after = "nvim-cmp",
 	})
 	use({
 		"lewis6991/gitsigns.nvim",
@@ -229,9 +241,12 @@ return require("packer").startup(function()
 		"hrsh7th/nvim-cmp",
 		requires = {
 			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"quangnguyen30192/cmp-nvim-ultisnips",
+			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
+			{ "quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp" },
 		},
+		config = [[require("plugins.lsp.completion")]],
+		event = "InsertEnter *",
 	})
 end)

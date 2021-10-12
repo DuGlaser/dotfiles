@@ -37,15 +37,6 @@ local on_attach = function(client, bufnr)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
 
-	require("lsp_signature").setup({
-		bind = true,
-		hint_enable = true,
-		hint_prefix = "🤔 ",
-		handler_opts = {
-			border = border,
-		},
-	})
-
 	local opts = { noremap = true, silent = true }
 
 	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)

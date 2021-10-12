@@ -229,9 +229,14 @@ return require("packer").startup(function()
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 	})
-	use("ray-x/lsp_signature.nvim")
+	use({
+		"ray-x/lsp_signature.nvim",
+		after = "nvim-cmp",
+		config = [[require("plugins.lsp.signature")]],
+	})
 	use("tami5/lspsaga.nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use("jose-elias-alvarez/null-ls.nvim")
 	use("folke/lua-dev.nvim")
 
 	----------------------------------------
@@ -248,7 +253,7 @@ return require("packer").startup(function()
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp" },
 		},
-		config = [[require("plugins.lsp.completion")]],
+		config = [[require("plugins.lsp.nvim-cmp")]],
 		event = "InsertEnter *",
 	})
 end)

@@ -1,5 +1,23 @@
 local M = {}
 
+local null_ls = require("null-ls")
+local b = null_ls.builtins
+
+local sources = {
+	b.formatting.prettierd.with({
+		filetypes = { "typescriptreact", "typescript", "javascriptreact", "javascript", "html", "css", "json" },
+		condition = function(utils)
+			return utils.root_has_file(".prettierrc")
+				or utils.root_has_file(".prettierrc.js")
+				or utils.root_has_file(".prettierrc.json")
+		end,
+	}),
+	b.diagnostics.write_good,
+	b.diagnostics.markdownlint,
+	b.diagnostics.teal,
+	b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
+}
+
 M.setup = function(on_attach)
 	require("lspconfig").typescript.setup({
 		on_attach = function(client, buffer)
@@ -11,40 +29,33 @@ M.setup = function(on_attach)
 			local ts_utils = require("nvim-lsp-ts-utils")
 
 			ts_utils.setup({
-				debug = false,
-				disable_commands = false,
-				enable_import_on_completion = false,
-
-				import_all_timeout = 5000,
-				import_all_priorities = {
-					buffers = 4,
-					buffer_content = 3,
-					local_files = 2,
-					same_file = 1,
-				},
+				enable_import_on_completion = true,
 				import_all_scan_buffers = 100,
-				import_all_select_source = false,
-
-				eslint_enable_code_actions = true,
-				eslint_enable_disable_comments = true,
 				eslint_bin = "eslint_d",
-				eslint_enable_diagnostics = false,
-				eslint_opts = {},
-
-				enable_formatting = false,
-
-				update_imports_on_move = false,
-				require_confirmation_on_move = false,
-				watch_dir = nil,
-
-				filter_out_diagnostics_by_severity = {},
-				filter_out_diagnostics_by_code = {},
+				eslint_enable_diagnostics = true,
+				eslint_opts = {
+					condition = function(utils)
+						return utils.root_has_file(".eslintrc.js")
+							or utils.root_has_file(".eslintrc")
+							or utils.root_has_file(".eslintrc.json")
+					end,
+					diagnostics_format = "#{m} [#{c}]",
+				},
+				enable_formatting = true,
+				formatter = "eslint_d",
+				update_imports_on_move = true,
+				filter_out_diagnostics_by_code = { 80001 },
 			})
 
 			ts_utils.setup_client(client)
 		end,
 		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 	})
+
+	null_ls.setup({
+		sources = sources,
+	})
+	require("lspconfig")["null-ls"].setup({ on_attach = on_attach })
 end
 
 return M

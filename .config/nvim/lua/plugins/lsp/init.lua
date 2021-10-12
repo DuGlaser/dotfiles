@@ -39,6 +39,8 @@ local on_attach = function(client, bufnr)
 
 	local opts = { noremap = true, silent = true }
 
+	vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+
 	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -58,16 +60,12 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 	buf_set_keymap("n", "<Space>cc", "<cmd>lua require'lspsaga.diagnostic'.show_cursor_diagnostics()<CR>", opts)
 
-	if client.name ~= "efm" then
-		client.resolved_capabilities.document_formatting = false
-	end
-
 	if client.resolved_capabilities.document_formatting then
 		vim.api.nvim_exec(
 			[[
            augroup LspFormatOnSave
                autocmd! * <buffer>
-               autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting_sync(nil, 10000)
+               autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting_seq_sync(nil, 10000, {"efm"})
            augroup END
       ]],
 			false
@@ -91,10 +89,18 @@ local on_attach = function(client, bufnr)
 	})
 end
 
-require("plugins.lsp.server.efm").setup(on_attach)
+-- Custom initialize
 require("plugins.lsp.server.rust").setup(on_attach)
 require("plugins.lsp.server.typescript").setup(on_attach)
-require("plugins.lsp.server.lua").setup()
+require("plugins.lsp.server.lua").setup(on_attach)
+
+local other_lsp_list = { "terraform" }
+for _, lsp in ipairs(other_lsp_list) do
+	require("lspconfig")[lsp].setup({
+		on_attach = on_attach,
+		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	})
+end
 
 vim.cmd([[hi NormalFloat guibg=#32302f]])
 vim.cmd([[hi FloatBorder guifg=#fe8019]])

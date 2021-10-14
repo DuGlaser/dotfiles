@@ -1,23 +1,5 @@
 local M = {}
 
-local null_ls = require("null-ls")
-local b = null_ls.builtins
-
-local sources = {
-	b.formatting.prettierd.with({
-		filetypes = { "typescriptreact", "typescript", "javascriptreact", "javascript", "html", "css", "json" },
-		condition = function(utils)
-			return utils.root_has_file(".prettierrc")
-				or utils.root_has_file(".prettierrc.js")
-				or utils.root_has_file(".prettierrc.json")
-		end,
-	}),
-	b.diagnostics.write_good,
-	b.diagnostics.markdownlint,
-	b.diagnostics.teal,
-	b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
-}
-
 M.setup = function(on_attach)
 	require("lspconfig").typescript.setup({
 		on_attach = function(client, buffer)
@@ -50,12 +32,10 @@ M.setup = function(on_attach)
 			ts_utils.setup_client(client)
 		end,
 		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+		flags = {
+			debounce_text_changes = 150,
+		},
 	})
-
-	null_ls.setup({
-		sources = sources,
-	})
-	require("lspconfig")["null-ls"].setup({ on_attach = on_attach })
 end
 
 return M

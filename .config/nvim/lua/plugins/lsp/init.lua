@@ -1,35 +1,15 @@
 require("plugins.lsp.trouble")
+require("plugins.lsp.saga")
 
 local utils = require("plugins.lsp.utils")
-local border = utils.border
-
-local saga = require("lspsaga")
-local diagnosticsGroup = utils.diagnosticsGroup
-saga.init_lsp_saga({
-	-- error_sign = diagnosticsGroup.err_group.sign,
-	-- warn_sign = diagnosticsGroup.warn_group.sign,
-	-- hint_sign = diagnosticsGroup.hint_group.sign,
-	-- infor_sign = diagnosticsGroup.info_group.sign,
-	code_action_prompt = {
-		enable = true,
-		sign = false,
-		sign_priority = 20,
-		virtual_text = false,
-	},
-})
-
 -- NOTE: same lspsaga.nvim
+local diagnosticsGroup = utils.diagnosticsGroup
 for _, g in pairs(diagnosticsGroup) do
 	vim.fn.sign_define(g.highlight, {
 		text = g.sign,
 		texthl = g.highlight,
 		linehl = string.format("%sLine", g.highlight),
 	})
-end
-
-require("lspinstall").setup()
-require("lspinstall").post_install_hook = function()
-	vim.cmd("bufdo e")
 end
 
 local on_attach = function(client, bufnr)
@@ -65,13 +45,14 @@ local on_attach = function(client, bufnr)
 			[[
            augroup LspFormatOnSave
                autocmd! * <buffer>
-               autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting_seq_sync(nil, 10000, {"efm"})
+               autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting_sync(nil, 10000)
            augroup END
       ]],
 			false
 		)
 	end
 
+	local border = utils.border
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		border = border,
 	})
@@ -89,10 +70,17 @@ local on_attach = function(client, bufnr)
 	})
 end
 
+require("lspinstall").setup()
+require("lspinstall").post_install_hook = function()
+	vim.cmd("bufdo e")
+end
+
 -- Custom initialize
 require("plugins.lsp.server.rust").setup(on_attach)
 require("plugins.lsp.server.typescript").setup(on_attach)
-require("plugins.lsp.server.lua").setup(on_attach)
+require("plugins.lsp.server.lua").setup()
+
+require("plugins.lsp.null-ls").setup(on_attach)
 
 local other_lsp_list = { "terraform" }
 for _, lsp in ipairs(other_lsp_list) do

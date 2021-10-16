@@ -235,7 +235,6 @@ return require("packer").startup(function()
 		config = [[require("plugins.lsp.signature")]],
 	})
 	use("tami5/lspsaga.nvim")
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("folke/lua-dev.nvim")
 
@@ -243,7 +242,7 @@ return require("packer").startup(function()
 	-- lsp
 	----------------------------------------
 	use("neovim/nvim-lspconfig")
-	use("kabouzeid/nvim-lspinstall")
+	use("williamboman/nvim-lsp-installer")
 	use({
 		"hrsh7th/nvim-cmp",
 		requires = {

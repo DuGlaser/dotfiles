@@ -6,9 +6,6 @@ saga.init_lsp_saga({
 	-- hint_sign = diagnosticsGroup.hint_group.sign,
 	-- infor_sign = diagnosticsGroup.info_group.sign,
 	code_action_prompt = {
-		enable = true,
-		sign = false,
-		sign_priority = 20,
-		virtual_text = false,
+		enable = false,
 	},
 })

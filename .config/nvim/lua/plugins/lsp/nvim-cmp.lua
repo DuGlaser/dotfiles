@@ -70,9 +70,9 @@ cmp.setup({
 		}),
 	},
 	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "ultisnips" },
-		{ name = "buffer" },
+		{ name = "nvim_lsp", max_item_count = 10 },
+		{ name = "ultisnips", max_item_count = 2 },
+		{ name = "buffer", max_item_count = 2 },
 		{ name = "path" },
 		{ name = "nvim_lua" },
 	},

@@ -32,12 +32,12 @@ return require("packer").startup(function()
 	use("rhysd/clever-f.vim")
 	use("tpope/vim-repeat")
 	use("tpope/vim-commentary")
-	use("SirVer/ultisnips")
-	use("kevinhwang91/nvim-hlslens")
-	use("phaazon/hop.nvim")
 	use("moll/vim-bbye")
 	use("kamykn/spelunker.vim")
 
+	use({ "SirVer/ultisnips", config = require("plugins.ultisnips") })
+	use({ "kevinhwang91/nvim-hlslens", config = require("plugins.hlslens") })
+	use({ "phaazon/hop.nvim", config = require("plugins.hop") })
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
@@ -61,11 +61,15 @@ return require("packer").startup(function()
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
+		config = require("plugins.gitsign"),
 	})
 	use({
 		"brooth/far.vim",
 		config = function()
-			vim.cmd('let g:far#source="rg"')
+			vim.cmd([[
+      let g:far#source="rg"
+      let g:far#enable_undo=1
+      ]])
 		end,
 	})
 	use({
@@ -100,6 +104,7 @@ return require("packer").startup(function()
 		requires = {
 			{ "kyazdani42/nvim-web-devicons" },
 		},
+		config = require("plugins.bufferline"),
 	})
 	use({
 		"kana/vim-operator-replace",
@@ -131,7 +136,7 @@ return require("packer").startup(function()
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-		config = [[require("plugins.lualine")]],
+		config = require("plugins.lualine"),
 	})
 
 	use("mhinz/vim-grepper")
@@ -161,6 +166,7 @@ return require("packer").startup(function()
 			"nvim-treesitter/nvim-treesitter-refactor",
 			"windwp/nvim-ts-autotag",
 		},
+		config = require("plugins.treesitter"),
 	})
 
 	----------------------------------------
@@ -170,6 +176,7 @@ return require("packer").startup(function()
 		"Shougo/defx.nvim",
 		run = ":UpdateRemotePlugins",
 		rtp = ".",
+		config = require("plugins.defx"),
 	})
 
 	----------------------------------------
@@ -230,7 +237,7 @@ return require("packer").startup(function()
 	use({
 		"ray-x/lsp_signature.nvim",
 		after = "nvim-cmp",
-		config = [[require("plugins.lsp.signature")]],
+		config = require("plugins.lsp.signature"),
 	})
 	use("tami5/lspsaga.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
@@ -239,7 +246,7 @@ return require("packer").startup(function()
 	----------------------------------------
 	-- lsp
 	----------------------------------------
-	use("neovim/nvim-lspconfig")
+	use({ "neovim/nvim-lspconfig", config = require("plugins.lsp") })
 	use("williamboman/nvim-lsp-installer")
 	use({
 		"hrsh7th/nvim-cmp",
@@ -250,7 +257,7 @@ return require("packer").startup(function()
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp" },
 		},
-		config = [[require("plugins.lsp.nvim-cmp")]],
+		config = require("plugins.lsp.nvim-cmp"),
 		event = "InsertEnter *",
 	})
 end)

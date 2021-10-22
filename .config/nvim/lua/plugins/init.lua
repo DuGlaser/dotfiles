@@ -6,7 +6,6 @@ require("plugins.plugins")
 
 require("plugins.bufferline")
 require("plugins.defx")
-require("plugins.galaxyline")
 require("plugins.gitsign")
 require("plugins.hlslens")
 require("plugins.hop")

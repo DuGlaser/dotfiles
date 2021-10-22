@@ -129,11 +129,9 @@ return require("packer").startup(function()
 		end,
 	})
 	use({
-		"glepnir/galaxyline.nvim",
-		branch = "main",
-		requires = {
-			{ "kyazdani42/nvim-web-devicons", opt = true },
-		},
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		config = [[require("plugins.lualine")]],
 	})
 
 	use("mhinz/vim-grepper")

@@ -140,7 +140,10 @@ return require("packer").startup(function()
 			{ "junegunn/fzf", run = "./install --bin" },
 		},
 		config = function()
-			vim.cmd([[let $FZF_DEFAULT_COMMAND = 'rg --files --hidden']])
+			vim.cmd([[
+        let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
+        nmap  <Space>F  :FZF<CR>
+      ]])
 		end,
 	})
 

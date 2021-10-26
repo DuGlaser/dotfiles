@@ -73,8 +73,6 @@ return require("packer").startup(function()
 		config = function()
 			vim.cmd([[
       nmap  -  <Plug>(choosewin)
-      let g:choosewin_overlay_enable = 1
-      let g:choosewin_overlay_clear_multibyte = 1
       ]])
 		end,
 	})
@@ -243,6 +241,7 @@ return require("packer").startup(function()
 	use("williamboman/nvim-lsp-installer")
 	use({
 		"hrsh7th/nvim-cmp",
+		commit = "e699962a49490c8a7ca2426386467ba118d0a94f",
 		requires = {
 			"hrsh7th/cmp-nvim-lsp",
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },

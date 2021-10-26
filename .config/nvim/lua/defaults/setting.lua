@@ -3,6 +3,7 @@
 
 local cmd = vim.api.nvim_command
 local opt = vim.opt
+local g = vim.g
 
 opt.fileformat = "unix"
 opt.fileformats = "unix,dos,mac"
@@ -24,6 +25,23 @@ opt.signcolumn = "yes"
 opt.cursorline = true
 opt.splitright = true
 opt.showtabline = 2
+
+-- stop default plugins
+g.loaded_gzip = 1
+g.loaded_tar = 1
+g.loaded_tarPlugin = 1
+g.loaded_zip = 1
+g.loaded_zipPlugin = 1
+g.loaded_rrhelper = 1
+g.loaded_2html_plugin = 1
+g.loaded_vimball = 1
+g.loaded_vimballPlugin = 1
+g.loaded_getscript = 1
+g.loaded_getscriptPlugin = 1
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+g.loaded_netrwSettings = 1
+g.loaded_netrwFileHandlers = 1
 
 cmd([[
   set clipboard+=unnamedplus

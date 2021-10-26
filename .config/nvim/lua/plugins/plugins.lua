@@ -170,7 +170,6 @@ return require("packer").startup(function()
 	use({
 		"Shougo/defx.nvim",
 		run = ":UpdateRemotePlugins",
-		rtp = ".",
 	})
 
 	----------------------------------------

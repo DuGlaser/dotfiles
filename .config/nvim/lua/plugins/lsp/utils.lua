@@ -17,7 +17,7 @@ M.diagnosticsGroup = {
 	},
 	info_group = {
 		highlight = "DiagnosticSignInfo",
-		sign = "ℹ️",
+		sign = "💬",
 	},
 }
 

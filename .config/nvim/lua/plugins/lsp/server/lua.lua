@@ -1,9 +1,8 @@
-local M = {}
+local common = require("plugins.lsp.common")
 
-local luadev = require("lua-dev").setup()
-
-M.setup = function()
-	require("lspconfig").lua.setup(luadev)
-end
-
-return M
+return require("lua-dev").setup({
+	lspconfig = {
+		on_attach = common.on_attach,
+		collectgarbage = common.capabilities,
+	},
+})

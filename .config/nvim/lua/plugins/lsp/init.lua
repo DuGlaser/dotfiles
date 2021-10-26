@@ -1,102 +1,38 @@
 require("plugins.lsp.trouble")
+require("plugins.lsp.saga")
 
 local utils = require("plugins.lsp.utils")
-local border = utils.border
-
-local saga = require("lspsaga")
-local diagnosticsGroup = utils.diagnosticsGroup
-saga.init_lsp_saga({
-	error_sign = diagnosticsGroup.err_group.sign,
-	warn_sign = diagnosticsGroup.warn_group.sign,
-	hint_sign = diagnosticsGroup.hint_group.sign,
-	infor_sign = diagnosticsGroup.info_group.sign,
-	code_action_prompt = {
-		enable = true,
-		sign = false,
-		sign_priority = 20,
-		virtual_text = false,
-	},
-})
-
 -- NOTE: same lspsaga.nvim
--- for _, g in pairs(diagnosticsGroup) do
--- 	vim.fn.sign_define(g.highlight, {
--- 		text = g.sign,
--- 		texthl = g.highlight,
--- 		linehl = "",
--- 		numhl = "",
--- 	})
--- end
-
-require("lspinstall").setup()
-require("lspinstall").post_install_hook = function()
-	vim.cmd("bufdo e")
-end
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = border,
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = border,
-})
-
-local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-	end
-
-	require("lsp_signature").setup({
-		bind = true,
-		hint_enable = true,
-		hint_prefix = "🤔 ",
-		handler_opts = {
-			border = border,
-		},
+local diagnosticsGroup = utils.diagnosticsGroup
+for _, g in pairs(diagnosticsGroup) do
+	vim.fn.sign_define(g.highlight, {
+		text = g.sign,
+		texthl = g.highlight,
+		linehl = string.format("%sLine", g.highlight),
 	})
-
-	local opts = { noremap = true, silent = true }
-
-	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	buf_set_keymap("n", "<Space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-	buf_set_keymap("n", "<Space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-	buf_set_keymap("n", "<Space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-	buf_set_keymap("n", "<Space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	buf_set_keymap("n", "<Space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	buf_set_keymap("n", "<Space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-	buf_set_keymap("n", "<Space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-
-	buf_set_keymap("n", "<Space>rn", "<cmd>Lspsaga rename<CR>", opts)
-	buf_set_keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-	buf_set_keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-	buf_set_keymap("n", "<Space>cc", "<cmd>lua require'lspsaga.diagnostic'.show_cursor_diagnostics()<CR>", opts)
-
-	if client.name ~= "efm" then
-		client.resolved_capabilities.document_formatting = false
-	end
-
-	if client.resolved_capabilities.document_formatting then
-		vim.api.nvim_exec(
-			[[
-           augroup LspFormatOnSave
-               autocmd! * <buffer>
-               autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting_sync(nil, 10000)
-           augroup END
-      ]],
-			false
-		)
-	end
 end
 
-require("plugins.lsp.server.efm").setup(on_attach)
-require("plugins.lsp.server.rust").setup(on_attach)
-require("plugins.lsp.server.typescript").setup(on_attach)
-require("plugins.lsp.server.lua").setup()
+local common = require("plugins.lsp.common")
+require("plugins.lsp.server.null-ls").setup(common.on_attach)
+
+-- Custom initialize
+local lsp_installer = require("nvim-lsp-installer")
+lsp_installer.on_server_ready(function(server)
+	local default_opts = {
+		on_attach = common.on_attach,
+		capabilities = common.capabilities,
+	}
+
+	local opts = {
+		["typescript"] = require("plugins.lsp.server.typescript"),
+		["sumneko_lua"] = require("plugins.lsp.server.lua"),
+		["rust_analyzer"] = require("plugins.lsp.server.rust"),
+		["eslint"] = require("plugins.lsp.server.eslint"),
+	}
+
+	server:setup(opts[server.name] and opts[server.name] or default_opts)
+	vim.cmd([[ do User LspAttachBuffers ]])
+end)
 
 vim.cmd([[hi NormalFloat guibg=#32302f]])
 vim.cmd([[hi FloatBorder guifg=#fe8019]])

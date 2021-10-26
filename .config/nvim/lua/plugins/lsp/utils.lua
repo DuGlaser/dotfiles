@@ -4,20 +4,20 @@ M.border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 
 M.diagnosticsGroup = {
 	err_group = {
-		highlight = "LspDiagnosticsSignError",
+		highlight = "DiagnosticSignError",
 		sign = "🔥",
 	},
 	warn_group = {
-		highlight = "LspDiagnosticsSignWarning",
+		highlight = "DiagnosticSignWarn",
 		sign = "👀",
 	},
 	hint_group = {
-		highlight = "LspDiagnosticsSignHint",
+		highlight = "DiagnosticSignHint",
 		sign = "💡",
 	},
 	info_group = {
-		highlight = "LspDiagnosticsSignInformation",
-		sign = "ℹ️",
+		highlight = "DiagnosticSignInfo",
+		sign = "💬",
 	},
 }
 

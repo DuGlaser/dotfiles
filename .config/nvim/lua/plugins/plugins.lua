@@ -20,6 +20,11 @@ return require("packer").startup(function()
 	-- use("tweekmonster/startuptime.vim")
 
 	use({ "wbthomason/packer.nvim", opt = true })
+	use({
+		"lewis6991/impatient.nvim",
+		rocks = "mpack",
+	})
+
 	use({ "lifepillar/vim-gruvbox8", opt = true })
 
 	use("machakann/vim-sandwich")
@@ -64,16 +69,10 @@ return require("packer").startup(function()
 		end,
 	})
 	use({
-		"lewis6991/impatient.nvim",
-		rocks = "mpack",
-	})
-	use({
 		"t9md/vim-choosewin",
 		config = function()
 			vim.cmd([[
       nmap  -  <Plug>(choosewin)
-      let g:choosewin_overlay_enable = 1
-      let g:choosewin_overlay_clear_multibyte = 1
       ]])
 		end,
 	})
@@ -128,11 +127,9 @@ return require("packer").startup(function()
 		end,
 	})
 	use({
-		"glepnir/galaxyline.nvim",
-		branch = "main",
-		requires = {
-			{ "kyazdani42/nvim-web-devicons", opt = true },
-		},
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		config = [[require("plugins.lualine")]],
 	})
 
 	use("mhinz/vim-grepper")
@@ -143,7 +140,10 @@ return require("packer").startup(function()
 			{ "junegunn/fzf", run = "./install --bin" },
 		},
 		config = function()
-			vim.cmd([[let $FZF_DEFAULT_COMMAND = 'rg --files --hidden']])
+			vim.cmd([[
+        let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
+        nmap  <Space>F  :FZF<CR>
+      ]])
 		end,
 	})
 
@@ -170,6 +170,7 @@ return require("packer").startup(function()
 	use({
 		"Shougo/defx.nvim",
 		run = ":UpdateRemotePlugins",
+		rtp = ".",
 	})
 
 	----------------------------------------
@@ -227,18 +228,23 @@ return require("packer").startup(function()
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 	})
-	use("ray-x/lsp_signature.nvim")
-	use("glepnir/lspsaga.nvim")
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use({
+		"ray-x/lsp_signature.nvim",
+		after = "nvim-cmp",
+		config = [[require("plugins.lsp.signature")]],
+	})
+	use("tami5/lspsaga.nvim")
+	use("jose-elias-alvarez/null-ls.nvim")
 	use("folke/lua-dev.nvim")
 
 	----------------------------------------
 	-- lsp
 	----------------------------------------
 	use("neovim/nvim-lspconfig")
-	use("kabouzeid/nvim-lspinstall")
+	use("williamboman/nvim-lsp-installer")
 	use({
 		"hrsh7th/nvim-cmp",
+		commit = "e699962a49490c8a7ca2426386467ba118d0a94f",
 		requires = {
 			"hrsh7th/cmp-nvim-lsp",
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
@@ -246,7 +252,7 @@ return require("packer").startup(function()
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp" },
 		},
-		config = [[require("plugins.lsp.completion")]],
+		config = [[require("plugins.lsp.nvim-cmp")]],
 		event = "InsertEnter *",
 	})
 end)

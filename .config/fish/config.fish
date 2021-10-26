@@ -74,3 +74,6 @@ bind -M insert \ce forward-char
 # direnv
 direnv hook fish | source
 set -x DIRENV_LOG_FORMAT ""
+
+# aws
+complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'

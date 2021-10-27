@@ -16,8 +16,8 @@ if not packer_exists then
 	return
 end
 
-return require("packer").startup(function()
-	-- use("tweekmonster/startuptime.vim")
+local plugins = function()
+	use("tweekmonster/startuptime.vim")
 
 	use({ "wbthomason/packer.nvim", opt = true })
 	use({
@@ -276,4 +276,11 @@ return require("packer").startup(function()
 		config = [[require("plugins.lsp.nvim-cmp")]],
 		event = "InsertEnter *",
 	})
-end)
+end
+
+return require("packer").startup({
+	plugins,
+	config = {
+		compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
+	},
+})

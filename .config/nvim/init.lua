@@ -1,5 +1,4 @@
-require("impatient")
+require("impatient").enable_profile()
 require("defaults")
 require("plugins")
-
-vim.cmd("autocmd BufWritePost lua.plugins PackerCompile")
+require("packer_compiled")

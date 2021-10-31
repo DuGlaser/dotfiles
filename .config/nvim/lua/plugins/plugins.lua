@@ -16,15 +16,14 @@ if not packer_exists then
 	return
 end
 
-return require("packer").startup(function()
+local plugins = function()
 	-- use("tweekmonster/startuptime.vim")
 
-	use({ "wbthomason/packer.nvim", opt = true })
+	use({ "wbthomason/packer.nvim" })
 	use({
 		"lewis6991/impatient.nvim",
 		rocks = "mpack",
 	})
-
 	use({ "lifepillar/vim-gruvbox8", opt = true })
 
 	use("christoomey/vim-tmux-navigator")
@@ -54,16 +53,9 @@ return require("packer").startup(function()
 		"windwp/nvim-autopairs",
 		config = function()
 			require("nvim-autopairs").setup({})
-			require("nvim-autopairs.completion.cmp").setup({
-				map_cr = true,
-				map_complete = true,
-				auto_select = true,
-				insert = false,
-				map_char = {
-					all = "(",
-					tex = "{",
-				},
-			})
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			local cmp = require("cmp")
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 		opt = true,
 		after = "nvim-cmp",
@@ -265,7 +257,6 @@ return require("packer").startup(function()
 	use("williamboman/nvim-lsp-installer")
 	use({
 		"hrsh7th/nvim-cmp",
-		commit = "e699962a49490c8a7ca2426386467ba118d0a94f",
 		requires = {
 			"hrsh7th/cmp-nvim-lsp",
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
@@ -276,4 +267,11 @@ return require("packer").startup(function()
 		config = [[require("plugins.lsp.nvim-cmp")]],
 		event = "InsertEnter *",
 	})
-end)
+end
+
+return require("packer").startup({
+	plugins,
+	config = {
+		compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
+	},
+})

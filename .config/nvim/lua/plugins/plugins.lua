@@ -19,9 +19,10 @@ end
 local plugins = function()
 	-- use("tweekmonster/startuptime.vim")
 
-	use({ "wbthomason/packer.nvim" })
+	use({ "wbthomason/packer.nvim", event = "VimEnter" })
 	use({
 		"lewis6991/impatient.nvim",
+		config = [[require("impatient")]],
 		rocks = "mpack",
 	})
 	use({ "lifepillar/vim-gruvbox8", opt = true })
@@ -31,8 +32,11 @@ local plugins = function()
 	use("tpope/vim-repeat")
 	use("tpope/vim-commentary")
 	use("moll/vim-bbye")
-	use("kamykn/spelunker.vim")
 
+	use({
+		"kamykn/spelunker.vim",
+		event = "BufRead",
+	})
 	use({
 		"machakann/vim-sandwich",
 		config = [[require("plugins.sandwich")]],
@@ -63,6 +67,7 @@ local plugins = function()
 	use({
 		"lewis6991/gitsigns.nvim",
 		config = [[require("plugins.gitsign")]],
+		event = "BufRead",
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -122,9 +127,8 @@ local plugins = function()
 	})
 	use({
 		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup()
-		end,
+		config = [[require("colorizer").setup()]],
+		event = "BufRead",
 	})
 	use({
 		"thinca/vim-zenspace",
@@ -167,10 +171,11 @@ local plugins = function()
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		config = [[require("plugins.treesitter")]],
+		event = "BufRead",
 		requires = {
-			"JoosepAlviste/nvim-ts-context-commentstring",
-			"nvim-treesitter/nvim-treesitter-refactor",
-			"windwp/nvim-ts-autotag",
+			{ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
+			{ "nvim-treesitter/nvim-treesitter-refactor", after = "nvim-treesitter" },
+			{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
 		},
 	})
 
@@ -265,13 +270,25 @@ local plugins = function()
 			{ "quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp" },
 		},
 		config = [[require("plugins.lsp.nvim-cmp")]],
-		event = "InsertEnter *",
+		event = "InsertEnter",
 	})
 end
 
-return require("packer").startup({
-	plugins,
-	config = {
-		compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
+local packer = require("packer")
+
+packer.init({
+	display = {
+		open_fn = function()
+			return require("packer.util").float({ border = "single" })
+		end,
+		prompt_border = "single",
 	},
+	git = {
+		clone_timeout = 800,
+	},
+	compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
+	auto_clean = true,
+	compile_on_sync = true,
 })
+
+return require("packer").startup(plugins)

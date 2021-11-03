@@ -13,7 +13,7 @@ vim.cmd([[
         \ 'root_icon': ' ',
         \ })
 
-  nnoremap <silent> <Space>f <cmd>Defx -search=`expand('%:p')` `getcwd()`<CR>
+  nnoremap <silent> <Space>f <cmd>Defx -search-recursive=`expand('%:p')` `getcwd()`<CR>
 
   function! s:defx_my_settings() abort
     nnoremap <buffer><silent><expr> l

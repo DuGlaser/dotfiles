@@ -26,13 +26,17 @@ local plugins = function()
 		rocks = "mpack",
 	})
 	use({ "lifepillar/vim-gruvbox8", opt = true })
-
-	use("christoomey/vim-tmux-navigator")
-	use("rhysd/clever-f.vim")
-	use("tpope/vim-repeat")
-	use("tpope/vim-commentary")
-	use("moll/vim-bbye")
-
+	use({ "christoomey/vim-tmux-navigator" })
+	use({ "rhysd/clever-f.vim" })
+	use({ "tpope/vim-repeat" })
+	use({
+		"tpope/vim-commentary",
+		event = "BufRead",
+	})
+	use({
+		"moll/vim-bbye",
+		event = "BufRead",
+	})
 	use({
 		"kamykn/spelunker.vim",
 		event = "BufRead",
@@ -135,6 +139,7 @@ local plugins = function()
 		config = function()
 			vim.cmd("let g:zenspace#default_mode = 'on'")
 		end,
+		event = "BufRead",
 	})
 	use({
 		"nvim-lualine/lualine.nvim",

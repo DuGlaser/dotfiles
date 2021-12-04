@@ -61,20 +61,20 @@ cmp.setup({
 		end,
 	},
 	mapping = {
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-e>"] = cmp.mapping.close(),
-		["<C-y>"] = cmp.config.disable,
-		["<CR>"] = cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
+		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+		["<C-e>"] = cmp.mapping({
+			i = cmp.mapping.abort(),
+			c = cmp.mapping.close(),
 		}),
+		["<C-y>"] = cmp.config.disable,
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	},
-	sources = {
+	sources = cmp.config.sources({
 		{ name = "nvim_lsp", max_item_count = 15 },
 		{ name = "ultisnips", max_item_count = 2 },
 		{ name = "buffer", max_item_count = 2 },
 		{ name = "path" },
 		{ name = "nvim_lua" },
-	},
+	}),
 })

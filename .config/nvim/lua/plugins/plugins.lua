@@ -26,8 +26,22 @@ local plugins = function()
 		rocks = "mpack",
 	})
 	use({ "lifepillar/vim-gruvbox8", opt = true })
-	use({ "christoomey/vim-tmux-navigator" })
-	use({ "rhysd/clever-f.vim" })
+	use({
+		"aserowy/tmux.nvim",
+		config = function()
+			require("tmux").setup({
+				copy_sync = {
+					enable = true,
+				},
+				navigation = {
+					enable_default_keybindings = true,
+				},
+				resize = {
+					enable_default_keybindings = true,
+				},
+			})
+		end,
+	})
 	use({ "tpope/vim-repeat" })
 	use({
 		"tpope/vim-commentary",
@@ -92,9 +106,6 @@ local plugins = function()
 	})
 	use({
 		"mbbill/undotree",
-		config = function()
-			vim.cmd("nmap <Space>u :UndotreeToggle<cr>")
-		end,
 	})
 	use({
 		"tyru/columnskip.vim",
@@ -168,7 +179,9 @@ local plugins = function()
 	----------------------------------------
 	-- textobject
 	----------------------------------------
+	use("kana/vim-textobj-user")
 	use("romgrk/equal.operator")
+	use("sgur/vim-textobj-parameter")
 
 	----------------------------------------
 	-- treesitter

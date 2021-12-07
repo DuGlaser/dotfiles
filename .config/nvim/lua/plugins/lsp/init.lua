@@ -21,12 +21,12 @@ lsp_installer.on_server_ready(function(server)
 	local default_opts = {
 		on_attach = common.on_attach,
 		capabilities = common.capabilities,
+		flags = {
+			debounce_text_changes = 150,
+		},
 	}
 
 	local opts = {
-		["typescript"] = require("plugins.lsp.server.typescript"),
-		["sumneko_lua"] = require("plugins.lsp.server.lua"),
-		["rust_analyzer"] = require("plugins.lsp.server.rust"),
 		["eslint"] = require("plugins.lsp.server.eslint"),
 	}
 

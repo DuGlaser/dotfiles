@@ -1,0 +1,27 @@
+name: ubuntu
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install ansible
+        run: |
+          sudo apt install software-properties-common
+          sudo add-apt-repository --yes --update ppa:ansible/ansible
+          sudo apt install ansible
+
+      - name: Install tools
+        run: sudo ansible-playbook -i inventory/localhost install.yml
+
+      - name: Setup tools.
+        run: sudo ansible-playbook -i inventory/localhost setup.yml
+

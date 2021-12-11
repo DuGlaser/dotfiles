@@ -4,4 +4,4 @@
 
 - name: Install tmux plugins
   become: yes
-  command: ~/.tmux/plugins/tpm/bin/install_plugins
+  shell: ~/.tmux/plugins/tpm/bin/install_plugins

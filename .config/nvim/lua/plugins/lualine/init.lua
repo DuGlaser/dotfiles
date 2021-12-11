@@ -18,7 +18,7 @@ local lualine_c = {
 	},
 	{
 		"diagnostics",
-		sources = { "nvim_lsp" },
+		sources = { "nvim_diagnostic" },
 		symbols = {
 			error = diagnosticsGroup.err_group.sign .. " ",
 			warn = diagnosticsGroup.warn_group.sign .. " ",

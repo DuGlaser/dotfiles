@@ -1,0 +1,27 @@
+name: macos
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create symbolic link.
+        run: |
+          chmod +x ./.bin/init_setup.sh
+          ./.bin/init_setup.sh
+
+      - name: Install ansible
+        run: |
+          chmod +x ./.bin/mac/install_ansible.sh
+          ./.bin/mac/install_ansible.sh
+
+      - name: Install tools
+        run: ansible-playbook -i inventory/localhost install.yml

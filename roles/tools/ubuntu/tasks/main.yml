@@ -16,6 +16,7 @@
         - hub
         - tig
         - tmux
+        - neovim
       state: present
       update_cache: yes
 
@@ -65,10 +66,5 @@
         - curl
       state: present
       update_cache: yes
-
-  - name: Build neovim
-    become: yes
-    command: chmod +x ./.bin/setup_nvim.sh
-    command: bash ./.bin/setup_nvim.sh
 
   when: ansible_os_family == "Debian"

@@ -22,7 +22,6 @@
         - tmux
 
   - name: Install lang using homebrew
-    become: yes
     community.general.homebrew:
       state: present
       name:
@@ -35,9 +34,4 @@
       name:
         - neovim
 
-  - name: install cask package using homebrew
-    community.general.homebrew:
-      state: present
-      name:
-        - homebrew/cask/alacritty
   when: ansible_os_family == "Darwin"

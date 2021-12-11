@@ -24,4 +24,4 @@ jobs:
           ./.bin/mac/install_ansible.sh
 
       - name: Install tools
-        run: sudo ansible-playbook -i inventory/localhost install.yml
+        run: ansible-playbook -i inventory/localhost install.yml

@@ -23,7 +23,6 @@ local plugins = function()
 	use({
 		"lewis6991/impatient.nvim",
 		config = [[require("impatient")]],
-		rocks = "mpack",
 	})
 	use({ "lifepillar/vim-gruvbox8", opt = true })
 	use({

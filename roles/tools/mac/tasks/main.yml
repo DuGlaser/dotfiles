@@ -1,20 +1,10 @@
 - block:
   - name: homebrew update
-    homebrew:
+    community.general.homebrew:
       update_homebrew: yes
 
-  - name: homebrew tap
-    homebrew_tap:
-      state: present
-      name:
-        - github/gh
-        - homebrew/bundle
-        - homebrew/cask-fonts
-        - homebrew/cask-versions
-        - homebrew/core
-
   - name: install package using homebrew
-    homebrew:
+    community.general.homebrew:
       state: present
       name:
         - bat
@@ -31,23 +21,23 @@
         - tig
         - tmux
 
-  - name: Install lang using pacman
+  - name: Install lang using homebrew
     become: yes
-    homebrew:
+    community.general.homebrew:
       state: present
       name:
         - node
         - go
 
   - name: install neovim head
-    homebrew:
+    community.general.homebrew:
       state: latest
       name:
         - neovim
 
   - name: install cask package using homebrew
-    homebrew_cask:
+    community.general.homebrew:
       state: present
       name:
-        - alacritty
+        - homebrew/cask/alacritty
   when: ansible_os_family == "Darwin"

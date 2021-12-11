@@ -20,8 +20,8 @@ jobs:
 
       - name: Install ansible
         run: |
-          chmod +x ./.bin/macos/install_ansible.sh
-          ./.bin/macos/install_ansible.sh
+          chmod +x ./.bin/mac/install_ansible.sh
+          ./.bin/mac/install_ansible.sh
 
       - name: Install tools
         run: sudo ansible-playbook -i inventory/localhost install.yml

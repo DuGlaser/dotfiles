@@ -13,7 +13,7 @@ for _, g in pairs(diagnosticsGroup) do
 end
 
 local common = require("plugins.lsp.common")
-require("plugins.lsp.server.null-ls").setup(common.on_attach)
+require("plugins.lsp.server.null-ls").setup()
 
 -- Custom initialize
 local lsp_installer = require("nvim-lsp-installer")

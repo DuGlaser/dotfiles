@@ -28,7 +28,27 @@ lsp_installer.on_server_ready(function(server)
 
 	local opts = {
 		["eslint"] = require("plugins.lsp.server.eslint"),
+		["sumneko_lua"] = require("plugins.lsp.server.sumneko_lua"),
 	}
+
+	if server.name == "rust_analyzer" then
+		local ra = require("plugins.lsp.server.rust-analyzer")
+		local rustServer = vim.tbl_deep_extend("force", server:get_default_options(), ra)
+
+		require("rust-tools").setup({
+			tools = {
+				autoSetHints = true,
+				hover_with_actions = true,
+				inlay_hints = {
+					show_parameter_hints = false,
+					parameter_hints_prefix = "",
+					other_hints_prefix = "",
+				},
+			},
+			server = rustServer,
+		})
+		server:attach_buffers()
+	end
 
 	server:setup(opts[server.name] and opts[server.name] or default_opts)
 	vim.cmd([[ do User LspAttachBuffers ]])

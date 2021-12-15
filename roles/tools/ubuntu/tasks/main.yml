@@ -14,9 +14,10 @@
         - gufw
         - htop
         - hub
+        - neovim
+        - peco
         - tig
         - tmux
-        - neovim
       state: present
       update_cache: yes
 
@@ -46,8 +47,9 @@
 
   - name: Build alacritty
     become: yes
-    command: chmod +x ./.bin/setup_alacritty.sh
-    command: bash ./.bin/setup_alacritty.sh
+    shell: |
+      chmod +x ./.bin/setup_alacritty.sh
+      bash ./.bin/setup_alacritty.sh
 
   - name: Install neovim dependencies
     become: yes

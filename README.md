@@ -31,11 +31,6 @@ $ sudo ansible-playbook -i inventory/localhost install.yml
 5. Switch the default shell to `fish`.
 > https://github.com/fish-shell/fish-shell#switching-to-fish
 
-6. Setup tools.
-```
-$ sudo ansible-playbook -i inventory/localhost setup.yml
-```
-
 ## Other
 
 - Font: https://github.com/romkatv/powerlevel10k#manual-font-installation

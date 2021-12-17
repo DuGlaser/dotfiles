@@ -11,6 +11,7 @@ set -g BROWSER /usr/bin/google-chrome-stable
 # go path setting
 set -x GOPATH $HOME/go
 set -x PATH $PATH /usr/local/go/bin
+set -x PATH $PATH $GOPATH/bin
 
 set -U fish_color_normal normal
 set -U fish_color_command 99cc99

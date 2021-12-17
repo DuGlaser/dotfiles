@@ -18,6 +18,7 @@
         - peco
         - tig
         - tmux
+        - xclip
       state: present
       update_cache: yes
 

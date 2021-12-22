@@ -29,6 +29,7 @@ lsp_installer.on_server_ready(function(server)
 	local opts = {
 		["eslint"] = require("plugins.lsp.server.eslint"),
 		["sumneko_lua"] = require("plugins.lsp.server.sumneko_lua"),
+		["tsserver"] = require("plugins.lsp.server.tsserver"),
 	}
 
 	if server.name == "rust_analyzer" then

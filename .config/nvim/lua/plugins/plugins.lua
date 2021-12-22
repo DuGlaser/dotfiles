@@ -265,7 +265,7 @@ local plugins = function()
 	use("tami5/lspsaga.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("folke/lua-dev.nvim")
-	use({ "simrat39/rust-tools.nvim" })
+	use("simrat39/rust-tools.nvim")
 
 	----------------------------------------
 	-- lsp

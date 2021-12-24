@@ -14,9 +14,6 @@ ln -sfnv "$dotfiles/.gitmessage.txt" "$HOME/.gitmessage.txt"
 ln -sfnv "$dotfiles/.tmux.conf" "$HOME/.tmux.conf"
 ln -sfnv "$dotfiles/.asdfrc" "$HOME/.asdfrc"
 
-rm "$HOME/.peco"
-ln -sfnv "$dotfiles/.peco" "$HOME/.peco"
-
 dotfiles_config="$dotfiles/.config"
 config="$HOME/.config"
 

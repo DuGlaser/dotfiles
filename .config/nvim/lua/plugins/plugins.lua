@@ -73,7 +73,7 @@ local plugins = function()
 			require("nvim-autopairs").setup({})
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local cmp = require("cmp")
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 		end,
 		opt = true,
 		after = "nvim-cmp",
@@ -96,7 +96,7 @@ local plugins = function()
 		"t9md/vim-choosewin",
 		config = function()
 			vim.cmd([[
-      nmap  -  <Plug>(choosewin)
+	      nmap  -  <Plug>(choosewin)
       ]])
 		end,
 	})
@@ -266,6 +266,7 @@ local plugins = function()
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("folke/lua-dev.nvim")
 	use("simrat39/rust-tools.nvim")
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 
 	----------------------------------------
 	-- lsp

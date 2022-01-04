@@ -9,7 +9,7 @@ vim.cmd([[
   call defx#custom#column('icon', {
         \ 'directory_icon': ' ',
         \ 'opened_icon': ' ',
-        \ 'file_icon': '  ',
+        \ 'file_icon': '| ',
         \ 'root_icon': ' ',
         \ })
 

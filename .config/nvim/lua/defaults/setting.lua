@@ -10,7 +10,7 @@ opt.fileformats = "unix,dos,mac"
 opt.fileencodings = "utf-8,iso-2022-jp,cp932,euc-jp"
 opt.cmdheight = 1
 opt.encoding = "UTF-8"
-opt.number = true
+opt.number = false
 opt.autoindent = true
 opt.expandtab = true
 opt.tabstop = 2
@@ -42,6 +42,9 @@ g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
+
+g.do_filetype_lua = 1
+g.did_load_filetypes = 0
 
 cmd([[
   set clipboard+=unnamedplus

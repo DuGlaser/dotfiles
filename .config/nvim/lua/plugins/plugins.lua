@@ -19,7 +19,7 @@ end
 local plugins = function()
 	-- use("tweekmonster/startuptime.vim")
 
-	use({ "wbthomason/packer.nvim", event = "VimEnter" })
+	use({ "wbthomason/packer.nvim", event = "VimEnter", opt = true })
 	use({
 		"lewis6991/impatient.nvim",
 		config = [[require("impatient")]],
@@ -95,7 +95,9 @@ local plugins = function()
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
-			require("nvim-autopairs").setup({})
+			require("nvim-autopairs").setup({
+				check_ts = true,
+			})
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local cmp = require("cmp")
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
@@ -193,6 +195,7 @@ local plugins = function()
 			vim.cmd([[
         let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
         nmap  <Space>F  :FZF<CR>
+        nmap  <Space>B  :Buffers<CR>
       ]])
 		end,
 	})

@@ -34,7 +34,7 @@ vim.cmd([[
     " Operations
     nnoremap <buffer><silent><expr> yy defx#do_action('copy')
     xnoremap <buffer><silent><expr> yy defx#do_action('copy')
-    nnoremap <buffer><silent><expr> m defx#do_action('move')
+    nnoremap <buffer><silent><expr> M defx#do_action('move')
     nnoremap <buffer><silent><expr> dd defx#do_action('remove_trash')
     nnoremap <buffer><silent><expr> p defx#do_action('paste')
     nnoremap <buffer><silent><expr> r defx#do_action('rename')

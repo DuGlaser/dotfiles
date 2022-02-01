@@ -1,17 +1,20 @@
 local null_ls = require("null-ls")
 local b = null_ls.builtins
-local sources = {
-	b.formatting.prettier.with({
-		condition = function(utils)
-			return utils.root_has_file({ ".prettierrc", ".prettierrc.js", ".prettierrc.json" })
-		end,
-	}),
-	b.formatting.stylua,
-}
 
 local M = {}
 
 local common = require("plugins.lsp.common")
+
+M.prettier_setting_files = { ".prettierrc", ".prettierrc.js", ".prettierrc.json" }
+
+local sources = {
+	b.formatting.prettier.with({
+		condition = function(utils)
+			return utils.root_has_file(M.prettier_setting_files)
+		end,
+	}),
+	b.formatting.stylua,
+}
 
 M.setup = function()
 	null_ls.setup({

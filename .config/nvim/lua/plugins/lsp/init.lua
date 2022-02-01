@@ -28,8 +28,10 @@ lsp_installer.on_server_ready(function(server)
 
 	local opts = {
 		["eslint"] = require("plugins.lsp.server.eslint"),
+		["jsonls"] = require("plugins.lsp.server.jsonls"),
 		["sumneko_lua"] = require("plugins.lsp.server.sumneko_lua"),
 		["tsserver"] = require("plugins.lsp.server.tsserver"),
+		["yamlls"] = require("plugins.lsp.server.yamlls"),
 	}
 
 	if server.name == "rust_analyzer" then
@@ -49,8 +51,8 @@ lsp_installer.on_server_ready(function(server)
 			server = rustServer,
 		})
 		server:attach_buffers()
+		return
 	end
-
 	server:setup(opts[server.name] and opts[server.name] or default_opts)
 	vim.cmd([[ do User LspAttachBuffers ]])
 end)

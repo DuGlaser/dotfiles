@@ -205,7 +205,6 @@ local plugins = function()
 	----------------------------------------
 	use("kana/vim-textobj-user")
 	use("romgrk/equal.operator")
-	use("sgur/vim-textobj-parameter")
 
 	----------------------------------------
 	-- treesitter
@@ -295,6 +294,7 @@ local plugins = function()
 	use("folke/lua-dev.nvim")
 	use("simrat39/rust-tools.nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use("b0o/schemastore.nvim")
 
 	----------------------------------------
 	-- lsp

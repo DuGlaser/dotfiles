@@ -13,11 +13,7 @@ return {
 			format = {
 				enable = false,
 			},
-			schemas = require("schemastore").json.schemas({
-				select = {
-					"docker-compose.yml",
-				},
-			}),
+			schemas = require("schemastore").json.schemas(),
 		},
 	},
 }

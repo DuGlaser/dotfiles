@@ -1,0 +1,12 @@
+{
+  "clog": {
+    "prefix": ["clog"],
+    "body": ["console.log($1)"],
+    "description": "console.log snippet"
+  },
+  "cgroup": {
+    "prefix": ["cgroup"],
+    "body": ["console.group($1)", "$2", "console.groupEnd()"],
+    "description": "console.log snippet"
+  }
+}

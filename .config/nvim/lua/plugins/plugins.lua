@@ -81,8 +81,11 @@ local plugins = function()
 		config = [[require("plugins.sandwich")]],
 	})
 	use({
-		"SirVer/ultisnips",
-		config = [[require("plugins.ultisnips")]],
+		"hrsh7th/vim-vsnip",
+		config = [[require("plugins.vsnip")]],
+		requires = {
+			"hrsh7th/vim-vsnip-integ",
+		},
 	})
 	use({
 		"phaazon/hop.nvim",
@@ -311,7 +314,7 @@ local plugins = function()
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
-			{ "quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
 		},
 		config = [[require("plugins.lsp.nvim-cmp")]],
 		event = "InsertEnter",

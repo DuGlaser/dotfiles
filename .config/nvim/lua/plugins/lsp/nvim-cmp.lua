@@ -40,7 +40,7 @@ cmp.setup({
 	},
 	snippet = {
 		expand = function(args)
-			vim.fn["UltiSnips#Anon"](args.body)
+			vim.fn["vsnip#anonymous"](args.body)
 		end,
 	},
 	formatting = {
@@ -49,7 +49,7 @@ cmp.setup({
 			vim_item.menu = ({
 				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
-				ultisnips = "[Snip]",
+				vsnip = "[Snip]",
 				nvim_lua = "[Lua]",
 				latex_symbols = "[LaTeX]",
 			})[entry.source.name]
@@ -67,12 +67,13 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	},
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp", max_item_count = 20, priority = 51 },
-		{ name = "ultisnips", max_item_count = 2 },
+		{ name = "vsnip" },
+	}, {
+		{ name = "nvim_lsp", max_item_count = 20 },
 		{ name = "path" },
 		{ name = "nvim_lua" },
 	}, {
-		{ name = "buffer", max_item_count = 4, priority = 49 },
+		{ name = "buffer", max_item_count = 4 },
 	}),
 })
 

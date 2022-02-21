@@ -1,0 +1,11 @@
+{
+  "YesNo": {
+    "prefix": [
+      "YesNo"
+    ],
+    "body": [
+      "cout << ($1 ? \"Yes\" : \"No\") << endl;"
+    ],
+    "description": "Output 'Yes' or 'No'"
+  }
+}

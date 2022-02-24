@@ -13,6 +13,7 @@ ln -sfnv "$dotfiles/.gitignore_global" "$HOME/.config/git/ignore"
 ln -sfnv "$dotfiles/.gitmessage.txt" "$HOME/.gitmessage.txt"
 ln -sfnv "$dotfiles/.tmux.conf" "$HOME/.tmux.conf"
 ln -sfnv "$dotfiles/.asdfrc" "$HOME/.asdfrc"
+ln -sfnv "$dotfiles/.ideavimrc" "$HOME/.ideavimrc"
 
 dotfiles_config="$dotfiles/.config"
 config="$HOME/.config"

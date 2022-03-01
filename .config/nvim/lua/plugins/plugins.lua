@@ -25,6 +25,12 @@ local plugins = function()
 		config = [[require("impatient")]],
 	})
 	use({
+		"antoinemadec/FixCursorHold.nvim",
+		config = function()
+			vim.g.cursorhold_updatetime = 100
+		end,
+	})
+	use({
 		"MattesGroeger/vim-bookmarks",
 		config = function()
 			vim.cmd([[
@@ -227,9 +233,11 @@ local plugins = function()
 	-- filer
 	----------------------------------------
 	use({
-		"Shougo/defx.nvim",
-		run = ":UpdateRemotePlugins",
-		config = [[require("plugins.defx")]],
+		"lambdalisue/fern.vim",
+		config = [[require("plugins.fern")]],
+		requires = {
+			"hrsh7th/fern-mapping-collapse-or-leave.vim",
+		},
 	})
 
 	----------------------------------------

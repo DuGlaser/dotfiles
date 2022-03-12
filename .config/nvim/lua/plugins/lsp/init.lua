@@ -27,6 +27,7 @@ lsp_installer.on_server_ready(function(server)
 	}
 
 	local opts = {
+		["angularls"] = require("plugins.lsp.server.angularls"),
 		["eslint"] = require("plugins.lsp.server.eslint"),
 		["jsonls"] = require("plugins.lsp.server.jsonls"),
 		["sumneko_lua"] = require("plugins.lsp.server.sumneko_lua"),

@@ -7,5 +7,45 @@
       "cout << ($1 ? \"Yes\" : \"No\") << endl;"
     ],
     "description": "Output 'Yes' or 'No'"
+  },
+  "UNIONFIND": {
+    "prefix": [
+      "UNIONFIND"
+    ],
+    "body": [
+      "struct UnionFind {",
+      "\tvector<int> par, siz;",
+      "",
+      "\tUnionFind(int n) : par(n, -1), siz(n, 1) {}",
+      "",
+      "\tint root(int x) {",
+      "\t\tif (par.at(x) == -1) {",
+      "\t\t\treturn x;",
+      "\t\t} else {",
+      "\t\t\treturn par.at(x) = root(par.at(x));",
+      "\t\t}",
+      "\t}",
+      "",
+      "\tbool issame(int x, int y) { return root(x) == root(y); }",
+      "",
+      "\tbool unite(int x, int y) {",
+      "\t\tx = root(x);",
+      "\t\ty = root(y);",
+      "",
+      "\t\tif (x == y)",
+      "\t\t\treturn false;",
+      "",
+      "\t\tif (siz.at(x) < siz.at(y)) {",
+      "\t\t\tswap(x, y);",
+      "\t\t}",
+      "",
+      "\t\tpar.at(y) = x;",
+      "\t\tsiz.at(x) += siz.at(y);",
+      "\t\treturn true;",
+      "\t}",
+      "",
+      "\tint size(int x) { return siz.at(root(x)); }",
+      "};"
+    ]
   }
 }

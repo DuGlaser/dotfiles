@@ -324,6 +324,7 @@ local plugins = function()
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
 		},
+		branch = "dev",
 		config = [[require("plugins.lsp.nvim-cmp")]],
 		event = "InsertEnter",
 	})

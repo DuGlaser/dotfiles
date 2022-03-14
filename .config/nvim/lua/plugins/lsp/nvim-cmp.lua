@@ -31,9 +31,14 @@ local lspkind = {
 local border = require("plugins.lsp.utils").border
 
 cmp.setup({
-	documentation = {
-		border = border,
-		winhighlight = "Normal:FloatBorder",
+	window = {
+		documentation = {
+			border = border,
+			-- winhighlight = "Normal:FloatBorder",
+		},
+		completion = {
+			border = border,
+		},
 	},
 	experimental = {
 		ghost_text = false,
@@ -70,10 +75,9 @@ cmp.setup({
 		{ name = "vsnip" },
 	}, {
 		{ name = "nvim_lsp", max_item_count = 20 },
+		{ name = "buffer", keyword_length = 2, max_item_count = 4 },
 		{ name = "path" },
 		{ name = "nvim_lua" },
-	}, {
-		{ name = "buffer", max_item_count = 4 },
 	}),
 })
 

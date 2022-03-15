@@ -1,17 +1,13 @@
-# linuxbrew setting
-set -x PATH /home/linuxbrew/.linuxbrew/bin $PATH
-set -g fish_user_paths "/home/linuxbrew/.linuxbrew/sbin" $fish_user_paths
-
 # fish-ghq setting
 set GHQ_SELECTOR peco
-
-# browser setting
-set -g BROWSER /usr/bin/google-chrome-stable
 
 # go path setting
 set -x GOPATH $HOME/go
 set -x PATH $PATH /usr/local/go/bin
 set -x PATH $PATH $GOPATH/bin
+
+# rust path setting
+set -U fish_user_paths $HOME/.cargo/bin $fish_user_paths
 
 set -U fish_color_normal normal
 set -U fish_color_command 99cc99
@@ -39,13 +35,8 @@ set -U fish_pager_color_description B3A06D yellow
 set -U fish_pager_color_prefix white --bold --underline
 set -U fish_pager_color_progress brwhite --background=cyan
 
-set PATH $HOME/.cargo/bin $PATH
-
 # pure prompt setting
 _pure_set_default pure_show_system_time false
-
-# asdf setting
-source ~/.asdf/asdf.fish
 
 # lang
 # set -xg LANG es_US.UTF-8
@@ -53,9 +44,6 @@ source ~/.asdf/asdf.fish
 if test -z $TMUX
     attach_tmux_session_if_needed
 end
-
-# load profile
-bass source /etc/profile
 
 # alias
 alias v="nvim"
@@ -72,8 +60,17 @@ fish_vi_key_bindings
 bind -M insert \ce forward-char
 
 # direnv
-direnv hook fish | source
-set -x DIRENV_LOG_FORMAT ""
+if type "direnv" > /dev/null 2>&1
+  direnv hook fish | source
+  set -x DIRENV_LOG_FORMAT ""
+end
 
 # aws
-complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
+if type "aws" > /dev/null 2>&1
+  complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
+end
+
+# asdf setting
+if type "asdf" > /dev/null 2>&1
+  source ~/.asdf/asdf.fish
+end

@@ -27,7 +27,7 @@ $ ./.bin/init_setup.sh
 
 4. Install tools.
 ```
-$ sudo ansible-playbook -i inventory/localhost install.yml
+$ ansible-playbook -i inventory/localhost install.yml
 ```
 
 5. Switch the default shell to `fish`.

@@ -14,6 +14,8 @@ $ ~/dotfiles/.bin/mac/install_ansible.sh
 
 # arch linux
 $ sudo pacman -S ansible
+
+$ sudo chown -R $(whoami) ~/.ansible/tmp
 ```
 
 3. Create symbolic link.

@@ -4,34 +4,44 @@
 
 1. Clone this repo.
 ```
-$ git clone https://github.com/DuGlaser/dotfiles.git ~/dotfiles
+git clone https://github.com/DuGlaser/dotfiles.git ~/dotfiles
 ```
 
-2. Install `Ansible`
+2. Install `Ansible`.
 ```
 # mac os
-$ ~/dotfiles/.bin/mac/install_ansible.sh
+~/dotfiles/.bin/mac/install_ansible.sh
+```
 
+```
 # arch linux
-$ sudo pacman -S ansible
+sudo pacman -S ansible
 
-$ sudo chown -R $(whoami) ~/.ansible/tmp
+# ubuntu
+sudo apt install ansible
+```
+
+```
+sudo chown -R $(whoami) ~/.ansible/tmp
 ```
 
 3. Create symbolic link.
 ```
-$ cd $HOME/dotfiles
-$ chmod +x ./.bin/init_setup.sh
-$ ./.bin/init_setup.sh
+cd $HOME/dotfiles
+chmod +x ./.bin/init_setup.sh ./.bin/setup_zsh.sh
+./.bin/init_setup.sh
+./.bin/setup_zsh.sh
 ```
 
 4. Install tools.
 ```
-$ ansible-playbook -i inventory/localhost install.yml
+ansible-playbook -i inventory/localhost install.yml
 ```
 
-5. Switch the default shell to `fish`.
-> https://github.com/fish-shell/fish-shell#switching-to-fish
+5. change login shell
+```
+chsh -s $(which zsh)
+```
 
 ## Other
 

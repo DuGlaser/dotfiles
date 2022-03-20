@@ -11,6 +11,6 @@ path=(
 typeset -gx -U fpath
 fpath=(
   $HOME/.zsh/pure
-  ${ASDF_DIR}/completions(N-/)
+  $HOME/.asdf/completions(N-/)
   $fpath
 )

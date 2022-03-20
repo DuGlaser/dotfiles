@@ -22,7 +22,6 @@ jobs:
         run: |
           chmod +x ./.bin/mac/install_ansible.sh
           ./.bin/mac/install_ansible.sh
-          sudo chown -R $(whoami) ~/.ansible/tmp
 
       - name: Install tools
         run: ansible-playbook -i inventory/localhost install.yml

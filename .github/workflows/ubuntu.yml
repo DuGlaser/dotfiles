@@ -2,9 +2,9 @@ name: ubuntu
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
@@ -23,6 +23,7 @@ jobs:
           sudo apt install software-properties-common
           sudo add-apt-repository --yes --update ppa:ansible/ansible
           sudo apt install ansible
+          sudo chown -R $(whoami) ~/.ansible/tmp
 
       - name: Install tools
-        run: sudo ansible-playbook -i inventory/localhost install.yml
+        run: ansible-playbook -i inventory/localhost install.yml

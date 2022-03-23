@@ -194,7 +194,7 @@ local plugins = function()
 		"mhinz/vim-grepper",
 		config = [[require("plugins.grepper")]],
 	})
-	use("kevinhwang91/nvim-bqf")
+	use({ "kevinhwang91/nvim-bqf", ft = "qf" })
 	use({
 		"junegunn/fzf.vim",
 		requires = {
@@ -221,10 +221,10 @@ local plugins = function()
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		config = [[require("plugins.treesitter")]],
-		event = "BufRead",
 		requires = {
 			{ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
 			{ "nvim-treesitter/nvim-treesitter-refactor", after = "nvim-treesitter" },
+			{ "nvim-treesitter/nvim-treesitter-angular", after = "nvim-treesitter" },
 			{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
 		},
 	})

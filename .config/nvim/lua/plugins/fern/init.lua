@@ -1,6 +1,6 @@
 local remap = vim.api.nvim_set_keymap
 
-remap("n", "<Space>u", "<cmd>Fern . -drawer -width=35 -reveal=% <CR><C-w>=", { noremap = true })
+remap("n", "<Space>u", "<cmd>Fern . -drawer -width=40 -reveal=% <CR><C-w>=", { noremap = true })
 
 vim.cmd([[
 let g:fern#disable_default_mappings = 1

@@ -31,15 +31,12 @@ M.on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<Space>cc", "<cmd>lua require'lspsaga.diagnostic'.show_cursor_diagnostics()<CR>", opts)
 
 	if client.resolved_capabilities.document_formatting then
-		vim.api.nvim_exec(
-			[[
-           augroup LspFormatOnSave
-               autocmd! * <buffer>
-               autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
-           augroup END
-      ]],
-			false
-		)
+		vim.cmd([[
+      augroup LspFormatting
+          autocmd! * <buffer>
+          autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync(nil, 2000)
+      augroup END
+    ]])
 	end
 
 	local border = utils.border

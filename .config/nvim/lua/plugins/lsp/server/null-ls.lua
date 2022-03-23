@@ -8,7 +8,7 @@ local common = require("plugins.lsp.common")
 M.prettier_setting_files = { ".prettierrc", ".prettierrc.js", ".prettierrc.json" }
 
 local sources = {
-	b.formatting.prettier.with({
+	b.formatting.prettierd.with({
 		condition = function(utils)
 			return utils.root_has_file(M.prettier_setting_files)
 		end,

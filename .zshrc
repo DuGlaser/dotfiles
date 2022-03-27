@@ -53,7 +53,8 @@ if [[ ! -n $TMUX ]]; then
     return
   fi
   create_new_session="Create New Session"
-  ID="`echo $ID\n$create_new_session | peco --on-cancel=error | cut -d: -f1`"
+  ID="$ID\n${create_new_session}:"
+  ID="`echo $ID | fzf | cut -d: -f1`"
   
   if [[ "$ID" = "${create_new_session}" ]]; then
     tmux new-session
@@ -64,7 +65,7 @@ fi
 
 # ghq + peco
 function peco-src () {
-  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  local selected_dir=$(ghq list -p | fzf)
   if [ -n "$selected_dir" ]; then
     BUFFER="cd ${selected_dir}"
     zle accept-line

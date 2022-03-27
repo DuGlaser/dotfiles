@@ -10,7 +10,8 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color 
+  # TERM: xterm-256color
+  TERM: tmux-256color
   TERM_PROGRAM: alacritty
 
 window:
@@ -35,8 +36,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-   x: 10
-   y: 1
+    x: 10
+    y: 1
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -61,18 +62,16 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Maximized 
+  startup_mode: Maximized
 
   # Window title
   #title: Alacritty
-
   # Window class (Linux/BSD only):
   #class:
-    # Application instance name
-    #instance: Alacritty
-    # General application class
-    #general: Alacritty
-
+  # Application instance name
+  #instance: Alacritty
+  # General application class
+  #general: Alacritty
   # GTK theme variant (Linux/BSD only)
   #
   # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
@@ -98,7 +97,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: MesloLGS NF 
+    family: MesloLGS NF
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -109,7 +108,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: MesloLGS NF 
+    family: MesloLGS NF
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -121,7 +120,7 @@ font:
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
-    family: MesloLGS NF 
+    family: MesloLGS NF
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -133,7 +132,7 @@ font:
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
-    family: MesloLGS NF 
+    family: MesloLGS NF
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
@@ -146,14 +145,12 @@ font:
   #offset:
   #  x: 0
   #  y: 0
-
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   #glyph_offset:
   #  x: 0
   #  y: 0
-
   # Thin stroke font rendering (macOS only)
   #
   # Thin strokes are suitable for retina displays, but for non-retina screens
@@ -179,30 +176,30 @@ font:
 colors:
   # Default colors
   primary:
-    background: '0x32302f'
-    foreground: '0xe6e6dc'
+    background: "0x32302f"
+    foreground: "0xe6e6dc"
 
   # Normal colors
   normal:
-    black:   '0x00384d'
-    red:     '0xc43061'
-    green:   '0x7fc06e'
-    yellow:  '0xf08e48'
-    blue:    '0x1c8db2'
-    magenta: '0xc694ff'
-    cyan:    '0x00cccc'
-    white:   '0x77929e'
+    black: "0x00384d"
+    red: "0xc43061"
+    green: "0x7fc06e"
+    yellow: "0xf08e48"
+    blue: "0x1c8db2"
+    magenta: "0xc694ff"
+    cyan: "0x00cccc"
+    white: "0x77929e"
 
   # Bright colors
   bright:
-    black:   '0x517f8d'
-    red:     '0xff5a67'
-    green:   '0x9cf087'
-    yellow:  '0xffcc1b'
-    blue:    '0x7eb2dd'
-    magenta: '0xfb94ff'
-    cyan:    '0x00ffff'
-    white:   '0xb7cff9'
+    black: "0x517f8d"
+    red: "0xff5a67"
+    green: "0x9cf087"
+    yellow: "0xffcc1b"
+    blue: "0x7eb2dd"
+    magenta: "0xfb94ff"
+    cyan: "0x00ffff"
+    white: "0xb7cff9"
 
   cursor:
     text: "0x002635"
@@ -220,7 +217,6 @@ colors:
   #  magenta: '#80638e'
   #  cyan:    '#497e7a'
   #  white:   '#9a9a9a'
-
   # Indexed Colors
   #
   # The indexed colors include all colors from 16 to 256.
@@ -261,30 +257,30 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-# background_opacity is deprecated. (should window.opacity) 
+# background_opacity is deprecated. (should window.opacity)
 # background_opacity: 1.0
 
 #selection:
-  #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+#semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
-  # When set to `true`, selected text will be copied to the primary clipboard.
-  #save_to_clipboard: false
+# When set to `true`, selected text will be copied to the primary clipboard.
+#save_to_clipboard: false
 
 # Allow terminal applications to change Alacritty's window title.
 #dynamic_title: true
 
 #cursor:
-  # Cursor style
-  #
-  # Values for `style`:
-  #   - ▇ Block
-  #   - _ Underline
-  #   - | Beam
-  #style: Block
+# Cursor style
+#
+# Values for `style`:
+#   - ▇ Block
+#   - _ Underline
+#   - | Beam
+#style: Block
 
-  # If this is `true`, the cursor will be rendered as a hollow box when the
-  # window is not focused.
-  #unfocused_hollow: true
+# If this is `true`, the cursor will be rendered as a hollow box when the
+# window is not focused.
+#unfocused_hollow: true
 
 # Live config reload (changes require restart)
 #live_config_reload: true
@@ -323,38 +319,38 @@ colors:
 #alt_send_esc: true
 
 #mouse:
-  # Click settings
-  #
-  # The `double_click` and `triple_click` settings control the time
-  # alacritty should wait for accepting multiple clicks as one double
-  # or triple click.
-  #double_click: { threshold: 300 }
-  #triple_click: { threshold: 300 }
+# Click settings
+#
+# The `double_click` and `triple_click` settings control the time
+# alacritty should wait for accepting multiple clicks as one double
+# or triple click.
+#double_click: { threshold: 300 }
+#triple_click: { threshold: 300 }
 
-  # If this is `true`, the cursor is temporarily hidden when typing.
-  #hide_when_typing: false
+# If this is `true`, the cursor is temporarily hidden when typing.
+#hide_when_typing: false
 
-  #url:
-    # URL launcher
-    #
-    # This program is executed when clicking on a text which is recognized as a URL.
-    # The URL is always added to the command as the last parameter.
-    #
-    # When set to `None`, URL launching will be disabled completely.
-    #
-    # Default:
-    #   - (macOS) open
-    #   - (Linux/BSD) xdg-open
-    #   - (Windows) explorer
-    #launcher:
-    #  program: xdg-open
-    #  args: []
+#url:
+# URL launcher
+#
+# This program is executed when clicking on a text which is recognized as a URL.
+# The URL is always added to the command as the last parameter.
+#
+# When set to `None`, URL launching will be disabled completely.
+#
+# Default:
+#   - (macOS) open
+#   - (Linux/BSD) xdg-open
+#   - (Windows) explorer
+#launcher:
+#  program: xdg-open
+#  args: []
 
-    # URL modifiers
-    #
-    # These are the modifiers that need to be held down for opening URLs when clicking
-    # on them. The available modifiers are documented in the key binding section.
-    #modifiers: None
+# URL modifiers
+#
+# These are the modifiers that need to be held down for opening URLs when clicking
+# on them. The available modifiers are documented in the key binding section.
+#modifiers: None
 
 # Mouse bindings
 #
@@ -485,18 +481,18 @@ colors:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
 key_bindings:
-  - { key: W,        mods: Alt,     chars: "\x1bw"                 }
-  - { key: A,        mods: Alt,     chars: "\x1ba"                 }
-  - { key: E,        mods: Alt,     chars: "\x1be"                 }
+  - { key: W, mods: Alt, chars: "\x1bw" }
+  - { key: A, mods: Alt, chars: "\x1ba" }
+  - { key: E, mods: Alt, chars: "\x1be" }
 
-  - { key: C,        mods: Alt,     chars: "\x1bc"                 }
-  - { key: V,        mods: Alt,     chars: "\x1bv"                 }
-  - { key: S,        mods: Alt,     chars: "\x1bs"                 }
+  - { key: C, mods: Alt, chars: "\x1bc" }
+  - { key: V, mods: Alt, chars: "\x1bv" }
+  - { key: S, mods: Alt, chars: "\x1bs" }
 
-  - { key: J,        mods: Alt,     chars: "\x1bj"                 }
-  - { key: K,        mods: Alt,     chars: "\x1bk"                 }
-  - { key: H,        mods: Alt,     chars: "\x1bh"                 }
-  - { key: L,        mods: Alt,     chars: "\x1bl"                 }
+  - { key: J, mods: Alt, chars: "\x1bj" }
+  - { key: K, mods: Alt, chars: "\x1bk" }
+  - { key: H, mods: Alt, chars: "\x1bh" }
+  - { key: L, mods: Alt, chars: "\x1bl" }
   # (Windows, Linux, and BSD only)
   #- { key: V,        mods: Control|Shift, action: Paste            }
   #- { key: C,        mods: Control|Shift, action: Copy             }
@@ -506,10 +502,8 @@ key_bindings:
   #- { key: Add,      mods: Control,       action: IncreaseFontSize }
   #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
   #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
-
   # (Windows only)
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
-
   # (macOS only)
   # hs.hotkey.bind({"command", "ctrl"}, "R", function()
   #   hs.execute('open /Applications/Alacritty.app')
@@ -527,7 +521,6 @@ key_bindings:
   #- { key: Q,      mods: Command,         action: Quit             }
   #- { key: W,      mods: Command,         action: Quit             }
   #- { key: F,      mods: Command|Control, action: ToggleFullscreen }
-
   #- { key: Paste,                    action: Paste                            }
   #- { key: Copy,                     action: Copy                             }
   #- { key: L,         mods: Control, action: ClearLogNotice                   }
@@ -536,24 +529,23 @@ key_bindings:
   #- { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
   #- { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
   #- { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
-
 #debug:
-  # Display the time it takes to redraw each frame.
-  #render_timer: false
+# Display the time it takes to redraw each frame.
+#render_timer: false
 
-  # Keep the log file after quitting Alacritty.
-  #persistent_logging: false
+# Keep the log file after quitting Alacritty.
+#persistent_logging: false
 
-  # Log level
-  #
-  # Values for `log_level`:
-  #   - None
-  #   - Error
-  #   - Warn
-  #   - Info
-  #   - Debug
-  #   - Trace
-  #log_level: Warn
+# Log level
+#
+# Values for `log_level`:
+#   - None
+#   - Error
+#   - Warn
+#   - Info
+#   - Debug
+#   - Trace
+#log_level: Warn
 
-  # Print all received window events.
-  #print_events: false)
+# Print all received window events.
+#print_events: false)

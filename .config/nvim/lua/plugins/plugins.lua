@@ -20,6 +20,7 @@ local plugins = function()
 	-- use("tweekmonster/startuptime.vim")
 
 	use({ "wbthomason/packer.nvim", event = "VimEnter", opt = true })
+	use({ "lifepillar/vim-gruvbox8", opt = true })
 	use({
 		"lewis6991/impatient.nvim",
 		config = [[require("impatient")]],
@@ -55,7 +56,6 @@ local plugins = function()
       ]])
 		end,
 	})
-	use({ "lifepillar/vim-gruvbox8", opt = true })
 	use({
 		"aserowy/tmux.nvim",
 		config = function()

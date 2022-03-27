@@ -1,14 +1,15 @@
 require("plugins.lsp.trouble")
 require("plugins.lsp.saga")
 
-local utils = require("plugins.lsp.utils")
 -- NOTE: same lspsaga.nvim
-local diagnosticsGroup = utils.diagnosticsGroup
+local diagnosticsGroup = require("plugins.lsp.utils").diagnosticsGroup
 for _, g in pairs(diagnosticsGroup) do
+	-- undercurlを使うようにする
+	local hi = string.format("hi DiagnosticUnderline%s cterm=undercurl gui=undercurl guisp=%s", g.type, g.color)
+	vim.cmd(hi)
 	vim.fn.sign_define(g.highlight, {
 		text = g.sign,
 		texthl = g.highlight,
-		linehl = string.format("%sLine", g.highlight),
 	})
 end
 

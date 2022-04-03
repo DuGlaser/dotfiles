@@ -48,3 +48,5 @@ require("lualine").setup({
 		lualine_c = lualine_c,
 	},
 })
+
+vim.go.laststatus = 3

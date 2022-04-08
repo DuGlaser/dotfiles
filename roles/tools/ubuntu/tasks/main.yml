@@ -22,16 +22,6 @@
       state: present
       update_cache: yes
 
-  - name: Install lang using apt
-    become: yes
-    apt:
-      pkg:
-        - nodejs
-        - npm
-        - python
-      state: present
-      update_cache: yes
-
   - name: Install alacritty dependencies
     become: yes
     apt:

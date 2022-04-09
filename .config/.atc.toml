@@ -1,11 +1,13 @@
 
 [config]
-  cmd = "g++ -o {{ .dir }}/main {{ .file }} && {{ .dir }}/main"
+  cmd = "g++ -o {{ .dir }}/main {{ .file }} -I/home/duglaser/src/github.com/DuGlaser/atcoder-answer/ac-library/ && {{ .dir }}/main"
   filename = "main.cpp"
   lang = "4003"
   template = """
+#include <atcoder/all>
 #include <bits/stdc++.h>
 using namespace std;
+using namespace atcoder;
 
 template <class T> using vc = vector<T>;
 template <class T> using vvc = vc<vc<T>>;

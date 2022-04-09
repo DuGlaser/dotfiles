@@ -26,5 +26,6 @@ ln -sfnv "$dotfiles_config/fish" "$config/fish"
 ln -sfnv "$dotfiles_config/karabiner" "$config/karabiner"
 ln -sfnv "$dotfiles_config/nvim" "$config/nvim"
 ln -sfnv "$dotfiles_config/starship.toml" "$config/starship.toml"
+ln -sfnv "$dotfiles_config/.atc.toml" "$config/.atc.toml"
 
 echo "linked dotfiles complete!"

@@ -295,11 +295,6 @@ local plugins = function()
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 	})
-	use({
-		"ray-x/lsp_signature.nvim",
-		after = "nvim-cmp",
-		config = [[require("plugins.lsp.signature")]],
-	})
 	use("tami5/lspsaga.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("folke/lua-dev.nvim")
@@ -323,6 +318,7 @@ local plugins = function()
 			{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
 		},
 		branch = "dev",
 		config = [[require("plugins.lsp.nvim-cmp")]],

@@ -35,6 +35,7 @@ local lualine_c = {
 require("lualine").setup({
 	options = {
 		theme = "auto",
+		globalstatus = true,
 	},
 	sections = {
 		lualine_a = { "branch" },
@@ -48,5 +49,3 @@ require("lualine").setup({
 		lualine_c = lualine_c,
 	},
 })
-
-vim.go.laststatus = 3

@@ -25,6 +25,7 @@ opt.signcolumn = "yes"
 opt.cursorline = true
 opt.splitright = true
 opt.showtabline = 2
+opt.laststatus = 3
 
 -- stop default plugins
 g.loaded_gzip = 1

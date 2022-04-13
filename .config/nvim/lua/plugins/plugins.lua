@@ -301,6 +301,7 @@ local plugins = function()
 	use("simrat39/rust-tools.nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("b0o/schemastore.nvim")
+	use("j-hui/fidget.nvim")
 
 	----------------------------------------
 	-- lsp

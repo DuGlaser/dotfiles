@@ -25,7 +25,7 @@ M.on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<Space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
 	buf_set_keymap("n", "<Space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 
-	buf_set_keymap("n", "<Space>rn", "<cmd>Lspsaga rename<CR>", opts)
+	buf_set_keymap("n", "<Space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	buf_set_keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 	buf_set_keymap("n", "<Space>cc", "<cmd>lua require'lspsaga.diagnostic'.show_cursor_diagnostics()<CR>", opts)

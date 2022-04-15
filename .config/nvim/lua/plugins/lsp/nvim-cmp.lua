@@ -1,4 +1,5 @@
 local cmp = require("cmp")
+local types = require("cmp.types")
 
 local lspkind = {
 	Text = "",
@@ -34,10 +35,11 @@ cmp.setup({
 	window = {
 		documentation = {
 			border = border,
-			-- winhighlight = "Normal:FloatBorder",
+			winhighlight = "FloatBorder:FloatBorder",
 		},
 		completion = {
 			border = border,
+			winhighlight = "FloatBorder:FloatBorder,CursorLine:Visual",
 		},
 	},
 	experimental = {
@@ -69,6 +71,12 @@ cmp.setup({
 			c = cmp.mapping.close(),
 		}),
 		["<C-y>"] = cmp.config.disable,
+		["<C-n>"] = cmp.mapping({
+			i = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
+		}),
+		["<C-p>"] = cmp.mapping({
+			i = cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
+		}),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	},
 	sources = cmp.config.sources({

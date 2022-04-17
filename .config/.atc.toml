@@ -1,6 +1,7 @@
 
 [config]
-  cmd = "g++ -o {{ .dir }}/main {{ .file }} -I/home/duglaser/src/github.com/DuGlaser/atcoder-answer/ac-library/ && {{ .dir }}/main"
+  runcmd = "{{ .dir }}/main"
+  buildcmd = "g++ -o {{ .dir }}/main {{ .file }} -I/home/duglaser/src/github.com/DuGlaser/atcoder-answer/ac-library/"
   filename = "main.cpp"
   lang = "4003"
   template = """

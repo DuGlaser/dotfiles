@@ -1,0 +1,11 @@
+{
+  "ct": {
+    "prefix": [
+      "ct"
+    ],
+    "body": [
+      "const $1 = $2"
+    ],
+    "description": "const snippet"
+  }
+}

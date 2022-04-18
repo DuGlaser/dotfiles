@@ -5,6 +5,7 @@ path=(
     /usr/local/bin(N-/)
     /usr/local/go/bin(N-/)
     ~/bin(N-/)
+    $HOME/Library/Python/3.8/bin(N-/)
     $HOME/go/bin(N-/)
     "$path[@]"
 )

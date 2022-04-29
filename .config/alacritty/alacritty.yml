@@ -13,15 +13,12 @@ font:
     family: MesloLGS NF
 
   bold:
-    family: MesloLGS NF
     style: Bold
 
   italic:
-    family: MesloLGS NF
     style: Italic
 
   bold_italic:
-    family: MesloLGS NF
     style: Bold Italic
 
   size: 9

@@ -3,7 +3,7 @@ local common = require("plugins.lsp.common")
 return {
 	init_options = require("nvim-lsp-ts-utils").init_options,
 	on_attach = function(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 		common.on_attach(client, bufnr)
 
 		local ts_utils = require("nvim-lsp-ts-utils")

@@ -20,7 +20,7 @@ M.setup = function()
 	null_ls.setup({
 		sources = sources,
 		on_attach = function(client, bufnr)
-			client.resolved_capabilities.document_formatting = true
+			client.server_capabilities.document_formatting = true
 			common.on_attach(client, bufnr)
 		end,
 	})

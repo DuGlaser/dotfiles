@@ -22,7 +22,10 @@ require("plugins.lsp.server.null-ls").setup()
 local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(function(server)
 	local default_opts = {
-		on_attach = common.on_attach,
+		on_attach = function(client, bufnr)
+			client.server_capabilities.document_formatting = true
+			common.on_attach(client, bufnr)
+		end,
 		capabilities = common.capabilities,
 		flags = {
 			debounce_text_changes = 150,

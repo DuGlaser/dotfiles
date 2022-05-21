@@ -1,4 +1,10 @@
-vim.g.grepper = { tools = { "rg", "grep" }, searchreg = 1 }
+vim.g.grepper = {
+	tools = { "rg", "git" },
+	searchreg = 1,
+	jump = 1,
+	simple_prompt = 1,
+}
+
 vim.cmd(([[
     aug Grepper
         au!
@@ -9,7 +15,7 @@ vim.cmd(([[
 vim.cmd([[
   nmap gs  <plug>(GrepperOperator)
   xmap gs  <plug>(GrepperOperator)
-  nnoremap <Space>g :Grepper -dir repo -tool rg<cr>
+  nnoremap <Space>g :Grepper -dir repo<cr>
 
   hi default link BqfPreviewFloat Normal
   hi default link BqfPreviewBorder Normal

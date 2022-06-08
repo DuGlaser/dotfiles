@@ -90,3 +90,8 @@ source ~/.zsh/zsh-z/zsh-z.plugin.zsh
 if ! type "asdf" > /dev/null 2>&1; then
   source $HOME/.asdf/asdf.sh
 fi
+
+## npm
+if ! type "npm" > /dev/null 2>&1; then
+  source <(npm completion)
+fi

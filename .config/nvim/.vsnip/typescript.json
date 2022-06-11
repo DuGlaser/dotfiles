@@ -27,5 +27,27 @@
       "console.groupEnd()"
     ],
     "description": "console.log snippet"
+  },
+  "getter": {
+    "prefix": [
+      "getter"
+    ],
+    "body": [
+      "get $1() {",
+      "\treturn this._$1;",
+      "}"
+    ],
+    "description": "class getter snippet"
+  },
+  "setter": {
+    "prefix": [
+      "setter"
+    ],
+    "body": [
+      "set $1($2: $3) {",
+      "\tthis._$1 = $2;",
+      "}"
+    ],
+    "description": "class setter snippet"
   }
 }

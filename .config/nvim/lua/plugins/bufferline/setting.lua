@@ -12,6 +12,13 @@ require("bufferline").setup({
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
 			return "(" .. count .. ")"
 		end,
+		custom_filter = function(buf_number, buf_numbers)
+			if vim.bo[buf_number].filetype == "qf" then
+				return false
+			end
+
+			return true
+		end,
 		offsets = { { filetype = "NvimTree", text = "File Explorer", text_align = "left" } },
 		show_buffer_icons = true,
 		show_buffer_close_icons = false,

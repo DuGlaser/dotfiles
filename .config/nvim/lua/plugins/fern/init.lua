@@ -10,12 +10,6 @@ let hide_files = '\%(\.byebug\|\.ruby-\)\+'
 let g:fern#default_exclude = hide_dirs . '\|' . hide_files
 
 function! s:init_fern() abort
-  nmap <buffer><expr>
-        \ <Plug>(fern-custom-select-open)
-        \ fern#smart#leaf(
-        \   ":set laststatus=2<CR>\<Plug>(fern-action-open:select)\:set laststatus=3<CR>",
-        \   "",
-        \ )
   nmap <buffer> <Space>u <cmd>Fern . -drawer -toggle -width=35 -reveal=% <CR><C-w>=
 
   nmap <buffer> E <Plug>(fern-action-open:side)
@@ -27,7 +21,7 @@ function! s:init_fern() abort
   nmap <buffer> c <Plug>(fern-action-new-file)
   nmap <buffer> n <Plug>(fern-action-new-dir)
   nmap <buffer> l <Plug>(fern-action-open-or-expand)
-  nmap <buffer> <Plug>(fern-action-open) <Plug>(fern-custom-select-open)
+  nmap <buffer> <Plug>(fern-action-open) <Plug>(fern-action-open:select)
   nmap <buffer> t <Plug>(fern-action-open:tabedit)
   nmap <buffer> r <Plug>(fern-action-rename)
   nmap <buffer> D <Plug>(fern-action-trash)

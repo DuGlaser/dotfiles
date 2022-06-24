@@ -27,8 +27,9 @@ bindkey "^?" backward-delete-char
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
-SAVEHIST=1000
+SAVEHIST=10000
 HISTFILE=~/.zsh_history
+setopt hist_ignore_all_dups
 
 setopt histignorealldups sharehistory
 setopt share_history
@@ -95,3 +96,11 @@ fi
 if ! type "npm" > /dev/null 2>&1; then
   source <(npm completion)
 fi
+
+# custom setting
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history

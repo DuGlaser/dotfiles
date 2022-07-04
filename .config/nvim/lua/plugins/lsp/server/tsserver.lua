@@ -1,7 +1,45 @@
 local common = require("plugins.lsp.common")
 
+local tsHandlers = {
+	["textDocument/definition"] = function(_, result, params)
+		local util = require("vim.lsp.util")
+		local client = vim.lsp.get_client_by_id(params.client_id)
+		local offset_encoding = client.offset_encoding
+
+		if result == nil or vim.tbl_isempty(result) then
+			return nil
+		end
+
+		if vim.tbl_islist(result) then
+			util.jump_to_location(result[1], offset_encoding)
+
+			if #result > 1 then
+				local isReactDTs = false
+				---@diagnostic disable-next-line: unused-local
+				for key, value in pairs(result) do
+					if string.match(value.uri, "react/index.d.ts") then
+						isReactDTs = true
+						break
+					end
+				end
+				if not isReactDTs then
+					vim.fn.setqflist({}, " ", {
+						title = "Language Server",
+						items = util.locations_to_items(result, offset_encoding),
+					})
+					vim.api.nvim_command("copen")
+					vim.api.nvim_command("wincmd p")
+				end
+			end
+		else
+			util.jump_to_location(result, offset_encoding)
+		end
+	end,
+}
+
 return {
 	init_options = require("nvim-lsp-ts-utils").init_options,
+	handlers = tsHandlers,
 	on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
 		common.on_attach(client, bufnr)
@@ -14,16 +52,41 @@ return {
 			disable_commands = false,
 			enable_import_on_completion = false,
 
+			-- import all
+			import_all_timeout = 5000, -- ms
+			-- lower numbers = higher priority
+			import_all_priorities = {
+				same_file = 1, -- add to existing import statement
+				local_files = 2, -- git files or files with relative path markers
+				buffer_content = 3, -- loaded buffer content
+				buffers = 4, -- loaded buffer names
+			},
 			import_all_scan_buffers = 100,
 			import_all_select_source = false,
+			-- if false will avoid organizing imports
+			always_organize_imports = true,
 
 			-- filter diagnostics
 			filter_out_diagnostics_by_severity = {},
 			filter_out_diagnostics_by_code = {},
 
 			-- inlay hints
-			auto_inlay_hints = false,
+			auto_inlay_hints = true,
 			inlay_hints_highlight = "Comment",
+			inlay_hints_priority = 200, -- priority of the hint extmarks
+			inlay_hints_throttle = 150, -- throttle the inlay hint request
+			inlay_hints_format = { -- format options for individual hint kind
+				Type = {},
+				Parameter = {},
+				Enum = {},
+				-- Example format customization for `Type` kind:
+				-- Type = {
+				--     highlight = "Comment",
+				--     text = function(text)
+				--         return "->" .. text:sub(2)
+				--     end,
+				-- },
+			},
 
 			-- update imports on file move
 			update_imports_on_move = false,

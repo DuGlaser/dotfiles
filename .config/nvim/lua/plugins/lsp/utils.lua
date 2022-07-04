@@ -2,28 +2,35 @@ local M = {}
 
 M.border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 
+M.colors = {
+	error = "Red",
+	warn = "Orange",
+	hint = "LightGrey",
+	info = "LightBlue",
+}
+
 M.diagnosticsGroup = {
 	err_group = {
 		type = "Error",
-		color = "Red",
+		color = M.colors.error,
 		highlight = "DiagnosticSignError",
 		sign = "🔥",
 	},
 	warn_group = {
 		type = "Warn",
-		color = "Orange",
+		color = M.colors.warn,
 		highlight = "DiagnosticSignWarn",
 		sign = "👀",
 	},
 	hint_group = {
 		type = "Hint",
-		color = "LightGrey",
+		color = M.colors.hint,
 		highlight = "DiagnosticSignHint",
 		sign = "💡",
 	},
 	info_group = {
 		type = "Info",
-		color = "LightBlue",
+		color = M.colors.info,
 		highlight = "DiagnosticSignInfo",
 		sign = "💬",
 	},

@@ -295,7 +295,6 @@ local plugins = function()
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 	})
-	use("tami5/lspsaga.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("folke/lua-dev.nvim")
 	use("simrat39/rust-tools.nvim")

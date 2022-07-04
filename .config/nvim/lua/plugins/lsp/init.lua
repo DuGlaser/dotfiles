@@ -1,9 +1,7 @@
 require("plugins.lsp.trouble")
-require("plugins.lsp.saga")
 
 require("fidget").setup({})
 
--- NOTE: same lspsaga.nvim
 local diagnosticsGroup = require("plugins.lsp.utils").diagnosticsGroup
 for _, g in pairs(diagnosticsGroup) do
 	-- undercurlを使うようにする

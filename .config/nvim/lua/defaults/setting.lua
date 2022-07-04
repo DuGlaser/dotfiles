@@ -26,7 +26,7 @@ opt.cursorline = true
 opt.splitright = true
 opt.showtabline = 2
 opt.laststatus = 3
-opt.cmdheight = 0
+-- opt.cmdheight = 0
 
 -- stop default plugins
 g.loaded_gzip = 1

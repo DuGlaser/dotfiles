@@ -33,28 +33,7 @@ local plugins = function()
 	})
 	use({
 		"MattesGroeger/vim-bookmarks",
-		config = function()
-			vim.cmd([[
-        let g:bookmark_sign = '🔖'
-        let g:bookmark_save_per_working_dir = 1
-        let g:bookmark_auto_save = 1
-        
-        function! g:BMWorkDirFileLocation()
-            let filename = 'bookmarks'
-            let location = ''
-            if isdirectory('.git')
-                let location = getcwd().'/.git'
-            else
-                let location = finddir('.git', '.;')
-            endif
-            if len(location) > 0
-                return location.'/'.filename
-            else
-                return getcwd().'/.'.filename
-            endif
-        endfunction
-      ]])
-		end,
+		config = [[require("plugins.bookmarks")]],
 	})
 	use({
 		"aserowy/tmux.nvim",

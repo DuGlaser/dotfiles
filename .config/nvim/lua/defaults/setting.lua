@@ -45,9 +45,6 @@ g.loaded_netrwPlugin = 1
 g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
 
-g.do_filetype_lua = 1
-g.did_load_filetypes = 0
-
 cmd([[
   set clipboard+=unnamedplus
   set t_Co=256

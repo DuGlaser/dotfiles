@@ -30,9 +30,22 @@ lsp_installer.on_server_ready(function(server)
 		},
 	}
 
+	local enableFormatSetting = {
+		on_attach = function(client, bufnr)
+			client.server_capabilities.documentFormattingProvider = true
+			common.on_attach(client, bufnr)
+		end,
+		capabilities = common.capabilities,
+		flags = {
+			debounce_text_changes = 150,
+		},
+	}
+
 	local opts = {
 		["angularls"] = require("plugins.lsp.server.angularls"),
+		["ccls"] = enableFormatSetting,
 		["eslint"] = require("plugins.lsp.server.eslint"),
+		["gopls"] = enableFormatSetting,
 		["jsonls"] = require("plugins.lsp.server.jsonls"),
 		["sumneko_lua"] = require("plugins.lsp.server.sumneko_lua"),
 		["tsserver"] = require("plugins.lsp.server.tsserver"),

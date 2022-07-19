@@ -8,6 +8,8 @@ local common = require("plugins.lsp.common")
 
 M.prettier_setting_files = { ".prettierrc", ".prettierrc.js", ".prettierrc.json" }
 
+M.enable_prettier = utils.root_has_file(M.prettier_setting_files)
+
 local sources = {
 	function()
 		return utils.root_has_file(M.prettier_setting_files) and b.formatting.prettierd

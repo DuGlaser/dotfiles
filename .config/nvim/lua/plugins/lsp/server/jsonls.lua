@@ -1,17 +1,16 @@
 local common = require("plugins.lsp.common")
-local utils = require("null-ls.utils").make_conditional_utils()
-local setting_file_list = require("plugins.lsp.server.null-ls").prettier_setting_files
+local enable_prettier = require("plugins.lsp.server.null-ls").enable_prettier
 
 return {
 	on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = not utils.root_has_file(setting_file_list)
+		client.server_capabilities.documentFormattingProvider = not enable_prettier
 		common.on_attach(client, bufnr)
 	end,
 	capabilities = common.capabilities,
 	settings = {
 		json = {
 			format = {
-				enable = false,
+				enable = not enable_prettier,
 			},
 			schemas = require("schemastore").json.schemas(),
 		},

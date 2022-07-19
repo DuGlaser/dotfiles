@@ -1,37 +1,37 @@
 - block:
-  - name: homebrew update
-    community.general.homebrew:
-      update_homebrew: yes
+    - name: homebrew update
+      community.general.homebrew:
+        update_homebrew: yes
 
-  - name: install package using homebrew
-    community.general.homebrew:
-      state: present
-      name:
-        - bat
-        - exa
-        - fzf
-        - gh
-        - ghq
-        - git
-        - htop
-        - hub
-        - neofetch
-        - peco
-        - ripgrep
-        - tig
-        - tmux
+    - name: install package using homebrew
+      community.general.homebrew:
+        state: present
+        name:
+          - bat
+          - exa
+          - fzf
+          - gh
+          - ghq
+          - git
+          - htop
+          - hub
+          - neofetch
+          - peco
+          - ripgrep
+          - tig
+          - tmux
 
-  - name: Install lang using homebrew
-    community.general.homebrew:
-      state: present
-      name:
-        - node
-        - go
+    - name: Install lang using homebrew
+      community.general.homebrew:
+        state: present
+        name:
+          - node
+          - go
 
-  - name: install neovim head
-    community.general.homebrew:
-      state: latest
-      name:
-        - neovim
+    - name: install neovim head
+      community.general.homebrew:
+        state: latest
+        name:
+          - neovim
 
   when: ansible_os_family == "Darwin"

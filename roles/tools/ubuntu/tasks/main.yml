@@ -1,63 +1,63 @@
 - block:
-  - name: Run the equivalent of "apt-get update" as a separate step
-    become: yes
-    apt:
-      update_cache: yes
+    - name: Run the equivalent of "apt-get update" as a separate step
+      become: true
+      apt:
+        update_cache: yes
 
-  - name: Install tools using apt
-    become: yes
-    apt:
-      pkg:
-        - bat
-        - fish
-        - fzf
-        - gufw
-        - htop
-        - hub
-        - neovim
-        - peco
-        - tig
-        - tmux
-        - xclip
-      state: present
-      update_cache: yes
+    - name: Install tools using apt
+      become: true
+      apt:
+        pkg:
+          - bat
+          - fish
+          - fzf
+          - gufw
+          - htop
+          - hub
+          - neovim
+          - peco
+          - tig
+          - tmux
+          - xclip
+        state: present
+        update_cache: yes
 
-  - name: Install alacritty dependencies
-    become: yes
-    apt:
-      pkg:
-        - cmake
-        - pkg-config
-        - libfreetype6-dev
-        - libfontconfig1-dev
-        - libxcb-xfixes0-dev
-        - libxkbcommon-dev
-        - python3
-      state: present
-      update_cache: yes
+    - name: Install alacritty dependencies
+      become: true
+      apt:
+        pkg:
+          - cmake
+          - pkg-config
+          - libfreetype6-dev
+          - libfontconfig1-dev
+          - libxcb-xfixes0-dev
+          - libxkbcommon-dev
+          - python3
+        state: present
+        update_cache: yes
 
-  - name: Build alacritty
-    become: yes
-    shell: |
-      chmod +x ./.bin/setup_alacritty.sh
-      bash ./.bin/setup_alacritty.sh
+    - name: Build alacritty
+      become: true
+      shell: |
+        chmod +x ./.bin/setup_alacritty.sh
+        bash ./.bin/setup_alacritty.sh
 
-  - name: Install neovim dependencies
-    become: yes
-    apt:
-      pkg:
-        - ninja-build
-        - gettext
-        - libtool
-        - libtool-bin
-        - autoconf
-        - automake
-        - cmake
-        - g++
-        - pkg-config
-        - unzip
-        - curl
-      state: present
-      update_cache: yes
+    - name: Install neovim dependencies
+      become: true
+      apt:
+        pkg:
+          - ninja-build
+          - gettext
+          - libtool
+          - libtool-bin
+          - autoconf
+          - automake
+          - cmake
+          - g++
+          - pkg-config
+          - unzip
+          - curl
+        state: present
+        update_cache: yes
 
   when: ansible_os_family == "Debian"

@@ -13,16 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Create symbolic link.
-        run: |
-          chmod +x ./.bin/init_setup.sh
-          ./.bin/init_setup.sh
-
       - name: Install ansible
         run: |
           sudo apt install software-properties-common
           sudo add-apt-repository --yes --update ppa:ansible/ansible
           sudo apt install ansible
 
-      - name: Install tools
-        run: ansible-playbook -i inventory/localhost install.yml
+      - name: setup
+        run: make init

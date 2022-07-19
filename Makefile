@@ -21,5 +21,3 @@ setup/alacritty:
 .PHONY: setup/zsh
 setup/zsh:
 	./.bin/setup_zsh.sh
-
-

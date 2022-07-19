@@ -276,6 +276,7 @@ local plugins = function()
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("b0o/schemastore.nvim")
 	use("j-hui/fidget.nvim")
+	use("ray-x/lsp_signature.nvim")
 
 	----------------------------------------
 	-- lsp
@@ -293,7 +294,6 @@ local plugins = function()
 			{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
 		},
 		config = [[require("plugins.lsp.nvim-cmp")]],
 		event = "InsertEnter",

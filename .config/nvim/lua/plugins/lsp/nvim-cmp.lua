@@ -80,7 +80,6 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	},
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp_signature_help" },
 		{ name = "vsnip" },
 		{ name = "nvim_lsp", max_item_count = 20 },
 		{ name = "buffer", keyword_length = 2, max_item_count = 4 },

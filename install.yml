@@ -2,4 +2,3 @@
   roles:
     - tools/mac
     - tools/ubuntu
-    - tools/arch

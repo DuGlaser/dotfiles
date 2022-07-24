@@ -49,6 +49,7 @@ cmd([[
   set clipboard+=unnamedplus
   set t_Co=256
   set nocompatible
+  set mouse=
 ]])
 
 vim.api.nvim_exec(

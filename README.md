@@ -25,20 +25,13 @@ sudo apt install ansible
 sudo chown -R $(whoami) ~/.ansible/tmp
 ```
 
-3. Create symbolic link.
+3. Setup
 ```
 cd $HOME/dotfiles
-chmod +x ./.bin/init_setup.sh ./.bin/setup_zsh.sh
-./.bin/init_setup.sh
-./.bin/setup_zsh.sh
+make init
 ```
 
-4. Install tools.
-```
-ansible-playbook -i inventory/localhost install.yml
-```
-
-5. change login shell
+4. change login shell
 ```
 chsh -s $(which zsh)
 ```

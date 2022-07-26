@@ -285,7 +285,12 @@ local plugins = function()
 		"neovim/nvim-lspconfig",
 		config = [[require("plugins.lsp")]],
 	})
-	use("williamboman/nvim-lsp-installer")
+	use({
+		"williamboman/mason.nvim",
+		requires = {
+			"williamboman/mason-lspconfig.nvim",
+		},
+	})
 	use({
 		"hrsh7th/nvim-cmp",
 		requires = {

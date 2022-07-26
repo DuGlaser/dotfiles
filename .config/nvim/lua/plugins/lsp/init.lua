@@ -16,60 +16,57 @@ end
 local common = require("plugins.lsp.common")
 require("plugins.lsp.server.null-ls").setup()
 
--- Custom initialize
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.on_server_ready(function(server)
-	local default_opts = {
-		on_attach = function(client, bufnr)
-			client.server_capabilities.documentFormattingProvider = false
-			common.on_attach(client, bufnr)
-		end,
-		capabilities = common.capabilities,
-		flags = {
-			debounce_text_changes = 150,
-		},
-	}
+local default_opts = {
+	on_attach = function(client, bufnr)
+		client.server_capabilities.documentFormattingProvider = false
+		common.on_attach(client, bufnr)
+	end,
+	capabilities = common.capabilities,
+	flags = {
+		debounce_text_changes = 150,
+	},
+}
 
-	local enableFormatSetting = vim.tbl_deep_extend("force", default_opts, {
-		on_attach = function(client, bufnr)
-			client.server_capabilities.documentFormattingProvider = true
-			common.on_attach(client, bufnr)
-		end,
-	})
+local enableFormatSetting = vim.tbl_deep_extend("force", default_opts, {
+	on_attach = function(client, bufnr)
+		client.server_capabilities.documentFormattingProvider = true
+		common.on_attach(client, bufnr)
+	end,
+})
 
-	local opts = {
-		["angularls"] = require("plugins.lsp.server.angularls"),
-		["ccls"] = enableFormatSetting,
-		["eslint"] = require("plugins.lsp.server.eslint"),
-		["gopls"] = enableFormatSetting,
-		["jsonls"] = require("plugins.lsp.server.jsonls"),
-		["sumneko_lua"] = require("plugins.lsp.server.sumneko_lua"),
-		["tsserver"] = require("plugins.lsp.server.tsserver"),
-		["yamlls"] = require("plugins.lsp.server.yamlls"),
-	}
+local lspconfig = require("lspconfig")
+local opts = {
+	["angularls"] = require("plugins.lsp.server.angularls"),
+	["ccls"] = enableFormatSetting,
+	["eslint"] = require("plugins.lsp.server.eslint"),
+	["gopls"] = enableFormatSetting,
+	["jsonls"] = require("plugins.lsp.server.jsonls"),
+	["sumneko_lua"] = require("plugins.lsp.server.sumneko_lua"),
+	["tsserver"] = require("plugins.lsp.server.tsserver"),
+	["yamlls"] = require("plugins.lsp.server.yamlls"),
+}
 
-	if server.name == "rust_analyzer" then
-		local ra = require("plugins.lsp.server.rust-analyzer")
-		local rustServer = vim.tbl_deep_extend("force", server:get_default_options(), ra)
-
-		require("rust-tools").setup({
-			tools = {
-				autoSetHints = true,
-				hover_with_actions = true,
-				inlay_hints = {
-					show_parameter_hints = false,
-					parameter_hints_prefix = "",
-					other_hints_prefix = "",
-				},
-			},
-			server = rustServer,
-		})
-		server:attach_buffers()
-		return
-	end
-	server:setup(opts[server.name] and opts[server.name] or default_opts)
-	vim.cmd([[ do User LspAttachBuffers ]])
-end)
+require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"angularls",
+		"ccls",
+		"eslint",
+		"gopls",
+		"jsonls",
+		"sumneko_lua",
+		"tsserver",
+		"yamlls",
+		"cssls",
+		"html",
+	},
+	automatic_installation = true,
+})
+require("mason-lspconfig").setup_handlers({
+	function(server_name)
+		lspconfig[server_name].setup(opts[server_name] and opts[server_name] or default_opts)
+	end,
+})
 
 require("lsp_signature").setup({
 	floating_window = false,

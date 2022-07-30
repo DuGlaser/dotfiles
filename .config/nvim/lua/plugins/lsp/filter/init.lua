@@ -11,21 +11,18 @@ local get_clients_table = function()
 	return table
 end
 
-M.for_deno = function(client, clients_table)
-	if client.name == "denols" then
-		if clients_table["tsserver"] ~= nil then
-			clients_table["tsserver"].stop()
-		end
-	elseif client.name == "tsserver" then
-		if clients_table["denols"] ~= nil then
-			client.stop()
-		end
+M.for_deno = function(clients_table)
+	local tsserver = clients_table["tsserver"]
+	local denols = clients_table["denols"]
+
+	if tsserver ~= nil and denols ~= nil then
+		tsserver.stop()
 	end
 end
 
-M.apply = function(client)
+M.apply = function()
 	local clients_table = get_clients_table()
-	M.for_deno(client, clients_table)
+	M.for_deno(clients_table)
 end
 
 return M

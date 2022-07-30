@@ -70,7 +70,7 @@ require("mason-lspconfig").setup_handlers({
 		local opt = opts[server_name] and opts[server_name] or default_opts
 		local new_opt = vim.tbl_deep_extend("force", opt, {
 			on_attach = function(client, bufnr)
-				filter.apply(client)
+				filter.apply()
 				opt.on_attach(client, bufnr)
 			end,
 		})

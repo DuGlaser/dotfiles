@@ -38,6 +38,7 @@ local lspconfig = require("lspconfig")
 local opts = {
 	["angularls"] = require("plugins.lsp.server.angularls"),
 	["ccls"] = enableFormatSetting,
+	["denols"] = require("plugins.lsp.server.denols"),
 	["eslint"] = require("plugins.lsp.server.eslint"),
 	["gopls"] = enableFormatSetting,
 	["jsonls"] = require("plugins.lsp.server.jsonls"),
@@ -62,9 +63,19 @@ require("mason-lspconfig").setup({
 	},
 	automatic_installation = true,
 })
+
+local filter = require("plugins.lsp.filter")
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
-		lspconfig[server_name].setup(opts[server_name] and opts[server_name] or default_opts)
+		local opt = opts[server_name] and opts[server_name] or default_opts
+		local new_opt = vim.tbl_deep_extend("force", opt, {
+			on_attach = function(client, bufnr)
+				filter.apply(client)
+				opt.on_attach(client, bufnr)
+			end,
+		})
+
+		lspconfig[server_name].setup(new_opt)
 	end,
 })
 

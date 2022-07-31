@@ -79,6 +79,9 @@ require("mason-lspconfig").setup_handlers({
 	end,
 })
 
+-- manual setup
+lspconfig.ccls.setup(opts["ccls"])
+
 require("lsp_signature").setup({
 	floating_window = false,
 	hint_prefix = "🤔 ",

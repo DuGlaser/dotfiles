@@ -175,13 +175,6 @@ local plugins = function()
 		requires = {
 			{ "junegunn/fzf", run = "./install --bin" },
 		},
-		config = function()
-			vim.cmd([[
-        let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
-        nmap  <Space>F  :FZF<CR>
-        nmap  <Space>B  :Buffers<CR>
-      ]])
-		end,
 	})
 
 	----------------------------------------
@@ -213,6 +206,19 @@ local plugins = function()
 		requires = {
 			"hrsh7th/fern-mapping-collapse-or-leave.vim",
 		},
+	})
+
+	----------------------------------------
+	-- telescope
+	----------------------------------------
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.0",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope-fzy-native.nvim" },
+		},
+		config = [[require("plugins.telescope")]],
 	})
 
 	----------------------------------------

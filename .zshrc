@@ -104,3 +104,11 @@ function select-history() {
 }
 zle -N select-history
 bindkey '^r' select-history
+
+# copy alias
+if  [[ "$(uname)" = 'Linux' ]]; then
+  if type xclip > /dev/null 2>&1; then
+    alias pbcopy='xclip -selection c'
+    alias pbpaste='xclip -selection c -o'
+  fi
+fi

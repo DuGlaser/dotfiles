@@ -1,0 +1,47 @@
+set main-view = id date author commit-title:graph=yes,refs=yes
+
+# blameで行数を表示するようにする
+set blame-view  = date:default author id:yes,color line-number:yes,interval=1 text
+
+set pager-view  = line-number:yes,interval=1 text
+set stage-view  = line-number:yes,interval=1 text
+set log-view    = line-number:yes,interval=1 text
+set blob-view   = line-number:yes,interval=1 text
+set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
+
+set vertical-split = yes
+set line-graphics = utf-8
+set ignore-space = at-eol
+set ignore-case = true
+set diff-options = -m --first-parent
+
+bind generic g      move-first-line
+bind generic G      move-last-line
+bind main    G      move-last-line
+
+bind generic C      !git commit
+bind refs    C      !git commit
+bind main    C      !git commit
+
+bind generic ^      ?git reset --soft HEAD^
+
+bind main    H      ?git reset --hard %(commit)
+bind diff    H      ?git reset --hard %(commit)
+bind refs    H      ?git reset --hard %(branch)
+
+bind generic y      @bash -c "echo -n %(commit) | $HOME/dotfiles/.bin/copy.sh"
+
+bind main    !      ?git revert %(commit)
+
+bind main    K      ?git cherry-pick %(commit)
+bind diff    K      ?git cherry-pick %(commit)
+
+bind main    I      ?git rebase -i %(commit)
+bind diff    I      ?git rebase -i %(commit)
+bind refs    I      ?git rebase -i %(commit)
+
+bind main    ;      @hub browse -- commit/%(commit)
+bind blame   ;      @hub browse -- commit/%(commit)
+bind diff    ;      @hub browse -- commit/%(commit)
+
+bind generic P      ?git push -u %(remote) %(repo:head)

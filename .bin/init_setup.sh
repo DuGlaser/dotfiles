@@ -16,6 +16,7 @@ ln -sfnv "$dotfiles/.asdfrc" "$HOME/.asdfrc"
 ln -sfnv "$dotfiles/.ideavimrc" "$HOME/.ideavimrc"
 ln -sfnv "$dotfiles/.zshrc" "$HOME/.zshrc"
 ln -sfnv "$dotfiles/.zshenv" "$HOME/.zshenv"
+ln -sfnv "$dotfiles/.tigrc" "$HOME/.tigrc"
 
 dotfiles_config="$dotfiles/.config"
 config="$HOME/.config"

@@ -11,6 +11,9 @@ return {
 			format = {
 				enable = false,
 			},
+			diagnostics = {
+				globals = { "vim" },
+			},
 		},
 	},
 }

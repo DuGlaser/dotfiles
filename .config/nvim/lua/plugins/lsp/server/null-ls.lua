@@ -15,10 +15,11 @@ local sources = {
 		return utils.root_has_file(M.prettier_setting_files) and b.formatting.prettierd
 	end,
 	b.formatting.stylua,
+	b.diagnostics.shellcheck,
+	b.code_actions.shellcheck,
 }
 
 M.setup = function()
-	---@diagnostic disable-next-line: redundant-parameter
 	null_ls.setup({
 		sources = sources,
 		on_attach = function(client, bufnr)

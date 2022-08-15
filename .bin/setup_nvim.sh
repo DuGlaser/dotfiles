@@ -1,8 +1,8 @@
 #!/bin/bash
-cd ~
+cd ~ || exit
 sudo rm -r neovim
 git clone https://github.com/neovim/neovim
-cd neovim
+cd neovim || exit
 sudo make CMAKE_BUILD_TYPE=Release install
-cd ~
+cd ~ || exit
 sudo rm -r neovim

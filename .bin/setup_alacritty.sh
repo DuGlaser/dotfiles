@@ -1,8 +1,8 @@
 #!/bin/bash
-cd ~
+cd ~ || exit
 rm -rf alacritty
 git clone https://github.com/alacritty/alacritty.git
-cd alacritty
+cd alacritty || exit
 cargo build --release
 
 sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH

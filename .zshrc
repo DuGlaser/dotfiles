@@ -4,6 +4,14 @@ alias l="exa -a -1"
 alias cls="clear"
 alias rg="rg --colors 'match:bg:yellow' --colors 'match:fg:black' --colors 'match:style:nobold' --colors 'path:fg:green' --colors 'path:style:bold' --colors 'line:fg:yellow' --colors 'line:style:bold'"
 
+## copy alias
+if  [[ "$(uname)" = 'Linux' ]]; then
+  if type xclip > /dev/null 2>&1; then
+    alias pbcopy='xclip -selection c'
+    alias pbpaste='xclip -selection c -o'
+  fi
+fi
+
 # Ctrl-sでフリーズしないようにする
 stty -ixon
 
@@ -105,10 +113,3 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
-# copy alias
-if  [[ "$(uname)" = 'Linux' ]]; then
-  if type xclip > /dev/null 2>&1; then
-    alias pbcopy='xclip -selection c'
-    alias pbpaste='xclip -selection c -o'
-  fi
-fi

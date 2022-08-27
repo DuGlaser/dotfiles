@@ -308,7 +308,6 @@ local plugins = function()
 			{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
 		},
 		config = [[require("plugins.lsp.nvim-cmp")]],
-		event = "InsertEnter",
 	})
 end
 

@@ -81,17 +81,6 @@ local plugins = function()
 		config = [[require("plugins.hlslens")]],
 	})
 	use({
-		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup({
-				check_ts = true,
-			})
-			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-			local cmp = require("cmp")
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-		end,
-	})
-	use({
 		"lewis6991/gitsigns.nvim",
 		config = [[require("plugins.gitsign")]],
 		event = "BufRead",
@@ -305,7 +294,21 @@ local plugins = function()
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
 		},
+		tag = "v0.0.1",
+		event = "InsertEnter",
 		config = [[require("plugins.lsp.nvim-cmp")]],
+	})
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({
+				check_ts = true,
+			})
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			local cmp = require("cmp")
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+		end,
+		after = "nvim-cmp",
 	})
 end
 

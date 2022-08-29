@@ -175,10 +175,10 @@ local plugins = function()
 	----------------------------------------
 	use({
 		"nvim-treesitter/nvim-treesitter",
+		commit = "d17440f598967c4e2e5e707a225fd994855a79bf",
 		config = [[require("plugins.treesitter")]],
 		requires = {
 			{ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
-			{ "nvim-treesitter/nvim-treesitter-refactor", after = "nvim-treesitter" },
 			{ "nvim-treesitter/nvim-treesitter-angular", after = "nvim-treesitter" },
 			{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
 		},
@@ -267,7 +267,7 @@ local plugins = function()
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("folke/lua-dev.nvim")
 	use("simrat39/rust-tools.nvim")
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	-- use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("b0o/schemastore.nvim")
 	use("j-hui/fidget.nvim")
 	use("ray-x/lsp_signature.nvim")

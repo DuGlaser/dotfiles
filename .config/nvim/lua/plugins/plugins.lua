@@ -175,11 +175,9 @@ local plugins = function()
 	----------------------------------------
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		commit = "d17440f598967c4e2e5e707a225fd994855a79bf",
 		config = [[require("plugins.treesitter")]],
 		requires = {
 			{ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
-			{ "nvim-treesitter/nvim-treesitter-angular", after = "nvim-treesitter" },
 			{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
 		},
 	})

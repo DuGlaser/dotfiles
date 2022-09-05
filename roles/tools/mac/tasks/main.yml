@@ -1,9 +1,9 @@
 - block:
-    - name: homebrew update
+    - name: Homebrew update
       community.general.homebrew:
         update_homebrew: yes
 
-    - name: install package using homebrew
+    - name: Install package using homebrew
       community.general.homebrew:
         state: present
         name:
@@ -21,17 +21,28 @@
           - tig
           - tmux
 
-    - name: Install lang using homebrew
+    - name: Install rust
+      become: true
+      shell: make setup/rust
+
+    - name: Build alacritty
+      become: true
+      shell: make setup/alacritty
+
+    - name: Install neovim dependencies
       community.general.homebrew:
         state: present
         name:
-          - node
-          - go
+          - ninja
+          - libtool
+          - automake
+          - cmake
+          - pkg-config
+          - gettext
+          - curl
 
-    - name: install neovim head
-      community.general.homebrew:
-        state: latest
-        name:
-          - neovim
+    - name: Build neovim
+      become: true
+      shell: make setup/nvim
 
   when: ansible_os_family == "Darwin"

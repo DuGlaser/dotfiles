@@ -8,6 +8,7 @@ path=(
     ~/bin(N-/)
     $HOME/Library/Python/3.8/bin(N-/)
     $HOME/go/bin(N-/)
+		$HOME/.cargo/bin(N-/)
     $DENO_INSTALL_ROOT/bin(N-/)
     "$path[@]"
 )

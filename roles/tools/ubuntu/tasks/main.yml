@@ -14,7 +14,6 @@
           - gufw
           - htop
           - hub
-          - neovim
           - peco
           - tig
           - tmux
@@ -36,11 +35,15 @@
         state: present
         update_cache: yes
 
+    - name: Install rust
+      become: true
+      shell: make setup/rust
+
     - name: Build alacritty
       become: true
-      shell: |
-        chmod +x ./.bin/setup_alacritty.sh
-        bash ./.bin/setup_alacritty.sh
+      shell: source "$HOME/.cargo/env" && make setup/alacritty
+      args:
+        executable: /bin/bash
 
     - name: Install neovim dependencies
       become: true
@@ -59,5 +62,9 @@
           - curl
         state: present
         update_cache: yes
+
+    - name: Build neovim
+      become: true
+      shell: make setup/nvim
 
   when: ansible_os_family == "Debian"

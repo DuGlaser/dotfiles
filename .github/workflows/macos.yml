@@ -13,10 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install ansible
-        run: |
-          chmod +x ./.bin/mac/install_ansible.sh
-          ./.bin/mac/install_ansible.sh
-
       - name: setup
         run: make init

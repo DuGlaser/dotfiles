@@ -1,10 +1,5 @@
 #! /bin/bash
 
-if type cargo > /dev/null 2>&1; then
-	echo "Rust is already installed."
-	exit 0
-fi
-
 rm -rf rust
 mkdir rust
 cd rust || exit

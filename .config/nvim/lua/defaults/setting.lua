@@ -1,6 +1,3 @@
--- TODO: Need Refactoring
--- Base on https://github.com/elianiva/dotfiles/blob/master/nvim/.config/nvim/lua/modules/_settings.lua
-
 local opt = vim.opt
 local g = vim.g
 
@@ -25,6 +22,12 @@ opt.cursorline = true
 opt.splitright = true
 opt.showtabline = 2
 opt.laststatus = 3
+
+-- まだ言語サポートがいまいちなのでもう少し様子を見る
+-- opt.spell = true
+-- opt.spelllang = { "en", "cjk" }
+-- opt.spelloptions = { "noplainbuffer", "camel" }
+
 -- opt.cmdheight = 0
 
 -- stop default plugins

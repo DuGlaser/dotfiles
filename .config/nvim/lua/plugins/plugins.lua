@@ -58,10 +58,6 @@ local plugins = function()
 		event = "BufRead",
 	})
 	use({
-		"kamykn/spelunker.vim",
-		event = "BufRead",
-	})
-	use({
 		"machakann/vim-sandwich",
 		config = [[require("plugins.sandwich")]],
 	})

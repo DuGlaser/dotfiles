@@ -20,9 +20,19 @@ M.for_deno = function(clients_table)
 	end
 end
 
-M.apply = function()
+M.for_angular = function(clients_table, ctx)
+	local currentServer = ctx.client.name
+	local angular = clients_table["angularls"]
+
+	if currentServer == "tsserver" and angular then
+		ctx.client.server_capabilities.renameProvider = false
+	end
+end
+
+M.apply = function(ctx)
 	local clients_table = get_clients_table()
 	M.for_deno(clients_table)
+	M.for_angular(clients_table, ctx)
 end
 
 return M

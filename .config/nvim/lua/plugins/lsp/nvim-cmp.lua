@@ -1,35 +1,7 @@
 local cmp = require("cmp")
 local types = require("cmp.types")
-
-local lspkind = {
-	Text = "",
-	Method = "",
-	Function = "",
-	Constructor = "",
-	Field = "",
-	Variable = "",
-	Class = "ﴯ",
-	Interface = "",
-	Module = "",
-	Property = "ﰠ",
-	Unit = "",
-	Value = "",
-	Enum = "",
-	Keyword = "",
-	Snippet = "",
-	Color = "",
-	File = "",
-	Reference = "",
-	Folder = "",
-	EnumMember = "",
-	Constant = "",
-	Struct = "",
-	Event = "",
-	Operator = "",
-	TypeParameter = "",
-}
-
 local border = require("plugins.lsp.utils").border
+local lspkind = require("lspkind")
 
 cmp.setup({
 	window = {
@@ -51,17 +23,16 @@ cmp.setup({
 		end,
 	},
 	formatting = {
-		format = function(entry, vim_item)
-			vim_item.kind = string.format("%s %s", lspkind[vim_item.kind], vim_item.kind)
-			vim_item.menu = ({
+		format = lspkind.cmp_format({
+			mode = "symbol_text",
+			menu = {
 				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
-				vsnip = "[Snip]",
+				luasnip = "[LuaSnip]",
 				nvim_lua = "[Lua]",
-				latex_symbols = "[LaTeX]",
-			})[entry.source.name]
-			return vim_item
-		end,
+				latex_symbols = "[Latex]",
+			},
+		}),
 	},
 	mapping = {
 		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
@@ -88,12 +59,11 @@ cmp.setup({
 	}),
 })
 
--- cmp.setup.cmdline(":", {
--- 	enabled = false,
--- })
-
--- cmp.setup.cmdline("/", {
--- 	enabled = false,
--- })
+cmp.setup.cmdline({ "/", "?" }, {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "buffer" },
+	},
+})
 
 vim.cmd([[hi CmpItemAbbrMatch guifg=#fe8019]])

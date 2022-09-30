@@ -21,6 +21,7 @@ telescope.setup({
 		},
 		live_grep_args = {
 			auto_quoting = true,
+			theme = "dropdown",
 		},
 	},
 })
@@ -39,3 +40,21 @@ vim.keymap.set(
 	":lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_dropdown({}))<CR>",
 	opts
 )
+
+local getVisualSelection = function()
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg("v")
+	vim.fn.setreg("v", {})
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ""
+	end
+end
+
+vim.keymap.set("v", "gs", function()
+	local text = getVisualSelection()
+	builtin.live_grep({ default_text = text })
+end, opts)

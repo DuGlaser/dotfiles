@@ -139,10 +139,6 @@ local plugins = function()
 		config = [[require("plugins.lualine")]],
 	})
 
-	use({
-		"mhinz/vim-grepper",
-		config = [[require("plugins.grepper")]],
-	})
 	use({ "kevinhwang91/nvim-bqf", ft = "qf" })
 	use({
 		"junegunn/fzf.vim",
@@ -280,13 +276,12 @@ local plugins = function()
 		"hrsh7th/nvim-cmp",
 		requires = {
 			"hrsh7th/cmp-nvim-lsp",
+			"onsails/lspkind.nvim",
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
 		},
-		tag = "v0.0.1",
-		event = "InsertEnter",
 		config = [[require("plugins.lsp.nvim-cmp")]],
 	})
 	use({

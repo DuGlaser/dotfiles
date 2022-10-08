@@ -296,6 +296,7 @@ local plugins = function()
 		end,
 		after = "nvim-cmp",
 	})
+	use("jose-elias-alvarez/typescript.nvim")
 end
 
 local packer = require("packer")

@@ -36,17 +36,18 @@ local enableFormatOpts = vim.tbl_deep_extend("force", default_opts, {
 
 local lspconfig = require("lspconfig")
 local servers = {
-	["angularls"] = require("plugins.lsp.server.angularls"),
+	["angularls"] = require("plugins.lsp.server.angularls").setup(),
 	["ccls"] = enableFormatOpts,
-	["denols"] = require("plugins.lsp.server.denols"),
-	["eslint"] = require("plugins.lsp.server.eslint"),
-	["gopls"] = enableFormatOpts,
-	["jsonls"] = require("plugins.lsp.server.jsonls"),
-	["sumneko_lua"] = require("plugins.lsp.server.sumneko_lua"),
-	["tsserver"] = require("plugins.lsp.server.tsserver"),
-	["yamlls"] = require("plugins.lsp.server.yamlls"),
 	["cssls"] = default_opts,
+	["denols"] = require("plugins.lsp.server.denols").setup(),
+	["eslint"] = require("plugins.lsp.server.eslint").setup(),
+	["gopls"] = enableFormatOpts,
 	["html"] = default_opts,
+	["jsonls"] = require("plugins.lsp.server.jsonls").setup(),
+	["pyright"] = require("plugins.lsp.server.pyright").setup(),
+	["sumneko_lua"] = require("plugins.lsp.server.sumneko_lua").setup(),
+	["tsserver"] = require("plugins.lsp.server.tsserver").setup(),
+	["yamlls"] = require("plugins.lsp.server.yamlls").setup(),
 }
 
 local function getTableKeys(tab)

@@ -16,6 +16,7 @@ local sources = {
 	end,
 	b.formatting.stylua,
 	b.diagnostics.shellcheck,
+	b.diagnostics.jsonlint,
 	b.code_actions.shellcheck,
 }
 

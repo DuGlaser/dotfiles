@@ -29,8 +29,8 @@ bind main    H      ?git reset --hard %(commit)
 bind diff    H      ?git reset --hard %(commit)
 bind refs    H      ?git reset --hard %(branch)
 
-bind generic y      @bash -c "echo -n %(commit) | $HOME/dotfiles/.bin/copy.sh"
-bind generic Y      @bash -c "echo -n %(commit) | $HOME/dotfiles/.bin/copy.sh"
+bind generic y      @bash -c "echo -n %(commit) | $HOME/dotfiles/scripts/copy.sh"
+bind generic Y      @bash -c "echo -n %(commit) | $HOME/dotfiles/scripts/copy.sh"
 
 bind main    !      ?git revert %(commit)
 

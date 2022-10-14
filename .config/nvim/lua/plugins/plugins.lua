@@ -246,7 +246,7 @@ local plugins = function()
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 	use("jose-elias-alvarez/null-ls.nvim")
-	use("folke/lua-dev.nvim")
+	use("folke/neodev.nvim")
 	use("simrat39/rust-tools.nvim")
 	-- use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("b0o/schemastore.nvim")

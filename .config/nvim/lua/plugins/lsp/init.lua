@@ -17,37 +17,52 @@ local common = require("plugins.lsp.common")
 require("plugins.lsp.server.null-ls").setup()
 
 local default_opts = {
-	on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = false
-		common.on_attach(client, bufnr)
+	setup = function()
+		return {
+			on_attach = function(client, bufnr)
+				client.server_capabilities.documentFormattingProvider = false
+				common.on_attach(client, bufnr)
+			end,
+			capabilities = common.capabilities,
+			flags = {
+				debounce_text_changes = 150,
+			},
+		}
 	end,
-	capabilities = common.capabilities,
-	flags = {
-		debounce_text_changes = 150,
-	},
+	use_lspconfig = true,
 }
 
-local enableFormatOpts = vim.tbl_deep_extend("force", default_opts, {
-	on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = true
-		common.on_attach(client, bufnr)
+local enable_format_opts = {
+	setup = function()
+		return {
+			on_attach = function(client, bufnr)
+				client.server_capabilities.documentFormattingProvider = true
+				common.on_attach(client, bufnr)
+			end,
+			capabilities = common.capabilities,
+			flags = {
+				debounce_text_changes = 150,
+			},
+		}
 	end,
-})
+	use_lspconfig = true,
+}
+
 
 local lspconfig = require("lspconfig")
 local servers = {
-	["angularls"] = require("plugins.lsp.server.angularls").setup(),
-	["ccls"] = enableFormatOpts,
+	["angularls"] = require("plugins.lsp.server.angularls"),
+	["ccls"] = enable_format_opts,
 	["cssls"] = default_opts,
-	["denols"] = require("plugins.lsp.server.denols").setup(),
-	["eslint"] = require("plugins.lsp.server.eslint").setup(),
-	["gopls"] = enableFormatOpts,
+	["denols"] = require("plugins.lsp.server.denols"),
+	["eslint"] = require("plugins.lsp.server.eslint"),
+	["gopls"] = enable_format_opts,
 	["html"] = default_opts,
-	["jsonls"] = require("plugins.lsp.server.jsonls").setup(),
-	["pyright"] = require("plugins.lsp.server.pyright").setup(),
-	["sumneko_lua"] = require("plugins.lsp.server.sumneko_lua").setup(),
-	["tsserver"] = require("plugins.lsp.server.tsserver").setup(),
-	["yamlls"] = require("plugins.lsp.server.yamlls").setup(),
+	["jsonls"] = require("plugins.lsp.server.jsonls"),
+	["pyright"] = require("plugins.lsp.server.pyright"),
+	["sumneko_lua"] = require("plugins.lsp.server.sumneko_lua"),
+	["tsserver"] = require("plugins.lsp.server.tsserver"),
+	["yamlls"] = require("plugins.lsp.server.yamlls"),
 }
 
 local function getTableKeys(tab)
@@ -59,6 +74,8 @@ local function getTableKeys(tab)
 	return keyset
 end
 
+require("neodev").setup({})
+
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = getTableKeys(servers),
@@ -69,14 +86,20 @@ local filter = require("plugins.lsp.filter")
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
 		local opt = servers[server_name] and servers[server_name] or default_opts
-		local new_opt = vim.tbl_deep_extend("force", opt, {
+
+    local setting = opt.setup()
+    if not opt.use_lspconfig then
+      return
+    end
+
+		local new_setting = vim.tbl_deep_extend("force", setting, {
 			on_attach = function(client, bufnr)
-				opt.on_attach(client, bufnr)
+				setting.on_attach(client, bufnr)
 				filter.apply({ client = client, bufnr = bufnr })
 			end,
 		})
 
-		lspconfig[server_name].setup(new_opt)
+		lspconfig[server_name].setup(new_setting)
 	end,
 })
 

@@ -52,4 +52,6 @@ M.setup = function()
 	return setting
 end
 
+M.use_lspconfig = true
+
 return M

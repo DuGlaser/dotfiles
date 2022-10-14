@@ -68,7 +68,9 @@ cmp.setup.cmdline({ "/", "?" }, {
 
 cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline(),
-	enabled = false,
+	enabled = function()
+		return false
+	end,
 })
 
 vim.cmd([[hi CmpItemAbbrMatch guifg=#fe8019]])

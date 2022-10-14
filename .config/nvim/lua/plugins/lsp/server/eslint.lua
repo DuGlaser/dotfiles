@@ -15,4 +15,6 @@ M.setup = function()
 	}
 end
 
+M.use_lspconfig = true
+
 return M

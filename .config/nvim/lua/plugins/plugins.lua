@@ -146,6 +146,12 @@ local plugins = function()
 			{ "junegunn/fzf", run = "./install --bin" },
 		},
 	})
+	use({
+		"levouh/tint.nvim",
+		config = function()
+			require("tint").setup()
+		end,
+	})
 
 	----------------------------------------
 	-- textobject

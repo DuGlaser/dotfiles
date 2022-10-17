@@ -48,7 +48,6 @@ local enable_format_opts = {
 	use_lspconfig = true,
 }
 
-
 local lspconfig = require("lspconfig")
 local servers = {
 	["angularls"] = require("plugins.lsp.server.angularls"),
@@ -87,10 +86,10 @@ require("mason-lspconfig").setup_handlers({
 	function(server_name)
 		local opt = servers[server_name] and servers[server_name] or default_opts
 
-    local setting = opt.setup()
-    if not opt.use_lspconfig then
-      return
-    end
+		local setting = opt.setup()
+		if not opt.use_lspconfig then
+			return
+		end
 
 		local new_setting = vim.tbl_deep_extend("force", setting, {
 			on_attach = function(client, bufnr)
@@ -104,7 +103,7 @@ require("mason-lspconfig").setup_handlers({
 })
 
 -- manual setup
-lspconfig.ccls.setup(servers["ccls"])
+lspconfig.ccls.setup(servers["ccls"].setup())
 
 require("lsp_signature").setup({
 	floating_window = false,

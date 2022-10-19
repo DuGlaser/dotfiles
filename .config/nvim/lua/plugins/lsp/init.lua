@@ -51,7 +51,6 @@ local enable_format_opts = {
 local lspconfig = require("lspconfig")
 local servers = {
 	["angularls"] = require("plugins.lsp.server.angularls"),
-	["ccls"] = enable_format_opts,
 	["cssls"] = default_opts,
 	["denols"] = require("plugins.lsp.server.denols"),
 	["eslint"] = require("plugins.lsp.server.eslint"),
@@ -103,7 +102,7 @@ require("mason-lspconfig").setup_handlers({
 })
 
 -- manual setup
-lspconfig.ccls.setup(servers["ccls"].setup())
+lspconfig.ccls.setup(enable_format_opts.setup())
 
 require("lsp_signature").setup({
 	floating_window = false,

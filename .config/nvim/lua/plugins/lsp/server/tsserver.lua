@@ -21,9 +21,7 @@ M.setup = function()
 		go_to_source_definition = {
 			fallback = true,
 		},
-		server = {
-			on_attach = setting.on_attach,
-		},
+		server = setting,
 	})
 
 	return setting

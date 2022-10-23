@@ -1,27 +1,26 @@
-local opt = vim.opt
-local g = vim.g
-
-opt.fileformat = "unix"
-opt.fileformats = "unix,dos,mac"
-opt.fileencodings = "utf-8,iso-2022-jp,cp932,euc-jp"
-opt.cmdheight = 1
-opt.encoding = "UTF-8"
-opt.number = false
-opt.autoindent = true
-opt.expandtab = true
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.hls = true
-opt.completeopt = "menu,menuone,noselect"
-opt.ignorecase = true
-opt.incsearch = true
-opt.inccommand = "split"
-opt.conceallevel = 0
-opt.signcolumn = "yes"
-opt.cursorline = true
-opt.splitright = true
-opt.showtabline = 2
-opt.laststatus = 3
+vim.opt.fileformat = "unix"
+vim.opt.fileformats = "unix,dos,mac"
+vim.opt.fileencodings = "utf-8,iso-2022-jp,cp932,euc-jp"
+vim.opt.cmdheight = 1
+vim.opt.encoding = "UTF-8"
+vim.opt.number = false
+vim.opt.autoindent = true
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.hls = true
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.ignorecase = true
+vim.opt.incsearch = true
+vim.opt.inccommand = "split"
+vim.opt.conceallevel = 0
+vim.opt.signcolumn = "yes"
+vim.opt.cursorline = true
+vim.opt.splitright = true
+vim.opt.showtabline = 2
+vim.opt.laststatus = 3
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- まだ言語サポートがいまいちなのでもう少し様子を見る
 -- opt.spell = true
@@ -31,21 +30,21 @@ opt.laststatus = 3
 -- opt.cmdheight = 0
 
 -- stop default plugins
-g.loaded_gzip = 1
-g.loaded_tar = 1
-g.loaded_tarPlugin = 1
-g.loaded_zip = 1
-g.loaded_zipPlugin = 1
-g.loaded_rrhelper = 1
-g.loaded_2html_plugin = 1
-g.loaded_vimball = 1
-g.loaded_vimballPlugin = 1
-g.loaded_getscript = 1
-g.loaded_getscriptPlugin = 1
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
-g.loaded_netrwSettings = 1
-g.loaded_netrwFileHandlers = 1
+vim.g.loaded_gzip = 1
+vim.g.loaded_tar = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_zip = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_rrhelper = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_vimball = 1
+vim.g.loaded_vimballPlugin = 1
+vim.g.loaded_getscript = 1
+vim.g.loaded_getscriptPlugin = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrwSettings = 1
+vim.g.loaded_netrwFileHandlers = 1
 
 vim.cmd([[
   set clipboard+=unnamedplus

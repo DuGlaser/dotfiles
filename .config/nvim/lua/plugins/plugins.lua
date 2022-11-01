@@ -152,6 +152,10 @@ local plugins = function()
 			require("tint").setup()
 		end,
 	})
+	use({
+		"stevearc/stickybuf.nvim",
+		config = [[require("plugins.stickybuf")]],
+	})
 
 	----------------------------------------
 	-- textobject

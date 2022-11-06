@@ -156,6 +156,10 @@ local plugins = function()
 		"stevearc/stickybuf.nvim",
 		config = [[require("plugins.stickybuf")]],
 	})
+	use({
+		"RRethy/vim-illuminate",
+		config = [[require("plugins.illuminate")]],
+	})
 
 	----------------------------------------
 	-- textobject

@@ -26,12 +26,6 @@ local plugins = function()
 		config = [[require("impatient")]],
 	})
 	use({
-		"antoinemadec/FixCursorHold.nvim",
-		config = function()
-			vim.g.cursorhold_updatetime = 100
-		end,
-	})
-	use({
 		"MattesGroeger/vim-bookmarks",
 		config = [[require("plugins.bookmarks")]],
 	})

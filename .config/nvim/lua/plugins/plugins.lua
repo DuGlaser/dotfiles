@@ -147,10 +147,6 @@ local plugins = function()
 		end,
 	})
 	use({
-		"stevearc/stickybuf.nvim",
-		config = [[require("plugins.stickybuf")]],
-	})
-	use({
 		"RRethy/vim-illuminate",
 		config = [[require("plugins.illuminate")]],
 	})

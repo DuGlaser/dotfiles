@@ -37,6 +37,8 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 M.on_attach = function(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -55,7 +57,6 @@ M.on_attach = function(client, bufnr)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 
 	if client.supports_method("textDocument/formatting") then
-		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = augroup,

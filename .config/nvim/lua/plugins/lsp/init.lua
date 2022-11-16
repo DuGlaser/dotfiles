@@ -53,7 +53,6 @@ local servers = {
 	["angularls"] = require("plugins.lsp.server.angularls"),
 	["cssls"] = default_opts,
 	["denols"] = require("plugins.lsp.server.denols"),
-	["eslint"] = enable_format_opts,
 	["gopls"] = enable_format_opts,
 	["html"] = default_opts,
 	["jsonls"] = require("plugins.lsp.server.jsonls"),

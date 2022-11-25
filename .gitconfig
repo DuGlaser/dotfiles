@@ -11,3 +11,5 @@
   name = DuGlaser
 [url "git@github.com:"]
   pushinsteadof = https://github.com/
+[url "ssh://git@github.com"]
+  insteadOf = https://github.com

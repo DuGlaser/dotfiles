@@ -101,7 +101,11 @@ require("mason-lspconfig").setup_handlers({
 })
 
 -- manual setup
-lspconfig.ccls.setup(enable_format_opts.setup())
+for key, value in pairs(servers) do
+	if not value.use_lspconfig then
+		lspconfig[key].setup(value.setup())
+	end
+end
 
 require("lsp_signature").setup({
 	floating_window = false,

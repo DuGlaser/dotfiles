@@ -80,7 +80,13 @@ M.on_attach = function(client, bufnr)
 	vim.diagnostic.config({
 		underline = true,
 		update_in_insert = true,
-		virtual_text = { spacing = 4, prefix = "●" },
+		virtual_text = {
+			spacing = 4,
+			prefix = "●",
+			format = function(diagnostic)
+				return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+			end,
+		},
 		severity_sort = true,
 		float = {
 			source = "always",

@@ -51,6 +51,9 @@ local enable_format_opts = {
 local lspconfig = require("lspconfig")
 local servers = {
 	["angularls"] = require("plugins.lsp.server.angularls"),
+	["ccls"] = vim.tbl_deep_extend("force", enable_format_opts, {
+		use_lspconfig = false,
+	}),
 	["cssls"] = default_opts,
 	["denols"] = require("plugins.lsp.server.denols"),
 	["gopls"] = enable_format_opts,
@@ -62,10 +65,12 @@ local servers = {
 	["yamlls"] = require("plugins.lsp.server.yamlls"),
 }
 
-local function getTableKeys(tab)
+local function getMasonServerKey(tab)
 	local keyset = {}
-	for k, _ in pairs(tab) do
-		keyset[#keyset + 1] = k
+	for key, value in pairs(tab) do
+		if value.use_lspconfig then
+			keyset[#keyset + 1] = key
+		end
 	end
 
 	return keyset
@@ -75,7 +80,7 @@ require("neodev").setup({})
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = getTableKeys(servers),
+	ensure_installed = getMasonServerKey(servers),
 	automatic_installation = true,
 })
 

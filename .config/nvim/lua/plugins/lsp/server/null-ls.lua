@@ -7,8 +7,8 @@ local M = {}
 
 local common = require("plugins.lsp.common")
 
-M.prettier_setting_files = { ".prettierrc", ".prettierrc.js", ".prettierrc.json" }
-M.eslint_setting_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.json" }
+M.prettier_setting_files = { ".prettierrc", ".prettierrc.js", ".prettierrc.cjs", ".prettierrc.json" }
+M.eslint_setting_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }
 M.root_dir = { "Makefile", ".git", "package.json" }
 
 local generate_runtime_condition = function(root_pattern, target_file)

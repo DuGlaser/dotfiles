@@ -14,6 +14,7 @@
           - gufw
           - htop
           - hub
+          - jq
           - peco
           - tig
           - tmux

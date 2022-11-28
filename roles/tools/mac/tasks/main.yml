@@ -15,6 +15,7 @@
           - git
           - htop
           - hub
+          - jq
           - neofetch
           - peco
           - ripgrep

@@ -8,7 +8,9 @@ alias rg="rg --colors 'match:bg:yellow' --colors 'match:fg:black' --colors 'matc
 if  [[ "$(uname)" = 'Linux' ]]; then
   if type xclip > /dev/null 2>&1; then
     alias pbcopy='xclip -selection c'
+    alias pbc='pbcopy'
     alias pbpaste='xclip -selection c -o'
+    alias pbp='pbpaste'
   fi
 fi
 

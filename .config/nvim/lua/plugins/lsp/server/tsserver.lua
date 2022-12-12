@@ -12,7 +12,6 @@ M.setup = function()
 			vim.keymap.set("n", "gd", ":TypescriptGoToSourceDefinition<CR>", bufopts)
 			vim.keymap.set("n", "gD", vim.lsp.buf.definition, bufopts)
 		end,
-		capabilities = common.capabilities,
 	}
 
 	require("typescript").setup({
@@ -27,6 +26,6 @@ M.setup = function()
 	return setting
 end
 
-M.use_lspconfig = false
+M.use_mason = false
 
 return M

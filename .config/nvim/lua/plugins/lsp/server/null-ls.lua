@@ -61,6 +61,6 @@ M.setup = function()
 	})
 end
 
-M.use_lspconfig = true
+M.use_mason = true
 
 return M

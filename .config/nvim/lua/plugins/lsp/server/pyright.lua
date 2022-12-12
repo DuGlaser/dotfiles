@@ -34,7 +34,6 @@ M.setup = function()
 
 			set_from_poetry(client.config.settings)
 		end,
-		capabilities = common.capabilities,
 		root_dir = nvim_lsp.util.root_pattern(python_root_files),
 		filetypes = { "python" },
 		settings = {
@@ -52,6 +51,6 @@ M.setup = function()
 	return setting
 end
 
-M.use_lspconfig = true
+M.use_mason = true
 
 return M

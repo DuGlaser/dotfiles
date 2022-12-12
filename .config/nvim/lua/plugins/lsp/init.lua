@@ -29,7 +29,7 @@ local default_opts = {
 			},
 		}
 	end,
-	use_lspconfig = true,
+	use_mason = true,
 }
 
 local enable_format_opts = {
@@ -45,14 +45,14 @@ local enable_format_opts = {
 			},
 		}
 	end,
-	use_lspconfig = true,
+	use_mason = true,
 }
 
 local lspconfig = require("lspconfig")
 local servers = {
 	["angularls"] = require("plugins.lsp.server.angularls"),
 	["ccls"] = vim.tbl_deep_extend("force", enable_format_opts, {
-		use_lspconfig = false,
+		use_mason = false,
 	}),
 	["cssls"] = default_opts,
 	["denols"] = require("plugins.lsp.server.denols"),
@@ -68,7 +68,7 @@ local servers = {
 local function getMasonServerKey(tab)
 	local keyset = {}
 	for key, value in pairs(tab) do
-		if value.use_lspconfig then
+		if value.use_mason then
 			keyset[#keyset + 1] = key
 		end
 	end
@@ -90,8 +90,14 @@ require("mason-lspconfig").setup_handlers({
 		local opt = servers[server_name] and servers[server_name] or default_opts
 
 		local setting = opt.setup()
-		if not opt.use_lspconfig then
+		if not opt.use_mason then
 			return
+		end
+
+		local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+		if ok then
+			local orig = vim.lsp.protocol.make_client_capabilities()
+			setting.capabilities = cmp_nvim_lsp.default_capabilities(orig)
 		end
 
 		local new_setting = vim.tbl_deep_extend("force", setting, {
@@ -99,6 +105,7 @@ require("mason-lspconfig").setup_handlers({
 				setting.on_attach(client, bufnr)
 				filter.apply({ client = client, bufnr = bufnr })
 			end,
+			-- capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		})
 
 		lspconfig[server_name].setup(new_setting)
@@ -107,15 +114,10 @@ require("mason-lspconfig").setup_handlers({
 
 -- manual setup
 for key, value in pairs(servers) do
-	if not value.use_lspconfig then
+	if not value.use_mason then
 		lspconfig[key].setup(value.setup())
 	end
 end
-
-require("lsp_signature").setup({
-	floating_window = false,
-	hint_prefix = "🤔 ",
-})
 
 vim.cmd([[hi NormalFloat guibg=#32302f]])
 vim.cmd([[hi FloatBorder guifg=#fe8019]])

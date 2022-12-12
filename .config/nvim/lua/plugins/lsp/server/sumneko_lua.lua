@@ -8,7 +8,6 @@ M.setup = function()
 			client.server_capabilities.documentFormattingProvider = false
 			common.on_attach(client, bufnr)
 		end,
-		capabilities = common.capabilities,
 		settings = {
 			Lua = {
 				format = {
@@ -22,6 +21,6 @@ M.setup = function()
 	}
 end
 
-M.use_lspconfig = true
+M.use_mason = true
 
 return M

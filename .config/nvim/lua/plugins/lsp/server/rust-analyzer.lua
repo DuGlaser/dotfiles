@@ -5,7 +5,6 @@ local M = {}
 M.setup = function()
 	return {
 		on_attach = common.on_attach,
-		capabilities = common.capabilities,
 		settings = {
 			["rust-analyzer"] = {
 				checkOnSave = {
@@ -19,6 +18,6 @@ M.setup = function()
 	}
 end
 
-M.use_lspconfig = true
+M.use_mason = true
 
 return M

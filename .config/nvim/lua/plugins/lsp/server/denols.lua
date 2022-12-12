@@ -6,7 +6,6 @@ local M = {}
 M.setup = function()
 	return {
 		on_attach = common.on_attach,
-		capabilities = common.capabilities,
 		root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
 		single_file_support = false,
 		init_options = {
@@ -25,6 +24,6 @@ M.setup = function()
 	}
 end
 
-M.use_lspconfig = true
+M.use_mason = true
 
 return M

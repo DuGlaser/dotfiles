@@ -47,13 +47,6 @@ local plugins = function()
 		config = [[require("plugins.sandwich")]],
 	})
 	use({
-		"hrsh7th/vim-vsnip",
-		config = [[require("plugins.vsnip")]],
-		requires = {
-			"hrsh7th/vim-vsnip-integ",
-		},
-	})
-	use({
 		"phaazon/hop.nvim",
 		config = [[require('plugins.hop')]],
 	})
@@ -250,12 +243,20 @@ local plugins = function()
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 	use("jose-elias-alvarez/null-ls.nvim")
-	use("folke/neodev.nvim")
 	use("simrat39/rust-tools.nvim")
-	-- use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("b0o/schemastore.nvim")
 	use("j-hui/fidget.nvim")
-	use("ray-x/lsp_signature.nvim")
+	use("jose-elias-alvarez/typescript.nvim")
+	use({
+		"ray-x/lsp_signature.nvim",
+		event = { "InsertEnter" },
+		config = function()
+			require("lsp_signature").setup({
+				floating_window = false,
+				hint_prefix = "🤔 ",
+			})
+		end,
+	})
 
 	----------------------------------------
 	-- lsp
@@ -263,38 +264,19 @@ local plugins = function()
 	use({
 		"neovim/nvim-lspconfig",
 		config = [[require("plugins.lsp")]],
-	})
-	use({
-		"williamboman/mason.nvim",
 		requires = {
-			"williamboman/mason-lspconfig.nvim",
+			{ "folke/neodev.nvim", module = { "neodev" } },
+			{ "williamboman/mason-lspconfig.nvim", module = { "mason-lspconfig" } },
+			{ "williamboman/mason.nvim", module = { "mason" } },
+		},
+		wants = {
+			"neodev.nvim",
+			"mason.nvim",
+			"mason-lspconfig.nvim",
+			"cmp-nvim-lsp",
 		},
 	})
-	use({
-		"hrsh7th/nvim-cmp",
-		requires = {
-			"hrsh7th/cmp-nvim-lsp",
-			"onsails/lspkind.nvim",
-			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
-		},
-		config = [[require("plugins.lsp.nvim-cmp")]],
-	})
-	use({
-		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup({
-				check_ts = true,
-			})
-			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-			local cmp = require("cmp")
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-		end,
-		after = "nvim-cmp",
-	})
-	use("jose-elias-alvarez/typescript.nvim")
+	require("plugins.cmp").setup(use)
 end
 
 local packer = require("packer")

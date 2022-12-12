@@ -46,14 +46,7 @@ local plugins = function()
 		"machakann/vim-sandwich",
 		config = [[require("plugins.sandwich")]],
 	})
-	use({
-		"phaazon/hop.nvim",
-		config = [[require('plugins.hop')]],
-	})
-	use({
-		"kevinhwang91/nvim-hlslens",
-		config = [[require("plugins.hlslens")]],
-	})
+	require("plugins.hop").setup(use)
 	use({
 		"lewis6991/gitsigns.nvim",
 		config = [[require("plugins.gitsign")]],
@@ -176,16 +169,7 @@ local plugins = function()
 	----------------------------------------
 	-- telescope
 	----------------------------------------
-	use({
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
-		requires = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-			{ "nvim-telescope/telescope-live-grep-args.nvim" },
-		},
-		config = [[require("plugins.telescope")]],
-	})
+	require("plugins.telescope").setup(use)
 
 	----------------------------------------
 	-- frontend
@@ -238,10 +222,7 @@ local plugins = function()
 	----------------------------------------
 	-- lsp utils
 	----------------------------------------
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-	})
+	require("plugins.trouble").setup(use)
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("simrat39/rust-tools.nvim")
 	use("b0o/schemastore.nvim")
@@ -265,17 +246,12 @@ local plugins = function()
 		"neovim/nvim-lspconfig",
 		config = [[require("plugins.lsp")]],
 		requires = {
-			{ "folke/neodev.nvim", module = { "neodev" } },
-			{ "williamboman/mason-lspconfig.nvim", module = { "mason-lspconfig" } },
-			{ "williamboman/mason.nvim", module = { "mason" } },
-		},
-		wants = {
-			"neodev.nvim",
-			"mason.nvim",
-			"mason-lspconfig.nvim",
-			"cmp-nvim-lsp",
+			{ "folke/neodev.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
+			{ "williamboman/mason.nvim" },
 		},
 	})
+
 	require("plugins.cmp").setup(use)
 end
 

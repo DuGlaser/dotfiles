@@ -22,8 +22,6 @@ M.setup = function()
 		},
 		server = setting,
 	})
-
-	return setting
 end
 
 M.use_mason = false

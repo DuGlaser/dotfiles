@@ -6,9 +6,9 @@ M.setup = function(use)
 		module = { "cmp" },
 		requires = {
 			{ "hrsh7th/cmp-nvim-lsp", event = { "InsertEnter" } },
-			{ "onsails/lspkind.nvim" },
+			{ "onsails/lspkind.nvim", module = { "lspkind" } },
 			{ "hrsh7th/cmp-buffer", event = { "InsertEnter" } },
-			{ "hrsh7th/cmp-nvim-lua", event = { "InsertEnter" } },
+			{ "hrsh7th/cmp-nvim-lua", ft = "lua" },
 			{ "hrsh7th/cmp-path", event = { "InsertEnter" } },
 			{
 				"hrsh7th/cmp-vsnip",

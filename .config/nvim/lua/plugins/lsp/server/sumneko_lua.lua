@@ -3,6 +3,8 @@ local common = require("plugins.lsp.common")
 local M = {}
 
 M.setup = function()
+	require("neodev").setup({})
+
 	return {
 		on_attach = function(client, bufnr)
 			client.server_capabilities.documentFormattingProvider = false

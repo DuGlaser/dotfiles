@@ -61,6 +61,6 @@ M.setup = function()
 	})
 end
 
-M.use_mason = true
+M.use_mason = false
 
 return M

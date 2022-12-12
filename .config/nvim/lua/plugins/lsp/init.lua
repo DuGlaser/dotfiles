@@ -1,5 +1,3 @@
-require("plugins.lsp.trouble")
-
 require("fidget").setup({})
 
 local diagnosticsGroup = require("plugins.lsp.utils").diagnosticsGroup
@@ -14,7 +12,6 @@ for _, g in pairs(diagnosticsGroup) do
 end
 
 local common = require("plugins.lsp.common")
-require("plugins.lsp.server.null-ls").setup()
 
 local default_opts = {
 	setup = function()
@@ -59,6 +56,7 @@ local servers = {
 	["gopls"] = enable_format_opts,
 	["html"] = default_opts,
 	["jsonls"] = require("plugins.lsp.server.jsonls"),
+	["null-ls"] = require("plugins.lsp.server.null-ls"),
 	["pyright"] = require("plugins.lsp.server.pyright"),
 	["sumneko_lua"] = require("plugins.lsp.server.sumneko_lua"),
 	["tsserver"] = require("plugins.lsp.server.tsserver"),
@@ -76,8 +74,6 @@ local function getMasonServerKey(tab)
 	return keyset
 end
 
-require("neodev").setup({})
-
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = getMasonServerKey(servers),
@@ -89,8 +85,12 @@ require("mason-lspconfig").setup_handlers({
 	function(server_name)
 		local opt = servers[server_name] and servers[server_name] or default_opts
 
-		local setting = opt.setup()
 		if not opt.use_mason then
+			return
+		end
+
+		local setting = opt.setup()
+		if setting == nil then
 			return
 		end
 
@@ -105,7 +105,6 @@ require("mason-lspconfig").setup_handlers({
 				setting.on_attach(client, bufnr)
 				filter.apply({ client = client, bufnr = bufnr })
 			end,
-			-- capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		})
 
 		lspconfig[server_name].setup(new_setting)
@@ -115,7 +114,11 @@ require("mason-lspconfig").setup_handlers({
 -- manual setup
 for key, value in pairs(servers) do
 	if not value.use_mason then
-		lspconfig[key].setup(value.setup())
+		local setting = value.setup()
+
+		if setting ~= nil then
+			lspconfig[key].setup(setting)
+		end
 	end
 end
 

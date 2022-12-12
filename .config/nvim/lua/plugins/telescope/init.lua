@@ -1,60 +1,22 @@
-local telescope = require("telescope")
+local M = {}
 
-telescope.setup({
-	pickers = {
-		find_files = {
-			theme = "dropdown",
+M.setup = function(use)
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.0",
+		module = { "telescope" },
+		requires = {
+			{ "nvim-lua/plenary.nvim", opt = true },
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make", opt = true },
+			{ "nvim-telescope/telescope-live-grep-args.nvim", opt = true },
 		},
-		buffers = {
-			theme = "dropdown",
+		wants = {
+			"telescope-fzf-native.nvim",
+			"telescope-live-grep-args.nvim",
 		},
-		live_grep = {
-			theme = "dropdown",
-		},
-	},
-	extensions = {
-		fzf = {
-			fuzzy = true,
-			override_generic_sorter = true,
-			override_file_sorter = true,
-			case_mode = "smart_case",
-		},
-		live_grep_args = {
-			auto_quoting = true,
-			theme = "dropdown",
-		},
-	},
-})
-
-telescope.load_extension("fzf")
-telescope.load_extension("live_grep_args")
-
-local builtin = require("telescope.builtin")
-local opts = { noremap = true, silent = true }
-
-vim.keymap.set("n", "<Space>F", builtin.find_files, opts)
-vim.keymap.set("n", "<Space>B", builtin.buffers, opts)
-vim.keymap.set(
-	"n",
-	"<Space>G",
-	":lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_dropdown({}))<CR>",
-	opts
-)
-
-local getVisualSelection = function()
-	vim.cmd('noau normal! "vy"')
-	local text = vim.fn.getreg("v")
-	vim.fn.setreg("v", {})
-
-	text = string.gsub(text, "\n", "")
-	if #text > 0 then
-		return text
-	else
-		return ""
-	end
+		setup = [[require("plugins.telescope.setup")]],
+		config = [[require("plugins.telescope.config")]],
+	})
 end
 
-vim.keymap.set("v", "gs", function()
-	local text = getVisualSelection()
-	builtin.live_grep({ default_text = text })
-end, opts)
+return M

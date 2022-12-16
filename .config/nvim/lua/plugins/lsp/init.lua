@@ -96,8 +96,8 @@ require("mason-lspconfig").setup_handlers({
 
 		local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 		if ok then
-			local orig = vim.lsp.protocol.make_client_capabilities()
-			setting.capabilities = cmp_nvim_lsp.default_capabilities(orig)
+			setting.capabilities =
+				cmp_nvim_lsp.default_capabilities(setting.capabilities or vim.lsp.protocol.make_client_capabilities())
 		end
 
 		local new_setting = vim.tbl_deep_extend("force", setting, {

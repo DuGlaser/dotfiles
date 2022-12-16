@@ -57,6 +57,8 @@ local plugins = function()
 	})
 	use({
 		"brooth/far.vim",
+		opt = true,
+		cmd = { "Far" },
 		config = function()
 			vim.cmd('let g:far#source="rg"')
 		end,
@@ -119,11 +121,14 @@ local plugins = function()
 		config = [[require("plugins.lualine")]],
 	})
 
-	use({ "kevinhwang91/nvim-bqf", ft = "qf" })
 	use({
-		"junegunn/fzf.vim",
+		"kevinhwang91/nvim-bqf",
+		ft = "qf",
 		requires = {
-			{ "junegunn/fzf", run = "./install --bin" },
+			"junegunn/fzf.vim",
+			requires = {
+				{ "junegunn/fzf", run = "./install --bin" },
+			},
 		},
 	})
 	use({

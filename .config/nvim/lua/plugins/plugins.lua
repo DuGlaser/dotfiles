@@ -168,6 +168,8 @@ local plugins = function()
 		config = [[require("plugins.fern")]],
 		requires = {
 			"hrsh7th/fern-mapping-collapse-or-leave.vim",
+			"lambdalisue/nerdfont.vim",
+			"lambdalisue/fern-renderer-nerdfont.vim",
 		},
 	})
 

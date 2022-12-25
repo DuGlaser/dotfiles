@@ -43,6 +43,7 @@ local sources = {
 	apply_eslint(b.code_actions.eslint_d),
 	apply_eslint(b.diagnostics.eslint_d),
 	apply_eslint(b.formatting.eslint_d),
+	require("typescript.extensions.null-ls.code-actions"),
 	b.formatting.stylua,
 	b.diagnostics.shellcheck,
 	b.diagnostics.jsonlint,

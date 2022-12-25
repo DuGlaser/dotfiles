@@ -4,6 +4,8 @@ remap("n", "<Space>u", "<cmd>Fern . -drawer -width=35 -reveal=% <CR><C-w>=", { n
 
 vim.cmd([[
 let g:fern#disable_default_mappings = 1
+let g:fern#renderer = "nerdfont"
+let g:fern#renderer#nerdfont#indent_markers = 1
 let hide_dirs  = '^\%(\.git\|node_modules\)$'
 let hide_files = '\%(\.byebug\|\.ruby-\)\+'
 

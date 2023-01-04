@@ -24,6 +24,7 @@ local M = {
 	"mbbill/undotree",
 	{
 		"kana/vim-operator-replace",
+		event = "VeryLazy",
 		dependencies = {
 			{ "kana/vim-operator-user" },
 		},
@@ -43,6 +44,7 @@ local M = {
 	},
 	{
 		"tyru/columnskip.vim",
+		event = "VeryLazy",
 		config = function()
 			vim.cmd("nmap sj <Plug>(columnskip:nonblank:next)")
 			vim.cmd("omap sj <Plug>(columnskip:nonblank:next)")
@@ -77,12 +79,19 @@ local M = {
 	},
 	{
 		"levouh/tint.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("tint").setup()
 		end,
 	},
-	"kana/vim-textobj-user",
-	"romgrk/equal.operator",
+	{
+		"kana/vim-textobj-user",
+		event = "VeryLazy",
+	},
+	{
+		"romgrk/equal.operator",
+		event = "VeryLazy",
+	},
 	{
 		"mattn/emmet-vim",
 		ft = { "html", "javascriptreact", "typescriptreact", "vue" },

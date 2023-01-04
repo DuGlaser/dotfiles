@@ -1,6 +1,5 @@
 local M = {
 	"akinsho/nvim-bufferline.lua",
-	event = "VeryLazy",
 	dependencies = {
 		"kyazdani42/nvim-web-devicons",
 	},

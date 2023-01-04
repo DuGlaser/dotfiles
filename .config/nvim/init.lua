@@ -1,3 +1,2 @@
 require("defaults")
-require("plugins")
-require("packer_compiled")
+require("load_lazy")

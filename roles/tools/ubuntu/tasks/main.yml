@@ -9,6 +9,7 @@
       apt:
         pkg:
           - bat
+          - exa
           - fish
           - fzf
           - gufw

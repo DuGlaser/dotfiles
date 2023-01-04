@@ -15,22 +15,21 @@ local M = {
 	"tpope/vim-repeat",
 	{
 		"moll/vim-bbye",
-		event = "BufRead",
+		event = "BufReadPre",
 	},
 	{
 		"tpope/vim-commentary",
-		event = "BufRead",
+		event = "BufReadPre",
 	},
 	"mbbill/undotree",
 	{
 		"kana/vim-operator-replace",
-		event = "VeryLazy",
 		dependencies = {
 			{ "kana/vim-operator-user" },
 		},
-		config = function()
-			vim.cmd("map <Space>s <Plug>(operator-replace)")
-		end,
+		keys = {
+			{ "<Space>s", "<Plug>(operator-replace)", mode = { "n", "o", "v" } },
+		},
 	},
 	{
 		"kevinhwang91/nvim-bqf",
@@ -44,38 +43,24 @@ local M = {
 	},
 	{
 		"tyru/columnskip.vim",
-		event = "VeryLazy",
-		config = function()
-			vim.cmd("nmap sj <Plug>(columnskip:nonblank:next)")
-			vim.cmd("omap sj <Plug>(columnskip:nonblank:next)")
-			vim.cmd("xmap sj <Plug>(columnskip:nonblank:next)")
-			vim.cmd("nmap sk <Plug>(columnskip:nonblank:prev)")
-			vim.cmd("omap sk <Plug>(columnskip:nonblank:prev)")
-			vim.cmd("xmap sk <Plug>(columnskip:nonblank:prev)")
-		end,
-	},
-	{
-		"kana/vim-operator-replace",
-		dependencies = {
-			{ "kana/vim-operator-user" },
+		keys = {
+			{ "sj", "<Plug>(columnskip:nonblank:next)", mode = { "n", "o", "x" } },
+			{ "sk", "<Plug>(columnskip:nonblank:prev)", mode = { "n", "o", "x" } },
 		},
-		config = function()
-			vim.cmd("map <Space>s <Plug>(operator-replace)")
-		end,
 	},
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup()
 		end,
-		event = "BufRead",
+		event = "BufReadPre",
 	},
 	{
 		"thinca/vim-zenspace",
 		config = function()
 			vim.cmd("let g:zenspace#default_mode = 'on'")
 		end,
-		event = "BufRead",
+		event = "BufReadPre",
 	},
 	{
 		"levouh/tint.nvim",

@@ -1,9 +1,4 @@
 local M = {
-	"jose-elias-alvarez/null-ls.nvim",
-	{ "simrat39/rust-tools.nvim", ft = "rust" },
-	"b0o/schemastore.nvim",
-	"j-hui/fidget.nvim",
-	"jose-elias-alvarez/typescript.nvim",
 	{
 		"ray-x/lsp_signature.nvim",
 		event = { "InsertEnter" },
@@ -24,6 +19,11 @@ local M = {
 			{ "folke/neodev.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
 			{ "williamboman/mason.nvim" },
+			{ "jose-elias-alvarez/null-ls.nvim" },
+			{ "simrat39/rust-tools.nvim", ft = "rust" },
+			{ "b0o/schemastore.nvim" },
+			{ "j-hui/fidget.nvim" },
+			{ "jose-elias-alvarez/typescript.nvim" },
 		},
 	},
 }

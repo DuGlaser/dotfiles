@@ -1,6 +1,6 @@
 local M = {
 	"lewis6991/gitsigns.nvim",
-	event = "BufRead",
+	event = "BufReadPre",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},

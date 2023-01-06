@@ -69,4 +69,7 @@
       become: true
       shell: make setup/nvim
 
+    - name: Install asdf
+      shell: make setup/asdf
+
   when: ansible_os_family == "Debian"

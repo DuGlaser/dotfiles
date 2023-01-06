@@ -1,6 +1,5 @@
 .PHONY: init
-init:
-	$(MAKE) setup/init setup/ansible ansible/install
+init: setup/init setup/ansible ansible/install
 
 .PHONY: ansible/install
 ansible/install:
@@ -29,3 +28,7 @@ setup/ansible:
 .PHONY: setup/rust
 setup/rust:
 	./scripts/setup_rust.sh
+
+.PHONY: setup/asdf
+setup/asdf:
+	./scripts/setup_asdf.sh

@@ -1,9 +1,11 @@
 .PHONY: init
 init: setup/init setup/ansible ansible/install
 
+DEBUG_LEVEL:=-v
+
 .PHONY: ansible/install
 ansible/install:
-	@ansible-playbook -i inventory/localhost install.yml -v
+	@ansible-playbook -i inventory/localhost install.yml $(DEBUG_LEVEL)
 
 .PHONY: setup/init
 setup/init:
@@ -32,3 +34,10 @@ setup/rust:
 .PHONY: setup/asdf
 setup/asdf:
 	./scripts/setup_asdf.sh
+
+IMAGE_NAME:=duglaser-dotfiles
+
+.PHONY: docker/ubuntu
+docker/ubuntu:
+	DOCKER_BUILDKIT=1 docker build -t $(IMAGE_NAME):ubuntu --target UBUNTU .
+	docker run -it $(IMAGE_NAME):ubuntu /bin/bash

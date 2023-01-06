@@ -21,6 +21,7 @@
           - ripgrep
           - tig
           - tmux
+          - zsh
 
     - name: Install rust
       become: true

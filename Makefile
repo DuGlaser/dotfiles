@@ -11,29 +11,30 @@ ansible/install:
 setup/init:
 	./scripts/init_setup.sh
 
+.PHONY: setup_%
+setup_%:
+	./scripts/setup_$*.sh
+
 .PHONY: setup/nvim
-setup/nvim:
-	./scripts/setup_nvim.sh
+setup/nvim: setup_nvim
 
 .PHONY: setup/alacritty
-setup/alacritty:
-	./scripts/setup_alacritty.sh
+setup/alacritty: setup_alacritty
 
 .PHONY: setup/zsh
-setup/zsh:
-	./scripts/setup_zsh.sh
+setup/zsh: setup_zsh
 
 .PHONY: setup/ansible
-setup/ansible:
-	./scripts/setup_ansible.sh
+setup/ansible: setup_ansible
 
 .PHONY: setup/rust
-setup/rust:
-	./scripts/setup_rust.sh
+setup/rust: setup_rust
 
 .PHONY: setup/asdf
-setup/asdf:
-	./scripts/setup_asdf.sh
+setup/asdf: setup_asdf
+
+.PHONY: setup/docker
+setup/docker: setup_docker
 
 IMAGE_NAME:=duglaser-dotfiles
 

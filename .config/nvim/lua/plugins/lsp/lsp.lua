@@ -45,14 +45,18 @@ local enable_format_opts = {
 	use_mason = true,
 }
 
+local function disable_mason_setting(setting)
+	setting.use_mason = false
+	return setting
+end
+
 local lspconfig = require("lspconfig")
 local servers = {
 	["angularls"] = require("plugins.lsp.server.angularls"),
-	["ccls"] = vim.tbl_deep_extend("force", enable_format_opts, {
-		use_mason = false,
-	}),
+	["ccls"] = disable_mason_setting(enable_format_opts),
 	["cssls"] = default_opts,
 	["denols"] = require("plugins.lsp.server.denols"),
+	["dockerls"] = enable_format_opts,
 	["gopls"] = enable_format_opts,
 	["html"] = default_opts,
 	["jsonls"] = require("plugins.lsp.server.jsonls"),
@@ -79,8 +83,36 @@ require("mason-lspconfig").setup({
 	ensure_installed = getMasonServerKey(servers),
 	automatic_installation = true,
 })
+require("mason-tool-installer").setup({
+	ensure_installed = {
+		"eslint_d",
+		"prettierd",
+		"shellcheck",
+		"stylua",
+	},
+	auto_update = false,
+	run_on_start = false,
+})
 
-local filter = require("plugins.lsp.filter")
+local function apply_filter(setting)
+	local filter = require("plugins.lsp.filter")
+	return vim.tbl_deep_extend("force", enable_format_opts, {
+		on_attach = function(client, bufnr)
+			setting.on_attach(client, bufnr)
+			filter.apply({ client = client, bufnr = bufnr })
+		end,
+	})
+end
+
+local function apply_capabilities(setting)
+	local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+	if ok then
+		setting.capabilities =
+			cmp_nvim_lsp.default_capabilities(setting.capabilities or vim.lsp.protocol.make_client_capabilities())
+	end
+	return setting
+end
+
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
 		local opt = servers[server_name] and servers[server_name] or default_opts
@@ -94,20 +126,7 @@ require("mason-lspconfig").setup_handlers({
 			return
 		end
 
-		local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-		if ok then
-			setting.capabilities =
-				cmp_nvim_lsp.default_capabilities(setting.capabilities or vim.lsp.protocol.make_client_capabilities())
-		end
-
-		local new_setting = vim.tbl_deep_extend("force", setting, {
-			on_attach = function(client, bufnr)
-				setting.on_attach(client, bufnr)
-				filter.apply({ client = client, bufnr = bufnr })
-			end,
-		})
-
-		lspconfig[server_name].setup(new_setting)
+		lspconfig[server_name].setup(apply_capabilities(apply_filter(setting)))
 	end,
 })
 
@@ -117,7 +136,7 @@ for key, value in pairs(servers) do
 		local setting = value.setup()
 
 		if setting ~= nil then
-			lspconfig[key].setup(setting)
+			lspconfig[key].setup(apply_capabilities(apply_filter(setting)))
 		end
 	end
 end

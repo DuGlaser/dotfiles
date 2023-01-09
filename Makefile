@@ -36,6 +36,9 @@ setup/asdf: setup_asdf
 .PHONY: setup/docker
 setup/docker: setup_docker
 
+.PHONY: setup/tmux
+setup/tmux: setup_tmux
+
 IMAGE_NAME:=duglaser-dotfiles
 
 .PHONY: docker/ubuntu

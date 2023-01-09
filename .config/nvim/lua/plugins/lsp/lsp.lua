@@ -96,7 +96,7 @@ require("mason-tool-installer").setup({
 
 local function apply_filter(setting)
 	local filter = require("plugins.lsp.filter")
-	return vim.tbl_deep_extend("force", enable_format_opts, {
+	return vim.tbl_deep_extend("force", setting, {
 		on_attach = function(client, bufnr)
 			setting.on_attach(client, bufnr)
 			filter.apply({ client = client, bufnr = bufnr })

@@ -9,7 +9,7 @@ local common = require("plugins.lsp.common")
 
 M.prettier_setting_files = { ".prettierrc", ".prettierrc.js", ".prettierrc.cjs", ".prettierrc.json" }
 M.eslint_setting_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }
-M.root_dir = { "Makefile", ".git", "package.json" }
+M.root_dir = { ".git", "package.json", "Makefile" }
 
 local generate_runtime_condition = function(root_pattern, target_file)
 	return h.cache.by_bufnr(function(params)
@@ -28,21 +28,19 @@ local generate_runtime_condition = function(root_pattern, target_file)
 	end)
 end
 
-local apply_eslint = function(setting)
+local apply_runtime_condition = function(setting, pattern)
 	return setting.with({
-		runtime_condition = generate_runtime_condition(M.root_dir, M.eslint_setting_files),
+		runtime_condition = generate_runtime_condition(M.root_dir, pattern),
 	})
 end
 
 M.enable_prettier = utils.make_conditional_utils().root_has_file(M.prettier_setting_files)
 
 local sources = {
-	function()
-		return utils.make_conditional_utils().root_has_file(M.prettier_setting_files) and b.formatting.prettierd
-	end,
-	apply_eslint(b.code_actions.eslint_d),
-	apply_eslint(b.diagnostics.eslint_d),
-	apply_eslint(b.formatting.eslint_d),
+	apply_runtime_condition(b.formatting.prettierd, M.prettier_setting_files),
+	apply_runtime_condition(b.code_actions.eslint_d, M.eslint_setting_files),
+	apply_runtime_condition(b.diagnostics.eslint_d, M.eslint_setting_files),
+	apply_runtime_condition(b.formatting.eslint_d, M.eslint_setting_files),
 	require("typescript.extensions.null-ls.code-actions"),
 	b.formatting.stylua,
 	b.diagnostics.shellcheck,

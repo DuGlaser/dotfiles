@@ -41,7 +41,6 @@ local M = {
 }
 
 function M.config()
-	print("load cmp")
 	local cmp = require("cmp")
 	local types = require("cmp.types")
 	local border = require("plugins.lsp.utils").border

@@ -11,26 +11,20 @@ M.prettier_setting_files = { ".prettierrc", ".prettierrc.js", ".prettierrc.cjs",
 M.eslint_setting_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }
 M.root_dir = { ".git", "package.json", "Makefile" }
 
-local generate_runtime_condition = function(root_pattern, target_file)
+local generate_runtime_condition = function(root_pattern)
 	return h.cache.by_bufnr(function(params)
 		local root_path = require("lspconfig").util.root_pattern(root_pattern)(params.bufname)
 		if root_path == nil then
 			return false
 		end
 
-		local condition = false
-
-		for _, file in pairs(target_file) do
-			condition = condition or vim.fn.findfile(file, root_path .. ";") ~= ""
-		end
-
-		return condition
+		return true
 	end)
 end
 
 local apply_runtime_condition = function(setting, pattern)
 	return setting.with({
-		runtime_condition = generate_runtime_condition(M.root_dir, pattern),
+		runtime_condition = generate_runtime_condition(pattern),
 	})
 end
 

@@ -11,6 +11,7 @@ path=(
 		$HOME/.cargo/bin(N-/)
     $DENO_INSTALL_ROOT/bin(N-/)
     $HOME/.cargo/env(N-/)
+    $HOME/.local/bin(N-/)
     "$path[@]"
 )
 

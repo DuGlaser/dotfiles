@@ -115,3 +115,6 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
+if [ -d "/mnt/c" ]; then
+  source "$HOME/dotfiles/zsh/wsl.zsh"
+fi

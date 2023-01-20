@@ -21,6 +21,17 @@ vim.opt.showtabline = 2
 vim.opt.laststatus = 3
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.clipboard = "unnamedplus"
+
+in_wsl = os.getenv("IS_WSL") ~= nil
+if in_wsl then
+	vim.g.clipboard = {
+		name = "wsl clipboard",
+		copy = { ["+"] = { "clip.exe" }, ["*"] = { "clip.exe" } },
+		paste = { ["+"] = { "wsl_paste" }, ["*"] = { "wsl_paste" } },
+		cache_enabled = true,
+	}
+end
 
 -- まだ言語サポートがいまいちなのでもう少し様子を見る
 -- opt.spell = true
@@ -47,7 +58,6 @@ vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
 
 vim.cmd([[
-  set clipboard+=unnamedplus
   set t_Co=256
   set nocompatible
   set mouse=

@@ -23,7 +23,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.clipboard = "unnamedplus"
 
-in_wsl = os.getenv("IS_WSL") ~= nil
+local in_wsl = os.getenv("IS_WSL") ~= nil
 if in_wsl then
 	vim.g.clipboard = {
 		name = "wsl clipboard",

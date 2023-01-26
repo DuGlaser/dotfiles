@@ -27,8 +27,14 @@ local in_wsl = os.getenv("IS_WSL") ~= nil
 if in_wsl then
 	vim.g.clipboard = {
 		name = "wsl clipboard",
-		copy = { ["+"] = { "clip.exe" }, ["*"] = { "clip.exe" } },
-		paste = { ["+"] = { "wsl_paste" }, ["*"] = { "wsl_paste" } },
+		copy = {
+			["+"] = "win32yank.exe -i --crlf",
+			["*"] = "win32yank.exe -i --crlf",
+		},
+		paste = {
+			["+"] = "win32yank.exe -o --lf",
+			["*"] = "win32yank.exe -o --lf",
+		},
 		cache_enabled = true,
 	}
 end

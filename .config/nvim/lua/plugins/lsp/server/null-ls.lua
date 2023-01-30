@@ -30,12 +30,25 @@ end
 
 M.enable_prettier = utils.make_conditional_utils().root_has_file(M.prettier_setting_files)
 
+local get_cspell_condition = function()
+	return vim.fn.executable("cspell") > 0
+end
+
 local sources = {
 	apply_runtime_condition(b.formatting.prettierd, M.prettier_setting_files),
 	apply_runtime_condition(b.code_actions.eslint_d, M.eslint_setting_files),
 	apply_runtime_condition(b.diagnostics.eslint_d, M.eslint_setting_files),
 	apply_runtime_condition(b.formatting.eslint_d, M.eslint_setting_files),
 	require("typescript.extensions.null-ls.code-actions"),
+	b.diagnostics.cspell.with({
+		diagnostics_postprocess = function(diagnostic)
+			diagnostic.severity = vim.diagnostic.severity["WARN"]
+		end,
+		condition = get_cspell_condition,
+	}),
+	b.code_actions.cspell.with({
+		condition = get_cspell_condition,
+	}),
 	b.formatting.stylua,
 	b.diagnostics.shellcheck,
 	b.diagnostics.jsonlint,

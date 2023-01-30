@@ -12,6 +12,7 @@ if  [ "$(uname)" == 'Linux' ]; then
   sudo desktop-file-install extra/linux/Alacritty.desktop
   sudo update-desktop-database
 else
+  rm -rf /Applications/Alacritty.app
   make app
   cp -r target/release/osx/Alacritty.app /Applications/
 fi

@@ -4,6 +4,7 @@ local M = {
 		"hrsh7th/fern-mapping-collapse-or-leave.vim",
 		"lambdalisue/nerdfont.vim",
 		"lambdalisue/fern-renderer-nerdfont.vim",
+		"lambdalisue/glyph-palette.vim",
 	},
 	keys = {
 		{
@@ -47,6 +48,12 @@ local M = {
       augroup fern-custom
         autocmd! *
         autocmd FileType fern call s:init_fern()
+      augroup END
+
+      augroup my-glyph-palette
+        autocmd! *
+        autocmd FileType fern call glyph_palette#apply()
+        autocmd FileType nerdtree,startify call glyph_palette#apply()
       augroup END
     ]])
 	end,

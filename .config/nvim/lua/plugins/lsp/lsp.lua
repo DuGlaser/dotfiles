@@ -89,6 +89,7 @@ require("mason-tool-installer").setup({
 		"prettierd",
 		"shellcheck",
 		"stylua",
+		"cspell",
 	},
 	auto_update = false,
 	run_on_start = false,

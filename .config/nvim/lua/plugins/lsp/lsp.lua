@@ -20,7 +20,6 @@ local default_opts = {
 				client.server_capabilities.documentFormattingProvider = false
 				common.on_attach(client, bufnr)
 			end,
-			capabilities = common.capabilities,
 			flags = {
 				debounce_text_changes = 150,
 			},
@@ -36,7 +35,6 @@ local enable_format_opts = {
 				client.server_capabilities.documentFormattingProvider = true
 				common.on_attach(client, bufnr)
 			end,
-			capabilities = common.capabilities,
 			flags = {
 				debounce_text_changes = 150,
 			},

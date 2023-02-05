@@ -1,3 +1,4 @@
 .PHONY: update
 update:
-	nvim -c "lua require('lazy').update()"
+	nvim --headless "+Lazy! sync" +qa
+	nvim --headless +TSUpdate +qa

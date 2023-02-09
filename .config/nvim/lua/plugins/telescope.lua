@@ -21,9 +21,7 @@ local M = {
 		{
 			"<Space>G",
 			function()
-				require("telescope").extensions.live_grep_args.live_grep_args(
-					require("telescope.themes").get_dropdown({})
-				)
+				require("telescope").extensions.live_grep_args.live_grep_args()
 			end,
 		},
 		{
@@ -50,6 +48,7 @@ local M = {
 	},
 	config = function()
 		local telescope = require("telescope")
+		local lga_actions = require("telescope-live-grep-args.actions")
 
 		telescope.setup({
 			pickers = {
@@ -73,6 +72,11 @@ local M = {
 				live_grep_args = {
 					auto_quoting = true,
 					theme = "dropdown",
+					mappings = {
+						i = {
+							["<C-k>"] = lga_actions.quote_prompt(),
+						},
+					},
 				},
 			},
 		})

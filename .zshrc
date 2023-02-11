@@ -14,6 +14,10 @@ if  [[ "$(uname)" = 'Linux' ]]; then
   fi
 fi
 
+if [ -d "/mnt/c" ]; then
+  . "$HOME/dotfiles/zsh/wsl.zsh"
+fi
+
 # Ctrl-sでフリーズしないようにする
 stty -ixon
 
@@ -99,7 +103,7 @@ source ~/.zsh/zsh-z/zsh-z.plugin.zsh
 
 ## asdf
 if ! type "asdf" > /dev/null 2>&1; then
-  source $HOME/.asdf/asdf.sh
+  . $HOME/.asdf/asdf.sh
 fi
 
 ## npm
@@ -114,7 +118,3 @@ function select-history() {
 }
 zle -N select-history
 bindkey '^r' select-history
-
-if [ -d "/mnt/c" ]; then
-  source "$HOME/dotfiles/zsh/wsl.zsh"
-fi

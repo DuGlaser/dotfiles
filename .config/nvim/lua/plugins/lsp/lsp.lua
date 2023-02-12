@@ -60,7 +60,7 @@ local servers = {
 	["jsonls"] = require("plugins.lsp.server.jsonls"),
 	["null-ls"] = require("plugins.lsp.server.null-ls"),
 	["pyright"] = require("plugins.lsp.server.pyright"),
-	["sumneko_lua"] = require("plugins.lsp.server.sumneko_lua"),
+	["lua_ls"] = require("plugins.lsp.server.lua_ls"),
 	["tsserver"] = require("plugins.lsp.server.tsserver"),
 	["yamlls"] = require("plugins.lsp.server.yamlls"),
 }

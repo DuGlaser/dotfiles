@@ -4,6 +4,7 @@ local M = {
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			"windwp/nvim-ts-autotag",
+			"yioneko/nvim-yati",
 		},
 
 		config = function()
@@ -22,8 +23,11 @@ local M = {
 				incremental_selection = {
 					enable = false,
 				},
-				indent = {
+				yati = {
 					enable = true,
+				},
+				indent = {
+					enable = false,
 				},
 				textobjects = {
 					enable = true,

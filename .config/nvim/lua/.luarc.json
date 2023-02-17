@@ -39,6 +39,7 @@
         "/home/duglaser/.local/share/nvim/lazy/nvim-autopairs",
         "/home/duglaser/.local/share/nvim/lazy/nvim-ts-context-commentstring",
         "/home/duglaser/.local/share/nvim/lazy/rust-tools.nvim",
-        "${3rd}/luassert/library"
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
     ]
 }

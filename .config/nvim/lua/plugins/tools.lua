@@ -17,10 +17,6 @@ local M = {
 		"moll/vim-bbye",
 		event = "BufReadPre",
 	},
-	{
-		"tpope/vim-commentary",
-		event = "BufReadPre",
-	},
 	"mbbill/undotree",
 	{
 		"kana/vim-operator-replace",

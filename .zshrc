@@ -15,7 +15,7 @@ if  [[ "$(uname)" = 'Linux' ]]; then
 fi
 
 if [ -d "/mnt/c" ]; then
-  . "$HOME/dotfiles/zsh/wsl.zsh"
+  source "$HOME/dotfiles/zsh/wsl.zsh"
 fi
 
 # Ctrl-sでフリーズしないようにする
@@ -43,10 +43,10 @@ bindkey "^?" backward-delete-char
 HISTSIZE=1000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
-setopt hist_ignore_all_dups
 
-setopt histignorealldups sharehistory
-setopt share_history
+setopt SHARE_HISTORY
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
 
 # Use modern completion system
 autoload -Uz compinit
@@ -103,7 +103,7 @@ source ~/.zsh/zsh-z/zsh-z.plugin.zsh
 
 ## asdf
 if ! type "asdf" > /dev/null 2>&1; then
-  . $HOME/.asdf/asdf.sh
+  source $HOME/.asdf/asdf.sh
 fi
 
 ## npm

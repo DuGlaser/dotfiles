@@ -55,8 +55,6 @@ colors:
     text: "0x002635"
     cursor: "0xffcc1b"
 
-alt_send_esc: true
-
 key_bindings:
   - { key: W, mods: Alt, chars: "\x1bw" }
   - { key: A, mods: Alt, chars: "\x1ba" }

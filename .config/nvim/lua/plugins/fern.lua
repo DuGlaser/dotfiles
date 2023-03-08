@@ -23,7 +23,7 @@ local M = {
       let g:fern#default_exclude = hide_dirs . '\|' . hide_files
 
       function! s:init_fern() abort
-        nmap <buffer> <Space>u <cmd>Fern . -drawer -toggle -width=35 -reveal=% <CR><C-w>=
+        nmap <buffer> <Space>u :q<CR><C-w>=
 
         nmap <buffer> E <Plug>(fern-action-open:side)
         nmap <buffer> ! <Plug>(fern-action-hidden:toggle)

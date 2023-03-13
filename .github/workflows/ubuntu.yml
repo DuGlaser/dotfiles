@@ -15,3 +15,9 @@ jobs:
 
       - name: setup
         run: make init
+
+      - name: check
+        run: |
+          ls -la $HOME
+          source ./.zshrc
+          which asdf

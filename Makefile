@@ -35,10 +35,3 @@ setup/ansible: setup_ansible
 
 .PHONY: setup/tmux
 setup/tmux: setup_tmux
-
-IMAGE_NAME:=duglaser-dotfiles
-
-.PHONY: docker/ubuntu
-docker/ubuntu:
-	DOCKER_BUILDKIT=1 docker build -t $(IMAGE_NAME):ubuntu --target UBUNTU .
-	docker run -it $(IMAGE_NAME):ubuntu /bin/bash

@@ -1,7 +1,9 @@
 FROM ubuntu:22.04 AS UBUNTU
 
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Tokyo
 
-RUN apt-get update && apt-get upgrade
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y make git sudo curl
 
 ARG USER="test"

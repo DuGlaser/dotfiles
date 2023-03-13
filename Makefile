@@ -7,6 +7,12 @@ DEBUG_LEVEL:=-v
 ansible/install:
 	@ansible-playbook -i inventory/localhost install.yml $(DEBUG_LEVEL)
 
+.PHONY:install_tools 
+install_tools: install_tool/asdf install_tool/aws install_tool/docker install_tool/rust
+
+install_tool/%:
+	./scripts/installer/$*.sh
+
 .PHONY: setup/init
 setup/init:
 	./scripts/init_setup.sh
@@ -26,15 +32,6 @@ setup/zsh: setup_zsh
 
 .PHONY: setup/ansible
 setup/ansible: setup_ansible
-
-.PHONY: setup/rust
-setup/rust: setup_rust
-
-.PHONY: setup/asdf
-setup/asdf: setup_asdf
-
-.PHONY: setup/docker
-setup/docker: setup_docker
 
 .PHONY: setup/tmux
 setup/tmux: setup_tmux

@@ -23,6 +23,10 @@
         state: present
         update_cache: yes
 
+    - name: Install tools
+      become: true
+      shell: make install_tools
+
     - name: Install alacritty dependencies
       become: true
       apt:
@@ -36,10 +40,6 @@
           - python3
         state: present
         update_cache: yes
-
-    - name: Install rust
-      become: true
-      shell: make setup/rust
 
     - name: Build alacritty
       become: true
@@ -68,8 +68,5 @@
     - name: Build neovim
       become: true
       shell: make setup/nvim
-
-    - name: Install asdf
-      shell: make setup/asdf
 
   when: ansible_os_family == "Debian"

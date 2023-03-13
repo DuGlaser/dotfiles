@@ -14,11 +14,11 @@ M.setup = function()
 		end,
 		capabilities = capabilities,
 		settings = {
-			json = {
+			yaml = {
 				format = {
 					enable = not enable_prettier,
 				},
-				schemas = require("schemastore").json.schemas(),
+				schemas = require("schemastore").yaml.schemas(),
 				validate = { enable = true },
 			},
 		},

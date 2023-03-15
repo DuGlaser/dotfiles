@@ -12,41 +12,11 @@ for _, g in pairs(diagnosticsGroup) do
 end
 
 local common = require("plugins.lsp.common")
+local lsp_utils = require("plugins.lsp.utils").lsp
 
-local default_opts = {
-	setup = function()
-		return {
-			on_attach = function(client, bufnr)
-				client.server_capabilities.documentFormattingProvider = false
-				common.on_attach(client, bufnr)
-			end,
-			flags = {
-				debounce_text_changes = 150,
-			},
-		}
-	end,
-	use_mason = true,
-}
-
-local enable_format_opts = {
-	setup = function()
-		return {
-			on_attach = function(client, bufnr)
-				client.server_capabilities.documentFormattingProvider = true
-				common.on_attach(client, bufnr)
-			end,
-			flags = {
-				debounce_text_changes = 150,
-			},
-		}
-	end,
-	use_mason = true,
-}
-
-local function disable_mason_setting(setting)
-	setting.use_mason = false
-	return setting
-end
+local default_opts = lsp_utils.default_opts
+local enable_format_opts = lsp_utils.enable_format_opts
+local disable_mason_setting = lsp_utils.disable_mason_setting
 
 local lspconfig = require("lspconfig")
 local servers = {
@@ -66,20 +36,11 @@ local servers = {
 	["yamlls"] = require("plugins.lsp.server.yamlls"),
 }
 
-local function getMasonServerKey(tab)
-	local keyset = {}
-	for key, value in pairs(tab) do
-		if value.use_mason then
-			keyset[#keyset + 1] = key
-		end
-	end
-
-	return keyset
-end
+local get_mason_server_key = lsp_utils.get_mason_server_key
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = getMasonServerKey(servers),
+	ensure_installed = get_mason_server_key(servers),
 	automatic_installation = true,
 })
 require("mason-tool-installer").setup({
@@ -94,24 +55,8 @@ require("mason-tool-installer").setup({
 	run_on_start = false,
 })
 
-local function apply_filter(setting)
-	local filter = require("plugins.lsp.filter")
-	return vim.tbl_deep_extend("force", setting, {
-		on_attach = function(client, bufnr)
-			setting.on_attach(client, bufnr)
-			filter.apply({ client = client, bufnr = bufnr })
-		end,
-	})
-end
-
-local function apply_capabilities(setting)
-	local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-	if ok then
-		setting.capabilities =
-			cmp_nvim_lsp.default_capabilities(setting.capabilities or vim.lsp.protocol.make_client_capabilities())
-	end
-	return setting
-end
+local apply_filter = lsp_utils.apply_filter
+local apply_capabilities = lsp_utils.apply_capabilities
 
 require("mason-lspconfig").setup_handlers({
 	function(server_name)

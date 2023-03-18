@@ -16,11 +16,13 @@
           - htop
           - hub
           - jq
+          - koekeishiya/formulae/skhd
           - neofetch
           - peco
           - ripgrep
           - tig
           - tmux
+          - yabai
           - zsh
 
     - name: Install tools

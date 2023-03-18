@@ -1,10 +1,12 @@
 /*
+!.atc.toml
 !.gitignore
-!/fish
 !/alacritty
+!/bat
+!/fish
 !/karabiner
 !/nvim
-!/bat
 !cargo-atcoder.toml
 !setup_config.sh
-!.atc.toml
+!skhd
+!yabai

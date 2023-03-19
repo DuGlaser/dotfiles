@@ -13,4 +13,4 @@ else
 fi
 
 cd ../../
-rm -rf tmp/aws/cli
+rm -rf tmp/aws-cli

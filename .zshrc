@@ -3,7 +3,7 @@ alias v="nvim"
 alias l="exa -a -1"
 alias cls="clear"
 alias rg="rg --colors 'match:bg:yellow' --colors 'match:fg:black' --colors 'match:style:nobold' --colors 'path:fg:green' --colors 'path:style:bold' --colors 'line:fg:yellow' --colors 'line:style:bold'"
-alias hub="echo 'ghを使え'"
+alias hub="echo 'ghを使え' # "
 
 ## copy alias
 if  [[ "$(uname)" = 'Linux' ]]; then
@@ -35,6 +35,9 @@ setopt pushd_ignore_dups
 
 # fix typo
 setopt correct
+
+# enable comment out
+setopt interactive_comments
 
 # vi keybindings
 bindkey -v

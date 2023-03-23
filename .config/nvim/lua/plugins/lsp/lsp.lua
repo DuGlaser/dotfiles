@@ -45,11 +45,12 @@ require("mason-lspconfig").setup({
 })
 require("mason-tool-installer").setup({
 	ensure_installed = {
+		"cspell",
 		"eslint_d",
+		"jsonlint",
 		"prettierd",
 		"shellcheck",
 		"stylua",
-		"cspell",
 	},
 	auto_update = false,
 	run_on_start = false,

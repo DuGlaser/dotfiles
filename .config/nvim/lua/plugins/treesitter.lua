@@ -10,14 +10,25 @@ local M = {
 		config = function()
 			local max_filesize = 100 * 1024
 
+			local function get_file_size(buf)
+				local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+				if ok and stats then
+					return stats.size
+				end
+
+				return nil
+			end
+
+			local function is_file_size_over_limit(buf, limit_size)
+				local size = get_file_size(buf)
+				return size and size > limit_size
+			end
+
 			require("nvim-treesitter.configs").setup({
 				highlight = {
 					enable = true,
 					disable = function(_, buf)
-						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-						if ok and stats and stats.size > max_filesize then
-							return true
-						end
+						return is_file_size_over_limit(buf, max_filesize)
 					end,
 				},
 				incremental_selection = {
@@ -44,8 +55,7 @@ local M = {
 
 			vim.api.nvim_create_autocmd("BufEnter", {
 				callback = function(params)
-					local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(params.buf))
-					if ok and stats and stats.size > max_filesize then
+					if is_file_size_over_limit(params.buf, max_filesize) then
 						vim.opt.syntax = "off"
 					end
 				end,

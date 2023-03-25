@@ -23,8 +23,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.clipboard = "unnamedplus"
 
-local in_wsl = os.getenv("IS_WSL") ~= nil
-if in_wsl then
+local is_wsl = os.getenv("IS_WSL") ~= nil
+if is_wsl then
 	vim.g.clipboard = {
 		name = "wsl clipboard",
 		copy = {
@@ -38,13 +38,6 @@ if in_wsl then
 		cache_enabled = true,
 	}
 end
-
--- まだ言語サポートがいまいちなのでもう少し様子を見る
--- opt.spell = true
--- opt.spelllang = { "en", "cjk" }
--- opt.spelloptions = { "noplainbuffer", "camel" }
-
--- opt.cmdheight = 0
 
 -- stop default plugins
 vim.g.loaded_gzip = 1

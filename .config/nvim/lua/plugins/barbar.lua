@@ -8,11 +8,11 @@ return {
 		vim.api.nvim_set_keymap("n", "<C-t><C-t>", "<cmd>BufferPick<CR>", opts)
 		vim.api.nvim_set_keymap("n", "<C-t><C-l>", "<cmd>BufferNext<CR>", opts)
 		vim.api.nvim_set_keymap("n", "<C-t><C-h>", "<cmd>BufferPrevious<CR>", opts)
-		vim.api.nvim_set_keymap("n", "<C-t><C-p>", "<cmd>Bdelete<CR>", opts)
-		vim.api.nvim_set_keymap("n", "<C-t><C-P>", "<cmd>Bdelete!<CR>", opts)
+		vim.api.nvim_set_keymap("n", "<C-t><C-p>", "<cmd>BufferClose<CR>", opts)
+		vim.api.nvim_set_keymap("n", "<C-t><C-P>", "<cmd>BufferClose!<CR>", opts)
 
 		require("bufferline").setup({
-			animation = true,
+			animation = false,
 			closable = false,
 			clickable = true,
 		})

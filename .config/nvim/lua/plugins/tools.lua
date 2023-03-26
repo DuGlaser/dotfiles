@@ -13,10 +13,6 @@ local M = {
 		end,
 	},
 	"tpope/vim-repeat",
-	{
-		"moll/vim-bbye",
-		event = "BufReadPre",
-	},
 	"mbbill/undotree",
 	{
 		"kana/vim-operator-replace",

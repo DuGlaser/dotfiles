@@ -11,6 +11,8 @@ M.prettier_setting_files = { ".prettierrc", ".prettierrc.js", ".prettierrc.cjs",
 M.eslint_setting_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }
 M.root_dir = { ".git", "package.json", "Makefile" }
 
+M.enable_prettier = utils.make_conditional_utils().root_has_file(M.prettier_setting_files)
+
 local generate_runtime_condition = function(root_pattern)
 	return h.cache.by_bufnr(function(params)
 		local root_path = require("lspconfig").util.root_pattern(root_pattern)(params.bufname)
@@ -28,36 +30,85 @@ local apply_runtime_condition = function(setting, pattern)
 	})
 end
 
-M.enable_prettier = utils.make_conditional_utils().root_has_file(M.prettier_setting_files)
-
 local get_cspell_condition = function()
 	return vim.fn.executable("cspell") > 0
 end
 
-local sources = {
-	apply_runtime_condition(b.formatting.prettierd, M.prettier_setting_files),
-	apply_runtime_condition(b.code_actions.eslint_d, M.eslint_setting_files),
-	apply_runtime_condition(b.diagnostics.eslint_d, M.eslint_setting_files),
-	apply_runtime_condition(b.formatting.eslint_d, M.eslint_setting_files),
-	require("typescript.extensions.null-ls.code-actions"),
-	b.diagnostics.cspell.with({
-		diagnostics_postprocess = function(diagnostic)
-			diagnostic.severity = vim.diagnostic.severity["WARN"]
-		end,
-		condition = get_cspell_condition,
-	}),
-	b.code_actions.cspell.with({
-		condition = get_cspell_condition,
-	}),
-	b.formatting.stylua,
-	b.diagnostics.shellcheck,
-	b.diagnostics.jsonlint,
-	b.code_actions.shellcheck,
+local function get_null_ls_sources(source_name, types, fn)
+	local tbl = {}
+	if fn ~= nil then
+		for _, type in ipairs(types) do
+			table.insert(tbl, fn(b[type][source_name], type))
+		end
+
+		return tbl
+	end
+
+	for _, type in ipairs(types) do
+		table.insert(tbl, b[type][source_name])
+	end
+
+	return tbl
+end
+
+local function merge_sources(...)
+	local tbl = {}
+	for i = 1, select("#", ...) do
+		local sources = (select(i, ...))
+		for _, source in ipairs(sources) do
+			table.insert(tbl, source)
+		end
+	end
+
+	return tbl
+end
+
+local TYPES = {
+	CODE_ACTIONS = "code_actions",
+	DIAGNOSTICS = "diagnostics",
+	FORMATTING = "formatting",
 }
+
+local eslint_sources = get_null_ls_sources(
+	"eslint_d",
+	{ TYPES.CODE_ACTIONS, TYPES.DIAGNOSTICS, TYPES.FORMATTING },
+	function(source)
+		return apply_runtime_condition(source, M.eslint_setting_files)
+	end
+)
+
+local cspell_sources = get_null_ls_sources("cspell", { TYPES.CODE_ACTIONS, TYPES.DIAGNOSTICS }, function(source, type)
+	local opts = {
+		condition = get_cspell_condition,
+	}
+
+	if type == "diagnostics" then
+		opts.diagnostics_postprocess = function(diagnostic)
+			diagnostic.severity = vim.diagnostic.severity["WARN"]
+		end
+	end
+
+	return source.with(opts)
+end)
+
+local prettierd_sources = get_null_ls_sources("prettierd", { TYPES.FORMATTING }, function(source)
+	return apply_runtime_condition(source, M.prettier_setting_files)
+end)
+
+local sources = merge_sources(
+	{ require("typescript.extensions.null-ls.code-actions") },
+	cspell_sources,
+	eslint_sources,
+	prettierd_sources,
+	get_null_ls_sources("jsonlint", { TYPES.DIAGNOSTICS }),
+	get_null_ls_sources("prettierd", { TYPES.FORMATTING }),
+	get_null_ls_sources("shellcheck", { TYPES.CODE_ACTIONS, TYPES.DIAGNOSTICS }),
+	get_null_ls_sources("stylua", { TYPES.FORMATTING }),
+	get_null_ls_sources("yamllint", { TYPES.DIAGNOSTICS })
+)
 
 M.setup = function()
 	null_ls.setup({
-		---@diagnostic disable-next-line: param-type-mismatch
 		root_dir = utils.root_pattern(M.root_dir),
 		sources = sources,
 		on_attach = function(client, bufnr)

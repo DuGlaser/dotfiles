@@ -51,6 +51,7 @@ require("mason-tool-installer").setup({
 		"prettierd",
 		"shellcheck",
 		"stylua",
+		"yamllint",
 	},
 	auto_update = false,
 	run_on_start = false,

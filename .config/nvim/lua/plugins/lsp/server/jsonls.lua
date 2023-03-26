@@ -19,7 +19,9 @@ M.setup = function()
 					enable = not enable_prettier,
 				},
 				schemas = require("schemastore").json.schemas(),
-				validate = { enable = true },
+				completion = true,
+				hover = true,
+				validate = true,
 			},
 		},
 	}

@@ -19,6 +19,7 @@
           - peco
           - tig
           - tmux
+          - unar
           - xclip
         state: present
         update_cache: yes

@@ -10,11 +10,13 @@ return {
 		vim.api.nvim_set_keymap("n", "<C-t><C-h>", "<cmd>BufferPrevious<CR>", opts)
 		vim.api.nvim_set_keymap("n", "<C-t><C-p>", "<cmd>BufferClose<CR>", opts)
 		vim.api.nvim_set_keymap("n", "<C-t><C-P>", "<cmd>BufferClose!<CR>", opts)
+		vim.api.nvim_set_keymap("n", "<C-t><C-m>", "<cmd>BufferPin<CR>", opts)
 
 		require("bufferline").setup({
 			animation = false,
 			closable = false,
 			clickable = true,
+			icon_pinned = "📌",
 		})
 	end,
 }

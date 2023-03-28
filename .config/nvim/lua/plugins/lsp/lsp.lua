@@ -52,6 +52,7 @@ require("mason-tool-installer").setup({
 		"shellcheck",
 		"stylua",
 		"yamllint",
+		"markdownlint",
 	},
 	auto_update = false,
 	run_on_start = false,

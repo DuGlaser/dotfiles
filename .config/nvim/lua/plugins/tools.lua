@@ -62,6 +62,9 @@ local M = {
 		end,
 	},
 	{
+		"chrisbra/Recover.vim",
+	},
+	{
 		"kana/vim-textobj-user",
 		event = "VeryLazy",
 	},
@@ -105,11 +108,13 @@ local M = {
 	----------------------------------------
 	{
 		"iamcco/markdown-preview.nvim",
-		build = ":call mkdp#util#install()",
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 		ft = { "markdown" },
 		config = function()
 			vim.g.mkdp_auto_start = 0
-			vim.g.mkdp_auto_close = 1
+			vim.g.mkdp_auto_close = 0
 		end,
 	},
 }

@@ -72,12 +72,12 @@ local TYPES = {
 local eslint_sources = get_null_ls_sources(
 	"eslint_d",
 	{ TYPES.CODE_ACTIONS, TYPES.DIAGNOSTICS, TYPES.FORMATTING },
-	function(source)
-		return apply_runtime_condition(source, M.eslint_setting_files)
+	function(setting)
+		return apply_runtime_condition(setting, M.eslint_setting_files)
 	end
 )
 
-local cspell_sources = get_null_ls_sources("cspell", { TYPES.CODE_ACTIONS, TYPES.DIAGNOSTICS }, function(source, type)
+local cspell_sources = get_null_ls_sources("cspell", { TYPES.CODE_ACTIONS, TYPES.DIAGNOSTICS }, function(setting, type)
 	local opts = {
 		condition = get_cspell_condition,
 	}
@@ -88,11 +88,16 @@ local cspell_sources = get_null_ls_sources("cspell", { TYPES.CODE_ACTIONS, TYPES
 		end
 	end
 
-	return source.with(opts)
+	return setting.with(opts)
 end)
 
-local prettierd_sources = get_null_ls_sources("prettierd", { TYPES.FORMATTING }, function(source)
-	return apply_runtime_condition(source, M.prettier_setting_files)
+local prettierd_sources = get_null_ls_sources("prettierd", { TYPES.FORMATTING }, function(setting)
+	return apply_runtime_condition(
+		setting.with({
+			disabled_filetypes = { "markdown", "markdown.mdx" },
+		}),
+		M.prettier_setting_files
+	)
 end)
 
 local sources = merge_sources(
@@ -101,7 +106,7 @@ local sources = merge_sources(
 	eslint_sources,
 	prettierd_sources,
 	get_null_ls_sources("jsonlint", { TYPES.DIAGNOSTICS }),
-	get_null_ls_sources("prettierd", { TYPES.FORMATTING }),
+	get_null_ls_sources("markdownlint", { TYPES.DIAGNOSTICS, TYPES.FORMATTING }),
 	get_null_ls_sources("shellcheck", { TYPES.CODE_ACTIONS, TYPES.DIAGNOSTICS }),
 	get_null_ls_sources("stylua", { TYPES.FORMATTING }),
 	get_null_ls_sources("yamllint", { TYPES.DIAGNOSTICS })

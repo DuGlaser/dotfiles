@@ -2,22 +2,16 @@
 
 ## Setup
 
-1. Clone this repo.
-```
-git clone https://github.com/DuGlaser/dotfiles.git ~/dotfiles
-```
-
-2. Setup
-```
-cd $HOME/dotfiles
-make init
+```bash
+bash -c "$(curl https://raw.githubusercontent.com/DuGlaser/dotfiles/master/scripts/install.sh)"
 ```
 
-3. change login shell
-```
+## Change login shell
+
+```bash
 chsh -s $(which zsh)
 ```
 
 ## Other
 
-- Font: https://github.com/romkatv/powerlevel10k#manual-font-installation
+- Font: <https://github.com/romkatv/powerlevel10k#manual-font-installation>

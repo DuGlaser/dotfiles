@@ -14,9 +14,10 @@ return {
 
 		require("bufferline").setup({
 			animation = false,
-			closable = false,
 			clickable = true,
-			icon_pinned = "📌",
+			pinned = {
+				button = "📌",
+			},
 		})
 	end,
 }

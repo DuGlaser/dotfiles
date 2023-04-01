@@ -100,14 +100,26 @@ local prettierd_sources = get_null_ls_sources("prettierd", { TYPES.FORMATTING },
 	)
 end)
 
+local shellcheck_sources = get_null_ls_sources(
+	"shellcheck",
+	{ TYPES.CODE_ACTIONS, TYPES.DIAGNOSTICS },
+	function(setting)
+		return setting.with({
+			runtime_condition = h.cache.by_bufnr(function(params)
+				return params.bufname:match("%.env$") == nil
+			end),
+		})
+	end
+)
+
 local sources = merge_sources(
 	{ require("typescript.extensions.null-ls.code-actions") },
 	cspell_sources,
 	eslint_sources,
 	prettierd_sources,
+	shellcheck_sources,
 	get_null_ls_sources("jsonlint", { TYPES.DIAGNOSTICS }),
 	get_null_ls_sources("markdownlint", { TYPES.DIAGNOSTICS, TYPES.FORMATTING }),
-	get_null_ls_sources("shellcheck", { TYPES.CODE_ACTIONS, TYPES.DIAGNOSTICS }),
 	get_null_ls_sources("stylua", { TYPES.FORMATTING }),
 	get_null_ls_sources("yamllint", { TYPES.DIAGNOSTICS })
 )

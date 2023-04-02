@@ -12,11 +12,22 @@ return {
 		vim.api.nvim_set_keymap("n", "<C-t><C-P>", "<cmd>BufferClose!<CR>", opts)
 		vim.api.nvim_set_keymap("n", "<C-t><C-m>", "<cmd>BufferPin<CR>", opts)
 
+		local diagnosticsGroup = require("plugins.lsp.utils").diagnosticsGroup
+
 		require("bufferline").setup({
 			animation = false,
 			clickable = true,
-			pinned = {
-				button = "📌",
+			icons = {
+				button = false,
+				diagnostics = {
+					[vim.diagnostic.severity.ERROR] = {
+						enabled = true,
+						icon = diagnosticsGroup.err_group.sign,
+					},
+				},
+				pinned = {
+					button = "📌",
+				},
 			},
 		})
 	end,

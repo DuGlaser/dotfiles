@@ -41,8 +41,8 @@ bind main    I      ?git rebase -i %(commit)
 bind diff    I      ?git rebase -i %(commit)
 bind refs    I      ?git rebase -i %(commit)
 
-bind main    ;      @hub browse -- commit/%(commit)
-bind blame   ;      @hub browse -- commit/%(commit)
-bind diff    ;      @hub browse -- commit/%(commit)
+bind main    ;      @gh browse %(commit)
+bind blame   ;      @gh browse %(commit)
+bind diff    ;      @gh browse %(commit)
 
 bind generic P      ?git push -u %(remote) %(repo:head)

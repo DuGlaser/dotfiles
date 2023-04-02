@@ -13,4 +13,4 @@ cmd + shift - h : yabai -m window --space prev
 cmd + shift - l : yabai -m window --space next
 
 # change window mode
-cmd + ctrl - f : yabai -m window --toggle float
+cmd + shift - f : yabai -m window --toggle float

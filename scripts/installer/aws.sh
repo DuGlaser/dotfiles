@@ -1,10 +1,12 @@
 #!/bin/bash
 
-mkdir -p tmp/aws-cli
-cd tmp/aws-cli || exit 0
+TMP_DIR=/tmp/dotfiles/aws-cli
+
+mkdir -p $TMP_DIR 
+cd $TMP_DIR || exit 1
 
 if [ "$(uname)" == 'Linux' ]; then
-  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip" -o "awscliv2.zip"
   unzip awscliv2.zip
   sudo ./aws/install
 else
@@ -12,5 +14,4 @@ else
   sudo installer -pkg AWSCLIV2.pkg -target /
 fi
 
-cd ../../
-rm -rf tmp/aws-cli
+rm -rf $TMP_DIR

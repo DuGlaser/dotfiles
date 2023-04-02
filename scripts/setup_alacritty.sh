@@ -1,8 +1,9 @@
 #!/bin/bash
-cd ~ || exit
-rm -rf alacritty
-git clone https://github.com/alacritty/alacritty.git
-cd alacritty || exit
+
+TMP_DIR=/tmp/dotfiles/alacritty
+
+git clone https://github.com/alacritty/alacritty.git $TMP_DIR
+cd $TMP_DIR || exit 1
 
 if  [ "$(uname)" == 'Linux' ]; then
   cargo build --release
@@ -17,5 +18,4 @@ else
   cp -r target/release/osx/Alacritty.app /Applications/
 fi
 
-cd ../
-rm -rf alacritty
+rm -rf $TMP_DIR

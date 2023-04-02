@@ -1,7 +1,11 @@
 #!/bin/bash
-git clone --depth=1 --recursive https://github.com/MaskRay/ccls
-cd ccls || exit
+
+TMP_DIR=/tmp/dotfiles/ccls
+
+git clone --depth=1 --recursive https://github.com/MaskRay/ccls $TMP_DIR
+cd $TMP_DIR || exit 1
+
 cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release
 sudo cmake --build Release --target install
-cd ../
-rm -rf ccls
+
+rm -rf $TMP_DIR

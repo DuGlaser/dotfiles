@@ -4,3 +4,4 @@ plugin/
 .nvimlog
 /lua/defaults/path.lua
 /lua/packer_compiled.lua
+/lua/.luarc.json

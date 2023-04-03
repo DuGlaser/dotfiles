@@ -5,6 +5,7 @@ if  [ "$(uname)" == 'Linux' ]; then
 else
   xcode-select --install
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  source "$HOME/dotfiles/.zshrc"
   brew install ansible
 fi
 

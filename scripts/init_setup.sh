@@ -15,6 +15,7 @@ ln -sfnv "$dotfiles/.zshrc" "$HOME/.zshrc"
 
 dotfiles_config="$dotfiles/.config"
 config="$HOME/.config"
+mkdir -p "$HOME/.config"
 
 ln -sfnv "$dotfiles_config/.atc.toml" "$config/.atc.toml"
 ln -sfnv "$dotfiles_config/alacritty" "$config/alacritty"

@@ -8,6 +8,9 @@ scrolling:
   history: 10000
   multiplier: 3
 
+env:
+  TERM: alacritty
+
 font:
   normal:
     family: MesloLGS NF

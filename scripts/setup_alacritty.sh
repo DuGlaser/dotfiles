@@ -4,6 +4,7 @@ TMP_DIR=/tmp/dotfiles/alacritty
 
 git clone https://github.com/alacritty/alacritty.git $TMP_DIR
 cd $TMP_DIR || exit 1
+sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
 
 if  [ "$(uname)" == 'Linux' ]; then
   cargo build --release

@@ -38,5 +38,6 @@ yabai -m config                                 \
     mouse_drop_action            swap
 
 yabai -m rule --add app="(システム設定|System Settings)" manage=off
+yabai -m rule --add app="(システム情報|System Information)" manage=off
 
 echo "yabai configuration loaded.."

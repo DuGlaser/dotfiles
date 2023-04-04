@@ -15,6 +15,7 @@ local M = {
 		config = function()
 			require("plugins.lsp.lsp")
 		end,
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{ "folke/neodev.nvim" },
 			{ "williamboman/mason.nvim" },
@@ -25,6 +26,12 @@ local M = {
 			{ "b0o/schemastore.nvim" },
 			{ "j-hui/fidget.nvim" },
 			{ "jose-elias-alvarez/typescript.nvim" },
+			{
+				"hrsh7th/cmp-nvim-lsp",
+				cond = function()
+					return require("lazy.core.config").plugins["nvim-cmp"]
+				end,
+			},
 		},
 	},
 }

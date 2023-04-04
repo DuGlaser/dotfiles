@@ -8,7 +8,7 @@ local M = {
 		"hrsh7th/cmp-vsnip",
 		"hrsh7th/cmp-path",
 		"hrsh7th/vim-vsnip",
-		{ "hrsh7th/cmp-nvim-lua", ft = "lua" },
+		"hrsh7th/cmp-nvim-lua",
 		{
 			"hrsh7th/vim-vsnip",
 			config = function()

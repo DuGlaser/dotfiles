@@ -41,7 +41,7 @@ local get_mason_server_key = lsp_utils.get_mason_server_key
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = get_mason_server_key(servers),
-	automatic_installation = true,
+	automatic_installation = false,
 })
 require("mason-tool-installer").setup({
 	ensure_installed = {

@@ -1,3 +1,6 @@
+import:
+  - ~/.config/alacritty/size.yml
+
 window:
   padding:
     x: 10
@@ -26,8 +29,6 @@ font:
   bold_italic:
     family: MesloLGS NF
     style: Bold Italic
-
-  size: 9
 
 colors:
   primary:

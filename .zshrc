@@ -108,7 +108,7 @@ bindkey '^e' autosuggest-accept
 source ~/.zsh/zsh-z/zsh-z.plugin.zsh
 
 ## asdf
-if type "asdf" > /dev/null 2>&1; then
+if ! type "asdf" > /dev/null 2>&1; then
   source $HOME/.asdf/asdf.sh
 fi
 

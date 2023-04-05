@@ -67,21 +67,23 @@ zstyle ':completion::complete:*' use-cache true
 export LANG=ja_JP.UTF-8
 
 # tmux
-if [[ ! -n $TMUX ]]; then
-  # get the IDs
-  ID="`tmux list-sessions`"
-  if [[ -z "$ID" ]]; then
-    tmux -u new-session
-    return
-  fi
-  create_new_session="Create New Session"
-  ID="$ID\n${create_new_session}:"
-  ID="`echo $ID | fzf | cut -d: -f1`"
-  
-  if [[ "$ID" = "${create_new_session}" ]]; then
-    tmux -u new-session
-  elif [[ -n "$ID" ]]; then
-    tmux -u attach-session -t "$ID"
+if type "tmux" > /dev/null 2>&1; then
+  if [[ ! -n $TMUX ]]; then
+    # get the IDs
+    ID="`tmux list-sessions`"
+    if [[ -z "$ID" ]]; then
+      tmux -u new-session
+      return
+    fi
+    create_new_session="Create New Session"
+    ID="$ID\n${create_new_session}:"
+    ID="`echo $ID | fzf | cut -d: -f1`"
+
+    if [[ "$ID" = "${create_new_session}" ]]; then
+      tmux -u new-session
+    elif [[ -n "$ID" ]]; then
+      tmux -u attach-session -t "$ID"
+    fi
   fi
 fi
 
@@ -106,13 +108,8 @@ bindkey '^e' autosuggest-accept
 source ~/.zsh/zsh-z/zsh-z.plugin.zsh
 
 ## asdf
-if ! type "asdf" > /dev/null 2>&1; then
+if type "asdf" > /dev/null 2>&1; then
   source $HOME/.asdf/asdf.sh
-fi
-
-## npm
-if ! type "npm" > /dev/null 2>&1; then
-  source <(npm completion)
 fi
 
 # custom setting

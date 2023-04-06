@@ -39,5 +39,7 @@ yabai -m config                                 \
 
 yabai -m rule --add app="(システム設定|System Settings)" manage=off
 yabai -m rule --add app="(システム情報|System Information)" manage=off
+yabai -m rule --add app="インストーラ" manage=off
+yabai -m rule --add app="1Password" manage=off
 
 echo "yabai configuration loaded.."

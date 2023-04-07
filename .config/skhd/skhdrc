@@ -17,5 +17,5 @@ cmd + shift - f : yabai -m window --toggle float
 
 # change space mode
 cmd + shift - s : [ "$(yabai -m query --spaces --space | jq -r '.type')" = bsp ] \
-                    && yabai -m space --layout stack \
-                    || yabai -m space --layout bsp
+                    && (yabai -m space --layout stack && ~/.config/yabai/layout_border.sh) \
+                    || (yabai -m space --layout bsp && ~/.config/yabai/layout_border.sh)

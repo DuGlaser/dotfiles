@@ -125,14 +125,16 @@ local sources = merge_sources(
 )
 
 M.setup = function()
-	null_ls.setup({
-		root_dir = utils.root_pattern(M.root_dir),
-		sources = sources,
-		on_attach = function(client, bufnr)
-			client.server_capabilities.documentFormattingProvider = true
-			common.on_attach(client, bufnr)
-		end,
-	})
+	vim.schedule(function()
+		null_ls.setup({
+			root_dir = utils.root_pattern(M.root_dir),
+			sources = sources,
+			on_attach = function(client, bufnr)
+				client.server_capabilities.documentFormattingProvider = true
+				common.on_attach(client, bufnr)
+			end,
+		})
+	end)
 end
 
 M.use_mason = false

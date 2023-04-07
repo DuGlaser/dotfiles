@@ -90,7 +90,9 @@ M.lsp.apply_filter = function(setting)
 	return vim.tbl_deep_extend("force", setting, {
 		on_attach = function(client, bufnr)
 			setting.on_attach(client, bufnr)
-			filter.apply({ client = client, bufnr = bufnr })
+			vim.schedule(function()
+				filter.apply({ client = client, bufnr = bufnr })
+			end)
 		end,
 	})
 end

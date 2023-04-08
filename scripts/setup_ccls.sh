@@ -8,4 +8,4 @@ cd $TMP_DIR || exit 1
 cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release
 sudo cmake --build Release --target install
 
-rm -rf $TMP_DIR
+sudo rm -rf $TMP_DIR

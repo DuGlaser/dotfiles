@@ -7,4 +7,4 @@ cd $TMP_DIR || exit 1
 
 sudo make CMAKE_BUILD_TYPE=Release install
 
-rm -rf $TMP_DIR
+sudo rm -rf $TMP_DIR

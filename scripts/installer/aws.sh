@@ -14,4 +14,4 @@ else
   sudo installer -pkg AWSCLIV2.pkg -target /
 fi
 
-rm -rf $TMP_DIR
+sudo rm -rf $TMP_DIR

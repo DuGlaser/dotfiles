@@ -19,4 +19,4 @@ else
   cp -r target/release/osx/Alacritty.app /Applications/
 fi
 
-rm -rf $TMP_DIR
+sudo rm -rf $TMP_DIR

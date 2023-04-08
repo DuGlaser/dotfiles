@@ -11,7 +11,6 @@ for _, g in pairs(diagnosticsGroup) do
 	})
 end
 
-local common = require("plugins.lsp.common")
 local lsp_utils = require("plugins.lsp.utils").lsp
 
 local default_opts = lsp_utils.default_opts

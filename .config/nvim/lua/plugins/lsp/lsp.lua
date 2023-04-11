@@ -43,23 +43,6 @@ require("mason-lspconfig").setup({
 	automatic_installation = false,
 })
 
-vim.schedule(function()
-	require("mason-tool-installer").setup({
-		ensure_installed = {
-			"cspell",
-			"eslint_d",
-			"jsonlint",
-			"prettierd",
-			"shellcheck",
-			"stylua",
-			"yamllint",
-			"markdownlint",
-		},
-		auto_update = false,
-		run_on_start = false,
-	})
-end)
-
 local apply_filter = lsp_utils.apply_filter
 local apply_capabilities = lsp_utils.apply_capabilities
 

@@ -31,4 +31,9 @@ M.format_table = function(tbl, indent)
 	return toprint
 end
 
+M.set_timeout = function(func, delay_ms)
+	local timer = vim.loop.new_timer()
+	timer:start(delay_ms, 0, vim.schedule_wrap(func))
+end
+
 return M

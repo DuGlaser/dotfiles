@@ -20,7 +20,6 @@ local M = {
 			{ "folke/neodev.nvim" },
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
-			{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 			{ "jose-elias-alvarez/null-ls.nvim" },
 			{ "simrat39/rust-tools.nvim", ft = "rust" },
 			{ "b0o/schemastore.nvim" },
@@ -33,6 +32,27 @@ local M = {
 				end,
 			},
 		},
+	},
+
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					"cspell",
+					"eslint_d",
+					"jsonlint",
+					"prettierd",
+					"shellcheck",
+					"stylua",
+					"yamllint",
+					"markdownlint",
+				},
+				auto_update = false,
+				run_on_start = false,
+			})
+		end,
 	},
 }
 

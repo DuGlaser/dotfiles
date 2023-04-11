@@ -125,7 +125,7 @@ local sources = merge_sources(
 )
 
 M.setup = function()
-	vim.schedule(function()
+	require("duglaser.utils").set_timeout(function()
 		null_ls.setup({
 			root_dir = utils.root_pattern(M.root_dir),
 			sources = sources,
@@ -134,7 +134,7 @@ M.setup = function()
 				common.on_attach(client, bufnr)
 			end,
 		})
-	end)
+	end, 1000)
 end
 
 M.use_mason = false

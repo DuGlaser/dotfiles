@@ -1,16 +1,5 @@
 require("fidget").setup({})
 
-local diagnosticsGroup = require("plugins.lsp.utils").diagnosticsGroup
-for _, g in pairs(diagnosticsGroup) do
-	-- undercurlを使うようにする
-	local hi = string.format("hi DiagnosticUnderline%s cterm=undercurl gui=undercurl guisp=%s", g.type, g.color)
-	vim.cmd(hi)
-	vim.fn.sign_define(g.highlight, {
-		text = g.sign,
-		texthl = g.highlight,
-	})
-end
-
 local lsp_utils = require("plugins.lsp.utils").lsp
 
 local default_opts = lsp_utils.default_opts

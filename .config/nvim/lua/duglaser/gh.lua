@@ -5,10 +5,7 @@ vim.api.nvim_create_user_command("GhBrowse", function()
 end, {})
 
 local getCurrentFilePath = function()
-	local path = vim.fn.expand("%:p")
-	local dir = vim.fn.expand("%:p:h")
-
-	return string.sub(path, string.len(dir) + 2)
+	return vim.fn.expand("%")
 end
 
 vim.api.nvim_create_user_command("GhBrowseFile", function()

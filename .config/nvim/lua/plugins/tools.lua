@@ -10,6 +10,18 @@ local M = {
 
 			vim.g.gruvbox_plugin_hi_groups = 1
 			vim.cmd("colorscheme gruvbox8_soft")
+
+			local diagnosticsGroup = require("plugins.lsp.utils").diagnosticsGroup
+			for _, g in pairs(diagnosticsGroup) do
+				vim.api.nvim_set_hl(0, "DiagnosticUnderline" .. g.type, {
+					undercurl = true,
+					sp = g.color,
+				})
+				vim.fn.sign_define(g.highlight, {
+					text = g.sign,
+					texthl = g.highlight,
+				})
+			end
 		end,
 	},
 	"tpope/vim-repeat",

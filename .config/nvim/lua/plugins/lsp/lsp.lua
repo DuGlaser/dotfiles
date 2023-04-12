@@ -62,6 +62,3 @@ for key, value in pairs(servers) do
 		end
 	end
 end
-
-vim.cmd([[hi NormalFloat guibg=#32302f]])
-vim.cmd([[hi FloatBorder guifg=#fe8019]])

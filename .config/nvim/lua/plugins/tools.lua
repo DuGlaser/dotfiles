@@ -11,6 +11,11 @@ local M = {
 			vim.g.gruvbox_plugin_hi_groups = 1
 			vim.cmd("colorscheme gruvbox8_soft")
 
+			-- setup floating window color
+			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#32302f" })
+			vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#fe8019" })
+
+			-- setup DiagnosticUnderline color
 			local diagnosticsGroup = require("plugins.lsp.utils").diagnosticsGroup
 			for _, g in pairs(diagnosticsGroup) do
 				vim.api.nvim_set_hl(0, "DiagnosticUnderline" .. g.type, {

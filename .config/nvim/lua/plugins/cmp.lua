@@ -5,7 +5,6 @@ local M = {
 		"hrsh7th/cmp-nvim-lsp",
 		"onsails/lspkind.nvim",
 		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-vsnip",
@@ -58,9 +57,6 @@ function M.config()
 				winhighlight = "FloatBorder:FloatBorder,CursorLine:Visual",
 			},
 		},
-		experimental = {
-			ghost_text = false,
-		},
 		snippet = {
 			expand = function(args)
 				vim.fn["vsnip#anonymous"](args.body)
@@ -78,7 +74,7 @@ function M.config()
 				},
 			}),
 		},
-		mapping = {
+		mapping = cmp.mapping.preset.insert({
 			["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 			["<C-e>"] = cmp.mapping({
@@ -93,7 +89,7 @@ function M.config()
 				i = cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
 			}),
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
-		},
+		}),
 		sources = cmp.config.sources({
 			{ name = "vsnip" },
 			{ name = "nvim_lsp", max_item_count = 20 },
@@ -110,17 +106,8 @@ function M.config()
 		},
 	})
 
-	cmp.setup.cmdline(":", {
-		mapping = cmp.mapping.preset.cmdline(),
-		enabled = function()
-			local cmd = vim.fn.getcmdline()
-			return cmd:len() > 3
-		end,
-		sources = cmp.config.sources({
-			{ name = "path" },
-		}, {
-			{ name = "cmdline" },
-		}),
+	cmp.setup.cmdline({ ":" }, {
+		enabled = false,
 	})
 
 	vim.cmd([[hi CmpItemAbbrMatch guifg=#fe8019]])

@@ -1,14 +1,15 @@
 local M = {
 	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
+	event = { "InsertEnter", "CmdLineEnter" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"onsails/lspkind.nvim",
 		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-vsnip",
-		"hrsh7th/cmp-path",
-		"hrsh7th/vim-vsnip",
+		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-nvim-lua",
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-vsnip",
+		"hrsh7th/vim-vsnip",
 		{
 			"hrsh7th/vim-vsnip",
 			config = function()
@@ -107,6 +108,19 @@ function M.config()
 		sources = {
 			{ name = "buffer" },
 		},
+	})
+
+	cmp.setup.cmdline(":", {
+		mapping = cmp.mapping.preset.cmdline(),
+		enabled = function()
+			local cmd = vim.fn.getcmdline()
+			return cmd:len() > 3
+		end,
+		sources = cmp.config.sources({
+			{ name = "path" },
+		}, {
+			{ name = "cmdline" },
+		}),
 	})
 
 	vim.cmd([[hi CmpItemAbbrMatch guifg=#fe8019]])

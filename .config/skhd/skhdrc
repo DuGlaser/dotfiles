@@ -1,8 +1,24 @@
+:: default : ~/.config/yabai/layout_border.sh
+:: insert_stack @ : yabai -m config active_window_border_color 0xff77929e
+:: resize_window @ : yabai -m config active_window_border_color 0xff77929e
+:: move_window @ : yabai -m config active_window_border_color 0xff77929e
+
+default < cmd + ctrl - s ; insert_stack
+default < cmd + ctrl - r ; resize_window
+default < cmd + ctrl - m ; move_window
+
 # focus window
-cmd - h : yabai -m window --focus west
-cmd - j : (yabai -m window --focus stack.next || yabai -m window --focus stack.first) || yabai -m window --focus north
-cmd - k : (yabai -m window --focus stack.prev || yabai -m window --focus stack.last) || yabai -m window --focus south
-cmd - l : yabai -m window --focus east
+default, resize_window, move_window < cmd - h : \
+yabai -m window --focus west
+
+default, resize_window, move_window < cmd - j : \
+(yabai -m window --focus stack.next || yabai -m window --focus stack.first) || yabai -m window --focus north
+
+default, resize_window, move_window < cmd - k : \
+(yabai -m window --focus stack.prev || yabai -m window --focus stack.last) || yabai -m window --focus south
+
+default, resize_window, move_window < cmd - l : \
+yabai -m window --focus east
 
 # move space
 cmd + ctrl - h : skhd --key "ctrl - left"  
@@ -19,3 +35,21 @@ cmd + shift - f : yabai -m window --toggle float
 cmd + shift - s : [ "$(yabai -m query --spaces --space | jq -r '.type')" = bsp ] \
                     && (yabai -m space --layout stack && ~/.config/yabai/layout_border.sh) \
                     || (yabai -m space --layout bsp && ~/.config/yabai/layout_border.sh)
+
+# insert_stack
+insert_stack < escape ; default
+insert_stack < h : ~/.config/yabai/stack_window.sh west ; skhd -k "escape"
+insert_stack < j : ~/.config/yabai/stack_window.sh north ; skhd -k "escape"
+insert_stack < k : ~/.config/yabai/stack_window.sh south ; skhd -k "escape"
+insert_stack < l : ~/.config/yabai/stack_window.sh east ; skhd -k "escape"
+
+# resize_window
+resize_window < escape ; default
+resize_window < h : yabai -m window --resize left:-40:0
+resize_window < l : yabai -m window --resize right:40:0
+resize_window < r : yabai -m space --balance
+
+# move_window
+move_window < escape ; default
+move_window < h : yabai -m window --swap west
+move_window < l : yabai -m window --swap east

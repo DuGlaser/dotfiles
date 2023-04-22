@@ -28,6 +28,11 @@
       become: true
       shell: make install_tools
 
+    - name: Install rtx
+      shell: source "$HOME/.cargo/env" && make setup/rtx
+      args:
+        executable: /bin/bash
+
     - name: Install alacritty dependencies
       become: true
       apt:

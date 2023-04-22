@@ -8,7 +8,7 @@ ansible/install:
 	@ansible-playbook -i inventory/localhost install.yml $(DEBUG_LEVEL)
 
 .PHONY:install_tools 
-install_tools: install_tool/asdf install_tool/aws install_tool/docker install_tool/rust
+install_tools: install_tool/aws install_tool/docker install_tool/rust
 
 install_tool/%:
 	./scripts/installer/$*.sh
@@ -26,6 +26,9 @@ setup/nvim: setup_nvim
 
 .PHONY: setup/alacritty
 setup/alacritty: setup_alacritty
+
+.PHONY: setup/rtx
+setup/rtx: setup_rtx
 
 .PHONY: setup/zsh
 setup/zsh: setup_zsh

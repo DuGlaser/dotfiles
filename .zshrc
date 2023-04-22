@@ -87,6 +87,14 @@ if type "tmux" > /dev/null 2>&1; then
   fi
 fi
 
+# custom setting
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
+
 # ghq + peco
 function peco-src () {
   local selected_dir=$(ghq list -p | fzf)
@@ -107,15 +115,5 @@ bindkey '^e' autosuggest-accept
 ## zsh-z
 source ~/.zsh/zsh-z/zsh-z.plugin.zsh
 
-## asdf
-if ! type "asdf" > /dev/null 2>&1; then
-  source $HOME/.asdf/asdf.sh
-fi
-
-# custom setting
-function select-history() {
-  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
-  CURSOR=$#BUFFER
-}
-zle -N select-history
-bindkey '^r' select-history
+## setup rtx
+eval "$(rtx activate zsh)"

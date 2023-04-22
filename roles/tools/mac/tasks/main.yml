@@ -29,6 +29,11 @@
     - name: Install tools
       shell: make install_tools
 
+    - name: Install rtx
+      shell: source "$HOME/.cargo/env" && make setup/rtx
+      args:
+        executable: /bin/bash
+
     - name: Build alacritty
       become: true
       shell: make setup/alacritty

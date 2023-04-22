@@ -6,8 +6,8 @@ echo "link home directory dotfiles"
 
 dotfiles="$HOME/dotfiles"
 
-ln -sfnv "$dotfiles/.asdfrc" "$HOME/.asdfrc"
 ln -sfnv "$dotfiles/.ideavimrc" "$HOME/.ideavimrc"
+ln -sfnv "$dotfiles/.rtx.tmpl.toml" "$HOME/.rtx.toml"
 ln -sfnv "$dotfiles/.tigrc" "$HOME/.tigrc"
 ln -sfnv "$dotfiles/.tmux.conf" "$HOME/.tmux.conf"
 ln -sfnv "$dotfiles/.zshenv" "$HOME/.zshenv"

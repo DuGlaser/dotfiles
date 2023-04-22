@@ -1,0 +1,4 @@
+[tools]
+nodejs = ['lts']
+python = ['3.11.0']
+terraform = ['1.4.0']

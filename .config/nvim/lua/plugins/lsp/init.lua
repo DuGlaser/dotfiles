@@ -11,6 +11,11 @@ local M = {
 	},
 
 	{
+		"weilbith/nvim-code-action-menu",
+		cmd = "CodeActionMenu",
+	},
+
+	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("plugins.lsp.lsp")

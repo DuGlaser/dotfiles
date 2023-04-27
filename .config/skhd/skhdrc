@@ -39,8 +39,8 @@ cmd + shift - s : [ "$(yabai -m query --spaces --space | jq -r '.type')" = bsp ]
 # insert_stack
 insert_stack < escape ; default
 insert_stack < h : ~/.config/yabai/stack_window.sh west ; skhd -k "escape"
-insert_stack < j : ~/.config/yabai/stack_window.sh north ; skhd -k "escape"
-insert_stack < k : ~/.config/yabai/stack_window.sh south ; skhd -k "escape"
+insert_stack < j : ~/.config/yabai/stack_window.sh south ; skhd -k "escape"
+insert_stack < k : ~/.config/yabai/stack_window.sh north ; skhd -k "escape"
 insert_stack < l : ~/.config/yabai/stack_window.sh east ; skhd -k "escape"
 
 # resize_window

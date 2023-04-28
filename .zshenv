@@ -1,6 +1,10 @@
 export EDITOR=nvim
 export DENO_INSTALL_ROOT=$HOME/.deno
 
+if [ -e "/opt/homebrew/bin/brew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 typeset -gx -U path
 path=(
     /usr/local/bin(N-/)
@@ -14,10 +18,6 @@ path=(
     $HOME/.cargo/env(N-/)
     "$path[@]"
 )
-
-if [ -e "/opt/homebrew/bin/brew" ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
 
 typeset -gx -U fpath
 fpath=(

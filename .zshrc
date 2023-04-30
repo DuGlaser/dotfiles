@@ -5,16 +5,6 @@ alias cls="clear"
 alias rg="rg --colors 'match:bg:yellow' --colors 'match:fg:black' --colors 'match:style:nobold' --colors 'path:fg:green' --colors 'path:style:bold' --colors 'line:fg:yellow' --colors 'line:style:bold'"
 alias hub="echo 'ghを使え' # "
 
-## copy alias
-if  [[ "$(uname)" = 'Linux' ]]; then
-  if type xclip > /dev/null 2>&1; then
-    alias pbcopy='xclip -selection c'
-    alias pbc='pbcopy'
-    alias pbpaste='xclip -selection c -o'
-    alias pbp='pbpaste'
-  fi
-fi
-
 if [ -d "/mnt/c" ]; then
   source "$HOME/dotfiles/zsh/wsl.zsh"
 fi

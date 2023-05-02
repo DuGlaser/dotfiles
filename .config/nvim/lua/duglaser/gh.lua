@@ -1,4 +1,4 @@
-local GH_BROWSE_CMD = "!gh browse"
+local GH_BROWSE_CMD = "silent! !gh browse"
 
 vim.api.nvim_create_user_command("GhBrowse", function()
 	vim.cmd(GH_BROWSE_CMD)

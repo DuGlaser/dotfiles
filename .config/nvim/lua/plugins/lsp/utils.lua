@@ -93,7 +93,6 @@ M.lsp.apply_filter = function(setting)
 			require("duglaser.utils").set_timeout(function()
 				filter.apply({ client = client, bufnr = bufnr })
 			end, 1000)
-			vim.schedule(function() end)
 		end,
 	})
 end

@@ -85,6 +85,10 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey "^O" edit-command-line
+
 # ghq + peco
 function peco-src () {
   local selected_dir=$(ghq list -p | fzf)

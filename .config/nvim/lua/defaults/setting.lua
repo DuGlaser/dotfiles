@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 vim.opt.fileformat = "unix"
 vim.opt.fileformats = "unix,dos,mac"
 vim.opt.fileencodings = "utf-8,iso-2022-jp,cp932,euc-jp"

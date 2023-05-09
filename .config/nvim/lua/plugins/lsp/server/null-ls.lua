@@ -30,10 +30,6 @@ local apply_runtime_condition = function(setting, pattern)
 	})
 end
 
-local get_cspell_condition = function()
-	return vim.fn.executable("cspell") > 0
-end
-
 local function get_null_ls_sources(source_name, types, fn)
 	local tbl = {}
 	if fn ~= nil then
@@ -77,19 +73,18 @@ local eslint_sources = get_null_ls_sources(
 	end
 )
 
-local cspell_sources = get_null_ls_sources("cspell", { TYPES.CODE_ACTIONS, TYPES.DIAGNOSTICS }, function(setting, type)
-	local opts = {
-		condition = get_cspell_condition,
-	}
+local get_cspell_sources = function()
+	local cspell = require("cspell")
 
-	if type == "diagnostics" then
-		opts.diagnostics_postprocess = function(diagnostic)
+	local code_actions = cspell.code_actions
+	local diagnostics = cspell.diagnostics.with({
+		diagnostics_postprocess = function(diagnostic)
 			diagnostic.severity = vim.diagnostic.severity["WARN"]
-		end
-	end
+		end,
+	})
 
-	return setting.with(opts)
-end)
+	return { diagnostics, code_actions }
+end
 
 local prettierd_sources = get_null_ls_sources("prettierd", { TYPES.FORMATTING }, function(setting)
 	return apply_runtime_condition(
@@ -114,7 +109,7 @@ local shellcheck_sources = get_null_ls_sources(
 
 local sources = merge_sources(
 	{ require("typescript.extensions.null-ls.code-actions") },
-	cspell_sources,
+	get_cspell_sources(),
 	eslint_sources,
 	prettierd_sources,
 	shellcheck_sources,

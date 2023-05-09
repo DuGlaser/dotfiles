@@ -106,10 +106,6 @@ function M.config()
 		},
 	})
 
-	cmp.setup.cmdline({ ":" }, {
-		enabled = false,
-	})
-
 	vim.cmd([[hi CmpItemAbbrMatch guifg=#fe8019]])
 end
 

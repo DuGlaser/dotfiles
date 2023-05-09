@@ -25,7 +25,12 @@ local M = {
 			{ "folke/neodev.nvim" },
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
-			{ "jose-elias-alvarez/null-ls.nvim" },
+			{
+				"jose-elias-alvarez/null-ls.nvim",
+				dependencies = {
+					"davidmh/cspell.nvim",
+				},
+			},
 			{ "simrat39/rust-tools.nvim", ft = "rust" },
 			{ "b0o/schemastore.nvim" },
 			{ "j-hui/fidget.nvim" },

@@ -29,7 +29,7 @@ cmd + shift - h : yabai -m window --space prev && skhd --key "ctrl - left"
 cmd + shift - l : yabai -m window --space next && skhd --key "ctrl - right"
 
 # change window mode
-cmd + shift - f : yabai -m window --toggle float
+cmd + ctrl - f : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
 
 # change space mode
 cmd + shift - s : [ "$(yabai -m query --spaces --space | jq -r '.type')" = bsp ] \

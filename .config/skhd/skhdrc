@@ -12,10 +12,14 @@ default, resize_window, move_window < cmd - h : \
 yabai -m window --focus west
 
 default, resize_window, move_window < cmd - j : \
-(yabai -m window --focus stack.next || yabai -m window --focus stack.first) || yabai -m window --focus north
+if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then \
+(yabai -m window --focus stack.next || yabai -m window --focus stack.first); else \
+yabai -m window --focus south; fi
 
 default, resize_window, move_window < cmd - k : \
-(yabai -m window --focus stack.prev || yabai -m window --focus stack.last) || yabai -m window --focus south
+if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then \
+(yabai -m window --focus stack.prev || yabai -m window --focus stack.last); else \
+yabai -m window --focus north; fi
 
 default, resize_window, move_window < cmd - l : \
 yabai -m window --focus east

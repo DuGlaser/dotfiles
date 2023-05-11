@@ -14,4 +14,5 @@ chsh -s $(which zsh)
 
 ## Other
 
-- Font: <https://github.com/romkatv/powerlevel10k#manual-font-installation>
+- Font: <https://github.com/ryanoasis/nerd-fonts/releases/latest>
+  - MesloLGS Nerd Font Mono

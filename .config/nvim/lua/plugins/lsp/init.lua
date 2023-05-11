@@ -34,7 +34,7 @@ local M = {
 			{ "simrat39/rust-tools.nvim", ft = "rust" },
 			{ "b0o/schemastore.nvim" },
 			{ "j-hui/fidget.nvim" },
-			{ "jose-elias-alvarez/typescript.nvim" },
+			{ "yioneko/nvim-vtsls" },
 			{
 				"hrsh7th/cmp-nvim-lsp",
 				cond = function()

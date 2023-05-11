@@ -20,7 +20,7 @@ local servers = {
 	["pyright"] = require("plugins.lsp.server.pyright"),
 	["lua_ls"] = require("plugins.lsp.server.lua_ls"),
 	["terraformls"] = enable_format_opts,
-	["tsserver"] = require("plugins.lsp.server.tsserver"),
+	["vtsls"] = require("plugins.lsp.server.vtsls"),
 	["yamlls"] = require("plugins.lsp.server.yamlls"),
 }
 

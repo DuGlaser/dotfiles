@@ -12,19 +12,19 @@ local get_clients_table = function()
 end
 
 M.for_deno = function(ctx)
-	local tsserver = ctx.active_clients["tsserver"]
+	local vtsls = ctx.active_clients["vtsls"]
 	local denols = ctx.active_clients["denols"]
 
-	if tsserver ~= nil and denols ~= nil then
-		tsserver.stop()
+	if vtsls ~= nil and denols ~= nil then
+		vtsls.stop()
 	end
 end
 
 M.for_angular = function(ctx)
-	local tsserver = ctx.active_clients["tsserver"]
+	local vtsls = ctx.active_clients["vtsls"]
 	local angular = ctx.active_clients["angularls"]
 
-	if tsserver ~= nil and angular ~= nil then
+	if vtsls ~= nil and angular ~= nil then
 		angular.server_capabilities.renameProvider = false
 	end
 end

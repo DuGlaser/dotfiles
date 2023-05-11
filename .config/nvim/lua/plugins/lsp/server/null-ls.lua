@@ -108,7 +108,6 @@ local shellcheck_sources = get_null_ls_sources(
 )
 
 local sources = merge_sources(
-	{ require("typescript.extensions.null-ls.code-actions") },
 	get_cspell_sources(),
 	eslint_sources,
 	prettierd_sources,

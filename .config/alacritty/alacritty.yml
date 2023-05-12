@@ -16,18 +16,18 @@ env:
 
 font:
   normal:
-    family: MesloLGS NF
+    family: MesloLGS Nerd Font Mono
 
   bold:
-    family: MesloLGS NF
+    family: MesloLGS Nerd Font Mono
     style: Bold
 
   italic:
-    family: MesloLGS NF
+    family: MesloLGS Nerd Font Mono
     style: Italic
 
   bold_italic:
-    family: MesloLGS NF
+    family: MesloLGS Nerd Font Mono
     style: Bold Italic
 
 colors:

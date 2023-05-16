@@ -7,6 +7,9 @@ default < cmd + ctrl - s ; insert_stack
 default < cmd + ctrl - r ; resize_window
 default < cmd + ctrl - m ; move_window
 
+# misson control
+cmd + ctrl - t : skhd --key "ctrl - up"
+
 # focus window
 default, resize_window, move_window < cmd - h : \
 yabai -m window --focus west
@@ -42,6 +45,7 @@ cmd + shift - s : [ "$(yabai -m query --spaces --space | jq -r '.type')" = bsp ]
 
 # insert_stack
 insert_stack < escape ; default
+insert_stack < return ; default
 insert_stack < h : ~/.config/yabai/stack_window.sh west ; skhd -k "escape"
 insert_stack < j : ~/.config/yabai/stack_window.sh south ; skhd -k "escape"
 insert_stack < k : ~/.config/yabai/stack_window.sh north ; skhd -k "escape"
@@ -49,11 +53,13 @@ insert_stack < l : ~/.config/yabai/stack_window.sh east ; skhd -k "escape"
 
 # resize_window
 resize_window < escape ; default
+resize_window < return ; default
 resize_window < h : yabai -m window --resize left:-40:0
 resize_window < l : yabai -m window --resize right:40:0
 resize_window < r : yabai -m space --balance
 
 # move_window
 move_window < escape ; default
+move_window < return ; default
 move_window < h : yabai -m window --swap west
 move_window < l : yabai -m window --swap east

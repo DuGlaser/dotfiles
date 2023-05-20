@@ -11,6 +11,15 @@ local get_clients_table = function()
 	return table
 end
 
+M.for_ccls = function(ctx)
+	local ccls = ctx.active_clients["ccls"]
+	local null_ls = ctx.active_clients["null-ls"]
+
+	if ccls ~= nil and null_ls ~= nil then
+		null_ls.stop()
+	end
+end
+
 M.for_deno = function(ctx)
 	local vtsls = ctx.active_clients["vtsls"]
 	local denols = ctx.active_clients["denols"]
@@ -34,6 +43,7 @@ M.apply = function(ctx)
 
 	M.for_deno(ctx)
 	M.for_angular(ctx)
+	M.for_ccls(ctx)
 end
 
 return M

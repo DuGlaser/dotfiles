@@ -482,3 +482,4 @@ doc/api/
 # End of https://www.toptal.com/developers/gitignore/api/direnv
 
 .tool-versions
+cspell.json

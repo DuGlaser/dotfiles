@@ -12,6 +12,7 @@ local M = {
 
 	{
 		"weilbith/nvim-code-action-menu",
+		event = "LspAttach",
 		cmd = "CodeActionMenu",
 	},
 

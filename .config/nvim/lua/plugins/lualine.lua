@@ -18,7 +18,7 @@ local M = {
 		local lualine_c = {
 			{
 				"diff",
-				symbols = { added = " ", modified = "柳 ", removed = " " },
+				symbols = { added = " ", modified = "󰝤 ", removed = " " },
 			},
 			{
 				"diagnostics",

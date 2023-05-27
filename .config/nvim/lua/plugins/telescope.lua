@@ -49,18 +49,26 @@ local M = {
 	config = function()
 		local telescope = require("telescope")
 		local lga_actions = require("telescope-live-grep-args.actions")
+		local dropdown_config = {
+			theme = "dropdown",
+			previewer = true,
+			prompt_title = false,
+			results_title = false,
+			layout_config = {
+				width = 0.8,
+				height = 20,
+			},
+		}
 
 		telescope.setup({
+			defaults = {
+				dynamic_preview_title = true,
+				color_devicons = true,
+			},
 			pickers = {
-				find_files = {
-					theme = "dropdown",
-				},
-				buffers = {
-					theme = "dropdown",
-				},
-				live_grep = {
-					theme = "dropdown",
-				},
+				find_files = dropdown_config,
+				buffers = dropdown_config,
+				live_grep = dropdown_config,
 			},
 			extensions = {
 				fzf = {
@@ -69,15 +77,14 @@ local M = {
 					override_file_sorter = true,
 					case_mode = "smart_case",
 				},
-				live_grep_args = {
+				live_grep_args = vim.tbl_deep_extend("force", dropdown_config, {
 					auto_quoting = true,
-					theme = "dropdown",
 					mappings = {
 						i = {
 							["<C-k>"] = lga_actions.quote_prompt(),
 						},
 					},
-				},
+				}),
 			},
 		})
 

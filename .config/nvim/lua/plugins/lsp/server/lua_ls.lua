@@ -1,5 +1,3 @@
-local common = require("plugins.lsp.common")
-
 local M = {}
 
 M.setup = function()
@@ -8,7 +6,6 @@ M.setup = function()
 	return {
 		on_attach = function(client, bufnr)
 			client.server_capabilities.documentFormattingProvider = false
-			common.on_attach(client, bufnr)
 		end,
 		settings = {
 			Lua = {

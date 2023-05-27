@@ -32,10 +32,6 @@ vim.diagnostic.open_float = (function(orig)
 end)(vim.diagnostic.open_float)
 
 local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -55,6 +51,11 @@ M.on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "<space>ca", "<cmd>CodeActionMenu<CR>", bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+
+	vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
+	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+	vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 
 	if client.supports_method("textDocument/formatting") then
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })

@@ -1,6 +1,3 @@
-local common = require("plugins.lsp.common")
-local nvim_lsp = require("lspconfig")
-
 local loop = vim.loop
 
 local function set_from_poetry(settings)
@@ -30,11 +27,9 @@ local M = {}
 M.setup = function()
 	local setting = {
 		on_attach = function(client, bufnr)
-			common.on_attach(client, bufnr)
-
 			set_from_poetry(client.config.settings)
 		end,
-		root_dir = nvim_lsp.util.root_pattern(python_root_files),
+		root_dir = require("lspconfig").util.root_pattern(python_root_files),
 		filetypes = { "python" },
 		settings = {
 			python = {

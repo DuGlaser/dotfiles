@@ -1,20 +1,15 @@
-local null_ls = require("null-ls")
-local b = null_ls.builtins
-local h = require("null-ls.helpers")
-local utils = require("null-ls.utils")
-
 local M = {}
-
-local common = require("plugins.lsp.common")
 
 M.prettier_setting_files = { ".prettierrc", ".prettierrc.js", ".prettierrc.cjs", ".prettierrc.json" }
 M.eslint_setting_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }
 M.root_dir = { ".git", "package.json", "Makefile" }
 
-M.enable_prettier = utils.make_conditional_utils().root_has_file(M.prettier_setting_files)
+M.enable_prettier = function()
+	require("null-ls.utils").make_conditional_utils().root_has_file(M.prettier_setting_files)
+end
 
 local generate_runtime_condition = function(root_pattern)
-	return h.cache.by_bufnr(function(params)
+	return require("null-ls.helpers").cache.by_bufnr(function(params)
 		local root_path = require("lspconfig").util.root_pattern(root_pattern)(params.bufname)
 		if root_path == nil then
 			return false
@@ -31,6 +26,7 @@ local apply_runtime_condition = function(setting, pattern)
 end
 
 local function get_null_ls_sources(source_name, types, fn)
+	local b = require("null-ls.builtins")
 	local tbl = {}
 	if fn ~= nil then
 		for _, type in ipairs(types) do
@@ -100,7 +96,7 @@ local shellcheck_sources = get_null_ls_sources(
 	{ TYPES.CODE_ACTIONS, TYPES.DIAGNOSTICS },
 	function(setting)
 		return setting.with({
-			runtime_condition = h.cache.by_bufnr(function(params)
+			runtime_condition = require("null-ls.helpers").cache.by_bufnr(function(params)
 				return params.bufname:match("%.env$") == nil
 			end),
 		})
@@ -120,12 +116,13 @@ local sources = merge_sources(
 
 M.setup = function()
 	require("duglaser.utils").set_timeout(function()
+		local null_ls = require("null-ls")
+		local utils = require("null-ls.utils")
 		null_ls.setup({
 			root_dir = utils.root_pattern(M.root_dir),
 			sources = sources,
 			on_attach = function(client, bufnr)
 				client.server_capabilities.documentFormattingProvider = true
-				common.on_attach(client, bufnr)
 			end,
 		})
 	end, 1000)

@@ -1,12 +1,8 @@
-local common = require("plugins.lsp.common")
-local nvim_lsp = require("lspconfig")
-
 local M = {}
 
 M.setup = function()
 	return {
-		on_attach = common.on_attach,
-		root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+		root_dir = require("lspconfig").util.root_pattern("deno.json", "deno.jsonc"),
 		single_file_support = false,
 		init_options = {
 			lint = true,

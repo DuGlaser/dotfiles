@@ -115,17 +115,15 @@ local sources = merge_sources(
 )
 
 M.setup = function()
-	require("duglaser.utils").set_timeout(function()
-		local null_ls = require("null-ls")
-		local utils = require("null-ls.utils")
-		null_ls.setup({
-			root_dir = utils.root_pattern(M.root_dir),
-			sources = sources,
-			on_attach = function(client, bufnr)
-				client.server_capabilities.documentFormattingProvider = true
-			end,
-		})
-	end, 1000)
+	local null_ls = require("null-ls")
+	local utils = require("null-ls.utils")
+	null_ls.setup({
+		root_dir = utils.root_pattern(M.root_dir),
+		sources = sources,
+		on_attach = function(client)
+			client.server_capabilities.documentFormattingProvider = true
+		end,
+	})
 end
 
 M.use_mason = false

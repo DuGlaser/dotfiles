@@ -90,7 +90,7 @@ M.lsp.apply_filter = function(setting)
 			setting.on_attach(client, bufnr)
 			require("duglaser.utils").set_timeout(function()
 				filter.apply({ client = client, bufnr = bufnr })
-			end, 1500)
+			end, 2500)
 		end,
 	})
 end

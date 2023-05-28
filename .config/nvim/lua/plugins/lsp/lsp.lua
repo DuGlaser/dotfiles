@@ -15,7 +15,6 @@ local servers = {
 	["gopls"] = enable_format_opts,
 	["html"] = default_opts,
 	["jsonls"] = require("plugins.lsp.server.jsonls"),
-	["null-ls"] = require("plugins.lsp.server.null-ls"),
 	["pyright"] = require("plugins.lsp.server.pyright"),
 	["lua_ls"] = require("plugins.lsp.server.lua_ls"),
 	["terraformls"] = enable_format_opts,
@@ -69,3 +68,7 @@ for key, value in pairs(servers) do
 		end
 	end
 end
+
+require("duglaser.utils").set_timeout(function()
+	require("plugins.lsp.server.null-ls").setup()
+end, 2000)

@@ -11,6 +11,28 @@ local get_clients_table = function()
 	return table
 end
 
+M.for_json = function(ctx)
+	local jsonls = ctx.active_clients["jsonls"]
+	local null_ls = ctx.active_clients["null-ls"]
+
+	if jsonls ~= nil and null_ls ~= nil then
+		if require("plugins.lsp.server.null-ls").enable_prettier() then
+			jsonls.server_capabilities.documentFormattingProvider = false
+		end
+	end
+end
+
+M.for_yaml = function(ctx)
+	local yamlls = ctx.active_clients["yamlls"]
+	local null_ls = ctx.active_clients["null-ls"]
+
+	if yamlls ~= nil and null_ls ~= nil then
+		if require("plugins.lsp.server.null-ls").enable_prettier() then
+			yamlls.server_capabilities.documentFormattingProvider = false
+		end
+	end
+end
+
 M.for_ccls = function(ctx)
 	local ccls = ctx.active_clients["ccls"]
 	local null_ls = ctx.active_clients["null-ls"]
@@ -41,9 +63,11 @@ end
 M.apply = function(ctx)
 	ctx.active_clients = get_clients_table()
 
-	M.for_deno(ctx)
 	M.for_angular(ctx)
 	M.for_ccls(ctx)
+	M.for_deno(ctx)
+	M.for_json(ctx)
+	M.for_yaml(ctx)
 end
 
 return M

@@ -46,7 +46,7 @@ require("mason-lspconfig").setup_handlers({
 			return
 		end
 
-		require("lspconfig")[server_name].setup(apply_capabilities(apply_filter(setting)))
+		require("lspconfig")[server_name].setup(apply_capabilities(setting))
 	end,
 })
 
@@ -55,6 +55,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		local buffer = ev.buf
 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
 		require("plugins.lsp.common").on_attach(client, buffer)
+		apply_filter(client, buffer)
 	end,
 })
 
@@ -64,7 +65,7 @@ for key, value in pairs(servers) do
 		local setting = value.setup()
 
 		if setting ~= nil then
-			require("lspconfig")[key].setup(apply_capabilities(apply_filter(setting)))
+			require("lspconfig")[key].setup(apply_capabilities(setting))
 		end
 	end
 end

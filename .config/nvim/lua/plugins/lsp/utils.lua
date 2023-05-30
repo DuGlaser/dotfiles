@@ -83,16 +83,11 @@ M.lsp.get_mason_server_key = function(tab)
 	return keyset
 end
 
-M.lsp.apply_filter = function(setting)
-	local filter = require("plugins.lsp.filter")
-	return vim.tbl_deep_extend("force", setting, {
-		on_attach = function(client, bufnr)
-			setting.on_attach(client, bufnr)
-			require("duglaser.utils").set_timeout(function()
-				filter.apply({ client = client, bufnr = bufnr })
-			end, 2500)
-		end,
-	})
+M.lsp.apply_filter = function(client, bufnr)
+	require("duglaser.utils").set_timeout(function()
+		local filter = require("plugins.lsp.filter")
+		filter.apply({ client = client, bufnr = bufnr })
+	end, 2500)
 end
 
 M.lsp.apply_capabilities = function(setting)

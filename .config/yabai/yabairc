@@ -43,6 +43,7 @@ yabai -m rule --add app="インストーラ" manage=off
 yabai -m rule --add app="1Password" manage=off
 yabai -m rule --add app="Finder" manage=off
 yabai -m rule --add app="Authy Desktop" manage=off
+yabai -m rule --add app="アーカイブユーティリティ" manage=off
 
 yabai -m signal --add event=window_focused action="$HOME/.config/yabai/layout_border.sh"
 

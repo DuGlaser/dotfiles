@@ -36,6 +36,8 @@ local M = {
 				},
 				yati = {
 					enable = true,
+					default_lazy = true,
+					default_fallback = "auto",
 				},
 				indent = {
 					enable = false,
@@ -45,7 +47,6 @@ local M = {
 				},
 				context_commentstring = {
 					enable = true,
-					enable_autocmd = false,
 				},
 				-- nvim-ts-autotag
 				autotag = {

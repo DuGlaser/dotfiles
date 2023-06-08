@@ -1,6 +1,7 @@
 local M = {
 	"hrsh7th/nvim-cmp",
 	event = { "InsertEnter", "CmdLineEnter" },
+	commit = "950d0e3a93ba61c13b031c086d11eacf4bd48d24",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"onsails/lspkind.nvim",

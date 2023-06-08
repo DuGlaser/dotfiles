@@ -14,4 +14,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: setup
-        run: make init
+        run: make init DEBUG_LEVEL=-vvv

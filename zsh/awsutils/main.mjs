@@ -142,17 +142,13 @@ class EC2 {
     const options = getEC2ListOption(this.ctx);
     const { profile, fuzzy, state, limit, names: instanceNames } = options;
 
-    const ec2FilterOptions = [
-      `Name = instance - state - name, Values = ${state}`,
-    ];
+    const ec2FilterOptions = [`Name=instance-state-name,Values=${state}`];
 
     if (instanceNames.length && !fuzzy) {
-      ec2FilterOptions.push(
-        `Name = tag: Name, Values = ${instanceNames.join('')}`
-      );
+      ec2FilterOptions.push(`Name=tag:Name,Values=${instanceNames.join('')}`);
     }
 
-    let p = $`aws ec2 describe - instances--profile = ${profile} --filter ${ec2FilterOptions}`;
+    let p = $`aws ec2 describe-instances --profile ${profile} --filter ${ec2FilterOptions}`;
     p = p.pipe(
       $`jq '.Reservations[].Instances[] | {InstanceId, PrivateIpAddress, InstanceName: .Tags[] | select(.Key == "Name").Value }'`
     );

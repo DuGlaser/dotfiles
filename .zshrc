@@ -102,7 +102,7 @@ zle -N peco-src
 bindkey '^]' peco-src
 
 # custom source
-source "$HOME/dotfiles/zsh/awsutils/awsutils.zsh"
+source "$HOME/dotfiles/zsh/awsutils.zsh"
 
 # plugins
 ## zsh-autosuggestions

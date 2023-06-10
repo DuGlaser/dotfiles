@@ -8,7 +8,7 @@ const commands = [
     name: 'ec2',
     sub: [
       { name: 'list', handler: async (ctx) => new EC2(ctx).list() },
-      { name: 'ssm', handler: async (ctx) => new EC2(ctx).ssm() },
+      { name: 'login', handler: async (ctx) => new EC2(ctx).login() },
     ],
   },
 ];
@@ -82,7 +82,7 @@ function isNumber(value) {
 /**
  * EC2 utils
  **/
-function getEC2ListOption(ctx) {
+function getProfile(ctx) {
   const profile = ctx.profile;
   if (profile && isString(profile)) {
     log('profile options is string');
@@ -92,6 +92,12 @@ function getEC2ListOption(ctx) {
   if (!profile) {
     log(chalk.dim('use default profile...'));
   }
+
+  return profile ?? 'default';
+}
+
+function getEC2ListOption(ctx) {
+  const profile = getProfile(ctx);
 
   const names = ctx.names;
   if (names && isString(names)) {
@@ -117,11 +123,26 @@ function getEC2ListOption(ctx) {
   }
 
   return {
-    profile: ctx.profile ?? 'default',
+    profile,
+    limit,
     names: nameList,
-    limit: ctx.limit,
     fuzzy: ctx.fuzzy ?? false,
     state: ctx.state ?? 'running',
+  };
+}
+
+function getEC2LoginOption(ctx) {
+  const [target] = getSubCommand(ctx);
+  if (!target) {
+    log('target is required. target is the ARN of the EC2 instance.');
+    log(chalk.dim('$ awsutils ec2 ssm <target>'));
+    process.exit(1);
+  }
+
+  return {
+    profile: getProfile(ctx),
+    region: ctx.region,
+    target,
   };
 }
 
@@ -131,11 +152,24 @@ class EC2 {
   }
 
   async limit(process, limit) {
-    return process.pipe($`jq - s '. | limit(${limit}; .[])'`);
+    return process.pipe($`jq -s '. | limit(${limit}; .[])'`);
   }
 
-  async ssm() {
-    log('coming soon...');
+  async login() {
+    const options = getEC2LoginOption(this.ctx);
+    const { profile, target, region } = options;
+
+    const ssmOptions = [
+      ['--target', target],
+      profile && ['--profile', profile],
+      region && ['--region', region],
+    ]
+      .flat()
+      .filter((value) => !!value);
+
+    const p = $`aws ssm start-session ${ssmOptions}`;
+    process.on('SIGINT', () => {});
+    return p.stdio('inherit', 'inherit', 'inherit');
   }
 
   async list() {
@@ -160,7 +194,7 @@ class EC2 {
     }
 
     if (limit) {
-      p = this.limit(limit);
+      p = this.limit(p, limit);
     }
 
     echo(await p);

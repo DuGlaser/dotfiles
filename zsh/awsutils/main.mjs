@@ -68,15 +68,20 @@ function getSubCommand(ctx) {
  * type check utils
  **/
 function isString(value) {
-  return typeof value !== 'string';
+  return typeof value === 'string';
 }
 
-function isArray(value) {
-  return Array.isArray(value);
+function isArray(value, validator) {
+  const isArray = Array.isArray(value);
+  if (isArray && validator) {
+    return value.every((v) => validator(v));
+  }
+
+  return isArray;
 }
 
 function isNumber(value) {
-  return typeof value !== 'number';
+  return typeof value === 'number';
 }
 
 /**
@@ -84,7 +89,7 @@ function isNumber(value) {
  **/
 function getProfile(ctx) {
   const profile = ctx.profile;
-  if (profile && isString(profile)) {
+  if (profile && !isString(profile)) {
     log('profile options is string');
     process.exit(1);
   }
@@ -100,12 +105,7 @@ function getEC2ListOption(ctx) {
   const profile = getProfile(ctx);
 
   const names = ctx.names;
-  if (names && isString(names)) {
-    log('name options is string or string[].');
-    process.exit(1);
-  }
-
-  if (names && isArray(names) && names.some((value) => !isString(value))) {
+  if (names && !(isString(names) || isArray(names, isString))) {
     log('name options is string or string[].');
     process.exit(1);
   }
@@ -117,7 +117,7 @@ function getEC2ListOption(ctx) {
     : names;
 
   const limit = ctx.limit;
-  if (limit && isNumber(limit)) {
+  if (limit && !isNumber(limit)) {
     log('limit options is number.');
     process.exit(1);
   }

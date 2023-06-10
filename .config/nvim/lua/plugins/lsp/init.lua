@@ -1,14 +1,14 @@
 local M = {
-	{
-		"ray-x/lsp_signature.nvim",
-		event = { "InsertEnter" },
-		config = function()
-			require("lsp_signature").setup({
-				floating_window = false,
-				hint_prefix = "🤔 ",
-			})
-		end,
-	},
+	-- {
+	-- 	"ray-x/lsp_signature.nvim",
+	-- 	event = { "InsertEnter" },
+	-- 	config = function()
+	-- 		require("lsp_signature").setup({
+	-- 			floating_window = false,
+	-- 			hint_prefix = "🤔 ",
+	-- 		})
+	-- 	end,
+	-- },
 
 	{
 		"weilbith/nvim-code-action-menu",
@@ -34,7 +34,7 @@ local M = {
 			},
 			{ "simrat39/rust-tools.nvim", ft = "rust" },
 			{ "b0o/schemastore.nvim" },
-			{ "j-hui/fidget.nvim" },
+			{ "j-hui/fidget.nvim", branch = "legacy" },
 			{ "yioneko/nvim-vtsls" },
 			{
 				"hrsh7th/cmp-nvim-lsp",

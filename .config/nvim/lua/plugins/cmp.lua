@@ -1,7 +1,6 @@
 local M = {
 	"hrsh7th/nvim-cmp",
 	event = { "InsertEnter", "CmdLineEnter" },
-	commit = "950d0e3a93ba61c13b031c086d11eacf4bd48d24",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"onsails/lspkind.nvim",
@@ -96,7 +95,7 @@ function M.config()
 			{ name = "nvim_lsp", max_item_count = 20 },
 			{ name = "buffer", keyword_length = 2, max_item_count = 4 },
 			{ name = "path" },
-			{ name = "nvim_lua" },
+			{ name = "nvim_lua", max_item_count = 20 },
 		}),
 	})
 

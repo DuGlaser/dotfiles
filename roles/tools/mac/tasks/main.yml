@@ -2,6 +2,8 @@
     - name: Install package using homebrew
       shell: brew install {{ item }}
       loop:
+        - bat
+        - exa
         - fzf
         - gh
         - ghq
@@ -24,9 +26,7 @@
       shell: |
         source "$HOME/.cargo/env"
         cargo install \
-          bat \
           cargo-update \
-          exa \
           killport
       args:
         executable: /bin/bash

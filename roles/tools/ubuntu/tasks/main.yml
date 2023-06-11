@@ -10,16 +10,13 @@
         pkg:
           - bat
           - exa
-          - fish
           - fzf
           - gufw
           - htop
-          - hub
           - jq
           - peco
           - tig
           - tmux
-          - unar
           - xclip
         state: present
         update_cache: yes

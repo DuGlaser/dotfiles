@@ -14,7 +14,6 @@
           - ghq
           - git
           - htop
-          - hub
           - jq
           - koekeishiya/formulae/skhd
           - neofetch
@@ -22,7 +21,6 @@
           - ripgrep
           - tig
           - tmux
-          - unar
           - yabai
           - zsh
 

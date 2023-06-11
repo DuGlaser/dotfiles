@@ -1,31 +1,35 @@
 - block:
-    - name: Homebrew update
-      community.general.homebrew:
-        update_homebrew: yes
-
     - name: Install package using homebrew
-      community.general.homebrew:
-        state: present
-        name:
-          - bat
-          - exa
-          - fzf
-          - gh
-          - ghq
-          - git
-          - htop
-          - jq
-          - koekeishiya/formulae/skhd
-          - neofetch
-          - peco
-          - ripgrep
-          - tig
-          - tmux
-          - yabai
-          - zsh
+      shell: brew install {{ item }}
+      loop:
+        - fzf
+        - gh
+        - ghq
+        - git
+        - htop
+        - jq
+        - koekeishiya/formulae/skhd
+        - neofetch
+        - peco
+        - ripgrep
+        - tig
+        - tmux
+        - yabai
+        - zsh
 
     - name: Install tools
       shell: make install_tools
+
+    - name: Install with cargo
+      shell: |
+        source "$HOME/.cargo/env"
+        cargo install \
+          bat \
+          cargo-update \
+          exa \
+          killport
+      args:
+        executable: /bin/bash
 
     - name: Install rtx
       shell: source "$HOME/.cargo/env" && make setup/rtx
@@ -40,13 +44,17 @@
       community.general.homebrew:
         state: present
         name:
-          - ninja
-          - libtool
-          - automake
-          - cmake
-          - pkg-config
-          - gettext
-          - curl
+
+    - name: Install neovim dependencies
+      shell: brew install {{ item }}
+      loop:
+        - ninja
+        - libtool
+        - automake
+        - cmake
+        - pkg-config
+        - gettext
+        - curl
 
     - name: Build neovim
       become: true

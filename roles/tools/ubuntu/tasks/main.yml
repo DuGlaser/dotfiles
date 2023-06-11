@@ -8,8 +8,6 @@
       become: true
       apt:
         pkg:
-          - bat
-          - exa
           - fzf
           - gufw
           - htop
@@ -24,6 +22,17 @@
     - name: Install tools
       become: true
       shell: make install_tools
+
+    - name: Install with cargo
+      shell: |
+        source "$HOME/.cargo/env"
+        cargo install \
+          bat \
+          cargo-update \
+          exa \
+          killport
+      args:
+        executable: /bin/bash
 
     - name: Install rtx
       shell: source "$HOME/.cargo/env" && make setup/rtx

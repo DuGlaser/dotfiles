@@ -7,8 +7,49 @@ local M = {
 		"lambdalisue/glyph-palette.vim",
 		{
 			"s1n7ax/nvim-window-picker",
+			commit = "65bbc52c27b0cd4b29976fe03be73cc943357528",
 			name = "window-picker",
-			version = "2.*",
+			config = function()
+				local function filter_floating_windows(window_ids)
+					local non_floating_windows = {}
+
+					for _, win_id in ipairs(window_ids) do
+						local is_floating = vim.api.nvim_win_get_config(win_id).relative ~= ""
+						if not is_floating then
+							table.insert(non_floating_windows, win_id)
+						end
+					end
+
+					return non_floating_windows
+				end
+
+				require("window-picker").setup({
+					selection_chars = "ABCDEFG",
+					picker_config = {
+						statusline_winbar_picker = {
+							selection_display = function(char)
+								return "%=" .. char .. "%="
+							end,
+							use_winbar = "smart",
+						},
+					},
+					show_prompt = false,
+					filter_func = function(window_ids)
+						window_ids = require("window-picker").filter_windows(window_ids)
+						return filter_floating_windows(window_ids)
+					end,
+					filter_rules = {
+						autoselect_one = true,
+						include_current_win = false,
+						bo = {
+							filetype = { "fern" },
+						},
+						wo = {},
+						file_path_contains = {},
+						file_name_contains = {},
+					},
+				})
+			end,
 		},
 	},
 	keys = {
@@ -34,27 +75,7 @@ local M = {
         ]],
 				true
 			)
-			local picked_window_id = require("window-picker").pick_window({
-				selection_chars = "ABCDEFG",
-				picker_config = {
-					statusline_winbar_picker = {
-						selection_display = function(char)
-							return "%=" .. char .. "%="
-						end,
-						use_winbar = "smart",
-					},
-				},
-				filter_rules = {
-					autoselect_one = true,
-					include_current_win = false,
-					bo = {
-						filetype = { "fern" },
-					},
-					wo = {},
-					file_path_contains = {},
-					file_name_contains = {},
-				},
-			})
+			local picked_window_id = require("window-picker").pick_window()
 			if picked_window_id == nil then
 				return
 			end

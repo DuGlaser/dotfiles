@@ -24,10 +24,6 @@ local M = {
 			numhl = false,
 			linehl = false,
 			word_diff = false,
-			keymaps = {
-				["o ig"] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
-				["x ig"] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
-			},
 		})
 	end,
 }

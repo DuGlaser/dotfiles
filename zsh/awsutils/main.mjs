@@ -169,7 +169,7 @@ class EC2 {
 
     const p = $`aws ssm start-session ${ssmOptions}`;
     process.on('SIGINT', () => {});
-    return p.stdio('inherit', 'inherit', 'inherit');
+    p.stdio('inherit', 'inherit', 'inherit');
   }
 
   async list() {

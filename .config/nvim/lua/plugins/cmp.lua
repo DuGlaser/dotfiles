@@ -99,13 +99,6 @@ function M.config()
 		}),
 	})
 
-	cmp.setup.cmdline({ "/", "?" }, {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = {
-			{ name = "buffer" },
-		},
-	})
-
 	vim.cmd([[hi CmpItemAbbrMatch guifg=#fe8019]])
 end
 

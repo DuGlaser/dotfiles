@@ -1,15 +1,19 @@
 local M = {
 	{
-		"lifepillar/vim-gruvbox8",
+		"ellisonleao/gruvbox.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
+			require("gruvbox").setup({
+				contrast = "soft",
+			})
+
 			vim.cmd("syntax enable")
 
 			vim.o.termguicolors = true
+			vim.o.background = "dark"
 
-			vim.g.gruvbox_plugin_hi_groups = 1
-			vim.cmd("colorscheme gruvbox8_soft")
+			vim.cmd("colorscheme gruvbox")
 
 			-- setup floating window color
 			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#32302f" })

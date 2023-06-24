@@ -23,3 +23,7 @@ vim.api.nvim_create_user_command("GhBrowseLine", function()
 	local cmd = string.format("%s %s:%s", GH_BROWSE_CMD, path, lineNumber)
 	vim.cmd(cmd)
 end, {})
+
+vim.api.nvim_create_user_command("GhBrowsePR", function()
+	vim.cmd("silent! !gh pr view --web")
+end)

@@ -26,4 +26,4 @@ end, {})
 
 vim.api.nvim_create_user_command("GhBrowsePR", function()
 	vim.cmd("silent! !gh pr view --web")
-end)
+end, {})

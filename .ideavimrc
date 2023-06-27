@@ -1,5 +1,6 @@
 set surround
 set clipboard+=unnamed
+set commentary
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j

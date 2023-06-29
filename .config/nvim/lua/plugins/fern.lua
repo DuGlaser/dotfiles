@@ -63,9 +63,9 @@ local M = {
 		vim.g["fern#renderer"] = "nerdfont"
 		vim.g["fern#renderer#nerdfont#indent_markers"] = 1
 
-		local hide_dirs = "^%(.git|node_modules)$"
-		local hide_files = "%(.byebug|.ruby-)+"
-		vim.g["fern#default_exclude"] = hide_dirs .. "|" .. hide_files
+		vim.cmd([[
+      let g:fern#default_exclude = '^\%(\.git\|node_modules\)$'
+    ]])
 
 		local function fern_picker()
 			local node = vim.api.nvim_exec(

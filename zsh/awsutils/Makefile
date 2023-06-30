@@ -1,3 +1,3 @@
-.PHONY: fmt
-fmt:
-	npx prettier --write .
+.PHONY: build
+build:
+	deno task compile

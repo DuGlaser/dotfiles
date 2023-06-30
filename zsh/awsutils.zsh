@@ -1,9 +1,17 @@
 function awsutils() {
-  if type "zx" > /dev/null 2>&1;then
-    zx $HOME/dotfiles/zsh/awsutils/main.mjs $@
+  target_dir="$HOME/dotfiles/zsh/awsutils"
+  target_file="$target_dir/awsutils"
+
+  if [ -f "$target_file" ]; then
+    $target_file $@
   else
-    echo "Error: Please install zx!" 1>&2
-    return 1
+    if type "deno" > /dev/null 2>&1; then
+      make -C $target_dir
+    else
+      echo "Error: Please install deno!" 1>&2
+      return 1
+    fi
+
   fi
 }
 zle -N awsutils

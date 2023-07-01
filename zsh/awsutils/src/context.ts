@@ -15,15 +15,3 @@ export function createContext(): Context {
     options: rest,
   };
 }
-
-export function getSubCommand(ctx: Context): [string | undefined, Context] {
-  const [subCommand, ...rest] = ctx.commands;
-
-  return [
-    subCommand,
-    {
-      ...ctx,
-      commands: rest,
-    },
-  ];
-}

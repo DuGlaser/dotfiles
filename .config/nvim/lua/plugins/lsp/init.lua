@@ -38,9 +38,7 @@ local M = {
 			{ "yioneko/nvim-vtsls" },
 			{
 				"hrsh7th/cmp-nvim-lsp",
-				cond = function()
-					return require("lazy.core.config").plugins["nvim-cmp"]
-				end,
+				lazy = true,
 			},
 		},
 	},

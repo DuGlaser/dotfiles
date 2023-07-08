@@ -99,4 +99,16 @@ M.lsp.apply_capabilities = function(setting)
 	return setting
 end
 
+local lsp_ignore_filetypes = { "gitcommit" }
+M.lsp.filetype_filter = function()
+	local current_filetype = vim.api.nvim_buf_get_option(0, "filetype")
+	for _, value in pairs(lsp_ignore_filetypes) do
+		if value == current_filetype then
+			return false
+		end
+	end
+
+	return true
+end
+
 return M

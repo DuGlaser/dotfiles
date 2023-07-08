@@ -32,9 +32,14 @@ require("mason-lspconfig").setup({
 
 local apply_filter = lsp_utils.apply_filter
 local apply_capabilities = lsp_utils.apply_capabilities
+local filetype_filter = lsp_utils.filetype_filter
 
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
+		if not filetype_filter() then
+			return
+		end
+
 		local opt = servers[server_name] and servers[server_name] or default_opts
 
 		if not opt.use_mason then
@@ -62,6 +67,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- manual setup
 for key, value in pairs(servers) do
 	if not value.use_mason then
+		if not filetype_filter() then
+			return
+		end
+
 		local setting = value.setup()
 
 		if setting ~= nil then
@@ -71,5 +80,9 @@ for key, value in pairs(servers) do
 end
 
 require("duglaser.utils").set_timeout(function()
+	if not filetype_filter() then
+		return
+	end
+
 	require("plugins.lsp.server.null-ls").setup()
 end, 2000)

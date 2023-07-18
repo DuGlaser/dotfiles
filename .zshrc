@@ -5,8 +5,14 @@ alias cls="clear"
 alias rg="rg --colors 'match:bg:yellow' --colors 'match:fg:black' --colors 'match:style:nobold' --colors 'path:fg:green' --colors 'path:style:bold' --colors 'line:fg:yellow' --colors 'line:style:bold'"
 alias hub="echo 'ghを使え' # "
 
+CUSTOM_ZSH_SCRIPT_PATH="$HOME/dotfiles/zsh"
+
 if [ -d "/mnt/c" ]; then
-  source "$HOME/dotfiles/zsh/wsl.zsh"
+  source "$CUSTOM_ZSH_SCRIPT_PATH/wsl.zsh"
+fi
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  source "$CUSTOM_ZSH_SCRIPT_PATH/darwin.zsh"
 fi
 
 # Ctrl-sでフリーズしないようにする
@@ -102,7 +108,7 @@ zle -N peco-src
 bindkey '^]' peco-src
 
 # custom source
-source "$HOME/dotfiles/zsh/awsutils.zsh"
+source "$CUSTOM_ZSH_SCRIPT_PATH/awsutils.zsh"
 
 # plugins
 ## zsh-autosuggestions

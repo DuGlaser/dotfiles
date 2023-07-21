@@ -1,0 +1,112 @@
+import = ["./size.toml"]
+
+[colors.bright]
+black = "0x517f8d"
+blue = "0x7eb2dd"
+cyan = "0x00ffff"
+green = "0x9cf087"
+magenta = "0xfb94ff"
+red = "0xff5a67"
+white = "0xb7cff9"
+yellow = "0xffcc1b"
+
+[colors.cursor]
+cursor = "0xffcc1b"
+text = "0x002635"
+
+[colors.normal]
+black = "0x00384d"
+blue = "0x1c8db2"
+cyan = "0x00cccc"
+green = "0x7fc06e"
+magenta = "0xc694ff"
+red = "0xc43061"
+white = "0x77929e"
+yellow = "0xf08e48"
+
+[colors.primary]
+background = "0x32302f"
+foreground = "0xe6e6dc"
+
+[env]
+TERM = "alacritty"
+
+[font.bold]
+family = "MesloLGS Nerd Font Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "MesloLGS Nerd Font Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "MesloLGS Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "MesloLGS Nerd Font Mono"
+
+[[keyboard.bindings]]
+chars = "\u001Bw"
+key = "W"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Ba"
+key = "A"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Be"
+key = "E"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bc"
+key = "C"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bv"
+key = "V"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bs"
+key = "S"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bd"
+key = "D"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bj"
+key = "J"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bk"
+key = "K"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bh"
+key = "H"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bl"
+key = "L"
+mods = "Alt"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[window]
+startup_mode = "Maximized"
+
+[window.padding]
+x = 10

@@ -1,5 +1,5 @@
 import { $ } from "npm:zx@7.1.1";
-import { Context, createContext } from "./context.ts";
+import { createContext } from "./context.ts";
 import { EC2 } from "./ec2.ts";
 import { Command, execCommand } from "./command.ts";
 

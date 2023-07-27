@@ -35,6 +35,7 @@ local M = {
 	},
 	"tpope/vim-repeat",
 	"mbbill/undotree",
+	"brooth/far.vim",
 	{
 		"kana/vim-operator-replace",
 		dependencies = {
@@ -96,6 +97,39 @@ local M = {
 	{
 		"mattn/emmet-vim",
 		ft = { "html", "javascriptreact", "typescriptreact", "vue" },
+	},
+	{
+		"lewis6991/satellite.nvim",
+		config = function()
+			require("satellite").setup({
+				winblend = 20,
+			})
+		end,
+	},
+	{
+		"karb94/neoscroll.nvim",
+		config = function()
+			require("neoscroll").setup({
+				pre_hook = function()
+					vim.opt.eventignore:append({
+						"WinScrolled",
+						"CursorMoved",
+					})
+				end,
+				post_hook = function()
+					vim.opt.eventignore:remove({
+						"WinScrolled",
+						"CursorMoved",
+					})
+				end,
+			})
+
+			local t = {}
+			t["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "150" } }
+			t["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "150" } }
+
+			require("neoscroll.config").set_mappings(t)
+		end,
 	},
 	----------------------------------------
 	-- rust

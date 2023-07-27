@@ -93,5 +93,6 @@ vim.cmd([[
     autocmd FileType json,packer setlocal foldmethod=manual
     autocmd FileType TelescopeResults setlocal nofoldenable
     autocmd FileType lazy setlocal nofoldenable
+    autocmd FileType far setlocal nofoldenable
   augroup END
 ]])

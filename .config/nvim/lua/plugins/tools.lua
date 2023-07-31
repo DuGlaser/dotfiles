@@ -98,14 +98,6 @@ local M = {
 		"mattn/emmet-vim",
 		ft = { "html", "javascriptreact", "typescriptreact", "vue" },
 	},
-	{
-		"lewis6991/satellite.nvim",
-		config = function()
-			require("satellite").setup({
-				winblend = 20,
-			})
-		end,
-	},
 	----------------------------------------
 	-- rust
 	----------------------------------------

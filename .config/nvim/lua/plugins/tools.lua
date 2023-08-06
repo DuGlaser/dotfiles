@@ -37,6 +37,7 @@ local M = {
 	"mbbill/undotree",
 	{
 		"brooth/far.vim",
+		event = "VeryLazy",
 		config = function()
 			vim.g["far#enable_undo"] = true
 			vim.g["far#source"] = "rg"

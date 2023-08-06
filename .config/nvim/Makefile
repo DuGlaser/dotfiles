@@ -10,5 +10,5 @@ init:
 
 .PHONY: install_provider
 install_provider:
-	python3 -m pip install pynvim
+	python3 -m pip install --user --upgrade pynvim
 	npm -g install neovim

@@ -8,7 +8,7 @@ local disable_mason_setting = lsp_utils.disable_mason_setting
 
 local servers = {
 	["angularls"] = require("plugins.lsp.server.angularls"),
-	["ccls"] = disable_mason_setting(enable_format_opts),
+	["clangd"] = require("plugins.lsp.server.clangd"),
 	["cssls"] = default_opts,
 	["denols"] = require("plugins.lsp.server.denols"),
 	["dockerls"] = enable_format_opts,

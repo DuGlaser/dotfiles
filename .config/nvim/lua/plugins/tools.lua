@@ -35,7 +35,13 @@ local M = {
 	},
 	"tpope/vim-repeat",
 	"mbbill/undotree",
-	"brooth/far.vim",
+	{
+		"brooth/far.vim",
+		config = function()
+			vim.g["far#enable_undo"] = true
+			vim.g["far#source"] = "rg"
+		end,
+	},
 	{
 		"kana/vim-operator-replace",
 		dependencies = {

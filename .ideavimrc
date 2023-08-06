@@ -1,11 +1,15 @@
 set surround
 set clipboard+=unnamed
 set commentary
+set hlsearch
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <Space>l :nohlsearch<CR>
+
+nnoremap <Space>rn :action RenameElement<CR>
 
 nnoremap zl zo
 nnoremap zL zO

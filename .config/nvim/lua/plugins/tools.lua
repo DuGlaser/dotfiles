@@ -105,6 +105,10 @@ local M = {
 		"mattn/emmet-vim",
 		ft = { "html", "javascriptreact", "typescriptreact", "vue" },
 	},
+	{
+		"thinca/vim-qfreplace",
+		ft = { "qf" },
+	},
 	----------------------------------------
 	-- rust
 	----------------------------------------

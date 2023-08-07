@@ -8,12 +8,14 @@
         - gh
         - ghq
         - git
+        - gzip
         - htop
         - jq
         - koekeishiya/formulae/skhd
         - neofetch
         - peco
         - ripgrep
+        - scdoc
         - tig
         - tmux
         - yabai

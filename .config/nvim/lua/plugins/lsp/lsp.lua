@@ -4,7 +4,6 @@ local lsp_utils = require("plugins.lsp.utils").lsp
 
 local default_opts = lsp_utils.default_opts
 local enable_format_opts = lsp_utils.enable_format_opts
-local disable_mason_setting = lsp_utils.disable_mason_setting
 
 local servers = {
 	["angularls"] = require("plugins.lsp.server.angularls"),

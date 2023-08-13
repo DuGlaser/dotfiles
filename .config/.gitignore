@@ -11,6 +11,7 @@
 !setup_config.sh
 !skhd
 !yabai
-!lazygit
+!lazygit/config.yml
+
 
 /alacritty/size.toml

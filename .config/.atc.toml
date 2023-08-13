@@ -1,9 +1,9 @@
 
 [config]
   runcmd = "{{ .dir }}/main"
-  buildcmd = "g++ -o {{ .dir }}/main {{ .file }} -I/home/duglaser/src/github.com/DuGlaser/atcoder-answer/ac-library/"
+  buildcmd = "g++ -std=c++17 -Wall -O2 -fsanitize=undefined -o {{ .dir }}/main {{ .file }} -I/home/duglaser/src/github.com/DuGlaser/atcoder-answer/ac-library/"
   filename = "main.cpp"
-  lang = "4003"
+  lang = "5001"
   template = """
 #include <atcoder/all>
 #include <bits/stdc++.h>

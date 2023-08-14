@@ -483,3 +483,5 @@ doc/api/
 
 .tool-versions
 cspell.json
+
+.rtx.toml

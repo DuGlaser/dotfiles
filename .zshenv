@@ -1,5 +1,6 @@
 export EDITOR=nvim
 export DENO_INSTALL_ROOT=$HOME/.deno
+export XDG_CONFIG_HOME=$HOME/.config
 
 if [ -e "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"

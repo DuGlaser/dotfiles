@@ -19,3 +19,5 @@
   pushf = push --force-with-lease --force-if-includes
 [push]
   useForceIfIncludes = true
+[pull]
+  rebase = true

@@ -24,10 +24,20 @@ local M = {
 		config = function()
 			local max_filesize = 100 * 1024
 
+			local disable_treesitter = {
+				"scss",
+			}
+
 			require("nvim-treesitter.configs").setup({
 				highlight = {
 					enable = true,
-					disable = function(_, buf)
+					disable = function(lang, buf)
+						for _, v in ipairs(disable_treesitter) do
+							if lang == v then
+								return true
+							end
+						end
+
 						return is_file_size_over_limit(buf, max_filesize)
 					end,
 				},

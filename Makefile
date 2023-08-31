@@ -38,3 +38,14 @@ setup/ansible: setup_ansible
 
 .PHONY: setup/tmux
 setup/tmux: setup_tmux
+
+.PHONY: update
+update: update/submodule update/nvim
+
+.PHONY: update/submodule
+update/submodule:
+	git submodule update --remote --recursive
+
+.PHONY: update/nvim
+update/nvim: setup/nvim
+	$(MAKE) -C .config/nvim update

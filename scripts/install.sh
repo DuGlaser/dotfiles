@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone https://github.com/DuGlaser/dotfiles.git $HOME/dotfiles
+git clone --recursive https://github.com/DuGlaser/dotfiles.git $HOME/dotfiles
 
 cd $HOME/dotfiles
 make init

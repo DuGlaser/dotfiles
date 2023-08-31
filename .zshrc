@@ -40,6 +40,8 @@ setopt interactive_comments
 # vi keybindings
 bindkey -v
 bindkey "^?" backward-delete-char
+bindkey '^N' up-history
+bindkey '^P' down-history
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
@@ -110,7 +112,8 @@ zle -N peco-src
 bindkey '^]' peco-src
 
 # custom source
-source "$CUSTOM_ZSH_SCRIPT_PATH/awsutils.zsh"
+source "$CUSTOM_ZSH_SCRIPT_PATH/awsutils/setup.zsh"
+source "$CUSTOM_ZSH_SCRIPT_PATH/private-commands/setup.zsh"
 
 # plugins
 ## zsh-autosuggestions

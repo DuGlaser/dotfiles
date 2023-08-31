@@ -1,3 +1,0 @@
-[submodule "zsh/private-commands"]
-	path = zsh/private-commands
-	url = https://github.com/DuGlaser/private-commands

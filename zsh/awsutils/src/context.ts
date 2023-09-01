@@ -1,4 +1,4 @@
-import { argv } from "npm:zx@7.1.1";
+import { argv } from 'zx';
 
 export type Context = {
   commands: string[];

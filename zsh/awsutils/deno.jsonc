@@ -1,6 +1,0 @@
-{
-  "tasks": {
-    "run": "deno run --allow-all src/main.ts",
-    "compile": "deno compile --allow-all src/main.ts --output awsutils"
-  }
-}

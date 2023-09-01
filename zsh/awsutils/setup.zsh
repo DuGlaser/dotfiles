@@ -1,19 +1,8 @@
 readonly local awsutils_script_dir=$(dirname "$0")
 
 function awsutils() {
-  target_file="$awsutils_script_dir/awsutils"
-
-  if [ -f "$target_file" ]; then
-    $target_file $@
-  else
-    if type "deno" > /dev/null 2>&1; then
-      make -C $awsutils_script_dir
-    else
-      echo "Error: Please install deno!" 1>&2
-      return 1
-    fi
-
-  fi
+  target_file="$awsutils_script_dir/src/main.ts"
+  $target_file $@
 }
 
 zle -N awsutils

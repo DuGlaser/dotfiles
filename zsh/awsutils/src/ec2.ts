@@ -1,18 +1,21 @@
-import { z } from "https://deno.land/x/zod@v3.21.4/mod.ts";
-import { $, echo, ProcessPromise } from "npm:zx@7.1.1";
-import { Context } from "./context.ts";
+import { z } from 'zod';
+import { $, echo, ProcessPromise } from 'zx';
+import { Context } from './context';
 
-const Profile = z.string().optional().default("default");
+const Profile = z.string().optional().default('default');
 
 const EC2ListOption = z.object({
   profile: Profile,
   limit: z.number().optional(),
-  names: z.union([z.string(), z.array(z.string())]).transform((value) => {
-    if (typeof value === "string") return [value];
-    return value;
-  }).default([]),
+  names: z
+    .union([z.string(), z.array(z.string())])
+    .transform((value) => {
+      if (typeof value === 'string') return [value];
+      return value;
+    })
+    .default([]),
   fuzzy: z.boolean().optional().default(false),
-  state: z.string().optional().default("running"),
+  state: z.string().optional().default('running'),
 });
 
 const EC2LoginOption = z.object({
@@ -36,16 +39,16 @@ export class EC2 {
     const { profile, target, region } = options;
 
     const ssmOptions = [
-      ["--target", target],
-      profile && ["--profile", profile],
-      region && ["--region", region],
+      ['--target', target],
+      profile && ['--profile', profile],
+      region && ['--region', region],
     ]
       .flat()
       .filter((value) => !!value);
 
     const p = $`aws ssm start-session ${ssmOptions}`;
-    Deno.addSignalListener("SIGINT", () => {});
-    await p.stdio("inherit", "inherit", "inherit");
+    process.on('SIGINT', () => {});
+    await p.stdio('inherit', 'inherit', 'inherit');
   }
 
   async list() {
@@ -56,11 +59,10 @@ export class EC2 {
     const ec2FilterOptions = [`Name=instance-state-name,Values=${state}`];
 
     if (names.length && !fuzzy) {
-      ec2FilterOptions.push(`Name=tag:Name,Values=${names.join("")}`);
+      ec2FilterOptions.push(`Name=tag:Name,Values=${names.join('')}`);
     }
 
-    let p =
-      $`aws ec2 describe-instances --profile ${profile} --filter ${ec2FilterOptions}`;
+    let p = $`aws ec2 describe-instances --profile ${profile} --filter ${ec2FilterOptions}`;
     p = p.pipe(
       $`jq '.Reservations[].Instances[] | {InstanceId, PrivateIpAddress, InstanceName: .Tags[] | select(.Key == "Name").Value }'`,
     );
@@ -84,7 +86,7 @@ export class EC2 {
     process: ProcessPromise,
     keywords: string[],
   ): ProcessPromise {
-    const joined = keywords.join("|");
+    const joined = keywords.join('|');
     const searchValue = `. | select(.InstanceName | test(".*(${joined}).*"))`;
     return process.pipe($`jq ${searchValue}`);
   }

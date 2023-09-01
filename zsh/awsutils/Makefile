@@ -1,3 +1,3 @@
-.PHONY: build
-build:
-	deno task compile
+.PHONY: fmt
+fmt:
+	npx prettier --write ./src

@@ -1,14 +1,16 @@
-import { $ } from "npm:zx@7.1.1";
-import { createContext } from "./context.ts";
-import { EC2 } from "./ec2.ts";
-import { Command, execCommand } from "./command.ts";
+#!/usr/bin/env -S npx tsx
+
+import { $ } from 'zx';
+import { createContext } from './context';
+import { EC2 } from './ec2';
+import { Command, execCommand } from './command';
 
 const commands: Command[] = [
   {
-    name: "ec2",
+    name: 'ec2',
     sub: [
-      { name: "list", handler: (ctx) => new EC2(ctx).list() },
-      { name: "login", handler: (ctx) => new EC2(ctx).login() },
+      { name: 'list', handler: (ctx) => new EC2(ctx).list() },
+      { name: 'login', handler: (ctx) => new EC2(ctx).login() },
     ],
   },
 ];

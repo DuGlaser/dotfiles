@@ -1,5 +1,5 @@
-import { Context } from "./context.ts";
-import { log } from "./utils.ts";
+import { Context } from './context';
+import { log } from './utils';
 
 export type Command = {
   name: string;
@@ -14,13 +14,13 @@ export async function execCommand(
   const [sub, ctx] = getSubCommand(_ctx);
   if (!sub) {
     log(`cannot find command handler!`);
-    Deno.exit(1);
+    process.exit(1);
   }
 
   const matched = commands.find((cmd) => cmd.name === sub);
   if (!matched) {
     log(`${sub} is invalid command!`);
-    Deno.exit(1);
+    process.exit(1);
   }
 
   if (ctx.commands.length && matched.sub?.length) {
@@ -29,7 +29,7 @@ export async function execCommand(
 
   if (!matched.handler) {
     log(`${sub} is invalid command!`);
-    Deno.exit(1);
+    process.exit(1);
   }
 
   return await matched.handler(ctx);

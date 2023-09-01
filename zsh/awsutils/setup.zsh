@@ -1,13 +1,13 @@
-script_dir=$(dirname "$0")
+readonly local awsutils_script_dir=$(dirname "$0")
 
 function awsutils() {
-  target_file="$script_dir/awsutils"
+  target_file="$awsutils_script_dir/awsutils"
 
   if [ -f "$target_file" ]; then
     $target_file $@
   else
     if type "deno" > /dev/null 2>&1; then
-      make -C $script_dir
+      make -C $awsutils_script_dir
     else
       echo "Error: Please install deno!" 1>&2
       return 1
@@ -15,4 +15,5 @@ function awsutils() {
 
   fi
 }
+
 zle -N awsutils

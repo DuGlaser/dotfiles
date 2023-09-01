@@ -44,6 +44,7 @@ update: update/submodule update/nvim
 
 .PHONY: update/submodule
 update/submodule:
+	cd ./zsh/private-commands && git clean -fdx && git checkout .
 	git submodule update --remote --recursive
 
 .PHONY: update/nvim

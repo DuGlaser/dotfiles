@@ -40,7 +40,7 @@ setup/ansible: setup_ansible
 setup/tmux: setup_tmux
 
 .PHONY: update
-update: update/submodule update/nvim
+update: update/submodule update/nvim update/rust
 
 .PHONY: update/submodule
 update/submodule:
@@ -50,3 +50,9 @@ update/submodule:
 .PHONY: update/nvim
 update/nvim: setup/nvim
 	$(MAKE) -C .config/nvim update
+
+.PHONY: update/rust
+update/rust:
+	rustup update stable
+	cargo install-update -a
+

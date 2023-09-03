@@ -53,6 +53,26 @@ local M = {
 		},
 	},
 	{
+		"kana/vim-smartword",
+		config = function()
+			local motions = { "w", "b", "e" }
+
+			for _, motion in ipairs(motions) do
+				local plug_map = string.format("<Plug>(smartword-basic-%s)", motion)
+				local target_map = string.format("<Plug>CamelCaseMotion_%s", motion)
+				vim.api.nvim_set_keymap("", plug_map, target_map, { noremap = false, silent = true })
+			end
+		end,
+		keys = {
+			{ "w", "<Plug>(smartword-w)", mode = { "n", "x" } },
+			{ "b", "<Plug>(smartword-b)", mode = { "n", "x" } },
+			{ "e", "<Plug>(smartword-e)", mode = { "n", "x" } },
+		},
+		dependencies = {
+			"bkad/CamelCaseMotion",
+		},
+	},
+	{
 		"kevinhwang91/nvim-bqf",
 		ft = "qf",
 		dependencies = {
@@ -108,6 +128,9 @@ local M = {
 	{
 		"thinca/vim-qfreplace",
 		ft = { "qf" },
+	},
+	{
+		"tpope/vim-abolish",
 	},
 	----------------------------------------
 	-- rust

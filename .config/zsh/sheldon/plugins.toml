@@ -1,0 +1,31 @@
+shell = "zsh"
+
+[templates]
+defer = "{{ hooks | get: \"pre\" | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks | get: \"post\" | nl }}"
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+[plugins.pure]
+github = "sindresorhus/pure"
+use = ["async.zsh", "pure.zsh"]
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+use = ["{{ name }}.zsh"]
+apply = ["defer"]
+hooks.pre = "bindkey '^e' autosuggest-accept"
+
+[plugins.z]
+github = 'agkozak/zsh-z'
+apply = ["defer"]
+
+[plugins.awsutils]
+local = "~/.config/zsh/plugins/awsutils"
+use = ["setup.zsh"]
+apply = ["defer"]
+
+[plugins.private-commands]
+local = "~/.config/zsh/plugins/private-commands"
+use = ["setup.zsh"]
+apply = ["defer"]

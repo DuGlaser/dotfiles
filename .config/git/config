@@ -11,10 +11,6 @@
   name = DuGlaser
 [url "git@github.com:"]
   pushinsteadof = https://github.com/
-[url "ssh://git@github.com"]
-  insteadOf = https://github.com
-[url "https://github.com/rust-lang/crates.io-index"]
-    insteadOf = https://github.com/rust-lang/crates.io-index
 [alias]
   pushf = push --force-with-lease --force-if-includes
 [push]

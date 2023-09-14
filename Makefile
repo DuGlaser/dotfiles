@@ -30,9 +30,6 @@ setup/alacritty: setup_alacritty
 .PHONY: setup/rtx
 setup/rtx: setup_rtx
 
-.PHONY: setup/zsh
-setup/zsh: setup_zsh
-
 .PHONY: setup/ansible
 setup/ansible: setup_ansible
 
@@ -40,11 +37,11 @@ setup/ansible: setup_ansible
 setup/tmux: setup_tmux
 
 .PHONY: update
-update: update/submodule update/nvim update/rust
+update: update/submodule update/nvim update/rust update/zsh
 
 .PHONY: update/submodule
 update/submodule:
-	cd ./zsh/private-commands && git clean -fdx && git checkout .
+	cd ./.config/zsh/plugins && git clean -fdx && git checkout .
 	git submodule update --remote --recursive
 
 .PHONY: update/nvim
@@ -56,3 +53,6 @@ update/rust:
 	rustup update stable
 	cargo install-update -a
 
+.PHONY: update/zsh
+update/zsh:
+	sheldon lock --update

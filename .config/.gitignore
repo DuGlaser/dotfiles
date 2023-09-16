@@ -14,5 +14,5 @@
 !lazygit/config.yml
 !zsh
 
-
 /alacritty/size.toml
+/zsh/sheldon/shebang.zsh

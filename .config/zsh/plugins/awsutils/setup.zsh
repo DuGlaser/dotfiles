@@ -3,7 +3,9 @@ function awsutils() {
   local target_file="$script_dir/src/main.ts"
   local node_modules="$script_dir/node_modules"
   if [ ! -d "$node_modules" ]; then
-    (cd $script_dir && npm install)
+		echo "Installing dependencies..."
+    (cd $script_dir && bun install --production --flozen-lockfile)
+		echo "\n"
   fi
 
   $target_file $@

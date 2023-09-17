@@ -1,3 +1,7 @@
+.PHONY: init
+init:
+	bun install --frozen-lockfile
+
 .PHONY: fmt
 fmt:
-	npx prettier --write ./src
+	bunx prettier --write ./src

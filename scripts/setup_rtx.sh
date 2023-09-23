@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cargo install rtx-cli
+cargo install --locked rtx-cli
 rtx install

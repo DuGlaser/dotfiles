@@ -28,7 +28,7 @@
     - name: Install with cargo
       shell: |
         source "$HOME/.cargo/env"
-        cargo install \
+        cargo install --locked \
           cargo-update \
           killport
       args:

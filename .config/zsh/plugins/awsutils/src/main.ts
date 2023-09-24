@@ -1,5 +1,3 @@
-#!/usr/bin/env -S npx tsx
-
 import { $ } from 'zx';
 import { createContext } from './context';
 import { EC2 } from './ec2';

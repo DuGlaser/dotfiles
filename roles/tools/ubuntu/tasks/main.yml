@@ -24,20 +24,19 @@
       shell: make install_tools
 
     - name: Install with cargo
-      shell: |
-        source "$HOME/.cargo/env"
-        cargo install --locked \
-          bat \
-          cargo-update \
-          exa \
-          killport
-      args:
-        executable: /bin/bash
+      shell: cargo install --locked {{ item }}
+      environment:
+        PATH: "{{ansible_env.PATH}}:$HOME/.cargo/env"
+      loop:
+        - bat
+        - cargo-update
+        - exa
+        - killport
 
     - name: Install rtx
-      shell: source "$HOME/.cargo/env" && make setup/rtx
-      args:
-        executable: /bin/bash
+      environment:
+        PATH: "{{ansible_env.PATH}}:$HOME/.cargo/env"
+      command: make setup/rtx
 
     - name: Install alacritty dependencies
       become: true
@@ -55,9 +54,9 @@
 
     - name: Build alacritty
       become: true
-      shell: source "$HOME/.cargo/env" && make setup/alacritty
-      args:
-        executable: /bin/bash
+      environment:
+        PATH: "{{ansible_env.PATH}}:$HOME/.cargo/env"
+      command: make setup/alacritty
 
     - name: Install neovim dependencies
       become: true

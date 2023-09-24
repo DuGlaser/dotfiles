@@ -21,10 +21,10 @@
 
     - name: Install tools
       become: true
-      shell: make install_tools
+      command: make install_tools
 
     - name: Install with cargo
-      shell: cargo install --locked {{ item }}
+      command: cargo install --locked {{ item }}
       environment:
         PATH: "{{ansible_env.PATH}}:$HOME/.cargo/env"
       loop:
@@ -79,6 +79,6 @@
 
     - name: Build neovim
       become: true
-      shell: make setup/nvim
+      command: make setup/nvim
 
   when: ansible_os_family == "Debian"

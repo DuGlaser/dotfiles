@@ -1,6 +1,6 @@
 - block:
     - name: Install package using homebrew
-      shell: brew install {{ item }}
+      command: brew install {{ item }}
       loop:
         - bat
         - exa
@@ -23,10 +23,10 @@
         - zsh
 
     - name: Install tools
-      shell: make install_tools
+      command: make install_tools
 
     - name: Install with cargo
-      shell: cargo install --locked {{ item }}
+      command: cargo install --locked {{ item }}
       environment:
         PATH: "{{ansible_env.PATH}}:$HOME/.cargo/env"
       loop:
@@ -41,7 +41,7 @@
 
     - name: Build alacritty
       become: true
-      shell: make setup/alacritty
+      command: make setup/alacritty
 
     - name: Install neovim dependencies
       community.general.homebrew:
@@ -49,7 +49,7 @@
         name:
 
     - name: Install neovim dependencies
-      shell: brew install {{ item }}
+      command: brew install {{ item }}
       loop:
         - ninja
         - libtool
@@ -61,6 +61,6 @@
 
     - name: Build neovim
       become: true
-      shell: make setup/nvim
+      command: make setup/nvim
 
   when: ansible_os_family == "Darwin"

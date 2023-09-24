@@ -26,18 +26,18 @@
       shell: make install_tools
 
     - name: Install with cargo
-      shell: |
-        source "$HOME/.cargo/env"
-        cargo install --locked \
-          cargo-update \
-          killport
-      args:
-        executable: /bin/bash
+      shell: cargo install --locked {{ item }}
+      environment:
+        PATH: "{{ansible_env.PATH}}:$HOME/.cargo/env"
+      loop:
+        - cargo-update
+        - killport
+        - sheldon
 
     - name: Install rtx
-      shell: source "$HOME/.cargo/env" && make setup/rtx
-      args:
-        executable: /bin/bash
+      environment:
+        PATH: "{{ansible_env.PATH}}:$HOME/.cargo/env"
+      command: make setup/rtx
 
     - name: Build alacritty
       become: true

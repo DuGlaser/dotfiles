@@ -32,6 +32,7 @@
         - cargo-update
         - exa
         - killport
+        - sheldon
 
     - name: Install rtx
       environment:

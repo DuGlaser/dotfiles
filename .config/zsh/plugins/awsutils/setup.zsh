@@ -28,5 +28,3 @@ EOF
 
   $target_file $@
 }
-
-zle -N awsutils

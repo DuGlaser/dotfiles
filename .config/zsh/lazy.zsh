@@ -45,7 +45,7 @@ if type "tmux" > /dev/null 2>&1; then
 fi
 
 # load env
-env_script_dir="$HOME/.config/zsh/env"
+local env_script_dir="$HOME/.config/zsh/env"
 
 if [ -d "/mnt/c" ]; then
   source "$env_script_dir/wsl.zsh"

@@ -30,7 +30,9 @@ setopt hist_ignore_dups
 setopt hist_ignore_all_dups
 
 # Use modern completion system
-autoload -Uz compinit; compinit
+autoload -Uz compinit
+[ ! "$(find ~/.zcompdump -mtime 1)" ] || compinit
+compinit -C
 
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 zstyle ':completion:*' menu select

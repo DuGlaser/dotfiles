@@ -1,4 +1,3 @@
-SHELL = /bin/zsh
 ACCOUNT := $(shell aws sts get-caller-identity --query "Account" --output text)
 
 .PHONY: diff

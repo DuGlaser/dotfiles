@@ -23,8 +23,9 @@ EOF
     bunx esbuild $source_file --bundle --platform=node --format=esm >> $target_file
 
     chmod +x $target_file
+    (cd $script_dir && npm link)
     echo ""
   fi
 
-  $target_file $@
+  command awsutils $@
 }

@@ -22,12 +22,12 @@ export class TestUbuntuStack extends cdk.Stack {
     });
 
     const ami = new cdk.aws_ec2.LookupMachineImage({
-      name: "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20230919"
+      name: "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-arm64-server-20230919"
     })
 
     new cdk.aws_ec2.Instance(this, "test-ubuntu", {
       machineImage: ami,
-      instanceType: new cdk.aws_ec2.InstanceType("t2.micro"),
+      instanceType: new cdk.aws_ec2.InstanceType("c7g.large"),
       vpc,
       vpcSubnets: vpc.selectSubnets({
         subnetGroupName: "Public",

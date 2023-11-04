@@ -8,11 +8,13 @@
       become: true
       apt:
         pkg:
+          - build-essential
           - fzf
           - gufw
           - htop
           - jq
           - peco
+          - pkg-config
           - tig
           - tmux
           - xclip

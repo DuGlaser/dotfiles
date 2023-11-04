@@ -13,6 +13,7 @@
           - gufw
           - htop
           - jq
+          - libssl-dev
           - peco
           - pkg-config
           - tig

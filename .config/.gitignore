@@ -13,6 +13,7 @@
 !yabai
 !lazygit/config.yml
 !zsh
+!rtx
 
 /alacritty/size.toml
 /zsh/sheldon/sheldon.zsh

@@ -27,6 +27,8 @@ ln -sfnv "$dotfiles_config/skhd" "$config/skhd"
 ln -sfnv "$dotfiles_config/starship.toml" "$config/starship.toml"
 ln -sfnv "$dotfiles_config/yabai" "$config/yabai"
 ln -sfnv "$dotfiles_config/zsh" "$config/zsh"
+ln -sfnv "$dotfiles_config/rtx/.default-golang-pkgs" "$HOME/.default-golang-pkgs"
+ln -sfnv "$dotfiles_config/rtx/.default-npm-packages" "$HOME/.default-npm-packages"
 
 ln -sfnv "$dotfiles_config/zsh/.zshrc" "$HOME/.zshrc"
 ln -sfnv "$dotfiles_config/zsh/.zshenv" "$HOME/.zshenv"

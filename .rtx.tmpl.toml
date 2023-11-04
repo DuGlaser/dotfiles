@@ -1,5 +1,7 @@
 [tools]
-deno = ['latest']
 node = ['lts']
 python = ['3.11', '3.10']
 terraform = ['1.4.0']
+
+[plugins]
+terraform = "https://github.com/asdf-community/asdf-hashicorp.git"

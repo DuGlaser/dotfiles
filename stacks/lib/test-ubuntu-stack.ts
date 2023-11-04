@@ -27,7 +27,7 @@ export class TestUbuntuStack extends cdk.Stack {
 
     new cdk.aws_ec2.Instance(this, "test-ubuntu", {
       machineImage: ami,
-      instanceType: new cdk.aws_ec2.InstanceType("c7g.large"),
+      instanceType: new cdk.aws_ec2.InstanceType("c7g.xlarge"),
       vpc,
       vpcSubnets: vpc.selectSubnets({
         subnetGroupName: "Public",

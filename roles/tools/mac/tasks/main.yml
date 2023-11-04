@@ -28,7 +28,7 @@
     - name: Install with cargo
       command: cargo install --locked {{ item }}
       environment:
-        PATH: "{{ansible_env.PATH}}:$HOME/.cargo/env"
+        PATH: "{{ansible_env.PATH}}:{{ansible_env.HOME}}/.cargo/env"
       loop:
         - cargo-update
         - killport
@@ -36,11 +36,13 @@
 
     - name: Install rtx
       environment:
-        PATH: "{{ansible_env.PATH}}:$HOME/.cargo/env"
+        PATH: "{{ansible_env.PATH}}:{{ansible_env.HOME}}/.cargo/env"
       command: make setup/rtx
 
     - name: Build alacritty
       become: true
+      environment:
+        PATH: "{{ansible_env.PATH}}:{{ansible_env.HOME}}/.cargo/env"
       command: make setup/alacritty
 
     - name: Install neovim dependencies

@@ -2,4 +2,4 @@
 
 cargo install --locked rtx-cli
 rtx trust
-rtx install
+rtx install -y

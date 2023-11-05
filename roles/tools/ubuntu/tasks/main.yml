@@ -23,7 +23,9 @@
           - pkg-config
           - tig
           - tmux
+          - unzip
           - xclip
+          - zip
           - zlib1g
           - zlib1g-dev
         state: present
@@ -36,7 +38,7 @@
     - name: Install with cargo
       command: cargo install --locked {{ item }}
       environment:
-        PATH: "{{ansible_env.PATH}}:{{ansible_env.HOME}}/.cargo/env"
+        PATH: "{{ansible_env.PATH}}:{{ansible_env.HOME}}/.cargo/bin"
       loop:
         - bat
         - cargo-update
@@ -46,7 +48,7 @@
 
     - name: Install rtx
       environment:
-        PATH: "{{ansible_env.PATH}}:{{ansible_env.HOME}}/.cargo/env"
+        PATH: "{{ansible_env.PATH}}:{{ansible_env.HOME}}/.cargo/bin"
       command: make setup/rtx
 
     - name: Install alacritty dependencies
@@ -66,7 +68,7 @@
     - name: Build alacritty
       become: true
       environment:
-        PATH: "{{ansible_env.PATH}}:{{ansible_env.HOME}}/.cargo/env"
+        PATH: "{{ansible_env.PATH}}:{{ansible_env.HOME}}/.cargo/bin"
       command: make setup/alacritty
 
     - name: Install neovim dependencies

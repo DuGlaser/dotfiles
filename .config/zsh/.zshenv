@@ -15,8 +15,6 @@ path=(
     /usr/local/bin(N-/)
     /usr/local/sbin(N-/)
     $HOME/.local/bin(N-/)
-    /usr/local/go/bin(N-/)
-    $HOME/go/bin(N-/)
 		$HOME/.cargo/bin(N-/)
     $DENO_INSTALL_ROOT/bin(N-/)
     $HOME/.cargo/env(N-/)

@@ -1,7 +1,8 @@
 [tools]
 node = ['lts']
-python = ['3.11', '3.10']
-terraform = ['1.4.0']
+python = ['latest']
+terraform = ['latest']
+golang = ['latest']
 
 [plugins]
 terraform = "https://github.com/asdf-community/asdf-hashicorp.git"

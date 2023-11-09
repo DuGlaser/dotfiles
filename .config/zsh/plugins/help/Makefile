@@ -1,6 +1,9 @@
 .PHONY: init
-init:
+init: src/env.ts
 	bun install --frozen-lockfile
+
+src/env.ts:
+	echo 'export const API_KEY = "${API_KEY}"' > $@
 
 .PHONY: fmt
 fmt:
@@ -29,5 +32,5 @@ clean:
 	rm -rf ${TARGET_DIR}
 
 .PHONY: link
-link:
+link: 
 	npm link

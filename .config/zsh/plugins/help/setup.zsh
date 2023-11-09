@@ -1,5 +1,5 @@
-function awsutils() {
-  local script_dir="$HOME/.config/zsh/plugins/awsutils"
+function help() {
+  local script_dir="$HOME/.config/zsh/plugins/help"
   local source_file="$script_dir/src/main.ts"
   local target_dir="$script_dir/dist"
   local target_file="$target_dir/main.mjs"
@@ -12,9 +12,9 @@ function awsutils() {
   fi
 
   if [ ! -f "$target_file" ]; then
-    make -C $script_dir build link
+		make -C $script_dir build link
     echo ""
   fi
 
-  command awsutils $@
+  command help $@
 }

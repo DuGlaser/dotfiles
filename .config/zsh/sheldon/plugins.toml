@@ -25,6 +25,11 @@ local = "~/.config/zsh/plugins/awsutils"
 use = ["setup.zsh"]
 apply = ["defer"]
 
+[plugins.help]
+local = "~/.config/zsh/plugins/help"
+use = ["setup.zsh"]
+apply = ["defer"]
+
 [plugins.private-commands]
 local = "~/.config/zsh/plugins/private-commands"
 use = ["setup.zsh"]

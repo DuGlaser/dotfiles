@@ -1,0 +1,16 @@
+{
+  "name": "help",
+  "type": "module",
+  "version": "1.0.0",
+  "devDependencies": {
+    "prettier": "^3.0.3"
+  },
+  "dependencies": {
+    "openai": "^4.17.0",
+    "zod": "^3.22.2",
+    "zx": "^7.2.3"
+  },
+  "bin": {
+    "help": "./dist/main.mjs"
+  }
+}

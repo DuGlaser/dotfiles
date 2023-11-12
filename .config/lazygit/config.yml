@@ -8,5 +8,5 @@ git:
 quitOnTopLevelReturn: true
 keybinding:
   universal:
-    quit: "<esc>"
-    return: "q"
+    quit: "<c-c>"
+    return: "<esc>"

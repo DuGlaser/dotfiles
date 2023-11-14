@@ -8,8 +8,5 @@
   "dependencies": {
     "zod": "^3.22.2",
     "zx": "^7.2.3"
-  },
-  "bin": {
-    "awsutils": "./dist/main.mjs"
   }
 }

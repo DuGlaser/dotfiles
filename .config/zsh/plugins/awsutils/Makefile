@@ -30,4 +30,4 @@ clean:
 
 .PHONY: link
 link: 
-	ln -si ${PWD}/${OUTPUT_FILE} ~/.local/bin/awsutils
+	ln -sf ${PWD}/${OUTPUT_FILE} ~/.local/bin/awsutils

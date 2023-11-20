@@ -28,6 +28,11 @@ local M = {
 				"scss",
 			}
 
+			vim.g.skip_ts_context_commentstring_module = true
+			require("ts_context_commentstring").setup({
+				enable_autocmd = false,
+			})
+
 			require("nvim-treesitter.configs").setup({
 				highlight = {
 					enable = true,
@@ -53,9 +58,6 @@ local M = {
 					enable = false,
 				},
 				textobjects = {
-					enable = true,
-				},
-				context_commentstring = {
 					enable = true,
 				},
 				-- nvim-ts-autotag

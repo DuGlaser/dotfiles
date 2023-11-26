@@ -41,7 +41,6 @@ update: update/submodule update/nvim update/rust update/zsh
 
 .PHONY: update/submodule
 update/submodule:
-	cd ./.config/zsh/plugins && git clean -fdx && git checkout .
 	git submodule update --remote --recursive
 
 .PHONY: update/nvim

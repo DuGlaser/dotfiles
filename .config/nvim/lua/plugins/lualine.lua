@@ -17,6 +17,11 @@ local M = {
 
 		local lualine_c = {
 			{
+				function()
+					return require("duglaser.copilot").status
+				end,
+			},
+			{
 				"diff",
 				symbols = { added = " ", modified = "󰝤 ", removed = " " },
 			},

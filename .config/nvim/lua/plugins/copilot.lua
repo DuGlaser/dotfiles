@@ -3,6 +3,7 @@ return {
 	cmd = "Copilot",
 	event = "InsertEnter",
 	config = function()
+		require("duglaser.copilot").setup()
 		require("copilot").setup({
 			suggestion = {
 				enabled = true,

@@ -165,14 +165,6 @@ rules:
               - any
         to:
           - key_code: s
-      - type: basic
-        from:
-          key_code: comma
-          modifiers:
-            optional:
-              - any
-        to:
-          - key_code: quote
 
       # Z列
       - type: basic
@@ -257,29 +249,27 @@ rules:
               - any
         to:
           - key_code: left_control
-      - description: Right Command to Tab
-        manipulators:
-          - type: basic
-            from:
-              key_code: right_command
-            to:
-              - key_code: tab
-      - description: Tab to Escape
-        manipulators:
-          - type: basic
-            from:
-              key_code: tab
-            to:
-              - key_code: escape
-      - description: Control to Option
-        manipulators:
-          - type: basic
-            from:
-              key_code: left_control
-            to:
-              - key_code: left_option
-          - type: basic
-            from:
-              key_code: right_control
-            to:
-              - key_code: right_option
+      - type: basic
+        from:
+          key_code: tab
+          modifiers:
+            optional:
+              - any
+        to:
+          - key_code: escape
+      - type: basic
+        from:
+          key_code: right_command
+          modifiers:
+            optional:
+              - any
+        to:
+          - key_code: tab
+      - type: basic
+        from:
+          key_code: left_control
+          modifiers:
+            optional:
+              - any
+        to:
+          - key_code: left_option

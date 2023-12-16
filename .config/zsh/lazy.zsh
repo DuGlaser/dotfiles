@@ -22,6 +22,9 @@ function peco-src () {
 zle -N peco-src
 bindkey '^]' peco-src
 
+function tcc() {
+  tee >(copy)
+}
 
 # start tmux
 if type "tmux" > /dev/null 2>&1; then

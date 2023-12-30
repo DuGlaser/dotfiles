@@ -25,8 +25,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.clipboard = "unnamedplus"
 
-local is_wsl = os.getenv("IS_WSL") ~= nil
-if is_wsl then
+local env = require("duglaser.env")
+if env.get_env() == env.ENV.WSL then
 	vim.g.clipboard = {
 		name = "wsl clipboard",
 		copy = {

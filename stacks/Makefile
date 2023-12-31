@@ -12,7 +12,12 @@ deploy:
 destroy:
 	cdk destroy -c account=${ACCOUNT}
 
-.PHONY: login/test-ubuntu
-login/test-ubuntu:
+.PHONY: setup/test-ubuntu
+setup/test-ubuntu:
+	$(MAKE) deploy
+	-$(MAKE) login/test-ubuntu
+	$(MAKE) destroy
+
+login/%:
 	awsutils ec2 login \
-		$(shell awsutils ec2 list --names "test-ubuntu" --fuzzy --limit 1 | jq ".InstanceId" -r)
+		$(shell awsutils ec2 list --names "$*" --fuzzy --limit 1 | jq ".InstanceId" -r)

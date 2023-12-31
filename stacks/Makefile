@@ -15,6 +15,8 @@ destroy:
 .PHONY: setup/test-ubuntu
 setup/test-ubuntu:
 	$(MAKE) deploy
+	@echo "😎 Waiting for instance to be ready..."
+	@sleep 10
 	-$(MAKE) login/test-ubuntu
 	$(MAKE) destroy
 

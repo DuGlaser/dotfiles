@@ -25,8 +25,16 @@ export class TestUbuntuStack extends cdk.Stack {
       name: "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-arm64-server-20230919"
     })
 
+    const userData = cdk.aws_ec2.UserData.forLinux();
+    userData.addCommands(
+      'sudo apt update',
+      'sudo apt install -y make',
+      'bash -c "$(curl https://raw.githubusercontent.com/DuGlaser/dotfiles/master/scripts/install.sh)" > /var/log/dotfiles.log 2>&1',
+    )
+
     new cdk.aws_ec2.Instance(this, "test-ubuntu", {
       machineImage: ami,
+      userData,
       instanceType: new cdk.aws_ec2.InstanceType("c7g.xlarge"),
       vpc,
       vpcSubnets: vpc.selectSubnets({

@@ -106,7 +106,7 @@ local M = {
 	},
 	{
 		"mattn/emmet-vim",
-		ft = { "html", "javascriptreact", "typescriptreact", "vue" },
+		ft = { "html", "javascriptreact", "typescriptreact", "vue", "angular" },
 	},
 	{
 		"thinca/vim-qfreplace",

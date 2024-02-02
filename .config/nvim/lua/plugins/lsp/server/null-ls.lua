@@ -86,6 +86,17 @@ local prettierd_sources = get_null_ls_sources("prettierd", { TYPES.FORMATTING },
 	return apply_runtime_condition(
 		setting.with({
 			disabled_filetypes = { "markdown", "markdown.mdx" },
+			extra_filetypes = { "angular" },
+		}),
+		M.prettier_setting_files
+	)
+end)
+
+local prettier_sources = get_null_ls_sources("prettier", { TYPES.FORMATTING }, function(setting)
+	return apply_runtime_condition(
+		setting.with({
+			disabled_filetypes = { "markdown", "markdown.mdx" },
+			extra_filetypes = { "angular" },
 		}),
 		M.prettier_setting_files
 	)
@@ -106,7 +117,7 @@ local shellcheck_sources = get_null_ls_sources(
 local sources = merge_sources(
 	get_cspell_sources(),
 	eslint_sources,
-	prettierd_sources,
+	prettier_sources,
 	shellcheck_sources,
 	get_null_ls_sources("jsonlint", { TYPES.DIAGNOSTICS }),
 	get_null_ls_sources("markdownlint", { TYPES.DIAGNOSTICS, TYPES.FORMATTING }),

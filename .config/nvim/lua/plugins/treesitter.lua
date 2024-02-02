@@ -60,9 +60,28 @@ local M = {
 				textobjects = {
 					enable = true,
 				},
-				-- nvim-ts-autotag
-				autotag = {
-					enable = true,
+			})
+
+			require("nvim-ts-autotag").setup({
+				filetypes = {
+					"astro",
+					"glimmer",
+					"handlebars",
+					"hbs",
+					"html",
+					"javascript",
+					"javascriptreact",
+					"jsx",
+					"markdown",
+					"php",
+					"rescript",
+					"svelte",
+					"tsx",
+					"typescript",
+					"typescriptreact",
+					"vue",
+					"xml",
+					"angular",
 				},
 			})
 

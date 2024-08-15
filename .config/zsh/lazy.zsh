@@ -61,5 +61,5 @@ fi
 
 unset env_script_dir
 
-# setup rtx
-eval "$(rtx activate zsh)"
+# setup mise
+eval "$(mise activate zsh)"

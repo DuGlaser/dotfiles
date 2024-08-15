@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cargo install --locked rtx-cli
-rtx trust
-rtx install -y
+cargo install --locked mise
+mise trust
+mise install -y

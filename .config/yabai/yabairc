@@ -10,19 +10,12 @@ yabai -m config                                 \
     window_topmost               off            \
     window_shadow                on             \
     window_animation_duration    0.0            \
-    window_animation_frame_rate  120             \
+    window_animation_frame_rate  120            \
     window_opacity_duration      0.0            \
     active_window_opacity        1.0            \
     normal_window_opacity        0.90           \
     window_opacity               off            \
     insert_feedback_color        0xffd75f5f     \
-    active_window_border_color   0xff7fc06e     \
-    normal_window_border_color   0x88555555     \
-    window_border                on             \
-    window_border_width          8              \
-    window_border_radius         8              \
-    window_border_blur           off            \
-    window_border_hidpi          off            \
     split_ratio                  0.50           \
     split_type                   auto           \
     auto_balance                 off            \
@@ -30,7 +23,7 @@ yabai -m config                                 \
     bottom_padding               4              \
     left_padding                 4              \
     right_padding                4              \
-    window_gap                   4              \
+    window_gap                   15             \
     layout                       bsp            \
     mouse_modifier               alt            \
     mouse_action1                move           \
@@ -46,6 +39,6 @@ yabai -m rule --add app="Authy Desktop" manage=off
 yabai -m rule --add app="アーカイブユーティリティ" manage=off
 yabai -m rule --add app="Rancher Desktop" manage=off
 
-yabai -m signal --add event=window_focused action="$HOME/.config/yabai/layout_border.sh"
+# yabai -m signal --add event=window_focused action="$HOME/.config/yabai/layout_border.sh"
 
 echo "yabai configuration loaded.."

@@ -101,6 +101,9 @@ local M = {
 		event = "VeryLazy",
 	},
 	{
+		"nicwest/vim-camelsnek",
+	},
+	{
 		"romgrk/equal.operator",
 		event = "VeryLazy",
 	},

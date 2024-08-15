@@ -39,9 +39,9 @@ cmd + shift - l : yabai -m window --space next && skhd --key "ctrl - right"
 cmd + ctrl - f : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
 
 # change space mode
-cmd + shift - s : [ "$(yabai -m query --spaces --space | jq -r '.type')" = bsp ] \
-                    && (yabai -m space --layout stack && ~/.config/yabai/layout_border.sh) \
-                    || (yabai -m space --layout bsp && ~/.config/yabai/layout_border.sh)
+cmd + shift - s : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = bsp ]; then \
+      yabai -m space --layout stack; else \
+      yabai -m space --layout bsp; fi
 
 # insert_stack
 insert_stack < escape ; default

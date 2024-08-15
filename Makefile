@@ -27,8 +27,8 @@ setup/nvim: setup_nvim
 .PHONY: setup/alacritty
 setup/alacritty: setup_alacritty
 
-.PHONY: setup/rtx
-setup/rtx: setup_rtx
+.PHONY: setup/mise
+setup/mise: setup_mise
 
 .PHONY: setup/ansible
 setup/ansible: setup_ansible
